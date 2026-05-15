@@ -43,7 +43,7 @@ export default function FemeninoPage() {
                 <p className="text-white/50 text-sm mt-2">{product.price}</p>
 
                 <a
-                  href={`https://wa.me/593963826845?text=Hola,%20quiero%20comprar%20${product.name}`}
+                  href={`https://wa.me/593963826845?text=Hola,%20quiero%20comprar%20${product.name}%20de%20WILD%20COLLECTION`}
                   target="_blank"
                 >
                   <button className="mt-6 border border-white/30 px-8 py-3 text-[11px] tracking-[0.35em] uppercase hover:bg-white hover:text-black transition-all duration-500">
