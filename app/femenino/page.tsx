@@ -24,7 +24,7 @@ export default function FemeninoPage() {
       <section className="px-8 pb-32">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-7xl mx-auto">
           {[
-            { name: "VIP Rose", img: "/fem1.jpeg", price: "$25" },
+            { name: "VIP Rose", img: "/fem1.jpeg", price: "$19.99" },
             { name: "Sweet Candy", img: "/fem2.jpeg", price: "$25" },
             { name: "Pink Touch", img: "/fem3.jpeg", price: "$25" },
             { name: "Floral Essence", img: "/fem4.jpeg", price: "$25" },
@@ -42,9 +42,14 @@ export default function FemeninoPage() {
                 <h2 className="font-serif text-xl">{product.name}</h2>
                 <p className="text-white/50 text-sm mt-2">{product.price}</p>
 
-                <button className="mt-5 border border-white/40 px-6 py-3 text-xs tracking-[0.25em] hover:bg-white hover:text-black transition">
-                  COMPRAR
-                </button>
+                <a
+                  href={`https://wa.me/593963826845?text=Hola,%20quiero%20comprar%20${product.name}`}
+                  target="_blank"
+                >
+                  <button className="mt-6 border border-white/30 px-8 py-3 text-[11px] tracking-[0.35em] uppercase hover:bg-white hover:text-black transition-all duration-500">
+                    COMPRAR
+                  </button>
+                </a>
               </div>
             </div>
           ))}
