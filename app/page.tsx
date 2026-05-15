@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -27,24 +28,21 @@ export default function Home() {
     <main className="bg-black text-white">
       <section id="dior-scroll" className="relative h-[260vh] bg-black">
         <div className="sticky top-0 h-screen overflow-hidden flex items-center justify-center">
-          <h1 className="absolute top-[2.5%] left-1/2 -translate-x-1/2 text-3xl tracking-[0.35em] font-serif z-50">
-            COLECCIÓN SILVESTRE
+          <h1 className="absolute top-[3.5%] left-1/2 -translate-x-1/2 text-3xl tracking-[0.35em] font-serif z-50">
+            WILD COLLECTION
           </h1>
 
-          {/* VIDEO CENTRAL */}
           <div
             className="absolute overflow-hidden"
             style={{
-              width: `${86 - progress * 48}%`,
-              height: `${60 + progress * 20}%`,
-              top: `${7 + progress * 10}%`,
+              width: `${86 - progress * 46}%`,
+              height: `${60 + progress * 18}%`,
+              top: `${10 + progress * 10}%`,
               left: "50%",
               transform: `translateX(-50%) scale(${1 + progress * 0.04})`,
               transition:
                 "width 200ms linear, height 200ms linear, top 200ms linear",
               zIndex: 20,
-              transition:
-                "width 200ms linear, height 200ms linear, top 200ms linear",
             }}
           >
             <video
@@ -55,19 +53,11 @@ export default function Home() {
               playsInline
               className="w-full h-full object-cover object-center shadow-2xl"
             />
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background:
-                  "linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6))",
-              }}
-            />
           </div>
 
-          {/* FOTO IZQUIERDA */}
           <img
             src="/left.jpg"
-            className="absolute left-[4%] top-[24%] w-[25%] h-[70%] object-cover"
+            className="absolute left-[4%] top-[20%] w-[25%] h-[70%] object-cover"
             style={{
               opacity: progress > 0.35 ? 0.85 : 0,
               filter: "brightness(0.75)",
@@ -76,7 +66,6 @@ export default function Home() {
             }}
           />
 
-          {/* FOTO DERECHA */}
           <img
             src="/right.jpg"
             className="absolute right-[3%] top-[24%] w-[27%] h-[76%] object-cover"
@@ -87,6 +76,72 @@ export default function Home() {
               transition: "all 1200ms cubic-bezier(0.16, 1, 0.3, 1)",
             }}
           />
+
+          <div
+            className="absolute bottom-[4%] left-1/2 text-center z-50"
+            style={{
+              opacity: progress > 0.55 ? 1 : 0,
+              transform: `translate(-50%, ${progress > 0.55 ? 0 : 30}px)`,
+              transition: "all 1000ms ease",
+            }}
+          >
+            <p className="text-sm tracking-[0.5em] mb-3 text-white/70">
+              WILD COLLECTION
+            </p>
+
+            <h2 className="text-4xl font-serif tracking-[0.25em]">VIP ROSE</h2>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-black text-white py-32 px-8">
+        <p className="text-center text-sm tracking-[0.5em] text-white/50 mb-6">
+          CATÁLOGO
+        </p>
+
+        <h2 className="text-center text-5xl font-serif mb-20">
+          Explora por categoría
+        </h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <Link href="/femenino">
+            <div className="group relative h-[520px] overflow-hidden bg-neutral-900 cursor-pointer">
+              <img
+                src="/femenino.jpeg"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-all duration-700" />
+              <h3 className="absolute bottom-8 left-8 text-3xl font-serif z-10">
+                Femenino
+              </h3>
+            </div>
+          </Link>
+
+          <Link href="/masculino">
+            <div className="group relative h-[520px] overflow-hidden bg-neutral-900 cursor-pointer">
+              <img
+                src="/masculino.jpeg"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-all duration-700" />
+              <h3 className="absolute bottom-8 left-8 text-3xl font-serif z-10">
+                Masculino
+              </h3>
+            </div>
+          </Link>
+
+          <Link href="/unisex">
+            <div className="group relative h-[520px] overflow-hidden bg-neutral-900 cursor-pointer">
+              <img
+                src="/unisex.jpeg"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-all duration-700" />
+              <h3 className="absolute bottom-8 left-8 text-3xl font-serif z-10">
+                Unisex
+              </h3>
+            </div>
+          </Link>
         </div>
       </section>
     </main>
