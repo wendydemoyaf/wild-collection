@@ -8,7 +8,7 @@ export default function PradaCandyPage() {
         <Link href="/femenino">VOLVER</Link>
       </header>
 
-      <section className="min-h-screen grid grid-cols-1 md:grid-cols-2 pt-24 px-10 md:px-16 gap-10 items-center">
+      <section className="min-h-screen grid grid-cols-1 md:grid-cols-[0.95fr_1.05fr] pt-24 px-10 md:px-20 gap-6 items-center">
         <div className="max-w-xl">
           <p className="text-xs tracking-[0.6em] text-black/40 mb-6">
             FRAGANCIA FEMENINA
@@ -22,30 +22,38 @@ export default function PradaCandyPage() {
             Elegancia que provoca acercarse.
           </p>
 
-          <p className="text-base leading-relaxed text-black/70 mb-8">
+          <p className="text-base leading-relaxed text-black/70 mb-6">
             Su estela suave y envolvente combina sensualidad y delicadeza en una
             fragancia moderna, femenina y absolutamente irresistible.
           </p>
 
-          <div className="grid grid-cols-3 gap-4 mb-8">
-            <div className="border-t border-black/20 pt-4">
+          <div className="grid grid-cols-3 gap-10 mb-6">
+            <div className="pt-4">
               <p className="text-[10px] tracking-[0.35em] text-black/40 mb-2">
                 AROMA
               </p>
+
+              <div className="w-14 h-[1px] bg-black/30 mb-3"></div>
               <p className="text-sm">Dulce · Floral</p>
             </div>
 
-            <div className="border-t border-black/20 pt-4">
+            <div className="pt-4">
               <p className="text-[10px] tracking-[0.35em] text-black/40 mb-2">
-                OCASIÓN
+                MOMENTOS WILD
               </p>
+
+              <div className="w-14 h-[1px] bg-black/30 mb-3"></div>
+
               <p className="text-sm">Día fresco · Cita</p>
             </div>
 
-            <div className="border-t border-black/20 pt-4">
+            <div className="pt-4">
               <p className="text-[10px] tracking-[0.35em] text-black/40 mb-2">
                 PERSONALIDAD
               </p>
+
+              <div className="w-14 h-[1px] bg-black/30 mb-3"></div>
+
               <p className="text-sm">Elegante · Magnética</p>
             </div>
           </div>
@@ -63,7 +71,7 @@ export default function PradaCandyPage() {
             href="https://wa.me/593963826845?text=Hola,%20quiero%20comprar%20PRADA%20CANDY%20de%20WILD%20COLLECTION"
             target="_blank"
           >
-            <button className="border border-black px-10 py-4 text-xs tracking-[0.35em] uppercase hover:bg-black hover:text-white transition-all duration-500">
+            <button className="mt-[-6px] border border-black px-10 py-4 text-xs tracking-[0.35em] uppercase hover:bg-black hover:text-white transition-all duration-500">
               Comprar por WhatsApp
             </button>
           </a>
