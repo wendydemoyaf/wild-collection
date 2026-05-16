@@ -77,7 +77,9 @@ export default function UnisexPage() {
 
                 <Link
                   href={product.link}
-                  className="mt-3 block text-xs tracking-[0.25em] text-white/50 hover:text-white transition uppercase"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="..."
                 >
                   Descubre la fragancia →
                 </Link>
