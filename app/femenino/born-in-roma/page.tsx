@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function ScandalPage() {
+export default function BornInRomaPage() {
   return (
     <main className="min-h-screen bg-[#f7f5f2] text-black overflow-hidden">
       <header className="fixed top-0 left-0 w-full z-50 px-10 py-6 flex justify-between text-xs tracking-[0.35em] bg-[#f7f5f2]/80 backdrop-blur-md">
@@ -16,16 +16,17 @@ export default function ScandalPage() {
           </p>
 
           <h1 className="font-serif text-5xl md:text-7xl leading-none mb-6">
-            SCANDAL
+            BORN IN <br /> ROMA
           </h1>
 
           <p className="italic text-black/60 mb-6">
-            Intensa, atrevida y absolutamente inolvidable.
+            Moderna, elegante y con actitud.
           </p>
 
           <p className="text-base leading-relaxed text-black/70 mb-6">
-            Una fragancia que rompe reglas. Dulce pero poderosa, diseñada para
-            una mujer que deja huella y no pasa desapercibida.
+            Una fragancia que combina lo clásico con lo contemporáneo.
+            Sofisticada y vibrante, perfecta para una mujer segura, libre y
+            auténtica.
           </p>
 
           {/* BLOQUES */}
@@ -35,7 +36,7 @@ export default function ScandalPage() {
                 AROMA
               </p>
               <div className="w-14 h-[1px] bg-black/30 mb-3"></div>
-              <p className="text-sm">Dulce · Intenso</p>
+              <p className="text-sm">Floral · Amaderado</p>
             </div>
 
             <div className="pt-4">
@@ -43,7 +44,7 @@ export default function ScandalPage() {
                 MOMENTOS WILD
               </p>
               <div className="w-14 h-[1px] bg-black/30 mb-3"></div>
-              <p className="text-sm">Noche · Fiesta</p>
+              <p className="text-sm">Día · Elegante</p>
             </div>
 
             <div className="pt-4">
@@ -51,14 +52,14 @@ export default function ScandalPage() {
                 PERSONALIDAD
               </p>
               <div className="w-14 h-[1px] bg-black/30 mb-3"></div>
-              <p className="text-sm">Audaz · Sensual</p>
+              <p className="text-sm">Sofisticada · Moderna</p>
             </div>
           </div>
 
           {/* BOTÓN */}
           <div className="flex justify-center">
             <a
-              href="https://api.whatsapp.com/send?phone=593963826845&text=Hola,%20quiero%20comprar%20SCANDAL"
+              href="https://api.whatsapp.com/send?phone=593963826845&text=Hola,%20quiero%20comprar%20BORN%20IN%20ROMA"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -72,14 +73,14 @@ export default function ScandalPage() {
         {/* IMAGEN */}
         <div className="relative flex justify-center items-center group">
           <img
-            src="/fem3.jpeg"
-            alt="SCANDAL"
+            src="/fem4.jpeg"
+            alt="BORN IN ROMA"
             className="max-h-[78vh] w-auto object-contain transition-all duration-1000 ease-[cubic-bezier(0.25,0.1,0.25,1)] group-hover:opacity-0 group-hover:scale-95 group-hover:blur-sm"
           />
 
           <img
-            src="/scandal-notas.png"
-            alt="Notas SCANDAL"
+            src="/roma-notas.png"
+            alt="Notas BORN IN ROMA"
             className="absolute max-h-[78vh] w-auto object-contain opacity-0 scale-105 blur-sm transition-all duration-1000 ease-[cubic-bezier(0.25,0.1,0.25,1)] group-hover:opacity-100 group-hover:scale-100 group-hover:blur-0"
           />
         </div>

@@ -11,14 +11,14 @@ export default function FemeninoPage() {
     },
     {
       name: "SCANDAL",
-      img: "/fem2.jpeg",
+      img: "/fem3.jpeg",
       price: "$25",
       tagline: "Hecho para llamar la atención.",
       link: "/femenino/scandal",
     },
     {
       name: "SWEET LIKE CANDY",
-      img: "/fem3.jpeg",
+      img: "/fem2.jpeg",
       price: "$25",
       tagline: "Dulce como un recuerdo feliz.",
       link: "/femenino/sweet-like-candy",
