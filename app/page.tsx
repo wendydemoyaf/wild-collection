@@ -7,7 +7,7 @@ export default function Home() {
   const [progress, setProgress] = useState(0);
   const [loading, setLoading] = useState(true);
 
-  // LOADER
+  // LOADER TIMER
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
@@ -16,7 +16,7 @@ export default function Home() {
     return () => clearTimeout(timer);
   }, []);
 
-  // SCROLL HERO (video)
+  // SCROLL HERO
   useEffect(() => {
     const handleScroll = () => {
       const section = document.getElementById("dior-scroll");
@@ -35,9 +35,9 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // SCROLL ANIMATION (fade-section) 🔥 CORREGIDO
+  // ANIMACIÓN SCROLL
   useEffect(() => {
-    if (loading) return; // 👈 CLAVE
+    if (loading) return;
 
     const elements = document.querySelectorAll(".fade-section");
 
@@ -75,14 +75,14 @@ export default function Home() {
     },
   ];
 
-  // LOADER SCREEN
+  // 🔥 LOADER (BIEN PUESTO)
   if (loading) {
     return (
       <div className="fixed inset-0 bg-black z-[9999] flex items-center justify-center">
         <img
           src="/logo.png"
           alt="WILD COLLECTION"
-          className="w-24 md:w-32 animate-logo"
+          className="w-44 md:w-64 opacity-40 logo-clock object-contain"
         />
       </div>
     );
