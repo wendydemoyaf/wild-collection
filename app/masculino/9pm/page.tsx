@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function NinePMPage() {
   return (
-    <main className="min-h-screen bg-[#f7f5f2] text-black overflow-hidden">
+    <main className="min-h-screen bg-[#f7f5f2] text-black overflow-hidden animate-fade">
       <header className="fixed top-0 left-0 w-full z-50 px-10 py-6 flex justify-between text-xs tracking-[0.35em] bg-[#f7f5f2]/80 backdrop-blur-md">
         <Link href="/">WILD COLLECTION</Link>
         <Link href="/masculino">VOLVER</Link>
@@ -27,7 +27,7 @@ export default function NinePMPage() {
             una energía moderna que deja una estela imposible de olvidar.
           </p>
 
-          <div className="grid grid-cols-3 gap-10 mb-6">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-10 mb-6">
             <div className="pt-4">
               <p className="text-[10px] tracking-[0.35em] text-black/40 mb-2">
                 AROMA

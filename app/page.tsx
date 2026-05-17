@@ -5,7 +5,18 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
   const [progress, setProgress] = useState(0);
+  const [loading, setLoading] = useState(true);
 
+  // LOADER
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1800);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  // SCROLL HERO (video)
   useEffect(() => {
     const handleScroll = () => {
       const section = document.getElementById("dior-scroll");
@@ -24,8 +35,62 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // SCROLL ANIMATION (fade-section) 🔥 CORREGIDO
+  useEffect(() => {
+    if (loading) return; // 👈 CLAVE
+
+    const elements = document.querySelectorAll(".fade-section");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    elements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, [loading]);
+
+  const categories = [
+    {
+      name: "Femenino",
+      img: "/femenino.jpeg",
+      link: "/femenino",
+    },
+    {
+      name: "Masculino",
+      img: "/masculino.jpeg",
+      link: "/masculino",
+    },
+    {
+      name: "Unisex",
+      img: "/unisex.jpeg",
+      link: "/unisex",
+    },
+  ];
+
+  // LOADER SCREEN
+  if (loading) {
+    return (
+      <div className="fixed inset-0 bg-black z-[9999] flex items-center justify-center">
+        <img
+          src="/logo.png"
+          alt="WILD COLLECTION"
+          className="w-24 md:w-32 animate-logo"
+        />
+      </div>
+    );
+  }
+
   return (
     <main className="bg-black text-white">
+      {/* HERO */}
       <section id="dior-scroll" className="relative h-[260vh] bg-black">
         <div className="sticky top-0 h-screen overflow-hidden flex items-center justify-center">
           <h1 className="absolute top-[3.5%] left-1/2 -translate-x-1/2 text-3xl tracking-[0.35em] font-serif z-50">
@@ -57,7 +122,8 @@ export default function Home() {
 
           <img
             src="/left.jpg"
-            className="absolute left-[4%] top-[20%] w-[25%] h-[70%] object-cover"
+            alt="Wild Collection"
+            className="absolute left-[4%] top-[20%] w-[25%] h-[70%] object-cover hidden md:block"
             style={{
               opacity: progress > 0.35 ? 0.85 : 0,
               filter: "brightness(0.75)",
@@ -68,7 +134,8 @@ export default function Home() {
 
           <img
             src="/right.jpg"
-            className="absolute right-[3%] top-[24%] w-[27%] h-[76%] object-cover"
+            alt="Wild Collection"
+            className="absolute right-[3%] top-[24%] w-[27%] h-[76%] object-cover hidden md:block"
             style={{
               opacity: progress > 0.35 ? 0.85 : 0,
               filter: "brightness(0.75)",
@@ -94,7 +161,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-black text-white py-32 px-8">
+      {/* CATEGORÍAS */}
+      <section className="bg-black text-white py-32 px-8 fade-section">
         <p className="text-center text-sm tracking-[0.5em] text-white/50 mb-6">
           CATÁLOGO
         </p>
@@ -104,44 +172,29 @@ export default function Home() {
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          <Link href="/femenino">
-            <div className="group relative h-[520px] overflow-hidden bg-neutral-900 cursor-pointer">
-              <img
-                src="/femenino.jpeg"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-all duration-700" />
-              <h3 className="absolute bottom-8 left-8 text-3xl font-serif z-10">
-                Femenino
-              </h3>
-            </div>
-          </Link>
+          {categories.map((category) => (
+            <Link key={category.name} href={category.link} className="group">
+              <div className="relative h-[420px] md:h-[520px] overflow-hidden bg-neutral-900 cursor-pointer">
+                <img
+                  src={category.img}
+                  alt={category.name}
+                  className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110"
+                />
 
-          <Link href="/masculino">
-            <div className="group relative h-[520px] overflow-hidden bg-neutral-900 cursor-pointer">
-              <img
-                src="/masculino.jpeg"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-all duration-700" />
-              <h3 className="absolute bottom-8 left-8 text-3xl font-serif z-10">
-                Masculino
-              </h3>
-            </div>
-          </Link>
+                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-all duration-700" />
 
-          <Link href="/unisex">
-            <div className="group relative h-[520px] overflow-hidden bg-neutral-900 cursor-pointer">
-              <img
-                src="/unisex.jpeg"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-all duration-700" />
-              <h3 className="absolute bottom-8 left-8 text-3xl font-serif z-10">
-                Unisex
-              </h3>
-            </div>
-          </Link>
+                <div className="absolute bottom-6 left-6 md:bottom-8 md:left-8 z-10">
+                  <h3 className="text-2xl md:text-3xl font-serif">
+                    {category.name}
+                  </h3>
+
+                  <p className="text-xs tracking-[0.35em] text-white/60 mt-3 uppercase">
+                    Ver colección
+                  </p>
+                </div>
+              </div>
+            </Link>
+          ))}
         </div>
       </section>
     </main>
