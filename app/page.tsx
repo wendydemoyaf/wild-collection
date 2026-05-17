@@ -7,7 +7,6 @@ export default function Home() {
   const [progress, setProgress] = useState(0);
   const [loading, setLoading] = useState(true);
 
-  // LOADER TIMER
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
@@ -16,7 +15,6 @@ export default function Home() {
     return () => clearTimeout(timer);
   }, []);
 
-  // SCROLL HERO
   useEffect(() => {
     const handleScroll = () => {
       const section = document.getElementById("dior-scroll");
@@ -35,7 +33,6 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // ANIMACIÓN SCROLL
   useEffect(() => {
     if (loading) return;
 
@@ -58,31 +55,18 @@ export default function Home() {
   }, [loading]);
 
   const categories = [
-    {
-      name: "Femenino",
-      img: "/femenino.jpeg",
-      link: "/femenino",
-    },
-    {
-      name: "Masculino",
-      img: "/masculino.jpeg",
-      link: "/masculino",
-    },
-    {
-      name: "Unisex",
-      img: "/unisex.jpeg",
-      link: "/unisex",
-    },
+    { name: "Femenino", img: "/femenino.jpeg", link: "/femenino" },
+    { name: "Masculino", img: "/masculino.jpeg", link: "/masculino" },
+    { name: "Unisex", img: "/unisex.jpeg", link: "/unisex" },
   ];
 
-  // 🔥 LOADER (BIEN PUESTO)
   if (loading) {
     return (
       <div className="fixed inset-0 bg-black z-[9999] flex items-center justify-center">
         <img
           src="/logo.png"
           alt="WILD COLLECTION"
-          className="w-44 md:w-64 opacity-40 logo-clock object-contain"
+          className="w-44 md:w-64 opacity-20 logo-clock object-contain"
         />
       </div>
     );
@@ -90,7 +74,6 @@ export default function Home() {
 
   return (
     <main className="bg-black text-white">
-      {/* HERO */}
       <section id="dior-scroll" className="relative h-[260vh] bg-black">
         <div className="sticky top-0 h-screen overflow-hidden flex items-center justify-center">
           <h1 className="absolute top-[3.5%] left-1/2 -translate-x-1/2 text-3xl tracking-[0.35em] font-serif z-50">
@@ -161,7 +144,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CATEGORÍAS */}
       <section className="bg-black text-white py-32 px-8 fade-section">
         <p className="text-center text-sm tracking-[0.5em] text-white/50 mb-6">
           CATÁLOGO
