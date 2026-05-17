@@ -44,22 +44,42 @@ body {
 }
 
 /* LOADER LOGO SUAVE TIPO RELOJ */
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
 .logo-clock {
+  --angle: 0deg;
+
   -webkit-mask-image: conic-gradient(
-    rgba(0, 0, 0, 1) 0deg,
-    rgba(0, 0, 0, 1) 25deg,
-    rgba(0, 0, 0, 0.35) 80deg,
-    rgba(0, 0, 0, 0) 140deg,
-    rgba(0, 0, 0, 0) 360deg
+    from var(--angle),
+    transparent 0deg,
+    transparent 40deg,
+    black 110deg,
+    black 220deg,
+    transparent 300deg,
+    transparent 360deg
   );
+
   mask-image: conic-gradient(
-    rgba(0, 0, 0, 1) 0deg,
-    rgba(0, 0, 0, 1) 25deg,
-    rgba(0, 0, 0, 0.35) 80deg,
-    rgba(0, 0, 0, 0) 140deg,
-    rgba(0, 0, 0, 0) 360deg
+    from var(--angle),
+    transparent 0deg,
+    transparent 40deg,
+    black 110deg,
+    black 220deg,
+    transparent 300deg,
+    transparent 360deg
   );
-  animation: rotateMask 2.6s linear infinite;
+
+  animation: clockReveal 2.4s linear infinite;
+}
+
+@keyframes clockReveal {
+  to {
+    --angle: 360deg;
+  }
 }
 
 @keyframes rotateMask {
