@@ -2,53 +2,68 @@ import Link from "next/link";
 
 export default function InvictusVictoryPage() {
   return (
-    <main className="min-h-screen text-white overflow-hidden animate-fade bg-[radial-gradient(circle_at_78%_38%,rgba(0,229,255,0.22),transparent_28%),radial-gradient(circle_at_85%_70%,rgba(107,53,255,0.24),transparent_30%),linear-gradient(135deg,#02040A,#050B1A)]">
-      <header className="fixed top-0 left-0 w-full z-50 px-10 py-6 flex justify-between text-xs tracking-[0.35em] text-[#C9D3E6] bg-[#02040A]/35 backdrop-blur-md border-b border-white/10">
-        <Link href="/">WILD COLLECTION</Link>
-        <Link href="/masculino">VOLVER</Link>
+    <main className="min-h-screen text-white overflow-hidden animate-fade bg-[radial-gradient(circle_at_78%_38%,rgba(0,229,255,0.18),transparent_28%),radial-gradient(circle_at_85%_70%,rgba(107,53,255,0.18),transparent_30%),radial-gradient(circle_at_60%_60%,rgba(201,133,43,0.22),transparent_35%),linear-gradient(135deg,#02040A,#0B1A24)]">
+      <header className="fixed top-0 left-0 w-full z-50 px-10 py-6 flex justify-between text-xs tracking-[0.35em] text-[#B8893A] bg-[#02040A]/35 backdrop-blur-md border-b border-[#B8893A]/20">
+      <Link
+  href="/"
+  className="relative text-[#B8893A] transition-all duration-500 hover:text-[#EAF3F8] hover:drop-shadow-[0_0_10px_rgba(184,137,58,0.9)]"
+>
+  WILD COLLECTION
+</Link>
+
+<Link
+  href="/masculino"
+  className="relative text-[#B8893A] transition-all duration-500 hover:text-[#EAF3F8] hover:drop-shadow-[0_0_10px_rgba(184,137,58,0.9)]"
+>
+  VOLVER
+</Link>
       </header>
 
       <section className="min-h-screen grid grid-cols-1 md:grid-cols-[0.95fr_1.05fr] pt-24 px-6 md:px-20 gap-10 md:gap-6 items-center">
-        <div className="max-w-xl">
+      <div className="max-w-2xl">
           <p className="text-xs tracking-[0.6em] text-black/40 mb-6">
             FRAGANCIA MASCULINA
           </p>
 
-          <h1 className="font-serif text-5xl md:text-7xl leading-none mb-6">
+          <h1 className="font-serif text-5xl md:text-7xl leading-none mb-1">
             INVICTUS <br /> VICTORY
           </h1>
 
-          <p className="italic text-black/60 mb-6">Nacido para ganar.</p>
+          <p className="text-[#EAF3F8]/55 text-lg mb-6">
+  Nacido para ganar.
+</p>
 
-          <p className="text-base leading-relaxed text-black/70 mb-6">
-            Imagina una noche de triunfo, luces doradas y una presencia que
-            domina sin esfuerzo. Un aroma vibrante, masculino y envolvente,
-            hecho para quien no pasa desapercibido.
-          </p>
+<div className="bg-black/20 border border-black/20 rounded-2xl px-6 py-3 mb-10 backdrop-blur-sm w-full">
+<p className="text-base leading-relaxed text-[#EAF3F8]/75">
+    Imagina una noche de triunfo, luces doradas y una presencia que
+    domina sin esfuerzo. Un aroma vibrante, masculino y envolvente,
+    hecho para quien no pasa desapercibido.
+  </p>
+</div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-10 mb-6">
             <div className="pt-4">
-              <p className="text-[10px] tracking-[0.35em] text-black/40 mb-2">
+            <p className="text-[10px] tracking-[0.35em] text-[#EAF3F8] mb-2">
                 AROMA
               </p>
-              <div className="w-14 h-[1px] bg-black/30 mb-3"></div>
-              <p className="text-sm">Intenso · Ambarado</p>
+              <div className="w-14 h-[1px] bg-gradient-to-r from-transparent via-[#EAF3F8]/80 to-transparent mb-3"></div>
+              <p className="text-sm text-[#EAF3F8]">Intenso · Ambarado</p>
             </div>
 
             <div className="pt-4">
-              <p className="text-[10px] tracking-[0.35em] text-black/40 mb-2">
+            <p className="text-[10px] tracking-[0.35em] text-[#EAF3F8] mb-2">
                 MOMENTOS WILD
               </p>
-              <div className="w-14 h-[1px] bg-black/30 mb-3"></div>
-              <p className="text-sm">Noche · Triunfo</p>
+              <div className="w-14 h-[1px] bg-gradient-to-r from-transparent via-[#EAF3F8]/80 to-transparent mb-3"></div>
+              <p className="text-sm text-[#EAF3F8]">Noche · Triunfo</p>
             </div>
 
             <div className="pt-4">
-              <p className="text-[10px] tracking-[0.35em] text-black/40 mb-2">
+            <p className="text-[10px] tracking-[0.35em] text-[#EAF3F8] mb-2">
                 PERSONALIDAD
               </p>
-              <div className="w-14 h-[1px] bg-black/30 mb-3"></div>
-              <p className="text-sm">Dominante · Seguro</p>
+              <div className="w-14 h-[1px] bg-gradient-to-r from-transparent via-[#EAF3F8]/80 to-transparent mb-3"></div>
+              <p className="text-sm text-[#EAF3F8]">Dominante · Seguro</p>
             </div>
           </div>
 
@@ -58,7 +73,7 @@ export default function InvictusVictoryPage() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <button className="mt-[-6px] border border-black px-10 py-4 text-xs tracking-[0.35em] uppercase hover:bg-black hover:text-white transition-all duration-500">
+              <button className="mt-[-6px] bg-black/80 text-white border border-black/80 rounded-2xl px-10 py-4 text-xs tracking-[0.35em] uppercase hover:bg-white/10 hover:backdrop-blur-md hover:text-[#EAF3F8] hover:border-white transition-all duration-500">
                 Comprar por WhatsApp
               </button>
             </a>
@@ -66,6 +81,7 @@ export default function InvictusVictoryPage() {
         </div>
 
         <div className="relative flex justify-center items-center group">
+          
           <img
             src="/invictop.jpg"
             alt="INVICTUS VICTORY"
