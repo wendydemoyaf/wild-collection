@@ -29,11 +29,11 @@ export default function InvictusVictoryPage() {
             INVICTUS <br /> VICTORY
           </h1>
 
-          <p className="text-[#EAF3F8]/55 text-lg mb-6">
+          <p className="text-[#EAF3F8]/55 text-lg mt-2 mb-12">
   Nacido para ganar.
 </p>
 
-<div className="bg-black/20 border border-black/20 rounded-2xl px-6 py-3 mb-10 backdrop-blur-sm w-full">
+<div className="bg-black/20 border border-black/20 rounded-2xl px-6 py-3 mb-14 backdrop-blur-sm w-full">
 <p className="text-base leading-relaxed text-[#EAF3F8]/75">
     Imagina una noche de triunfo, luces doradas y una presencia que
     domina sin esfuerzo. Un aroma vibrante, masculino y envolvente,
