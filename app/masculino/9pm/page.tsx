@@ -68,7 +68,7 @@ export default function NinePMPage() {
 
         <div className="relative flex justify-center items-center group">
           <img
-            src="/9pm.jpeg"
+            src="/9pmp.jpg"
             alt="9PM"
             className="max-h-[78vh] w-auto object-contain transition-all duration-1000 ease-[cubic-bezier(0.25,0.1,0.25,1)] group-hover:opacity-0 group-hover:scale-95 group-hover:blur-sm"
           />
