@@ -2,8 +2,8 @@ import Link from "next/link";
 
 export default function InvictusVictoryPage() {
   return (
-    <main className="min-h-screen bg-[#f7f5f2] text-black overflow-hidden animate-fade">
-      <header className="fixed top-0 left-0 w-full z-50 px-10 py-6 flex justify-between text-xs tracking-[0.35em] bg-[#f7f5f2]/80 backdrop-blur-md">
+    <main className="min-h-screen text-white overflow-hidden animate-fade bg-[radial-gradient(circle_at_78%_38%,rgba(0,229,255,0.22),transparent_28%),radial-gradient(circle_at_85%_70%,rgba(107,53,255,0.24),transparent_30%),linear-gradient(135deg,#02040A,#050B1A)]">
+      <header className="fixed top-0 left-0 w-full z-50 px-10 py-6 flex justify-between text-xs tracking-[0.35em] text-[#C9D3E6] bg-[#02040A]/35 backdrop-blur-md border-b border-white/10">
         <Link href="/">WILD COLLECTION</Link>
         <Link href="/masculino">VOLVER</Link>
       </header>
@@ -67,7 +67,7 @@ export default function InvictusVictoryPage() {
 
         <div className="relative flex justify-center items-center group">
           <img
-            src="/invicto.jpeg"
+            src="/invictop.jpg"
             alt="INVICTUS VICTORY"
             className="max-h-[78vh] w-auto object-contain transition-all duration-1000 ease-[cubic-bezier(0.25,0.1,0.25,1)] group-hover:opacity-0 group-hover:scale-95 group-hover:blur-sm"
           />
