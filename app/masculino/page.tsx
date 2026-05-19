@@ -22,7 +22,7 @@ export default function MasculinoPage() {
 
       <section className="pt-28 md:pt-32 pb-8 md:pb-10 px-6 text-center">
         <h1 className="font-serif text-5xl md:text-7xl leading-none mb-4">
-          Masculino
+          Perfumes Masculinos
         </h1>
 
         <p className="max-w-xl mx-auto text-sm md:text-base text-[#F0D8A8]/65 leading-relaxed">
