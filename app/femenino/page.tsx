@@ -7,8 +7,8 @@ export default function SweetLikeCandyPage() {
     ["FRUTAL", "80%", "#FF8FB8"],
     ["MORA", "68%", "#B85C9E"],
     ["CREMOSO", "58%", "#F7E9DF"],
-    ["DULCE", "48%", "#F4A6C8"],
-    ["ALMIZCLE", "38%", "#E8C7D8"],
+    ["DULCE", "50%", "#F4A6C8"],
+    ["ALMIZCLE", "46%", "#E8C7D8"],
   ];
 
   return (
@@ -24,7 +24,7 @@ export default function SweetLikeCandyPage() {
       </header>
 
       <section className="min-h-screen grid grid-cols-1 md:grid-cols-[0.95fr_1.05fr] pt-28 md:pt-24 px-6 md:px-20 gap-12 md:gap-6 items-center">
-        <div className="max-w-2xl md:h-[70vh] flex flex-col justify-between md:pb-10">
+        <div className="max-w-2xl md:h-[70vh] flex flex-col">
           <div>
             <h1 className="font-serif text-5xl md:text-7xl leading-none mb-2">
               SWEET <br /> LIKE CANDY
@@ -59,7 +59,7 @@ export default function SweetLikeCandyPage() {
             </div>
           </div>
 
-          <div className="flex justify-center mt-6 md:-mt-10">
+          <div className="flex justify-center mt-8 md:mt-6">
             <a
               href="https://api.whatsapp.com/send?phone=593963826845&text=Hola,%20quiero%20comprar%20SWEET%20LIKE%20CANDY"
               target="_blank"
@@ -81,15 +81,15 @@ export default function SweetLikeCandyPage() {
             />
 
             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-700">
-              <div className="w-full h-full bg-[#4A1F32]/85 border border-[#F7B6D2]/40 rounded-3xl backdrop-blur-xl px-7 md:px-10 py-10 md:py-14 flex flex-col justify-center gap-2 shadow-[0_0_80px_rgba(255,143,184,0.28)]">
-                <p className="text-center text-[11px] md:text-[13px] font-bold tracking-[0.22em] md:tracking-[0.25em] text-[#FFF7FA]/90 mb-4 uppercase">
+              <div className="w-full h-full bg-white/45 border border-[#F7B6D2]/50 rounded-3xl backdrop-blur-xl px-7 md:px-10 py-10 md:py-14 flex flex-col justify-center gap-2 shadow-[0_0_80px_rgba(255,143,184,0.28)]">
+                <p className="text-center text-[11px] md:text-[13px] font-extrabold tracking-[0.25em] text-[#4A1F32] mb-4 uppercase">
                   Acordes principales
                 </p>
 
                 {notas.map(([name, width, color], index) => (
                   <div key={name} className="w-full flex justify-start">
                     <div
-                      className="h-7 md:h-8 rounded-r-xl rounded-l-sm flex items-center justify-start pl-4 md:pl-5 text-[8px] md:text-[10px] font-bold text-black/70 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-[1200ms]"
+                      className="h-7 md:h-8 rounded-r-xl rounded-l-sm flex items-center justify-start pl-3 md:pl-4 text-[8px] md:text-[10px] font-extrabold tracking-[0.08em] uppercase text-black/75 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-[1200ms]"
                       style={{
                         width,
                         backgroundColor: color,
