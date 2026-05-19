@@ -1,87 +1,108 @@
 import Link from "next/link";
 
 export default function ScandalPage() {
+  const notas = [
+    ["MIEL", "100%", "#D89A2B"],
+    ["DULCE", "90%", "#F5EBDD"],
+    ["GARDENIA", "80%", "#D9A5AF"],
+    ["PACHULÍ", "68%", "#6F1232"],
+    ["CEREZA", "58%", "#B0143B"],
+    ["FLORAL", "48%", "#E8B8C2"],
+    ["ÁMBAR", "38%", "#B66A2B"],
+  ];
+
   return (
-    <main className="min-h-screen bg-[#f7f5f2] text-black overflow-hidden animate-fade">
-      <header className="fixed top-0 left-0 w-full z-50 px-10 py-6 flex justify-between text-xs tracking-[0.35em] bg-[#f7f5f2]/80 backdrop-blur-md">
-        <Link href="/">WILD COLLECTION</Link>
-        <Link href="/femenino">VOLVER</Link>
+    <main className="min-h-screen text-white overflow-hidden bg-[radial-gradient(circle_at_78%_38%,rgba(216,154,43,0.30),transparent_28%),radial-gradient(circle_at_85%_70%,rgba(176,20,59,0.26),transparent_32%),radial-gradient(circle_at_55%_60%,rgba(217,165,175,0.18),transparent_35%),linear-gradient(135deg,#16070C,#2A0815,#080304)]">
+      <header className="fixed top-0 left-0 w-full z-50 px-5 md:px-10 py-5 md:py-6 flex justify-between text-[10px] md:text-xs tracking-[0.25em] md:tracking-[0.35em] text-[#F5EBDD] bg-[#16070C]/60 backdrop-blur-md border-b border-[#D89A2B]/20">
+        <Link href="/" className="transition-all duration-500 hover:text-[#D89A2B]">
+          WILD COLLECTION
+        </Link>
+
+        <Link href="/femenino" className="transition-all duration-500 hover:text-[#D89A2B]">
+          VOLVER
+        </Link>
       </header>
 
-      <section className="min-h-screen grid grid-cols-1 md:grid-cols-[0.95fr_1.05fr] pt-24 px-6 md:px-20 gap-10 md:gap-6 items-center">
-        {/* TEXTO */}
-        <div className="max-w-xl">
-          <p className="text-xs tracking-[0.6em] text-black/40 mb-6">
-            FRAGANCIA FEMENINA
-          </p>
+      <section className="min-h-screen grid grid-cols-1 md:grid-cols-[0.95fr_1.05fr] pt-28 md:pt-24 px-6 md:px-20 gap-12 md:gap-6 items-center">
+        <div className="max-w-2xl md:h-[70vh] flex flex-col justify-between md:pb-10">
+          <div>
+            <h1 className="font-serif text-5xl md:text-7xl leading-none mb-2">
+              SCANDAL
+            </h1>
 
-          <h1 className="font-serif text-5xl md:text-7xl leading-none mb-6">
-            SCANDAL
-          </h1>
+            <p className="text-[#F5EBDD]/80 text-base md:text-lg mt-2 mb-8 md:mb-12">
+              Atrevida & Adictiva.
+            </p>
 
-          <p className="italic text-black/60 mb-6">
-            Intensa, atrevida y absolutamente inolvidable.
-          </p>
-
-          <p className="text-base leading-relaxed text-black/70 mb-6">
-            Una fragancia que rompe reglas. Dulce pero poderosa, diseñada para
-            una mujer que deja huella y no pasa desapercibida.
-          </p>
-
-          {/* BLOQUES */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-10 mb-6">
-            <div className="pt-4">
-              <p className="text-[10px] tracking-[0.35em] text-black/40 mb-2">
-                AROMA
+            <div className="bg-black/25 border border-[#D89A2B]/20 rounded-2xl px-5 md:px-6 py-4 md:py-3 mb-12 md:mb-14 backdrop-blur-sm w-full">
+              <p className="text-sm md:text-base leading-relaxed text-[#F5EBDD]/85">
+                Miel dorada, flor blanca y una profundidad sensual. Una fragancia
+                atrevida, dulce y lujosa, hecha para provocar miradas y dejar una
+                estela imposible de ignorar.
               </p>
-              <div className="w-14 h-[1px] bg-black/30 mb-3"></div>
-              <p className="text-sm">Dulce · Intenso</p>
             </div>
 
-            <div className="pt-4">
-              <p className="text-[10px] tracking-[0.35em] text-black/40 mb-2">
-                MOMENTOS WILD
-              </p>
-              <div className="w-14 h-[1px] bg-black/30 mb-3"></div>
-              <p className="text-sm">Noche · Fiesta</p>
-            </div>
-
-            <div className="pt-4">
-              <p className="text-[10px] tracking-[0.35em] text-black/40 mb-2">
-                PERSONALIDAD
-              </p>
-              <div className="w-14 h-[1px] bg-black/30 mb-3"></div>
-              <p className="text-sm">Audaz · Sensual</p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-10">
+              {[
+                ["AROMA", "Miel · Floral"],
+                ["MOMENTOS WILD", "Noche · Fiesta"],
+                ["PERSONALIDAD", "Atrevida · Sensual"],
+              ].map(([title, text]) => (
+                <div key={title}>
+                  <p className="text-[10px] tracking-[0.35em] text-[#D89A2B] mb-2">
+                    {title}
+                  </p>
+                  <div className="w-14 h-[1px] bg-gradient-to-r from-transparent via-[#B0143B]/90 to-transparent mb-2"></div>
+                  <p className="text-sm text-[#F5EBDD]">{text}</p>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* BOTÓN */}
-          <div className="flex justify-center">
+          <div className="flex justify-center mt-6 md:-mt-10">
             <a
               href="https://api.whatsapp.com/send?phone=593963826845&text=Hola,%20quiero%20comprar%20SCANDAL"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <button className="mt-[-6px] border border-black px-10 py-4 text-xs tracking-[0.35em] uppercase hover:bg-black hover:text-white transition-all duration-500">
+              <button className="bg-black/80 text-[#F5EBDD] border border-[#D89A2B]/40 rounded-2xl px-8 md:px-10 py-4 text-[10px] md:text-xs tracking-[0.28em] md:tracking-[0.35em] uppercase hover:bg-[#B0143B]/20 hover:border-[#D89A2B] hover:text-white transition-all duration-500">
                 Comprar por WhatsApp
               </button>
             </a>
           </div>
         </div>
 
-        {/* IMAGEN */}
-        <div className="relative flex justify-center items-center group">
-          <img
-            src="/fem3.jpeg"
-            alt="SCANDAL"
-            className="max-h-[78vh] w-auto object-contain transition-all duration-1000 ease-[cubic-bezier(0.25,0.1,0.25,1)] group-hover:opacity-0 group-hover:scale-95 group-hover:blur-sm"
-          />
+        <div className="flex justify-center mx-auto mb-14 md:mb-10 md:mt-8">
+          <div className="relative inline-block group">
+            <img
+              src="/fem3.jpeg"
+              alt="SCANDAL"
+              className="block max-h-[60vh] md:max-h-[70vh] w-auto max-w-full object-contain rounded-3xl transition-all duration-1000 group-hover:opacity-0 group-hover:scale-95 group-hover:blur-sm"
+            />
 
-          <img
-            src="/scandal-notas.png"
-            alt="Notas SCANDAL"
-            className="absolute max-h-[78vh] w-auto object-contain opacity-0 scale-105 blur-sm transition-all duration-1000 ease-[cubic-bezier(0.25,0.1,0.25,1)] group-hover:opacity-100 group-hover:scale-100 group-hover:blur-0"
-          />
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-700">
+              <div className="w-full h-full bg-black/40 border border-[#D89A2B]/20 rounded-3xl backdrop-blur-xl px-7 md:px-10 py-10 md:py-14 flex flex-col justify-center gap-2 shadow-[0_0_80px_rgba(216,154,43,0.24)]">
+                <p className="text-center text-[11px] md:text-[13px] font-bold tracking-[0.22em] md:tracking-[0.25em] text-[#F5EBDD]/85 mb-4 uppercase">
+                  Acordes principales
+                </p>
+
+                {notas.map(([name, width, color], index) => (
+                  <div key={name} className="w-full flex justify-start">
+                    <div
+                      className="h-7 md:h-8 rounded-r-xl rounded-l-sm flex items-center justify-start pl-4 md:pl-5 text-[8px] md:text-[10px] font-bold text-black/75 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-[1200ms]"
+                      style={{
+                        width,
+                        backgroundColor: color,
+                        transitionDelay: `${index * 90}ms`,
+                      }}
+                    >
+                      {name}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </main>
