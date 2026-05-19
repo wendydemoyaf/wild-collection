@@ -14,11 +14,17 @@ export default function ScandalPage() {
   return (
     <main className="min-h-screen text-[#2A0815] overflow-hidden bg-[radial-gradient(circle_at_78%_38%,rgba(216,154,43,0.30),transparent_28%),radial-gradient(circle_at_85%_70%,rgba(176,20,59,0.16),transparent_32%),radial-gradient(circle_at_55%_60%,rgba(245,235,221,0.80),transparent_38%),linear-gradient(135deg,#F5EBDD,#E8C8B5,#F5EBDD)]">
       <header className="fixed top-0 left-0 w-full z-50 px-5 md:px-10 py-5 md:py-6 flex justify-between text-[10px] md:text-xs tracking-[0.25em] md:tracking-[0.35em] text-[#6F1232] bg-[#F5EBDD]/65 backdrop-blur-md border-b border-[#D89A2B]/25">
-        <Link href="/" className="transition-all duration-500 hover:text-[#B0143B]">
+        <Link
+          href="/"
+          className="transition-all duration-500 hover:text-[#B0143B]"
+        >
           WILD COLLECTION
         </Link>
 
-        <Link href="/femenino" className="transition-all duration-500 hover:text-[#B0143B]">
+        <Link
+          href="/femenino"
+          className="transition-all duration-500 hover:text-[#B0143B]"
+        >
           VOLVER
         </Link>
       </header>
@@ -36,9 +42,9 @@ export default function ScandalPage() {
 
             <div className="bg-white/35 border border-[#D89A2B]/35 rounded-2xl px-5 md:px-6 py-4 md:py-3 mb-12 md:mb-14 backdrop-blur-sm w-full">
               <p className="text-sm md:text-base leading-relaxed text-[#2A0815]/80">
-                Miel dorada, flor blanca y una profundidad sensual. Una fragancia
-                atrevida, dulce y lujosa, hecha para provocar miradas y dejar una
-                estela imposible de ignorar.
+                Miel dorada, flor blanca y una profundidad sensual. Una
+                fragancia atrevida, dulce y lujosa, hecha para provocar miradas
+                y dejar una estela imposible de ignorar.
               </p>
             </div>
 
@@ -60,7 +66,11 @@ export default function ScandalPage() {
           </div>
 
           <div className="flex justify-center mt-6 md:-mt-10">
-            <a href="https://api.whatsapp.com/send?phone=593963826845&text=Hola,%20quiero%20comprar%20SCANDAL" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://api.whatsapp.com/send?phone=593963826845&text=Hola,%20quiero%20comprar%20SCANDAL"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <button className="bg-[#6F1232] text-[#F5EBDD] border border-[#D89A2B]/50 rounded-2xl px-8 md:px-10 py-4 text-[10px] md:text-xs tracking-[0.28em] md:tracking-[0.35em] uppercase hover:bg-[#B0143B] hover:border-[#D89A2B] transition-all duration-500">
                 Comprar por WhatsApp
               </button>
@@ -85,8 +95,12 @@ export default function ScandalPage() {
                 {notas.map(([name, width, color], index) => (
                   <div key={name} className="w-full flex justify-start">
                     <div
-                      className="h-7 md:h-8 rounded-r-xl rounded-l-sm flex items-center justify-start pl-4 md:pl-5 text-[8px] md:text-[10px] font-bold text-black/75 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-[1200ms]"
-                      style={{ width, backgroundColor: color, transitionDelay: `${index * 90}ms` }}
+                      className="h-7 md:h-8 rounded-r-xl rounded-l-sm flex items-center justify-start pl-3 md:pl-4 text-[8px] md:text-[10px] font-extrabold tracking-[0.08em] uppercase text-black/75 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-[1200ms]"
+                      style={{
+                        width,
+                        backgroundColor: color,
+                        transitionDelay: `${index * 90}ms`,
+                      }}
                     >
                       {name}
                     </div>

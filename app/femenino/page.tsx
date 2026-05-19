@@ -14,11 +14,17 @@ export default function SweetLikeCandyPage() {
   return (
     <main className="min-h-screen text-[#4A1F32] overflow-hidden bg-[radial-gradient(circle_at_78%_38%,rgba(255,143,184,0.30),transparent_28%),radial-gradient(circle_at_85%_70%,rgba(184,92,158,0.18),transparent_32%),radial-gradient(circle_at_55%_60%,rgba(247,233,223,0.85),transparent_38%),linear-gradient(135deg,#FFF7FA,#FBE7F0,#FFF1F6)]">
       <header className="fixed top-0 left-0 w-full z-50 px-5 md:px-10 py-5 md:py-6 flex justify-between text-[10px] md:text-xs tracking-[0.25em] md:tracking-[0.35em] text-[#B85C9E] bg-[#FFF7FA]/70 backdrop-blur-md border-b border-[#F7B6D2]/40">
-        <Link href="/" className="transition-all duration-500 hover:text-[#FF5FA2]">
+        <Link
+          href="/"
+          className="transition-all duration-500 hover:text-[#FF5FA2]"
+        >
           WILD COLLECTION
         </Link>
 
-        <Link href="/femenino" className="transition-all duration-500 hover:text-[#FF5FA2]">
+        <Link
+          href="/femenino"
+          className="transition-all duration-500 hover:text-[#FF5FA2]"
+        >
           VOLVER
         </Link>
       </header>
