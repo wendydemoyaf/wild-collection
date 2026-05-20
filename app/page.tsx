@@ -44,7 +44,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-black/60" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(184,137,59,0.22),transparent_35%),linear-gradient(180deg,rgba(0,0,0,0.2),#000)]" />
 
-        <header className="absolute top-0 left-0 w-full z-30 px-5 md:px-10 py-5 md:py-6 flex justify-between text-[10px] md:text-xs tracking-[0.25em] md:tracking-[0.35em] text-[#B8893B]">
+        <header className="absolute top-0 left-0 w-full z-30 px-5 md:px-10 py-5 md:py-6 flex flex-col md:flex-row gap-4 md:gap-0 md:items-center md:justify-between text-[9px] md:text-xs tracking-[0.22em] md:tracking-[0.28em] text-[#B8893B]">
           <Link
             href="/"
             className="hover:text-[#F0D8A8] transition-all duration-500"
@@ -52,12 +52,35 @@ export default function Home() {
             WILD COLLECTION
           </Link>
 
-          <Link
-            href="#colecciones"
-            className="hover:text-[#F0D8A8] transition-all duration-500"
-          >
-            COLECCIONES
-          </Link>
+          <nav className="flex flex-wrap gap-4 md:gap-7 justify-center md:justify-end">
+            <Link
+              href="#colecciones"
+              className="hover:text-[#F0D8A8] transition-all duration-500"
+            >
+              COLECCIONES
+            </Link>
+
+            <Link
+              href="/invierte-con-wild"
+              className="hover:text-[#F0D8A8] transition-all duration-500"
+            >
+              INVIERTE
+            </Link>
+
+            <Link
+              href="/unete-a-la-familia-wild"
+              className="hover:text-[#F0D8A8] transition-all duration-500"
+            >
+              ÚNETE
+            </Link>
+
+            <Link
+              href="/quienes-somos"
+              className="hover:text-[#F0D8A8] transition-all duration-500"
+            >
+              QUIÉNES SOMOS
+            </Link>
+          </nav>
         </header>
 
         <div className="relative z-20 text-center px-6 max-w-5xl mx-auto">
