@@ -12,9 +12,9 @@ export default function Home() {
   }, []);
 
   const categories = [
-    { name: "Perfumes Masculinos", img: "/masculino.jpeg", link: "/masculino" },
-    { name: "Perfumes Femeninos", img: "/femenino.jpeg", link: "/femenino" },
-    { name: "Árabes / Unisex", img: "/unisex.jpeg", link: "/unisex" },
+    { name: "Perfumes Masculinos", img: "/arabe.png", link: "/masculino" },
+    { name: "Perfumes Femeninos", img: "/women.png", link: "/femenino" },
+    { name: "Árabes / Unisex", img: "/men.png", link: "/unisex" },
   ];
 
   if (loading) {
