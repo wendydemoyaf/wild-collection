@@ -12,8 +12,8 @@ export default function Home() {
   }, []);
 
   const categories = [
-    { name: "Masculino", img: "/masculino.jpeg", link: "/masculino" },
-    { name: "Femenino", img: "/femenino.jpeg", link: "/femenino" },
+    { name: "Perfumes Masculinos", img: "/masculino.jpeg", link: "/masculino" },
+    { name: "Perfumes Femeninos", img: "/femenino.jpeg", link: "/femenino" },
     { name: "Árabes / Unisex", img: "/unisex.jpeg", link: "/unisex" },
   ];
 
@@ -31,7 +31,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-black text-white overflow-hidden">
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative h-screen md:min-h-screen flex items-center justify-center overflow-hidden">
         <video
           src="/video.mp4"
           autoPlay
@@ -65,7 +65,7 @@ export default function Home() {
             Perfumería de autor
           </p>
 
-          <h1 className="font-serif text-6xl md:text-8xl leading-none mb-6">
+          <h1 className="font-serif text-5xl md:text-8xl leading-tight md:leading-none mb-6">
             WILD <br className="md:hidden" /> COLLECTION
           </h1>
 
@@ -74,7 +74,7 @@ export default function Home() {
           </p>
 
           <Link href="#colecciones">
-            <button className="bg-black/60 text-[#F0D8A8] border border-[#B8893B]/50 rounded-2xl px-9 md:px-12 py-4 text-[10px] md:text-xs tracking-[0.35em] uppercase hover:bg-[#B8893B]/20 hover:border-[#F0D8A8] hover:text-white transition-all duration-500">
+            <button className="bg-black/60 text-[#F0D8A8] border border-[#B8893B]/50 rounded-2xl px-10 md:px-12 py-4 text-[10px] md:text-xs tracking-[0.35em] uppercase hover:bg-[#B8893B]/20 hover:border-[#F0D8A8] hover:text-white transition-all duration-500">
               Explorar
             </button>
           </Link>
@@ -93,24 +93,28 @@ export default function Home() {
           Colecciones Wild
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-7 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 max-w-7xl mx-auto overflow-hidden rounded-3xl border border-[#B8893B]/25 bg-black/45 shadow-[0_0_90px_rgba(0,0,0,0.65)]">
           {categories.map((category) => (
-            <Link key={category.name} href={category.link} className="group">
-              <div className="relative h-[420px] md:h-[540px] overflow-hidden rounded-3xl bg-black border border-[#B8893B]/20 shadow-[0_0_70px_rgba(0,0,0,0.55)]">
+            <Link
+              key={category.name}
+              href={category.link}
+              className="group relative"
+            >
+              <div className="relative h-[460px] md:h-[560px] overflow-hidden bg-black">
                 <img
                   src={category.img}
                   alt={category.name}
-                  className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 group-hover:brightness-110"
+                  className="w-full h-full object-cover grayscale opacity-55 transition-all duration-1000 group-hover:grayscale-0 group-hover:opacity-75 group-hover:scale-105"
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent" />
+                <div className="absolute inset-0 bg-black/35 group-hover:bg-black/25 transition-all duration-700" />
 
-                <div className="absolute bottom-8 left-8 right-8 z-10">
-                  <h3 className="font-serif text-3xl md:text-4xl text-white mb-3">
+                <div className="absolute bottom-8 md:bottom-10 left-6 right-6 z-10 text-center">
+                  <h3 className="font-serif text-3xl md:text-5xl text-white leading-tight mb-5">
                     {category.name}
                   </h3>
 
-                  <p className="text-[10px] tracking-[0.35em] text-[#F0D8A8]/75 uppercase">
+                  <p className="text-[10px] tracking-[0.35em] text-[#F0D8A8] uppercase">
                     Ver colección
                   </p>
                 </div>
