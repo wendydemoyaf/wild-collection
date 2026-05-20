@@ -4,60 +4,17 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [progress, setProgress] = useState(0);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 1800);
-
+    const timer = setTimeout(() => setLoading(false), 1600);
     return () => clearTimeout(timer);
   }, []);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const section = document.getElementById("dior-scroll");
-      if (!section) return;
-
-      const rect = section.getBoundingClientRect();
-      const total = section.offsetHeight - window.innerHeight;
-      const value = Math.min(Math.max(-rect.top / total, 0), 1);
-
-      setProgress(value);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    if (loading) return;
-
-    const elements = document.querySelectorAll(".fade-section");
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-
-    elements.forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, [loading]);
-
   const categories = [
-    { name: "Femenino", img: "/femenino.jpeg", link: "/femenino" },
     { name: "Masculino", img: "/masculino.jpeg", link: "/masculino" },
-    { name: "Unisex", img: "/unisex.jpeg", link: "/unisex" },
+    { name: "Femenino", img: "/femenino.jpeg", link: "/femenino" },
+    { name: "Árabes / Unisex", img: "/unisex.jpeg", link: "/unisex" },
   ];
 
   if (loading) {
@@ -66,111 +23,94 @@ export default function Home() {
         <img
           src="/logo.png"
           alt="WILD COLLECTION"
-          className="w-44 md:w-64 opacity-20 logo-clock object-contain"
+          className="w-44 md:w-64 opacity-25 logo-clock object-contain"
         />
       </div>
     );
   }
 
   return (
-    <main className="bg-black text-white">
-      <section id="dior-scroll" className="relative h-[260vh] bg-black">
-        <div className="sticky top-0 h-screen overflow-hidden flex items-center justify-center">
-          <h1 className="absolute top-[3.5%] left-1/2 -translate-x-1/2 text-3xl tracking-[0.35em] font-serif z-50">
+    <main className="min-h-screen bg-black text-white overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <video
+          src="/video.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(184,137,59,0.22),transparent_35%),linear-gradient(180deg,rgba(0,0,0,0.2),#000)]" />
+
+        <header className="absolute top-0 left-0 w-full z-30 px-5 md:px-10 py-5 md:py-6 flex justify-between text-[10px] md:text-xs tracking-[0.25em] md:tracking-[0.35em] text-[#B8893B]">
+          <Link
+            href="/"
+            className="hover:text-[#F0D8A8] transition-all duration-500"
+          >
             WILD COLLECTION
+          </Link>
+
+          <Link
+            href="#colecciones"
+            className="hover:text-[#F0D8A8] transition-all duration-500"
+          >
+            COLECCIONES
+          </Link>
+        </header>
+
+        <div className="relative z-20 text-center px-6 max-w-5xl mx-auto">
+          <p className="text-[10px] md:text-xs tracking-[0.65em] text-[#B8893B] mb-6 uppercase">
+            Perfumería de autor
+          </p>
+
+          <h1 className="font-serif text-6xl md:text-8xl leading-none mb-6">
+            WILD <br className="md:hidden" /> COLLECTION
           </h1>
 
-          <div
-            className="absolute overflow-hidden"
-            style={{
-              width: `${86 - progress * 46}%`,
-              height: `${60 + progress * 18}%`,
-              top: `${10 + progress * 10}%`,
-              left: "50%",
-              transform: `translateX(-50%) scale(${1 + progress * 0.04})`,
-              transition:
-                "width 200ms linear, height 200ms linear, top 200ms linear",
-              zIndex: 20,
-            }}
-          >
-            <video
-              src="/video.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full object-cover object-center shadow-2xl"
-            />
-          </div>
+          <p className="max-w-xl mx-auto text-sm md:text-lg text-white/70 leading-relaxed mb-10">
+            Fragancias que dejan huella.
+          </p>
 
-          <img
-            src="/left.jpg"
-            alt="Wild Collection"
-            className="absolute left-[4%] top-[20%] w-[25%] h-[70%] object-cover hidden md:block"
-            style={{
-              opacity: progress > 0.35 ? 0.85 : 0,
-              filter: "brightness(0.75)",
-              transform: `translateX(${progress > 0.35 ? 0 : -60}px)`,
-              transition: "all 1200ms cubic-bezier(0.16, 1, 0.3, 1)",
-            }}
-          />
-
-          <img
-            src="/right.jpg"
-            alt="Wild Collection"
-            className="absolute right-[3%] top-[24%] w-[27%] h-[76%] object-cover hidden md:block"
-            style={{
-              opacity: progress > 0.35 ? 0.85 : 0,
-              filter: "brightness(0.75)",
-              transform: `translateX(${progress > 0.35 ? 0 : 60}px)`,
-              transition: "all 1200ms cubic-bezier(0.16, 1, 0.3, 1)",
-            }}
-          />
-
-          <div
-            className="absolute bottom-[4%] left-1/2 text-center z-50"
-            style={{
-              opacity: progress > 0.55 ? 1 : 0,
-              transform: `translate(-50%, ${progress > 0.55 ? 0 : 30}px)`,
-              transition: "all 1000ms ease",
-            }}
-          >
-            <p className="text-sm tracking-[0.5em] mb-3 text-white/70">
-              WILD COLLECTION
-            </p>
-
-            <h2 className="text-4xl font-serif tracking-[0.25em]">VIP ROSE</h2>
-          </div>
+          <Link href="#colecciones">
+            <button className="bg-black/60 text-[#F0D8A8] border border-[#B8893B]/50 rounded-2xl px-9 md:px-12 py-4 text-[10px] md:text-xs tracking-[0.35em] uppercase hover:bg-[#B8893B]/20 hover:border-[#F0D8A8] hover:text-white transition-all duration-500">
+              Explorar
+            </button>
+          </Link>
         </div>
       </section>
 
-      <section className="bg-black text-white py-32 px-8 fade-section">
-        <p className="text-center text-sm tracking-[0.5em] text-white/50 mb-6">
-          CATÁLOGO
+      <section
+        id="colecciones"
+        className="relative bg-[radial-gradient(circle_at_50%_0%,rgba(184,137,59,0.14),transparent_35%),linear-gradient(135deg,#050302,#0B0704,#020202)] py-28 md:py-32 px-6 md:px-10"
+      >
+        <p className="text-center text-[10px] md:text-xs tracking-[0.55em] text-[#B8893B] mb-5 uppercase">
+          Elige tu universo
         </p>
 
-        <h2 className="text-center text-5xl font-serif mb-20">
-          Explora por categoría
+        <h2 className="text-center font-serif text-4xl md:text-6xl mb-16">
+          Colecciones Wild
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-7 max-w-7xl mx-auto">
           {categories.map((category) => (
             <Link key={category.name} href={category.link} className="group">
-              <div className="relative h-[420px] md:h-[520px] overflow-hidden bg-neutral-900 cursor-pointer">
+              <div className="relative h-[420px] md:h-[540px] overflow-hidden rounded-3xl bg-black border border-[#B8893B]/20 shadow-[0_0_70px_rgba(0,0,0,0.55)]">
                 <img
                   src={category.img}
                   alt={category.name}
-                  className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110"
+                  className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 group-hover:brightness-110"
                 />
 
-                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-all duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent" />
 
-                <div className="absolute bottom-6 left-6 md:bottom-8 md:left-8 z-10">
-                  <h3 className="text-2xl md:text-3xl font-serif">
+                <div className="absolute bottom-8 left-8 right-8 z-10">
+                  <h3 className="font-serif text-3xl md:text-4xl text-white mb-3">
                     {category.name}
                   </h3>
 
-                  <p className="text-xs tracking-[0.35em] text-white/60 mt-3 uppercase">
+                  <p className="text-[10px] tracking-[0.35em] text-[#F0D8A8]/75 uppercase">
                     Ver colección
                   </p>
                 </div>
