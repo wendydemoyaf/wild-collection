@@ -16,14 +16,14 @@ export default function AmberOudPage() {
       <header className="fixed top-0 left-0 w-full z-50 px-5 md:px-10 py-5 md:py-6 flex justify-between text-[10px] md:text-xs tracking-[0.25em] md:tracking-[0.35em] text-[#C89B3C] bg-[#120B06]/60 backdrop-blur-md border-b border-[#C89B3C]/25">
         <Link
           href="/"
-          className="transition-all duration-500 hover:text-[#C89B3C]"
+          className="transition-all duration-500 hover:text-[#F6EFE4]"
         >
           WILD COLLECTION
         </Link>
 
         <Link
           href="/unisex"
-          className="transition-all duration-500 hover:text-[#C89B3C]"
+          className="transition-all duration-500 hover:text-[#F6EFE4]"
         >
           VOLVER
         </Link>
@@ -36,30 +36,30 @@ export default function AmberOudPage() {
               AMBER <br /> OUD
             </h1>
 
-            <p className="text-[#A86A1F]/85 text-base md:text-lg mt-2 mb-8 md:mb-12">
+            <p className="text-[#C89B3C] text-base md:text-lg mt-2 mb-8 md:mb-12">
               Ámbar & Lujo Oriental.
             </p>
 
-            <div className="bg-black/25 border border-[#C89B3C]/35 rounded-2xl px-5 md:px-6 py-4 md:py-3 mb-12 md:mb-14 backdrop-blur-sm w-full shadow-[0_0_70px_rgba(200,155,60,0.22)]">
-              <p className="text-sm md:text-base leading-relaxed text-[#C89B3C]/85">
+            <div className="bg-black/25 border border-[#C89B3C]/35 rounded-2xl px-5 md:px-6 py-4 md:py-3 mb-10 md:mb-12 backdrop-blur-sm w-full shadow-[0_0_70px_rgba(200,155,60,0.22)]">
+              <p className="text-sm md:text-base leading-relaxed text-[#F6EFE4]/85">
                 Una fragancia cálida, elegante y envolvente. Ámbar dorado, miel
                 resinosa y maderas suaves se mezclan como reflejos de whisky en
                 una noche sofisticada.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-10">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-10 bg-black/20 backdrop-blur-md border border-[#C89B3C]/20 rounded-2xl px-6 py-6 mt-6">
               {[
                 ["AROMA", "Ámbar · Oud"],
                 ["MOMENTOS WILD", "Noche · Elegante"],
                 ["PERSONALIDAD", "Sofisticada · Cálida"],
               ].map(([title, text]) => (
                 <div key={title}>
-                  <p className="text-[10px] tracking-[0.35em] text-[#A86A1F] mb-2">
+                  <p className="text-[10px] tracking-[0.35em] text-[#C89B3C] mb-2">
                     {title}
                   </p>
                   <div className="w-14 h-[1px] bg-gradient-to-r from-transparent via-[#C89B3C]/90 to-transparent mb-2"></div>
-                  <p className="text-sm text-[#4B382A]">{text}</p>
+                  <p className="text-sm text-[#F6EFE4]/90">{text}</p>
                 </div>
               ))}
             </div>
