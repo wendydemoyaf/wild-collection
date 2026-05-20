@@ -104,7 +104,11 @@ export default function Home() {
                 <img
                   src={category.img}
                   alt={category.name}
-                  className="w-full h-full object-cover grayscale opacity-55 transition-all duration-1000 group-hover:grayscale-0 group-hover:opacity-75 group-hover:scale-105"
+                  className={`w-full h-full object-cover ${
+                    category.name === "Perfumes Femeninos"
+                      ? "object-[center_50%]"
+                      : "object-[center_50%]"
+                  } grayscale opacity-55 transition-all duration-1000 group-hover:grayscale-0 group-hover:opacity-75 group-hover:scale-105`}
                 />
 
                 <div className="absolute inset-0 bg-black/35 group-hover:bg-black/25 transition-all duration-700" />
