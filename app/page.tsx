@@ -54,6 +54,13 @@ export default function Home() {
 
           <nav className="flex flex-wrap gap-4 md:gap-7 justify-center md:justify-end">
             <Link
+              href="/"
+              className="hover:text-[#F0D8A8] transition-all duration-500"
+            >
+              INICIO
+            </Link>
+
+            <Link
               href="#colecciones"
               className="hover:text-[#F0D8A8] transition-all duration-500"
             >
@@ -61,24 +68,31 @@ export default function Home() {
             </Link>
 
             <Link
+              href="/quienes-somos"
+              className="hover:text-[#F0D8A8] transition-all duration-500"
+            >
+              QUIÉNES SOMOS
+            </Link>
+
+            <Link
               href="/invierte-con-wild"
               className="hover:text-[#F0D8A8] transition-all duration-500"
             >
-              INVIERTE
+              EMPRENDE
             </Link>
 
             <Link
               href="/unete-a-la-familia-wild"
               className="hover:text-[#F0D8A8] transition-all duration-500"
             >
-              ÚNETE
+              TRABAJA
             </Link>
 
             <Link
-              href="/quienes-somos"
+              href="/contacto"
               className="hover:text-[#F0D8A8] transition-all duration-500"
             >
-              QUIÉNES SOMOS
+              CONTACTO
             </Link>
           </nav>
         </header>
