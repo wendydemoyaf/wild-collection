@@ -38,40 +38,65 @@ export default function QuienesSomosPage() {
       </section>
 
       {/* ================= MANIFIESTO WILD ================= */}
-      <section className="relative py-32 md:py-44 px-6 md:px-20 overflow-hidden">
-        <div className="max-w-5xl mx-auto">
-          <div className="relative bg-[#F0D8A8]/8 border border-[#B8893B]/25 rounded-3xl px-7 md:px-14 py-12 md:py-16 text-center backdrop-blur-md shadow-[0_0_90px_rgba(184,137,59,0.10)]">
-            <div className="absolute -top-10 left-8 font-serif text-[140px] text-[#B8893B]/10 leading-none pointer-events-none">
+      {/* ================= MANIFIESTO WILD ================= */}
+      <section className="relative py-28 md:py-40 px-6 md:px-20 overflow-hidden bg-black border-y border-[#B8893B]/25">
+        <div className="max-w-6xl mx-auto">
+          <div className="relative min-h-[620px] rounded-3xl overflow-hidden bg-[radial-gradient(circle_at_20%_10%,rgba(184,137,59,0.18),transparent_28%),linear-gradient(135deg,#050302,#0B0704,#020202)] border border-[#B8893B]/20 shadow-[0_0_100px_rgba(0,0,0,0.65)]">
+            <div className="absolute top-10 left-8 md:left-14 font-serif text-[150px] md:text-[220px] leading-none text-[#B8893B]/25">
               “
             </div>
 
-            <h2 className="relative z-10 font-serif text-3xl md:text-5xl leading-tight text-[#F0D8A8] mb-10">
-              La mayoría de las personas viven dentro de límites que nunca
-              existieron realmente.
-            </h2>
+            <div className="relative z-10 px-8 md:px-20 pt-24 md:pt-28 max-w-4xl">
+              <h2 className="font-serif text-3xl md:text-6xl leading-[1.05] text-[#F0D8A8]">
+                La mayoría de <br />
+                las personas viven <br />
+                dentro de límites <br />
+                que nunca existieron <br />
+                realmente.
+              </h2>
 
-            <div className="relative z-10 max-w-3xl mx-auto text-sm md:text-base text-white/65 leading-relaxed space-y-5">
-              <p>
-                El mundo es mucho más grande de lo que nos enseñaron, las
-                oportunidades son más abundantes de lo que imaginamos y muchas
-                veces la única diferencia entre la vida que tenemos y la vida
-                que soñamos es atrevernos a explorar una posibilidad más.
+              <div className="w-12 h-[1px] bg-[#B8893B]/70 mt-8 mb-4" />
+
+              <p className="text-[9px] tracking-[0.5em] text-[#B8893B] uppercase">
+                Wild Collection
               </p>
+            </div>
 
-              <p className="pt-6 font-serif text-xl md:text-2xl text-[#F0D8A8]/90 leading-relaxed">
-                Ser Wild es cuestionar los límites. Expandir la visión. Elegir
-                crecer.
-              </p>
+            <div className="absolute bottom-0 left-0 w-full border-t border-[#B8893B]/25 bg-black/35 backdrop-blur-md">
+              <div className="grid grid-cols-1 md:grid-cols-3">
+                {[
+                  [
+                    "◉",
+                    "Creemos que el mundo es mucho más grande de lo que nos enseñaron.",
+                  ],
+                  [
+                    "✦",
+                    "Que las oportunidades son más abundantes de lo que imaginamos.",
+                  ],
+                  [
+                    "△",
+                    "Y que muchas veces la única diferencia entre la vida que tenemos y la vida que soñamos es atrevernos a explorar una posibilidad más.",
+                  ],
+                ].map(([icon, text]) => (
+                  <div
+                    key={text}
+                    className="px-8 py-8 md:py-10 border-t md:border-t-0 md:border-l border-[#B8893B]/15 first:border-l-0"
+                  >
+                    <p className="text-[#B8893B] text-lg mb-4">{icon}</p>
+                    <p className="text-sm md:text-base text-white/65 leading-[1.45]">
+                      {text}
+                    </p>
+                  </div>
+                ))}
+              </div>
 
-              <p className="font-serif text-xl md:text-2xl text-[#F0D8A8]/90 leading-relaxed">
-                Y construir una vida alineada con lo que realmente somos capaces
-                de alcanzar.
+              <p className="text-center text-[9px] tracking-[0.5em] text-[#B8893B] uppercase pb-7">
+                Ahí comienza el espíritu Wild.
               </p>
             </div>
           </div>
         </div>
       </section>
-
       {/* ================= SECCIÓN 3 ================= */}
       <section className="py-20 px-6 md:px-20">
         <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-6">
