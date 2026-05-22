@@ -37,30 +37,38 @@ export default function QuienesSomosPage() {
         </div>
       </section>
 
-      {/* ================= SECCIÓN 2 ================= */}
-      <section className="py-28 px-6 md:px-20">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-          <div>
-            <h2 className="font-serif text-3xl md:text-5xl mb-6 leading-tight">
-              Creemos que una oportunidad puede cambiar una vida.
+      {/* ================= MANIFIESTO WILD ================= */}
+      <section className="relative py-32 md:py-44 px-6 md:px-20 overflow-hidden">
+        <div className="max-w-5xl mx-auto">
+          <div className="relative bg-[#F0D8A8]/8 border border-[#B8893B]/25 rounded-3xl px-7 md:px-14 py-12 md:py-16 text-center backdrop-blur-md shadow-[0_0_90px_rgba(184,137,59,0.10)]">
+            <div className="absolute -top-10 left-8 font-serif text-[140px] text-[#B8893B]/10 leading-none pointer-events-none">
+              “
+            </div>
+
+            <h2 className="relative z-10 font-serif text-3xl md:text-5xl leading-tight text-[#F0D8A8] mb-10">
+              La mayoría de las personas viven dentro de límites que nunca
+              existieron realmente.
             </h2>
 
-            <p className="text-white/65 text-sm md:text-base leading-relaxed">
-              En Wild Collection creemos que el lugar donde comienzas no
-              determina hasta dónde puedes llegar.
-              <br />
-              <br />
-              Por eso construimos una marca basada en calidad, crecimiento y
-              nuevas posibilidades.
-              <br />
-              <br />
-              Porque cuando una persona descubre una oportunidad real, muchas
-              veces comienza una nueva etapa de su vida.
-            </p>
-          </div>
+            <div className="relative z-10 max-w-3xl mx-auto text-sm md:text-base text-white/65 leading-relaxed space-y-5">
+              <p>
+                El mundo es mucho más grande de lo que nos enseñaron, las
+                oportunidades son más abundantes de lo que imaginamos y muchas
+                veces la única diferencia entre la vida que tenemos y la vida
+                que soñamos es atrevernos a explorar una posibilidad más.
+              </p>
 
-          {/* IMAGEN */}
-          <div className="h-[400px] md:h-[500px] bg-black/40 border border-[#B8893B]/20 rounded-3xl" />
+              <p className="pt-6 font-serif text-xl md:text-2xl text-[#F0D8A8]/90 leading-relaxed">
+                Ser Wild es cuestionar los límites. Expandir la visión. Elegir
+                crecer.
+              </p>
+
+              <p className="font-serif text-xl md:text-2xl text-[#F0D8A8]/90 leading-relaxed">
+                Y construir una vida alineada con lo que realmente somos capaces
+                de alcanzar.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
