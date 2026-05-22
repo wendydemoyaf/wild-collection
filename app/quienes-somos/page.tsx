@@ -15,25 +15,18 @@ export default function QuienesSomosPage() {
           <div className="w-full h-full bg-[radial-gradient(circle_at_50%_35%,rgba(184,137,59,0.22),transparent_35%),linear-gradient(180deg,rgba(0,0,0,0.35),#000)]" />
         </div>
 
-        <div className="relative z-10 max-w-4xl mx-auto">
-          <p className="text-[10px] md:text-xs tracking-[0.55em] text-[#B8893B] uppercase mb-6">
-            Quiénes somos
+        <div className="relative z-10 max-w-3xl mx-auto">
+          <h1 className="font-serif text-4xl md:text-6xl leading-[1.1] mb-6">
+            Creemos en las <br />
+            posibilidades
+          </h1>{" "}
+          <p className="max-w-3xl mx-auto text-sm md:text-base text-white/95 leading-relaxed mb-10">
+            Una marca creada para quienes creen que el mundo es más grande de lo
+            que les enseñaron.
           </p>
-
-          <h1 className="font-serif text-4xl md:text-6xl leading-tight mb-6">
-            Más que perfumes. <br />
-            Una invitación a descubrir nuevas posibilidades.
-          </h1>
-
-          <p className="max-w-2xl mx-auto text-sm md:text-base text-white/65 leading-relaxed mb-10">
-            Creamos fragancias de alta calidad inspiradas en algunos de los
-            aromas más admirados del mundo y construimos una comunidad para
-            quienes creen que siempre existe una posibilidad más.
-          </p>
-
-          <Link href="/#colecciones">
+          <Link href="/invierte-con-wild">
             <button className="bg-[#B8893B] text-black px-10 py-4 rounded-2xl text-[10px] tracking-[0.35em] uppercase hover:bg-[#F0D8A8] transition">
-              Explorar colecciones
+              Explorar oportunidades
             </button>
           </Link>
         </div>
