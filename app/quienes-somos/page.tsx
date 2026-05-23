@@ -38,9 +38,16 @@ export default function QuienesSomosPage() {
       <section className="py-28 md:py-36 px-6 md:px-20 bg-[#050302]">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-14 md:gap-20">
           {/* TEXTO */}
-          <div className="pt-4 max-w-xl">
-            <h2 className="font-serif text-3xl md:text-5xl leading-[1.12] mb-12 max-w-[700px]">
-              Toda transformación comienza <br />
+          <div className="pt-4 max-w-xl relative">
+            <div className="absolute -top-10 -left-10 w-[300px] h-[300px] bg-[#B8893B]/10 blur-[120px] rounded-full" />
+            <p className="text-[10px] tracking-[0.4em] text-[#B8893B] uppercase mb-6">
+              Nuestra filosofía
+            </p>
+            <h2 className="font-serif text-3xl md:text-5xl leading-[1.12] mb-12">
+              <span className="whitespace-nowrap">
+                Toda transformación comienza
+              </span>
+              <br />
               con una oportunidad.
             </h2>
 
@@ -53,7 +60,7 @@ export default function QuienesSomosPage() {
               </p>
 
               <p className="mt-12 font-serif italic text-[#B8893B] text-lg md:text-2xl leading-[1.4] tracking-[0.02em]">
-                Una marca donde la calidad y las posibilidades se encuentran.
+                El mundo es más grande de lo que nos enseñaron
               </p>
             </div>
           </div>
