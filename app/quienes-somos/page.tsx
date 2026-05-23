@@ -159,7 +159,7 @@ export default function QuienesSomosPage() {
       </section>
 
       {/* SECCIÓN 3 */}
-      <section className="py-36 md:py-48 px-6 md:px-14 bg-black">
+      <section className="py-20 md:py-48 px-6 md:px-14 bg-black">
         <div ref={esencia.ref} className="max-w-7xl mx-auto">
           <div
             className={`text-center mb-28 transition-all duration-1000 ease-out ${
@@ -226,7 +226,7 @@ export default function QuienesSomosPage() {
       </section>
 
       {/* SECCIÓN 4 */}
-      <section className="py-28 md:py-36 px-6 md:px-20 bg-[#050302] text-center relative overflow-hidden">
+      <section className="py-20 md:py-36 px-6 md:px-20 bg-[#050302] text-center relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 w-[520px] h-[520px] -translate-x-1/2 -translate-y-1/2 bg-[#B8893B]/10 blur-[160px] rounded-full" />
 
         <div
@@ -292,9 +292,9 @@ export default function QuienesSomosPage() {
       </section>
 
       {/* SECCIÓN 5 */}
-      <section className="py-32 md:py-44 px-6 md:px-20 bg-black">
+      <section className="py-20 md:py-44 px-6 md:px-20 bg-black">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-          <div className="relative h-[420px] md:h-[540px] rounded-[36px] overflow-hidden border border-[#B8893B]/20 mt-10 md:mt-14">
+          <div className="relative h-[420px] md:h-[540px] rounded-[36px] overflow-hidden border border-[#B8893B]/20 mt-4 md:mt-14">
             <img
               src="/vision.jpg"
               alt="Nuestra visión"
@@ -340,7 +340,7 @@ export default function QuienesSomosPage() {
         </div>
       </section>
       {/* SECCIÓN 6 */}
-      <section className="py-32 md:py-44 px-6 md:px-20 bg-[#050302] text-center relative overflow-hidden">
+      <section className="py-20 md:py-44 px-6 md:px-20 bg-[#050302] text-center relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 w-[520px] h-[520px] -translate-x-1/2 -translate-y-1/2 bg-[#B8893B]/10 blur-[160px] rounded-full" />
 
         <div
