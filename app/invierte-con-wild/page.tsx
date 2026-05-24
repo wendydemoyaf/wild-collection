@@ -19,7 +19,7 @@ export default function InvierteConWildPage() {
         </Link>
       </header>
 
-      <section className="min-h-screen pt-24 md:pt-28 pb-10 px-6 md:px-20 flex items-start md:items-center ...">
+      <section className="min-h-screen pt-24 md:pt-28 pb-10 px-6 md:px-20 flex items-start md:items-center bg-black">
         <div className="max-w-7xl mx-auto w-full text-center">
           <p className="text-[10px] md:text-xs tracking-[0.55em] text-[#B8893B] mb-6 uppercase">
             Invierte con Wild
@@ -39,10 +39,10 @@ export default function InvierteConWildPage() {
               <img
                 src="/invierte.jpg"
                 alt="Crea tu negocio con Wild"
-                className="absolute inset-0 w-full h-full object-cover object-[75%_center] opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000"
+                className="absolute inset-0 w-full h-full object-cover object-center opacity-80 scale-110 translate-x-20 group-hover:opacity-100 group-hover:scale-[1.15] group-hover:translate-x-16 transition-all duration-1000"
               />
 
-              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-all duration-700" />
+              <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.85)_0%,rgba(0,0,0,0.65)_45%,rgba(0,0,0,0.20)_100%)] group-hover:bg-[linear-gradient(90deg,rgba(0,0,0,0.75)_0%,rgba(0,0,0,0.55)_45%,rgba(0,0,0,0.15)_100%)] transition-all duration-700" />
 
               <div className="relative z-10 h-full flex flex-col justify-end p-8 md:p-10">
                 <h2 className="font-serif text-3xl md:text-5xl leading-[1.1] mb-6">
@@ -50,9 +50,10 @@ export default function InvierteConWildPage() {
                   con Wild
                 </h2>
 
-                <p className="text-white/65 text-sm md:text-base leading-[1.8] mb-8">
-                  Empieza tu propio negocio junto a una comunidad que comparte
-                  conocimientos, experiencias y oportunidades para crecer.
+                <p className="text-white/70 text-sm md:text-base leading-[1.8] mb-8">
+                  Empieza con un kit, accede a formación continua
+                  <br /> y desarrolla una actividad que puedes hacer crecer a tu
+                  ritmo.
                 </p>
 
                 <a
@@ -60,7 +61,7 @@ export default function InvierteConWildPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <button className="bg-[#B8893B] text-black rounded-2xl px-8 py-4 text-[10px] tracking-[0.3em] uppercase hover:bg-[#F0D8A8] transition-all duration-500">
+                  <button className="border border-[#B8893B]/50 text-[#F0D8A8] hover:bg-[#B8893B]/10 rounded-2xl px-8 py-4 text-[10px] tracking-[0.3em] uppercase hover:bg-[#F0D8A8] transition-all duration-500">
                     Explorar esta opción
                   </button>
                 </a>
@@ -73,17 +74,19 @@ export default function InvierteConWildPage() {
                 alt="Crece con Wild"
                 className="absolute inset-0 w-full h-full object-cover object-[center_60%] opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000"
               />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-700" />
+
+              <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.80)_0%,rgba(0,0,0,0.55)_45%,rgba(0,0,0,0.15)_100%)] group-hover:bg-[linear-gradient(90deg,rgba(0,0,0,0.70)_0%,rgba(0,0,0,0.45)_45%,rgba(0,0,0,0.10)_100%)] transition-all duration-700" />
+
               <div className="relative z-10 h-full flex flex-col justify-end p-8 md:p-10">
                 <h2 className="font-serif text-3xl md:text-5xl leading-[1.1] mb-6">
                   Crece <br />
                   con Wild
                 </h2>
 
-                <p className="text-white/65 text-sm md:text-base leading-[1.8] mb-8">
+                <p className="text-white/70 text-sm md:text-base leading-[1.8] mb-8">
                   Desarrolla habilidades comerciales, liderazgo y crecimiento
-                  personal mientras formas parte de un equipo que avanza junto a
-                  ti.
+                  personal mientras formas parte de un equipo que avanza
+                  contigo.
                 </p>
 
                 <a
