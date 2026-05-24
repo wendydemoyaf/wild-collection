@@ -62,28 +62,40 @@ export default function Home() {
             </Link>
 
             <div className="relative group">
-              <button className="hover:text-[#F0D8A8] transition-all duration-500">
-                EMPRENDE
-              </button>
+  <button className="hover:text-[#F0D8A8] transition-all duration-300">
+    EMPRENDE
+  </button>
 
-              <div className="absolute top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                <div className="bg-black border border-[#B8893B]/30 rounded-xl px-6 py-5 flex flex-col gap-4 min-w-[240px] text-left backdrop-blur-md">
-                  <Link
-                    href="/invierte-con-wild"
-                    className="hover:text-[#F0D8A8] transition"
-                  >
-                    INVIERTE CON WILD
-                  </Link>
+  <div className="absolute top-7 left-0 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200">
+    
+    <div className="bg-black/80 border border-[#B8893B]/35 rounded-xl px-5 py-4 w-[200px] text-left backdrop-blur-md">
 
-                  <Link
-                    href="/unete-a-la-familia-wild"
-                    className="hover:text-[#F0D8A8] transition"
-                  >
-                    TRABAJA CON NOSOTROS
-                  </Link>
-                </div>
-              </div>
-            </div>
+      {/* ITEM 1 (PRINCIPAL) */}
+      <Link href="/invierte-con-wild" className="block group/item">
+        <span className="block text-[11px] tracking-[0.25em] text-[#F0D8A8] group-hover/item:text-[#F0D8A8] transition-all duration-200">
+          INVIERTE CON WILD
+        </span>
+        <span className="block mt-1 text-[11px] tracking-[0.08em] text-white/50 group-hover/item:text-white/80 transition-all duration-200">
+          Empieza con un kit y crece con nosotros
+        </span>
+      </Link>
+
+      {/* DIVIDER */}
+      <div className="my-4 h-px bg-[#B8893B]/20" />
+
+      {/* ITEM 2 */}
+      <Link href="/unete-a-la-familia-wild" className="block group/item">
+        <span className="block text-[10px] tracking-[0.22em] text-white/80 group-hover/item:text-[#F0D8A8] transition-all duration-200">
+          TRABAJA CON NOSOTROS
+        </span>
+        <span className="block mt-1 text-[10px] tracking-[0.08em] text-white/45 group-hover/item:text-white/70 transition-all duration-200">
+          Únete al equipo comercial
+        </span>
+      </Link>
+
+    </div>
+  </div>
+</div>
             <Link
               href="/contacto"
               className="hover:text-[#F0D8A8] transition-all duration-500"
