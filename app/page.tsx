@@ -66,23 +66,24 @@ export default function Home() {
                 EMPRENDE
               </button>
 
-              <div className="absolute top-6 left-1/2 -translate-x-1/2 hidden group-hover:flex flex-col gap-4 bg-black/80 border border-[#B8893B]/20 px-6 py-5 rounded-2xl min-w-[230px] text-center backdrop-blur-md">
-                <Link
-                  href="/invierte-con-wild"
-                  className="hover:text-[#F0D8A8] transition"
-                >
-                  EMPRENDE CON WILD
-                </Link>
+              <div className="absolute top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                <div className="bg-black border border-[#B8893B]/30 rounded-xl px-6 py-5 flex flex-col gap-4 min-w-[240px] text-left backdrop-blur-md">
+                  <Link
+                    href="/invierte-con-wild"
+                    className="hover:text-[#F0D8A8] transition"
+                  >
+                    INVIERTE CON WILD
+                  </Link>
 
-                <Link
-                  href="/unete-a-la-familia-wild"
-                  className="hover:text-[#F0D8A8] transition"
-                >
-                  TRABAJA CON NOSOTROS
-                </Link>
+                  <Link
+                    href="/unete-a-la-familia-wild"
+                    className="hover:text-[#F0D8A8] transition"
+                  >
+                    TRABAJA CON NOSOTROS
+                  </Link>
+                </div>
               </div>
             </div>
-
             <Link
               href="/contacto"
               className="hover:text-[#F0D8A8] transition-all duration-500"
