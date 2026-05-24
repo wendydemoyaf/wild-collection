@@ -53,7 +53,7 @@ export default function Home() {
           </Link>
 
           {/* DESKTOP */}
-          <nav className="hidden md:flex gap-7">
+          <nav className="hidden md:flex gap-7 items-center">
             <Link
               href="/quienes-somos"
               className="hover:text-[#F0D8A8] transition-all duration-500"
@@ -61,19 +61,27 @@ export default function Home() {
               QUIÉNES SOMOS
             </Link>
 
-            <Link
-              href="/invierte-con-wild"
-              className="hover:text-[#F0D8A8] transition-all duration-500"
-            >
-              EMPRENDE
-            </Link>
+            <div className="relative group">
+              <button className="hover:text-[#F0D8A8] transition-all duration-500">
+                EMPRENDE
+              </button>
 
-            <Link
-              href="/unete-a-la-familia-wild"
-              className="hover:text-[#F0D8A8] transition-all duration-500"
-            >
-              TRABAJA
-            </Link>
+              <div className="absolute top-6 left-1/2 -translate-x-1/2 hidden group-hover:flex flex-col gap-4 bg-black/80 border border-[#B8893B]/20 px-6 py-5 rounded-2xl min-w-[230px] text-center backdrop-blur-md">
+                <Link
+                  href="/invierte-con-wild"
+                  className="hover:text-[#F0D8A8] transition"
+                >
+                  EMPRENDE CON WILD
+                </Link>
+
+                <Link
+                  href="/unete-a-la-familia-wild"
+                  className="hover:text-[#F0D8A8] transition"
+                >
+                  TRABAJA CON NOSOTROS
+                </Link>
+              </div>
+            </div>
 
             <Link
               href="/contacto"
@@ -105,14 +113,14 @@ export default function Home() {
             </Link>
 
             <Link href="/invierte-con-wild" onClick={() => setMenuOpen(false)}>
-              EMPRENDE
+              EMPRENDE CON WILD
             </Link>
 
             <Link
               href="/unete-a-la-familia-wild"
               onClick={() => setMenuOpen(false)}
             >
-              TRABAJA
+              TRABAJA CON NOSOTROS
             </Link>
 
             <Link href="/contacto" onClick={() => setMenuOpen(false)}>

@@ -75,7 +75,7 @@ export default function QuienesSomosPage() {
       </header>
 
       {/* SECCIÓN 1 */}
-      <section className="h-screen relative flex items-center justify-center text-center px-6">
+      <section className="min-h-[650px] md:h-screen relative flex items-center justify-center text-center px-6">
         <div className="absolute inset-0 bg-black">
           <div className="w-full h-full bg-[radial-gradient(circle_at_50%_35%,rgba(184,137,59,0.22),transparent_35%),linear-gradient(180deg,rgba(0,0,0,0.35),#000)]" />
         </div>
@@ -107,7 +107,7 @@ export default function QuienesSomosPage() {
       </section>
 
       {/* SECCIÓN 2 */}
-      <section className="py-36 md:py-52 px-6 md:px-20 bg-[#050302]">
+      <section className="pt-16 pb-20 md:py-52 px-6 md:px-20 bg-[#050302]">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-14 md:gap-20">
           <div
             ref={filosofia.ref}
@@ -124,11 +124,8 @@ export default function QuienesSomosPage() {
             </p>
 
             <h2 className="font-serif text-3xl md:text-5xl leading-[1.12] mb-12">
-              <span className="whitespace-nowrap">
-                Toda transformación comienza
-              </span>
-              <br />
-              con una oportunidad.
+              Toda transformación comienza <br />
+              con una oportunidad
             </h2>
 
             <p className="text-sm md:text-lg text-white/70 leading-[1.7]">
@@ -143,10 +140,10 @@ export default function QuienesSomosPage() {
           </div>
 
           <div
-            className={`h-[420px] md:h-[540px] rounded-3xl border border-[#B8893B]/20 overflow-hidden bg-black transition-all duration-1000 delay-200 ease-out ${
+            className={`h-[360px] md:h-[540px] rounded-3xl border border-[#B8893B]/20 overflow-hidden bg-black transition-all duration-1000 md:delay-200 ease-out ${
               filosofia.isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-10"
+                ? "opacity-100 md:translate-y-0"
+                : "opacity-100 md:opacity-0 md:translate-y-10"
             }`}
           >
             <img
@@ -159,10 +156,10 @@ export default function QuienesSomosPage() {
       </section>
 
       {/* SECCIÓN 3 */}
-      <section className="py-20 md:py-48 px-6 md:px-14 bg-black">
+      <section className="py-20 md:py-28 px-6 md:px-14 bg-black">
         <div ref={esencia.ref} className="max-w-7xl mx-auto">
           <div
-            className={`text-center mb-28 transition-all duration-1000 ease-out ${
+            className={`text-center mb-14 md:mb-28 transition-all duration-1000 ease-out ${
               esencia.isVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-10"
@@ -243,12 +240,12 @@ export default function QuienesSomosPage() {
 
           <h2 className="font-serif text-3xl md:text-5xl leading-[1.15] mb-8">
             Miles de personas ya forman <br />
-            parte de esta historia.
+            parte de esta historia
           </h2>
 
           <p className="text-white/55 text-sm md:text-base leading-[1.8] max-w-2xl mx-auto mb-10">
             Lo que comenzó como una idea se convirtió en miles de personas
-            descubriendo que el mundo es más grande de lo que les enseñaron.
+            descubriendo que el mundo es más grande de lo que les enseñaron
           </p>
 
           <div className="space-y-8">
@@ -292,7 +289,7 @@ export default function QuienesSomosPage() {
       </section>
 
       {/* SECCIÓN 5 */}
-      <section className="py-20 md:py-44 px-6 md:px-20 bg-black">
+      <section className="py-20 md:py-28 px-6 md:px-20 bg-black">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div className="relative h-[420px] md:h-[540px] rounded-[36px] overflow-hidden border border-[#B8893B]/20 mt-4 md:mt-14">
             <img
@@ -339,6 +336,7 @@ export default function QuienesSomosPage() {
           </div>
         </div>
       </section>
+
       {/* SECCIÓN 6 */}
       <section className="py-20 md:py-44 px-6 md:px-20 bg-[#050302] text-center relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 w-[520px] h-[520px] -translate-x-1/2 -translate-y-1/2 bg-[#B8893B]/10 blur-[160px] rounded-full" />
@@ -359,6 +357,7 @@ export default function QuienesSomosPage() {
             El mundo es más grande <br />
             de lo que te enseñaron.
           </h2>
+
           <p className="text-white/70 text-xs md:text-sm leading-[1.9] max-w-2xl mx-auto mb-6">
             Lo que comenzó como una idea hoy inspira a miles de personas a mirar
             más allá de lo conocido.
