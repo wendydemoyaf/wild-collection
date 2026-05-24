@@ -30,7 +30,9 @@ export default function InvierteConWildPage() {
   
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 text-left">
             <div className="border-t border-[#B8893B]/35 pt-8">
-              
+              <p className="text-[10px] tracking-[0.35em] text-[#B8893B] uppercase mb-5">
+                Lado izquierdo
+              </p>
   
               <h2 className="font-serif text-3xl md:text-5xl leading-[1.1] mb-6">
                 Crea tu negocio <br />
@@ -54,7 +56,9 @@ export default function InvierteConWildPage() {
             </div>
   
             <div className="border-t border-[#B8893B]/35 pt-8">
-              
+              <p className="text-[10px] tracking-[0.35em] text-[#B8893B] uppercase mb-5">
+                Lado derecho
+              </p>
   
               <h2 className="font-serif text-3xl md:text-5xl leading-[1.1] mb-6">
                 Crece <br />
