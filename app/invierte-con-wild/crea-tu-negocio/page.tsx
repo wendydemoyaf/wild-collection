@@ -184,7 +184,7 @@ export default function CreaTuNegocioPage() {
         </div>
       </section>
 
-      <section className="pt-32 md:pt-40 pb-20 md:pb-24 px-6 md:px-20 bg-black">
+      <section className="pt-32 md:pt-40 pb-24 md:pb-32 px-6 md:px-20 bg-black">
         <div className="max-w-6xl mx-auto">
           <p className="text-[10px] md:text-xs tracking-[0.5em] text-[#B8893B] mb-6 uppercase">
             WILD EN MOVIMIENTO
@@ -196,7 +196,7 @@ export default function CreaTuNegocioPage() {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="md:col-span-2 h-[700px] overflow-hidden rounded-[28px] shadow-2xl shadow-black/60">
+            <div className="md:col-span-2 h-[520px] md:h-[700px] overflow-hidden rounded-[28px] shadow-2xl shadow-black/70">
               <img
                 src="/hero-sebas.webp"
                 alt="Wild en movimiento"
@@ -206,7 +206,7 @@ export default function CreaTuNegocioPage() {
             </div>
 
             <div className="flex flex-col gap-6">
-              <div className="h-[337px] overflow-hidden rounded-[28px] shadow-2xl shadow-black/60">
+              <div className="h-[300px] md:h-[337px] overflow-hidden rounded-[28px] shadow-2xl shadow-black/70">
                 <img
                   src="/luxury-p.webp"
                   alt="Perfume Wild Collection"
@@ -215,7 +215,7 @@ export default function CreaTuNegocioPage() {
                 />
               </div>
 
-              <div className="h-[337px] overflow-hidden rounded-[28px] shadow-2xl shadow-black/60">
+              <div className="h-[300px] md:h-[337px] overflow-hidden rounded-[28px] shadow-2xl shadow-black/70">
                 <img
                   src="/wild-team.webp"
                   alt="Equipo Wild Collection"
@@ -224,6 +224,60 @@ export default function CreaTuNegocioPage() {
                 />
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+      <section className="pt-28 md:pt-36 pb-24 md:pb-32 px-6 md:px-20 bg-[#050302]">
+        <div className="max-w-6xl mx-auto">
+          <p className="text-[10px] md:text-xs tracking-[0.5em] text-[#B8893B] mb-6 uppercase">
+            EXPERIENCIAS REALES
+          </p>
+
+          <h2 className="font-serif text-3xl md:text-5xl leading-[1.1] mb-16 max-w-[820px]">
+            Algunas historias comienzan con una decisión pequeña.
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              [
+                "/testimonio-1.webp",
+                "Andrea",
+                "Quito",
+                "Empecé buscando una nueva oportunidad y terminé encontrando una actividad que disfruto construir cada día.",
+              ],
+              [
+                "/testimonio-2.webp",
+                "Mateo",
+                "Guayaquil",
+                "Lo que más valoré fue sentir que no estaba empezando solo. La comunidad y la formación hicieron la diferencia.",
+              ],
+              [
+                "/testimonio-3.webp",
+                "Valentina",
+                "Cuenca",
+                "Más que vender productos, sentí que estaba desarrollando algo propio y creciendo junto a otras personas.",
+              ],
+            ].map(([image, name, city, text]) => (
+              <div
+                key={name}
+                className="group border border-[#B8893B]/10 bg-white/[0.025] backdrop-blur-sm rounded-[28px] p-5 md:p-6 transition-all duration-700 hover:bg-white/[0.04] hover:-translate-y-1"
+              >
+                <div className="h-[320px] mb-8 overflow-hidden rounded-[22px] bg-[#120b07]">
+                  <img
+                    src={image}
+                    alt={name}
+                    loading="lazy"
+                    className="w-full h-full object-cover block brightness-[0.78] transition-all duration-700 ease-out group-hover:scale-[1.03] group-hover:brightness-[0.92]"
+                  />
+                </div>
+
+                <p className="text-[#B8893B] text-[10px] tracking-[0.35em] uppercase mb-4">
+                  {name} · {city}
+                </p>
+
+                <p className="text-white/65 text-sm leading-[1.8]">“{text}”</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
