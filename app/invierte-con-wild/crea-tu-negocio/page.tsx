@@ -1,16 +1,34 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
 
 export default function CreaTuNegocioPage() {
-  const [visible, setVisible] = useState(false);
-
+  const [heroVisible, setHeroVisible] = useState(false);
+  const [sectionTwoVisible, setSectionTwoVisible] = useState(false);
+  const heroRef = useRef(null);
+  const sectionTwoRef = useRef(null);
   useEffect(() => {
-    setTimeout(() => setVisible(true), 400);
-  }, []);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.target === heroRef.current) {
+            setHeroVisible(entry.isIntersecting);
+          }
 
+          if (entry.target === sectionTwoRef.current) {
+            setSectionTwoVisible(entry.isIntersecting);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (heroRef.current) observer.observe(heroRef.current);
+    if (sectionTwoRef.current) observer.observe(sectionTwoRef.current);
+
+    return () => observer.disconnect();
+  }, []);
   return (
     <main className="min-h-screen bg-black text-[#F0D8A8] overflow-hidden">
       <header className="fixed top-0 left-0 w-full z-50 px-5 md:px-10 py-5 flex justify-between text-[10px] md:text-xs tracking-[0.3em] text-[#B8893B] bg-black/40 backdrop-blur-md border-b border-[#B8893B]/20">
@@ -26,7 +44,10 @@ export default function CreaTuNegocioPage() {
         </Link>
       </header>
 
-      <section className="min-h-screen flex items-center pt-28 px-6 md:px-20 relative">
+      <section
+        ref={heroRef}
+        className="min-h-screen flex items-center pt-28 px-6 md:px-20 relative"
+      >
         <img
           src="/hombre1.jpg"
           alt="Crea tu negocio con Wild"
@@ -35,11 +56,12 @@ export default function CreaTuNegocioPage() {
 
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.85)_0%,rgba(0,0,0,0.65)_40%,rgba(0,0,0,0.20)_100%)]" />
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative z-10 max-w-3xl pl-6 md:pl-12"
+        <div
+          className={`relative z-10 max-w-3xl pl-6 md:pl-12 transition-all duration-1000 ${
+            heroVisible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-8"
+          }`}
         >
           <p className="text-[10px] md:text-xs tracking-[0.55em] text-[#B8893B] mb-6 uppercase">
             CREA TU NEGOCIO CON WILD
@@ -74,26 +96,51 @@ export default function CreaTuNegocioPage() {
 
           <p
             className={`mt-6 text-white/40 text-[11px] tracking-[0.05em] transition-all duration-1000 ${
-              visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
+              heroVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-3"
             }`}
           >
             Más de 100.000 personas ya forman parte de Wild Collection
           </p>
-        </motion.div>
+        </div>
       </section>
 
-      <section className="pt-32 md:pt-40 pb-20 md:pb-24 px-6 md:px-20 bg-[#050302]">
+      <section
+        ref={sectionTwoRef}
+        className="pt-32 md:pt-40 pb-20 md:pb-24 px-6 md:px-20 bg-[#050302]"
+      >
         <div className="max-w-6xl mx-auto">
-          <h2 className="font-serif text-3xl md:text-5xl leading-[1.05] mb-6 max-w-[980px]">
+          <h2
+            className={`font-serif text-3xl md:text-5xl leading-[1.05] mb-6 max-w-[980px] transition-all duration-1000 ${
+              sectionTwoVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-8"
+            }`}
+          >
             Más que un kit. Una oportunidad en movimiento.
           </h2>
 
-          <p className="text-white/60 text-sm md:text-lg leading-[1.8] max-w-[700px] mb-12">
+          <p
+            className={`text-white/60 text-sm md:text-lg leading-[1.8] max-w-[700px] mb-12 transition-all duration-1000 ${
+              sectionTwoVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-8"
+            }`}
+            style={{ transitionDelay: "0.15s" }}
+          >
             Empiezas con productos. Pero también con formación, comunidad y
             herramientas para crecer junto a una marca que sigue avanzando.
           </p>
 
-          <div className="w-full h-px bg-gradient-to-r from-[#B8893B]/0 via-[#B8893B]/40 to-[#B8893B]/0 mb-10" />
+          <div
+            className={`w-full h-px bg-gradient-to-r from-[#B8893B]/0 via-[#B8893B]/40 to-[#B8893B]/0 mb-10 transition-all duration-1000 ${
+              sectionTwoVisible
+                ? "opacity-100 scale-x-100"
+                : "opacity-0 scale-x-50"
+            }`}
+            style={{ transitionDelay: "0.25s" }}
+          />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-24">
             {[
@@ -113,10 +160,15 @@ export default function CreaTuNegocioPage() {
                 "Crecimiento real",
                 "Desarrolla una actividad que puede crecer a tu ritmo mientras construyes experiencia, relaciones y nuevas oportunidades.",
               ],
-            ].map(([title, text]) => (
+            ].map(([title, text], index) => (
               <div
                 key={title}
-                className="group transition-all duration-500 hover:-translate-y-1"
+                className={`group transition-all duration-800 hover:-translate-y-1 ${
+                  sectionTwoVisible
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-10"
+                }`}
+                style={{ transitionDelay: `${index * 0.15}s` }}
               >
                 <h3 className="font-serif text-xl md:text-2xl mb-4 relative inline-block">
                   {title}
