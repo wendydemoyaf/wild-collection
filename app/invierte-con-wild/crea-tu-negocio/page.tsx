@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function CreaTuNegocioPage() {
   const [visible, setVisible] = useState(false);
@@ -34,7 +35,12 @@ export default function CreaTuNegocioPage() {
 
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.85)_0%,rgba(0,0,0,0.65)_40%,rgba(0,0,0,0.20)_100%)]" />
 
-        <div className="relative z-10 max-w-3xl pl-6 md:pl-12">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="relative z-10 max-w-3xl pl-6 md:pl-12"
+        >
           <p className="text-[10px] md:text-xs tracking-[0.55em] text-[#B8893B] mb-6 uppercase">
             CREA TU NEGOCIO CON WILD
           </p>
@@ -73,78 +79,55 @@ export default function CreaTuNegocioPage() {
           >
             Más de 100.000 personas ya forman parte de Wild Collection
           </p>
-        </div>
+        </motion.div>
       </section>
 
       <section className="pt-32 md:pt-40 pb-20 md:pb-24 px-6 md:px-20 bg-[#050302]">
         <div className="max-w-6xl mx-auto">
-          {/* TÍTULO */}
           <h2 className="font-serif text-3xl md:text-5xl leading-[1.05] mb-6 max-w-[980px]">
             Más que un kit. Una oportunidad en movimiento.
           </h2>
 
-          {/* SUBTEXTO */}
           <p className="text-white/60 text-sm md:text-lg leading-[1.8] max-w-[700px] mb-12">
             Empiezas con productos. Pero también con formación, comunidad y
             herramientas para crecer junto a una marca que sigue avanzando.
           </p>
 
-          {/* LÍNEA PREMIUM */}
           <div className="w-full h-px bg-gradient-to-r from-[#B8893B]/0 via-[#B8893B]/40 to-[#B8893B]/0 mb-10" />
 
-          {/* BLOQUES */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-24">
-            {/* BLOQUE 1 */}
-            <div className="group transition-all duration-500 hover:-translate-y-1">
-              <h3 className="font-serif text-2xl mb-4 relative inline-block">
-                Formación continua
-                <span className="absolute left-0 -bottom-1 w-0 h-[1px] bg-[#B8893B] transition-all duration-500 group-hover:w-full" />
-              </h3>
+            {[
+              [
+                "Formación continua",
+                "Aprende ventas, comunicación y desarrollo personal junto a líderes y experiencias que impulsan tu crecimiento.",
+              ],
+              [
+                "Comunidad",
+                "Rodéate de personas que también decidieron construir algo propio y avanzar más allá de lo conocido.",
+              ],
+              [
+                "Productos con identidad",
+                "Fragancias diseñadas para conectar con personas y crear experiencias que dejan huella.",
+              ],
+              [
+                "Crecimiento real",
+                "Desarrolla una actividad que puede crecer a tu ritmo mientras construyes experiencia, relaciones y nuevas oportunidades.",
+              ],
+            ].map(([title, text]) => (
+              <div
+                key={title}
+                className="group transition-all duration-500 hover:-translate-y-1"
+              >
+                <h3 className="font-serif text-xl md:text-2xl mb-4 relative inline-block">
+                  {title}
+                  <span className="absolute left-0 -bottom-1 w-0 h-[1px] bg-[#B8893B] transition-all duration-500 group-hover:w-full" />
+                </h3>
 
-              <p className="text-white/60 text-sm leading-[1.8] max-w-[420px]">
-                Aprende ventas, comunicación y desarrollo personal junto a
-                líderes y experiencias que impulsan tu crecimiento.
-              </p>
-            </div>
-
-            {/* BLOQUE 2 */}
-            <div className="group transition-all duration-500 hover:-translate-y-1">
-              <h3 className="font-serif text-xl md:text-2xl mb-4 relative inline-block">
-                Comunidad
-                <span className="absolute left-0 -bottom-1 w-0 h-[1px] bg-[#B8893B] transition-all duration-500 group-hover:w-full" />
-              </h3>
-
-              <p className="text-white/60 text-sm leading-[1.8] max-w-[420px]">
-                Rodéate de personas que también decidieron construir algo propio
-                y avanzar más allá de lo conocido.
-              </p>
-            </div>
-
-            {/* BLOQUE 3 */}
-            <div className="group transition-all duration-500 hover:-translate-y-1">
-              <h3 className="font-serif text-2xl mb-4 relative inline-block">
-                Productos con identidad
-                <span className="absolute left-0 -bottom-1 w-0 h-[1px] bg-[#B8893B] transition-all duration-500 group-hover:w-full" />
-              </h3>
-
-              <p className="text-white/60 text-sm leading-[1.8] max-w-[420px]">
-                Fragancias diseñadas para conectar con personas y crear
-                experiencias que dejan huella.
-              </p>
-            </div>
-
-            {/* BLOQUE 4 */}
-            <div className="group transition-all duration-500 hover:-translate-y-1">
-              <h3 className="font-serif text-2xl mb-4 relative inline-block">
-                Crecimiento real
-                <span className="absolute left-0 -bottom-1 w-0 h-[1px] bg-[#B8893B] transition-all duration-500 group-hover:w-full" />
-              </h3>
-
-              <p className="text-white/60 text-sm leading-[1.8] max-w-[420px]">
-                Desarrolla una actividad que puede crecer a tu ritmo mientras
-                construyes experiencia, relaciones y nuevas oportunidades.
-              </p>
-            </div>
+                <p className="text-white/60 text-sm leading-[1.8] max-w-[420px]">
+                  {text}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
