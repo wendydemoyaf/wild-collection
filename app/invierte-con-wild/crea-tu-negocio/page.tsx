@@ -237,22 +237,22 @@ export default function CreaTuNegocioPage() {
             Algunas historias comienzan con una decisión pequeña.
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
             {[
               [
-                "/testimonio-1.webp",
+                "/andrea.webp",
                 "Andrea",
                 "Quito",
                 "Empecé buscando una nueva oportunidad y terminé encontrando una actividad que disfruto construir cada día.",
               ],
               [
-                "/testimonio-2.webp",
+                "/mateo.webp",
                 "Mateo",
                 "Guayaquil",
                 "Lo que más valoré fue sentir que no estaba empezando solo. La comunidad y la formación hicieron la diferencia.",
               ],
               [
-                "/testimonio-3.webp",
+                "/valentina.webp",
                 "Valentina",
                 "Cuenca",
                 "Más que vender productos, sentí que estaba desarrollando algo propio y creciendo junto a otras personas.",
@@ -260,25 +260,57 @@ export default function CreaTuNegocioPage() {
             ].map(([image, name, city, text]) => (
               <div
                 key={name}
-                className="group border border-[#B8893B]/10 bg-white/[0.025] backdrop-blur-sm rounded-[28px] p-5 md:p-6 transition-all duration-700 hover:bg-white/[0.04] hover:-translate-y-1"
+                className="group border-t border-[#B8893B]/15 pt-8 transition-all duration-700 hover:translate-x-1"
               >
-                <div className="h-[320px] mb-8 overflow-hidden rounded-[22px] bg-[#120b07]">
+                <div className="w-16 h-16 mb-7 overflow-hidden rounded-full bg-[#120b07] border border-[#B8893B]/20">
                   <img
                     src={image}
                     alt={name}
                     loading="lazy"
-                    className="w-full h-full object-cover block brightness-[0.78] transition-all duration-700 ease-out group-hover:scale-[1.03] group-hover:brightness-[0.92]"
+                    className="w-full h-full object-cover block brightness-[0.82] transition-all duration-700 group-hover:scale-[1.05] group-hover:brightness-[0.95]"
                   />
                 </div>
 
-                <p className="text-[#B8893B] text-[10px] tracking-[0.35em] uppercase mb-4">
+                <p className="text-[#B8893B] text-[10px] tracking-[0.35em] uppercase mb-5">
                   {name} · {city}
                 </p>
 
-                <p className="text-white/65 text-sm leading-[1.8]">“{text}”</p>
+                <p className="text-white/65 text-sm leading-[2] max-w-[340px]">
+                  “{text}”
+                </p>
               </div>
             ))}
           </div>
+        </div>
+      </section>
+      <section className="relative min-h-[85vh] px-6 md:px-20 flex items-center overflow-hidden bg-black">
+        <img
+          src="/wild-night.webp"
+          alt="Wild Collection movimiento"
+          loading="lazy"
+          className="absolute inset-0 w-full h-full object-cover block brightness-[0.55]"
+        />
+
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/45 to-black/20" />
+
+        <div className="relative z-10 max-w-4xl">
+          <p className="text-[10px] md:text-xs tracking-[0.5em] text-[#B8893B] mb-6 uppercase">
+            DECIDIR MOVERSE
+          </p>
+
+          <h2 className="font-serif text-4xl md:text-7xl leading-[1.05] max-w-[850px] mb-10">
+            Hay personas que esperan. <br />Y otras que empiezan.
+          </h2>
+
+          <a
+            href="https://api.whatsapp.com/send?phone=593963826845&text=Hola,%20quiero%20invertir%20con%20Wild%20Collection"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button className="bg-[#B8893B] text-black px-8 py-4 rounded-2xl text-[10px] tracking-[0.3em] uppercase hover:bg-[#F0D8A8] transition-all duration-500">
+              Empezar ahora
+            </button>
+          </a>
         </div>
       </section>
     </main>
