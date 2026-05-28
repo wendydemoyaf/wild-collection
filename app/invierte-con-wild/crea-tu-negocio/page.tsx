@@ -17,7 +17,10 @@ export default function CreaTuNegocioPage() {
           WILD COLLECTION
         </Link>
 
-        <Link href="/invierte-con-wild" className="hover:text-[#F0D8A8] transition">
+        <Link
+          href="/invierte-con-wild"
+          className="hover:text-[#F0D8A8] transition"
+        >
           VOLVER
         </Link>
       </header>
@@ -84,7 +87,13 @@ export default function CreaTuNegocioPage() {
             herramientas para crecer junto a una marca que sigue avanzando.
           </p>
 
+          <div className="w-full h-px bg-gradient-to-r from-[#B8893B]/0 via-[#B8893B]/40 to-[#B8893B]/0 mb-20" />
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-20">
+            <p className="mt-24 text-white/40 text-sm md:text-base max-w-[600px]">
+              No todos buscan lo mismo. Pero si estás aquí, probablemente estás
+              listo para empezar algo propio.
+            </p>
             {[
               [
                 "01",
