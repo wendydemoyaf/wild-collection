@@ -56,15 +56,11 @@ export default function InvierteConWildPage() {
                   ritmo.
                 </p>
 
-                <a
-                  href="https://api.whatsapp.com/send?phone=593963826845&text=Hola,%20quiero%20invertir%20con%20Wild%20Collection"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <button className="border border-[#B8893B]/50 text-[#F0D8A8] hover:bg-[#B8893B]/10 rounded-2xl px-8 py-4 text-[10px] tracking-[0.3em] uppercase hover:bg-[#F0D8A8] transition-all duration-500">
+                <Link href="/invierte-con-wild/crea-tu-negocio">
+                  <button className="border border-[#B8893B]/50 text-[#F0D8A8] hover:bg-[#B8893B]/10 rounded-2xl px-8 py-4 text-[10px] tracking-[0.3em] uppercase transition-all duration-500">
                     Explorar esta opción
                   </button>
-                </a>
+                </Link>
               </div>
             </div>
 
