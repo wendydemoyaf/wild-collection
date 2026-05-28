@@ -183,42 +183,44 @@ export default function CreaTuNegocioPage() {
           </div>
         </div>
       </section>
+
       <section className="pt-32 md:pt-40 pb-20 md:pb-24 px-6 md:px-20 bg-black">
         <div className="max-w-6xl mx-auto">
-          {/* TÍTULO PEQUEÑO */}
           <p className="text-[10px] md:text-xs tracking-[0.5em] text-[#B8893B] mb-6 uppercase">
             WILD EN MOVIMIENTO
           </p>
 
-          {/* TÍTULO PRINCIPAL */}
           <h2 className="font-serif text-3xl md:text-5xl leading-[1.1] mb-16 max-w-[900px]">
             Más que vender perfumes. <br />
             Construyes experiencias, relaciones y camino propio.
           </h2>
 
-          {/* GALERÍA */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* IMAGEN GRANDE */}
-            <div className="md:col-span-2 h-[500px] overflow-hidden rounded-2xl">
+            <div className="md:col-span-2 h-[700px] overflow-hidden rounded-[28px] shadow-2xl shadow-black/60">
               <img
-                src="/wild1.jpg"
-                className="w-full h-full object-cover hover:scale-105 transition-all duration-[1200ms]"
+                src="/hero-sebas.webp"
+                alt="Wild en movimiento"
+                loading="lazy"
+                className="w-full h-full object-cover block brightness-[0.78] transition-all duration-700 ease-out hover:scale-[1.03] hover:brightness-[0.92]"
               />
             </div>
 
-            {/* IMÁGENES PEQUEÑAS */}
             <div className="flex flex-col gap-6">
-              <div className="h-[240px] overflow-hidden rounded-2xl">
+              <div className="h-[337px] overflow-hidden rounded-[28px] shadow-2xl shadow-black/60">
                 <img
-                  src="/wild2.jpg"
-                  className="w-full h-full object-cover hover:scale-105 transition-all duration-[1200ms]"
+                  src="/luxury-p.webp"
+                  alt="Perfume Wild Collection"
+                  loading="lazy"
+                  className="w-full h-full object-cover block brightness-[0.78] transition-all duration-700 ease-out hover:scale-[1.03] hover:brightness-[0.92]"
                 />
               </div>
 
-              <div className="h-[240px] overflow-hidden rounded-2xl">
+              <div className="h-[337px] overflow-hidden rounded-[28px] shadow-2xl shadow-black/60">
                 <img
-                  src="/wild3.jpg"
-                  className="w-full h-full object-cover hover:scale-105 transition-all duration-[1200ms]"
+                  src="/wild-team.webp"
+                  alt="Equipo Wild Collection"
+                  loading="lazy"
+                  className="w-full h-full object-cover block brightness-[0.78] transition-all duration-700 ease-out hover:scale-[1.03] hover:brightness-[0.92]"
                 />
               </div>
             </div>
