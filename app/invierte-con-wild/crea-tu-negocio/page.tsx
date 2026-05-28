@@ -4,10 +4,19 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 export default function CreaTuNegocioPage() {
+  // ESTADOS DE ANIMACIÓN
   const [heroVisible, setHeroVisible] = useState(false);
   const [sectionTwoVisible, setSectionTwoVisible] = useState(false);
+  const [testimonialsVisible, setTestimonialsVisible] = useState(false);
+  const [visualVisible, setVisualVisible] = useState(false);
+
+  // REFERENCIAS DE SECCIONES
   const heroRef = useRef(null);
   const sectionTwoRef = useRef(null);
+  const testimonialsRef = useRef(null);
+  const visualRef = useRef(null);
+
+  // DETECTOR DE SCROLL
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -19,6 +28,14 @@ export default function CreaTuNegocioPage() {
           if (entry.target === sectionTwoRef.current) {
             setSectionTwoVisible(entry.isIntersecting);
           }
+
+          if (entry.target === testimonialsRef.current) {
+            setTestimonialsVisible(entry.isIntersecting);
+          }
+
+          if (entry.target === visualRef.current) {
+            setVisualVisible(entry.isIntersecting);
+          }
         });
       },
       { threshold: 0.1 }
@@ -26,11 +43,15 @@ export default function CreaTuNegocioPage() {
 
     if (heroRef.current) observer.observe(heroRef.current);
     if (sectionTwoRef.current) observer.observe(sectionTwoRef.current);
+    if (testimonialsRef.current) observer.observe(testimonialsRef.current);
+    if (visualRef.current) observer.observe(visualRef.current);
 
     return () => observer.disconnect();
   }, []);
+
   return (
     <main className="min-h-screen bg-black text-[#F0D8A8] overflow-hidden">
+      {/* HEADER */}
       <header className="fixed top-0 left-0 w-full z-50 px-5 md:px-10 py-5 flex justify-between text-[10px] md:text-xs tracking-[0.3em] text-[#B8893B] bg-black/40 backdrop-blur-md border-b border-[#B8893B]/20">
         <Link href="/" className="hover:text-[#F0D8A8] transition">
           WILD COLLECTION
@@ -44,6 +65,7 @@ export default function CreaTuNegocioPage() {
         </Link>
       </header>
 
+      {/* SECCIÓN 1: HERO PRINCIPAL */}
       <section
         ref={heroRef}
         className="min-h-screen flex items-center pt-28 px-6 md:px-20 relative"
@@ -106,6 +128,7 @@ export default function CreaTuNegocioPage() {
         </div>
       </section>
 
+      {/* SECCIÓN 2: OPORTUNIDAD / BENEFICIOS */}
       <section
         ref={sectionTwoRef}
         className="pt-32 md:pt-40 pb-20 md:pb-24 px-6 md:px-20 bg-[#050302]"
@@ -163,7 +186,7 @@ export default function CreaTuNegocioPage() {
             ].map(([title, text], index) => (
               <div
                 key={title}
-                className={`group transition-all duration-800 hover:-translate-y-1 ${
+                className={`group transition-all duration-700 hover:-translate-y-1 ${
                   sectionTwoVisible
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-10"
@@ -184,6 +207,7 @@ export default function CreaTuNegocioPage() {
         </div>
       </section>
 
+      {/* SECCIÓN 3: WILD EN MOVIMIENTO */}
       <section className="pt-32 md:pt-40 pb-24 md:pb-32 px-6 md:px-20 bg-black">
         <div className="max-w-6xl mx-auto">
           <p className="text-[10px] md:text-xs tracking-[0.5em] text-[#B8893B] mb-6 uppercase">
@@ -227,7 +251,12 @@ export default function CreaTuNegocioPage() {
           </div>
         </div>
       </section>
-      <section className="pt-28 md:pt-36 pb-24 md:pb-32 px-6 md:px-20 bg-[#050302]">
+
+      {/* SECCIÓN 4: TESTIMONIOS */}
+      <section
+        ref={testimonialsRef}
+        className="pt-28 md:pt-36 pb-24 md:pb-32 px-6 md:px-20 bg-[#050302]"
+      >
         <div className="max-w-6xl mx-auto">
           <p className="text-[10px] md:text-xs tracking-[0.5em] text-[#B8893B] mb-6 uppercase">
             EXPERIENCIAS REALES
@@ -257,10 +286,15 @@ export default function CreaTuNegocioPage() {
                 "Cuenca",
                 "Más que vender productos, sentí que estaba desarrollando algo propio y creciendo junto a otras personas.",
               ],
-            ].map(([image, name, city, text]) => (
+            ].map(([image, name, city, text], index) => (
               <div
                 key={name}
-                className="group border-t border-[#B8893B]/15 pt-8 transition-all duration-700 hover:translate-x-1"
+                className={`group border-t border-[#B8893B]/15 pt-8 transition-all duration-700 hover:translate-x-1 ${
+                  testimonialsVisible
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-10"
+                }`}
+                style={{ transitionDelay: `${index * 0.15}s` }}
               >
                 <div className="w-16 h-16 mb-7 overflow-hidden rounded-full bg-[#120b07] border border-[#B8893B]/20">
                   <img
@@ -283,7 +317,12 @@ export default function CreaTuNegocioPage() {
           </div>
         </div>
       </section>
-      <section className="relative min-h-[85vh] px-6 md:px-20 flex items-center overflow-hidden bg-black">
+
+      {/* SECCIÓN 5: FULL VISUAL / CTA */}
+      <section
+        ref={visualRef}
+        className="relative min-h-[85vh] px-6 md:px-20 flex items-center overflow-hidden bg-black"
+      >
         <img
           src="/wild-night.webp"
           alt="Wild Collection movimiento"
@@ -293,7 +332,13 @@ export default function CreaTuNegocioPage() {
 
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/45 to-black/20" />
 
-        <div className="relative z-10 max-w-4xl">
+        <div
+          className={`relative z-10 max-w-4xl transition-all duration-1000 ${
+            visualVisible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-10"
+          }`}
+        >
           <p className="text-[10px] md:text-xs tracking-[0.5em] text-[#B8893B] mb-6 uppercase">
             DECIDIR MOVERSE
           </p>
