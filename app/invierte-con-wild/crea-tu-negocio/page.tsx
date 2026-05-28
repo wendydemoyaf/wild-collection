@@ -76,64 +76,75 @@ export default function CreaTuNegocioPage() {
         </div>
       </section>
 
-      <section className="py-24 md:py-32 px-6 md:px-20 bg-[#050302]">
+      <section className="pt-32 md:pt-40 pb-20 md:pb-24 px-6 md:px-20 bg-[#050302]">
         <div className="max-w-6xl mx-auto">
+          {/* TÍTULO */}
           <h2 className="font-serif text-3xl md:text-5xl leading-[1.05] mb-6 max-w-[980px]">
             Más que un kit. Una oportunidad en movimiento.
           </h2>
 
-          <p className="text-white/60 text-sm md:text-lg leading-[1.8] max-w-[620px] mb-20">
+          {/* SUBTEXTO */}
+          <p className="text-white/60 text-sm md:text-lg leading-[1.8] max-w-[700px] mb-12">
             Empiezas con productos. Pero también con formación, comunidad y
             herramientas para crecer junto a una marca que sigue avanzando.
           </p>
 
-          <div className="w-full h-px bg-gradient-to-r from-[#B8893B]/0 via-[#B8893B]/40 to-[#B8893B]/0 mb-20" />
+          {/* LÍNEA PREMIUM */}
+          <div className="w-full h-px bg-gradient-to-r from-[#B8893B]/0 via-[#B8893B]/40 to-[#B8893B]/0 mb-10" />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-20">
-            <p className="mt-24 text-white/40 text-sm md:text-base max-w-[600px]">
-              No todos buscan lo mismo. Pero si estás aquí, probablemente estás
-              listo para empezar algo propio.
-            </p>
-            {[
-              [
-                "01",
-                "Formación continua",
-                "Aprende ventas, comunicación y desarrollo personal junto a líderes y experiencias que impulsan tu crecimiento.",
-              ],
-              [
-                "02",
-                "Comunidad",
-                "Rodéate de personas que también decidieron construir algo propio y avanzar más allá de lo conocido.",
-              ],
-              [
-                "03",
-                "Productos con identidad",
-                "Fragancias diseñadas para conectar con personas y crear experiencias que dejan huella.",
-              ],
-              [
-                "04",
-                "Crecimiento real",
-                "Desarrolla una actividad que puede crecer a tu ritmo mientras construyes experiencia, relaciones y nuevas oportunidades.",
-              ],
-            ].map(([num, title, text]) => (
-              <div
-                key={num}
-                className="group transition-all duration-500 hover:-translate-y-1"
-              >
-                <p className="text-[#B8893B] text-sm tracking-[0.2em] mb-5">
-                  {num}
-                </p>
+          {/* BLOQUES */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-24">
+            {/* BLOQUE 1 */}
+            <div className="group transition-all duration-500 hover:-translate-y-1">
+              <h3 className="font-serif text-2xl mb-4 relative inline-block">
+                Formación continua
+                <span className="absolute left-0 -bottom-1 w-0 h-[1px] bg-[#B8893B] transition-all duration-500 group-hover:w-full" />
+              </h3>
 
-                <h3 className="font-serif text-2xl mb-6 relative inline-block">
-                  {title}
-                  <span className="absolute left-0 -bottom-1 w-0 h-[1px] bg-[#B8893B] transition-all duration-500 group-hover:w-full" />
-                </h3>
+              <p className="text-white/60 text-sm leading-[1.8] max-w-[420px]">
+                Aprende ventas, comunicación y desarrollo personal junto a
+                líderes y experiencias que impulsan tu crecimiento.
+              </p>
+            </div>
 
-                <p className="text-white/60 text-sm leading-[1.8] max-w-[420px]">
-                  {text}
-                </p>
-              </div>
-            ))}
+            {/* BLOQUE 2 */}
+            <div className="group transition-all duration-500 hover:-translate-y-1">
+              <h3 className="font-serif text-xl md:text-2xl mb-4 relative inline-block">
+                Comunidad
+                <span className="absolute left-0 -bottom-1 w-0 h-[1px] bg-[#B8893B] transition-all duration-500 group-hover:w-full" />
+              </h3>
+
+              <p className="text-white/60 text-sm leading-[1.8] max-w-[420px]">
+                Rodéate de personas que también decidieron construir algo propio
+                y avanzar más allá de lo conocido.
+              </p>
+            </div>
+
+            {/* BLOQUE 3 */}
+            <div className="group transition-all duration-500 hover:-translate-y-1">
+              <h3 className="font-serif text-2xl mb-4 relative inline-block">
+                Productos con identidad
+                <span className="absolute left-0 -bottom-1 w-0 h-[1px] bg-[#B8893B] transition-all duration-500 group-hover:w-full" />
+              </h3>
+
+              <p className="text-white/60 text-sm leading-[1.8] max-w-[420px]">
+                Fragancias diseñadas para conectar con personas y crear
+                experiencias que dejan huella.
+              </p>
+            </div>
+
+            {/* BLOQUE 4 */}
+            <div className="group transition-all duration-500 hover:-translate-y-1">
+              <h3 className="font-serif text-2xl mb-4 relative inline-block">
+                Crecimiento real
+                <span className="absolute left-0 -bottom-1 w-0 h-[1px] bg-[#B8893B] transition-all duration-500 group-hover:w-full" />
+              </h3>
+
+              <p className="text-white/60 text-sm leading-[1.8] max-w-[420px]">
+                Desarrolla una actividad que puede crecer a tu ritmo mientras
+                construyes experiencia, relaciones y nuevas oportunidades.
+              </p>
+            </div>
           </div>
         </div>
       </section>
