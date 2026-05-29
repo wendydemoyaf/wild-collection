@@ -85,11 +85,7 @@ export default function InvierteConWildPage() {
                   contigo.
                 </p>
 
-                <a
-                  href="https://api.whatsapp.com/send?phone=593963826845&text=Hola,%20quiero%20información%20sobre%20los%20kits%20Wild"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href="/invierte-con-wild/unete-a-la-familia-wild">
                   <button className="border border-[#B8893B]/50 text-[#F0D8A8] rounded-2xl px-8 py-4 text-[10px] tracking-[0.3em] uppercase hover:bg-[#B8893B]/10 transition-all duration-500">
                     Quiero saber más
                   </button>

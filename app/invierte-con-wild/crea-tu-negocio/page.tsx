@@ -103,7 +103,7 @@ export default function CreaTuNegocioPage() {
         <img
           src="/hombre1.jpg"
           alt="Crea tu negocio con Wild"
-          className="absolute inset-0 w-full h-full object-cover object-[70%_20%] opacity-80 translate-x-16 md:translate-x-24"
+          className="absolute inset-0 w-full h-full object-cover object-[58%_20%] opacity-80 md:translate-x-24"
         />
 
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.85)_0%,rgba(0,0,0,0.65)_40%,rgba(0,0,0,0.20)_100%)]" />
@@ -141,8 +141,22 @@ export default function CreaTuNegocioPage() {
               </button>
             </a>
 
-            <button className="border border-[#B8893B]/50 text-[#F0D8A8] px-8 py-4 rounded-2xl text-[10px] tracking-[0.3em] uppercase hover:bg-[#B8893B]/10 transition-all duration-500 hover:scale-[1.03] active:scale-[0.97]">
-              Ver cómo funciona
+            <button
+              onClick={() => {
+                const offset = 100;
+                const elementPosition =
+                  stepsRef.current?.getBoundingClientRect().top || 0;
+                const offsetPosition =
+                  elementPosition + window.pageYOffset - offset;
+
+                window.scrollTo({
+                  top: offsetPosition,
+                  behavior: "smooth",
+                });
+              }}
+              className="w-fit border border-[#B8893B]/50 text-[#F0D8A8] px-5 md:px-8 py-3 md:py-4 rounded-2xl text-[9px] md:text-[10px] tracking-[0.18em] md:tracking-[0.3em] uppercase hover:bg-[#B8893B]/10 transition-all duration-500 hover:scale-[1.03] active:scale-[0.97]"
+            >
+              Cómo empezar
             </button>
           </div>
 
@@ -195,7 +209,7 @@ export default function CreaTuNegocioPage() {
             style={{ transitionDelay: "0.25s" }}
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-24">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
             {[
               [
                 "Formación continua",
@@ -415,7 +429,7 @@ export default function CreaTuNegocioPage() {
       {/* SECCIÓN 6: ¿CÓMO EMPIEZAS? */}
       <section
         ref={stepsRef}
-        className="pt-20 md:pt-28 pb-16 md:pb-20 px-6 md:px-20 bg-black"
+        className="pt-14 md:pt-28 pb-12 md:pb-20 px-6 md:px-20 bg-black"
       >
         <div
           className={`max-w-6xl mx-auto transition-all duration-1000 ${
@@ -549,15 +563,18 @@ export default function CreaTuNegocioPage() {
         ref={finalRef}
         className="relative min-h-[95vh] px-6 md:px-20 flex items-center overflow-hidden bg-black"
       >
+        {/* imagen fondo */}
         <img
           src="/wild-night.webp"
           alt="Wild Collection decisión"
           loading="lazy"
-          className="absolute inset-0 w-full h-full object-cover block brightness-[0.4]"
+          className="absolute inset-0 w-full h-full object-cover block brightness-[0.45]"
         />
 
+        {/* overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/20" />
 
+        {/* contenido */}
         <div
           className={`relative z-10 max-w-4xl transition-all duration-1000 ${
             finalVisible
@@ -565,14 +582,20 @@ export default function CreaTuNegocioPage() {
               : "opacity-0 translate-y-10"
           }`}
         >
+          <p className="text-[10px] md:text-xs tracking-[0.5em] text-[#B8893B] mb-6 uppercase">
+            PRIMER PASO
+          </p>
+
           <h2 className="font-serif text-4xl md:text-7xl leading-[1.05] mb-8 max-w-[900px]">
-            Hay personas que pasan años esperando sentirse listas. <br />Y otras
-            que simplemente empiezan.
+            Todo comienza con una conversación.
           </h2>
 
           <p className="text-white/70 text-sm md:text-lg leading-[1.8] mb-10 max-w-[600px]">
-            El momento perfecto rara vez llega. <br />
-            Lo que cambia una historia suele ser una decisión.
+            No necesitas tener todas las respuestas hoy. <br />
+            Solo dar el primer paso. <br />
+            <br />
+            Conocer las opciones, resolver tus dudas y descubrir si Wild
+            Collection encaja contigo.
           </p>
 
           <a
@@ -581,7 +604,7 @@ export default function CreaTuNegocioPage() {
             rel="noopener noreferrer"
           >
             <button className="bg-[#B8893B] text-black px-10 py-4 rounded-2xl text-[10px] tracking-[0.3em] uppercase transition-all duration-500 hover:bg-[#F0D8A8] hover:scale-[1.03] active:scale-[0.97]">
-              EMPEZAR AHORA
+              HABLAR CON UN ASESOR
             </button>
           </a>
         </div>
