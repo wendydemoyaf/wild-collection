@@ -7,16 +7,22 @@ export default function CreaTuNegocioPage() {
   // ESTADOS DE ANIMACIÓN
   const [heroVisible, setHeroVisible] = useState(false);
   const [sectionTwoVisible, setSectionTwoVisible] = useState(false);
+  const [wildVisible, setWildVisible] = useState(false);
   const [testimonialsVisible, setTestimonialsVisible] = useState(false);
   const [visualVisible, setVisualVisible] = useState(false);
+  const [stepsVisible, setStepsVisible] = useState(true);
+  const [faqVisible, setFaqVisible] = useState(true);
+  const [finalVisible, setFinalVisible] = useState(true);
 
   // REFERENCIAS DE SECCIONES
-  const [wildVisible, setWildVisible] = useState(false);
-  const wildRef = useRef(null);
   const heroRef = useRef(null);
   const sectionTwoRef = useRef(null);
+  const wildRef = useRef(null);
   const testimonialsRef = useRef(null);
   const visualRef = useRef(null);
+  const stepsRef = useRef(null);
+  const faqRef = useRef(null);
+  const finalRef = useRef(null);
 
   // DETECTOR DE SCROLL
   useEffect(() => {
@@ -31,6 +37,10 @@ export default function CreaTuNegocioPage() {
             setSectionTwoVisible(entry.isIntersecting);
           }
 
+          if (entry.target === wildRef.current) {
+            setWildVisible(entry.isIntersecting);
+          }
+
           if (entry.target === testimonialsRef.current) {
             setTestimonialsVisible(entry.isIntersecting);
           }
@@ -38,8 +48,16 @@ export default function CreaTuNegocioPage() {
           if (entry.target === visualRef.current) {
             setVisualVisible(entry.isIntersecting);
           }
-          if (entry.target === wildRef.current) {
-            setWildVisible(entry.isIntersecting);
+          if (entry.target === stepsRef.current) {
+            setStepsVisible(entry.isIntersecting);
+          }
+
+          if (entry.target === faqRef.current) {
+            setFaqVisible(entry.isIntersecting);
+          }
+
+          if (entry.target === finalRef.current) {
+            setFinalVisible(entry.isIntersecting);
           }
         });
       },
@@ -51,9 +69,12 @@ export default function CreaTuNegocioPage() {
 
     if (heroRef.current) observer.observe(heroRef.current);
     if (sectionTwoRef.current) observer.observe(sectionTwoRef.current);
+    if (wildRef.current) observer.observe(wildRef.current);
     if (testimonialsRef.current) observer.observe(testimonialsRef.current);
     if (visualRef.current) observer.observe(visualRef.current);
-    if (wildRef.current) observer.observe(wildRef.current);
+    if (stepsRef.current) observer.observe(stepsRef.current);
+    if (faqRef.current) observer.observe(faqRef.current);
+    if (finalRef.current) observer.observe(finalRef.current);
 
     return () => observer.disconnect();
   }, []);
@@ -77,7 +98,7 @@ export default function CreaTuNegocioPage() {
       {/* SECCIÓN 1: HERO PRINCIPAL */}
       <section
         ref={heroRef}
-        className="min-h-screen flex items-center pt-28 px-6 md:px-20 relative"
+        className="min-h-screen flex items-center pt-28 px-6 md:px-20 relative transition-all duration-700 ease-out"
       >
         <img
           src="/hombre1.jpg"
@@ -115,12 +136,12 @@ export default function CreaTuNegocioPage() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <button className="bg-[#B8893B] text-black px-8 py-4 rounded-2xl text-[10px] tracking-[0.3em] uppercase hover:bg-[#F0D8A8] transition-all duration-500">
+              <button className="bg-[#B8893B] text-black px-8 py-4 rounded-2xl text-[10px] tracking-[0.3em] uppercase transition-all duration-500 hover:bg-[#F0D8A8] hover:scale-[1.03] active:scale-[0.97]">
                 Hablar con un asesor
               </button>
             </a>
 
-            <button className="border border-[#B8893B]/50 text-[#F0D8A8] px-8 py-4 rounded-2xl text-[10px] tracking-[0.3em] uppercase hover:bg-[#B8893B]/10 transition-all duration-500">
+            <button className="border border-[#B8893B]/50 text-[#F0D8A8] px-8 py-4 rounded-2xl text-[10px] tracking-[0.3em] uppercase hover:bg-[#B8893B]/10 transition-all duration-500 hover:scale-[1.03] active:scale-[0.97]">
               Ver cómo funciona
             </button>
           </div>
@@ -140,7 +161,7 @@ export default function CreaTuNegocioPage() {
       {/* SECCIÓN 2: OPORTUNIDAD / BENEFICIOS */}
       <section
         ref={sectionTwoRef}
-        className="pt-20 md:pt-28 pb-10 md:pb-12 px-6 md:px-20 bg-[#050302]"
+        className="pt-20 md:pt-28 pb-10 md:pb-12 px-6 md:px-20 bg-[#050302] transition-all duration-700 ease-out"
       >
         <div className="max-w-6xl mx-auto">
           <h2
@@ -219,15 +240,9 @@ export default function CreaTuNegocioPage() {
       {/* SECCIÓN 3: WILD EN MOVIMIENTO */}
       <section
         ref={wildRef}
-        className="pt-20 md:pt-28 pb-8 md:pb-10 px-6 md:px-20 bg-black"
+        className="pt-20 md:pt-28 pb-8 md:pb-10 px-6 md:px-20 bg-black transition-all duration-700 ease-out"
       >
-        <div
-          className={`max-w-6xl mx-auto transition-all duration-1000 ${
-            wildVisible
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-10"
-          }`}
-        >
+        <div className="max-w-6xl mx-auto">
           <p className="text-[10px] md:text-xs tracking-[0.5em] text-[#B8893B] mb-6 uppercase">
             WILD EN MOVIMIENTO
           </p>
@@ -238,31 +253,51 @@ export default function CreaTuNegocioPage() {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="md:col-span-2 h-[520px] md:h-[700px] overflow-hidden rounded-[28px] shadow-2xl shadow-black/70">
+            <div
+              className={`md:col-span-2 h-[520px] md:h-[700px] overflow-hidden rounded-[28px] shadow-2xl shadow-black/70 transition-all duration-1000 ${
+                wildVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+              }`}
+            >
               <img
                 src="/hero-sebas.webp"
                 alt="Wild en movimiento"
                 loading="lazy"
-                className="w-full h-full object-cover block brightness-[0.78] transition-all duration-700 ease-out hover:scale-[1.03] hover:brightness-[0.92]"
+                className="w-full h-full object-cover block brightness-[0.78] transition-all duration-[1200ms] ease-out hover:scale-[1.05] hover:brightness-[0.92]"
               />
             </div>
 
             <div className="flex flex-col gap-6">
-              <div className="h-[300px] md:h-[337px] overflow-hidden rounded-[28px] shadow-2xl shadow-black/70">
+              <div
+                className={`h-[300px] md:h-[337px] overflow-hidden rounded-[28px] shadow-2xl shadow-black/70 transition-all duration-1000 ${
+                  wildVisible
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-10"
+                }`}
+                style={{ transitionDelay: "0.15s" }}
+              >
                 <img
                   src="/luxury-p.webp"
                   alt="Perfume Wild Collection"
                   loading="lazy"
-                  className="w-full h-full object-cover block brightness-[0.78] transition-all duration-700 ease-out hover:scale-[1.03] hover:brightness-[0.92]"
+                  className="w-full h-full object-cover block brightness-[0.78] transition-all duration-[1200ms] ease-out hover:scale-[1.05] hover:brightness-[0.92]"
                 />
               </div>
 
-              <div className="h-[300px] md:h-[337px] overflow-hidden rounded-[28px] shadow-2xl shadow-black/70">
+              <div
+                className={`h-[300px] md:h-[337px] overflow-hidden rounded-[28px] shadow-2xl shadow-black/70 transition-all duration-1000 ${
+                  wildVisible
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-10"
+                }`}
+                style={{ transitionDelay: "0.3s" }}
+              >
                 <img
                   src="/wild-team.webp"
                   alt="Equipo Wild Collection"
                   loading="lazy"
-                  className="w-full h-full object-cover block brightness-[0.78] transition-all duration-700 ease-out hover:scale-[1.03] hover:brightness-[0.92]"
+                  className="w-full h-full object-cover block brightness-[0.78] transition-all duration-[1200ms] ease-out hover:scale-[1.05] hover:brightness-[0.92]"
                 />
               </div>
             </div>
@@ -273,7 +308,7 @@ export default function CreaTuNegocioPage() {
       {/* SECCIÓN 4: TESTIMONIOS */}
       <section
         ref={testimonialsRef}
-        className="pt-12 md:pt-16 pb-16 md:pb-20 px-6 md:px-20 bg-[#050302]"
+        className="pt-12 md:pt-16 pb-16 md:pb-20 px-6 md:px-20 bg-[#050302] transition-all duration-700 ease-out"
       >
         <div className="max-w-6xl mx-auto">
           <p className="text-[10px] md:text-xs tracking-[0.5em] text-[#B8893B] mb-6 uppercase">
@@ -339,7 +374,7 @@ export default function CreaTuNegocioPage() {
       {/* SECCIÓN 5: FULL VISUAL / CTA */}
       <section
         ref={visualRef}
-        className="relative min-h-[85vh] px-6 md:px-20 flex items-center overflow-hidden bg-black"
+        className="relative min-h-[85vh] px-6 md:px-20 flex items-center overflow-hidden bg-black transition-all duration-700 ease-out"
       >
         <img
           src="/wild-night.webp"
@@ -370,8 +405,183 @@ export default function CreaTuNegocioPage() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <button className="bg-[#B8893B] text-black px-8 py-4 rounded-2xl text-[10px] tracking-[0.3em] uppercase hover:bg-[#F0D8A8] transition-all duration-500">
+            <button className="bg-[#B8893B] text-black px-8 py-4 rounded-2xl text-[10px] tracking-[0.3em] uppercase transition-all duration-500 hover:bg-[#F0D8A8] hover:scale-[1.03] active:scale-[0.97]">
               Empezar ahora
+            </button>
+          </a>
+        </div>
+      </section>
+
+      {/* SECCIÓN 6: ¿CÓMO EMPIEZAS? */}
+      <section
+        ref={stepsRef}
+        className="pt-20 md:pt-28 pb-16 md:pb-20 px-6 md:px-20 bg-black"
+      >
+        <div
+          className={`max-w-6xl mx-auto transition-all duration-1000 ${
+            stepsVisible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-10"
+          }`}
+        >
+          <p className="text-[10px] md:text-xs tracking-[0.5em] text-[#B8893B] mb-6 uppercase">
+            ¿CÓMO EMPIEZAS?
+          </p>
+
+          <h2 className="font-serif text-3xl md:text-5xl leading-[1.1] mb-16 max-w-[800px]">
+            Así comienza tu camino
+          </h2>
+
+          <div className="relative">
+            <div className="hidden md:block absolute top-4 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#B8893B]/40 to-transparent" />
+
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-12">
+              {[
+                [
+                  "CONOCES LA OPORTUNIDAD",
+                  "Solicitas información y entiendes cómo funciona el modelo.",
+                ],
+                [
+                  "RECIBES TU KIT",
+                  "Obtienes los productos y herramientas para comenzar.",
+                ],
+                [
+                  "COMIENZAS A VENDER",
+                  "Empiezas a compartir y ofrecer los productos.",
+                ],
+                [
+                  "GENERAS INGRESOS",
+                  "Obtienes ganancias a partir de las ventas que realizas.",
+                ],
+              ].map(([title, text]) => (
+                <div key={title} className="relative group">
+                  <div className="hidden md:block w-2 h-2 bg-[#B8893B] rounded-full mb-6" />
+
+                  <p className="text-[#B8893B] text-[10px] tracking-[0.35em] uppercase mb-4">
+                    • {title}
+                  </p>
+
+                  <p className="text-white/60 text-sm leading-[1.8] max-w-[220px]">
+                    {text}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECCIÓN 7: PREGUNTAS FRECUENTES */}
+      <section
+        ref={faqRef}
+        className="pt-16 md:pt-20 pb-16 md:pb-20 px-6 md:px-20 bg-[#050302]"
+      >
+        <div
+          className={`max-w-5xl mx-auto transition-all duration-1000 ${
+            faqVisible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-10"
+          }`}
+        >
+          <p className="text-[10px] md:text-xs tracking-[0.5em] text-[#B8893B] mb-6 uppercase">
+            RESOLVIENDO DUDAS
+          </p>
+
+          <h2 className="font-serif text-3xl md:text-5xl leading-[1.1] mb-6 max-w-[760px]">
+            ¿Todavía tienes dudas?
+          </h2>
+
+          <p className="text-white/60 text-sm md:text-lg leading-[1.8] mb-14 max-w-[620px]">
+            Todo gran comienzo suele venir acompañado de preguntas.
+          </p>
+
+          <div className="space-y-0 border-t border-[#B8893B]/15">
+            {[
+              [
+                "¿Necesito experiencia en ventas?",
+                "No. Muchas personas comienzan sin experiencia previa. El proceso incluye formación y acompañamiento para ayudarte a desarrollar habilidades comerciales paso a paso.",
+              ],
+              [
+                "¿Qué recibo al iniciar?",
+                "Recibes un kit con productos y herramientas para comenzar tu actividad, además de acceso a formación y acompañamiento.",
+              ],
+              [
+                "¿Cuánto puedo ganar?",
+                "Los resultados dependen de tu actividad, constancia y objetivos personales. Cada persona construye su propio ritmo y nivel de crecimiento.",
+              ],
+              [
+                "¿Tengo horarios fijos?",
+                "No. Puedes organizar tu actividad de acuerdo con tu disponibilidad y estilo de vida.",
+              ],
+              [
+                "¿Puedo hacerlo mientras estudio o trabajo?",
+                "Sí. Muchas personas comienzan de forma complementaria mientras mantienen otras actividades o responsabilidades.",
+              ],
+              [
+                "¿Cómo empiezo?",
+                "Solo necesitas solicitar información. Un asesor te explicará el funcionamiento, resolverá tus dudas y te ayudará a decidir si esta oportunidad es para ti.",
+              ],
+            ].map(([question, answer], index) => (
+              <div
+                key={question}
+                className={`border-b border-[#B8893B]/15 py-7 md:py-8 transition-all duration-700 ${
+                  faqVisible
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-10"
+                }`}
+                style={{ transitionDelay: `${index * 0.15}s` }}
+              >
+                <h3 className="font-serif text-xl md:text-2xl mb-3">
+                  {question}
+                </h3>
+
+                <p className="text-white/60 text-sm md:text-base leading-[1.8] max-w-[680px]">
+                  {answer}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECCIÓN 8: CIERRE FINAL */}
+      <section
+        ref={finalRef}
+        className="relative min-h-[95vh] px-6 md:px-20 flex items-center overflow-hidden bg-black"
+      >
+        <img
+          src="/wild-night.webp"
+          alt="Wild Collection decisión"
+          loading="lazy"
+          className="absolute inset-0 w-full h-full object-cover block brightness-[0.4]"
+        />
+
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/20" />
+
+        <div
+          className={`relative z-10 max-w-4xl transition-all duration-1000 ${
+            finalVisible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-10"
+          }`}
+        >
+          <h2 className="font-serif text-4xl md:text-7xl leading-[1.05] mb-8 max-w-[900px]">
+            Hay personas que pasan años esperando sentirse listas. <br />Y otras
+            que simplemente empiezan.
+          </h2>
+
+          <p className="text-white/70 text-sm md:text-lg leading-[1.8] mb-10 max-w-[600px]">
+            El momento perfecto rara vez llega. <br />
+            Lo que cambia una historia suele ser una decisión.
+          </p>
+
+          <a
+            href="https://api.whatsapp.com/send?phone=593963826845&text=Hola,%20quiero%20invertir%20con%20Wild%20Collection"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button className="bg-[#B8893B] text-black px-10 py-4 rounded-2xl text-[10px] tracking-[0.3em] uppercase transition-all duration-500 hover:bg-[#F0D8A8] hover:scale-[1.03] active:scale-[0.97]">
+              EMPEZAR AHORA
             </button>
           </a>
         </div>
