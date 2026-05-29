@@ -502,24 +502,24 @@ export default function CreaTuNegocioPage() {
                 "No. Muchas personas comienzan sin experiencia previa. El proceso incluye formación y acompañamiento para ayudarte a desarrollar habilidades comerciales paso a paso.",
               ],
               [
-                "¿Qué recibo al iniciar?",
+                "¿Qué incluye mi kit inicial?",
                 "Recibes un kit con productos y herramientas para comenzar tu actividad, además de acceso a formación y acompañamiento.",
               ],
               [
-                "¿Cuánto puedo ganar?",
-                "Los resultados dependen de tu actividad, constancia y objetivos personales. Cada persona construye su propio ritmo y nivel de crecimiento.",
+                "¿Qué aromas debería elegir?",
+                "Si lo deseas, podemos ayudarte a seleccionar referencias según tu presupuesto, tus objetivos y los aromas que suelen tener mejor salida.",
               ],
               [
-                "¿Tengo horarios fijos?",
-                "No. Puedes organizar tu actividad de acuerdo con tu disponibilidad y estilo de vida.",
+                "¿Cómo vendo mis primeros perfumes?",
+                "Te acompañamos desde el inicio con un proceso simple para que sepas cómo presentar los productos y dar tus primeros pasos con confianza.",
               ],
               [
-                "¿Puedo hacerlo mientras estudio o trabajo?",
-                "Sí. Muchas personas comienzan de forma complementaria mientras mantienen otras actividades o responsabilidades.",
+                "¿Cómo realizo el pago?",
+                "Puedes realizar tu pedido mediante transferencia bancaria, o puedes hacer tu pago al recibirlos.",
               ],
               [
-                "¿Cómo empiezo?",
-                "Solo necesitas solicitar información. Un asesor te explicará el funcionamiento, resolverá tus dudas y te ayudará a decidir si esta oportunidad es para ti.",
+                "¿Cómo puedo realizar mi pedido?",
+                "Puedes realizar tu pedido mediante transferencia bancaria o pago contra entrega, según tu ubicación.",
               ],
             ].map(([question, answer], index) => (
               <div
