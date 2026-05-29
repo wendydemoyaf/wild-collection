@@ -11,6 +11,8 @@ export default function CreaTuNegocioPage() {
   const [visualVisible, setVisualVisible] = useState(false);
 
   // REFERENCIAS DE SECCIONES
+  const [wildVisible, setWildVisible] = useState(false);
+  const wildRef = useRef(null);
   const heroRef = useRef(null);
   const sectionTwoRef = useRef(null);
   const testimonialsRef = useRef(null);
@@ -36,15 +38,22 @@ export default function CreaTuNegocioPage() {
           if (entry.target === visualRef.current) {
             setVisualVisible(entry.isIntersecting);
           }
+          if (entry.target === wildRef.current) {
+            setWildVisible(entry.isIntersecting);
+          }
         });
       },
-      { threshold: 0.1 }
+      {
+        threshold: 0,
+        rootMargin: "-80px 0px -80px 0px",
+      }
     );
 
     if (heroRef.current) observer.observe(heroRef.current);
     if (sectionTwoRef.current) observer.observe(sectionTwoRef.current);
     if (testimonialsRef.current) observer.observe(testimonialsRef.current);
     if (visualRef.current) observer.observe(visualRef.current);
+    if (wildRef.current) observer.observe(wildRef.current);
 
     return () => observer.disconnect();
   }, []);
@@ -131,7 +140,7 @@ export default function CreaTuNegocioPage() {
       {/* SECCIÓN 2: OPORTUNIDAD / BENEFICIOS */}
       <section
         ref={sectionTwoRef}
-        className="pt-32 md:pt-40 pb-20 md:pb-24 px-6 md:px-20 bg-[#050302]"
+        className="pt-20 md:pt-28 pb-10 md:pb-12 px-6 md:px-20 bg-[#050302]"
       >
         <div className="max-w-6xl mx-auto">
           <h2
@@ -208,8 +217,17 @@ export default function CreaTuNegocioPage() {
       </section>
 
       {/* SECCIÓN 3: WILD EN MOVIMIENTO */}
-      <section className="pt-32 md:pt-40 pb-24 md:pb-32 px-6 md:px-20 bg-black">
-        <div className="max-w-6xl mx-auto">
+      <section
+        ref={wildRef}
+        className="pt-20 md:pt-28 pb-8 md:pb-10 px-6 md:px-20 bg-black"
+      >
+        <div
+          className={`max-w-6xl mx-auto transition-all duration-1000 ${
+            wildVisible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-10"
+          }`}
+        >
           <p className="text-[10px] md:text-xs tracking-[0.5em] text-[#B8893B] mb-6 uppercase">
             WILD EN MOVIMIENTO
           </p>
@@ -255,7 +273,7 @@ export default function CreaTuNegocioPage() {
       {/* SECCIÓN 4: TESTIMONIOS */}
       <section
         ref={testimonialsRef}
-        className="pt-28 md:pt-36 pb-24 md:pb-32 px-6 md:px-20 bg-[#050302]"
+        className="pt-12 md:pt-16 pb-16 md:pb-20 px-6 md:px-20 bg-[#050302]"
       >
         <div className="max-w-6xl mx-auto">
           <p className="text-[10px] md:text-xs tracking-[0.5em] text-[#B8893B] mb-6 uppercase">
