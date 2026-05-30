@@ -62,7 +62,7 @@ export default function UneteWildPage() {
       {/* HERO */}
       <section
         ref={heroRef}
-        className="min-h-screen pt-18 md:pt-30 px-6 md:px-20 flex items-center"
+        className="min-h-screen pt-16 md:pt-26 px-6 md:px-20 flex items-center"
       >
         <div
           className={`max-w-5xl mx-auto text-center transition-all duration-1000 ${
