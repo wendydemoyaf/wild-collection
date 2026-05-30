@@ -60,7 +60,6 @@ export default function Home() {
             >
               QUIÉNES SOMOS
             </Link>
-
             <Link
               href="/invierte-con-wild"
               className="hover:text-[#F0D8A8] transition-all duration-500"
@@ -98,13 +97,6 @@ export default function Home() {
 
             <Link href="/invierte-con-wild" onClick={() => setMenuOpen(false)}>
               EMPRENDE CON WILD
-            </Link>
-
-            <Link
-              href="/unete-a-la-familia-wild"
-              onClick={() => setMenuOpen(false)}
-            >
-              TRABAJA CON NOSOTROS
             </Link>
 
             <Link href="/contacto" onClick={() => setMenuOpen(false)}>
