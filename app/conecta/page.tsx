@@ -2,10 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 
 const links = [
-  ["Instagram", "https://www.instagram.com/wildcollection1"],
-  ["TikTok", "https://www.tiktok.com/@wildcollection.ecu"],
-  ["Facebook", "https://www.facebook.com/wildcollectionparfums"],
-  ["Página web", "/"],
+  ["✆", "WhatsApp", "https://wa.me/593963826845"],
+  ["◎", "Instagram", "https://www.instagram.com/wildcollection1"],
+  ["f", "Facebook", "https://www.facebook.com/wildcollectionparfums"],
+  ["♪", "TikTok", "https://www.tiktok.com/@wildcollection.ecu"],
+  ["⌂", "Página web", "/"],
 ];
 
 export default function ConectaPage() {
@@ -35,14 +36,15 @@ export default function ConectaPage() {
         </p>
 
         <div className="space-y-3">
-          {links.map(([label, href]) => (
+          {links.map(([icon, label, href]) => (
             <Link
               key={label}
               href={href}
               target={href.startsWith("http") ? "_blank" : undefined}
-              className="block rounded-full border border-[#d8c1a4] bg-white/45 px-6 py-4 text-sm tracking-wide text-[#2a211d] shadow-sm transition hover:border-[#b48a56] hover:bg-[#fffaf4]"
+              className="flex items-center justify-center gap-3 rounded-full border border-[#d8c1a4] bg-white/45 px-6 py-4 text-sm tracking-wide text-[#2a211d] shadow-sm transition hover:border-[#b48a56] hover:bg-[#fffaf4]"
             >
-              {label}
+              <span className="text-[#b48a56] text-base">{icon}</span>
+              <span>{label}</span>
             </Link>
           ))}
         </div>
