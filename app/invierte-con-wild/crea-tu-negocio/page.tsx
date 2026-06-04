@@ -20,7 +20,7 @@ export default function CreaTuNegocioPage() {
   const wildRef = useRef(null);
   const testimonialsRef = useRef(null);
   const visualRef = useRef(null);
-  const stepsRef = useRef(null);
+  const stepsRef = useRef<HTMLDivElement | null>(null);
   const faqRef = useRef(null);
   const finalRef = useRef(null);
 
