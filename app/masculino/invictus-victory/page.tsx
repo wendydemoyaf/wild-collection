@@ -16,11 +16,17 @@ export default function InvictusVictoryPage() {
   return (
     <main className="min-h-screen text-white overflow-hidden animate-fade bg-[radial-gradient(circle_at_78%_38%,rgba(0,229,255,0.18),transparent_28%),radial-gradient(circle_at_85%_70%,rgba(107,53,255,0.18),transparent_30%),radial-gradient(circle_at_60%_60%,rgba(201,133,43,0.22),transparent_35%),linear-gradient(135deg,#02040A,#0B1A24)]">
       <header className="fixed top-0 left-0 w-full z-50 px-5 md:px-10 py-5 md:py-6 flex justify-between text-[10px] md:text-xs tracking-[0.25em] md:tracking-[0.35em] text-[#B8893A] bg-[#02040A]/35 backdrop-blur-md border-b border-[#B8893A]/20">
-        <Link href="/" className="transition-all duration-500 hover:text-[#EAF3F8] hover:drop-shadow-[0_0_10px_rgba(184,137,58,0.9)]">
+        <Link
+          href="/"
+          className="transition-all duration-500 hover:text-[#EAF3F8] hover:drop-shadow-[0_0_10px_rgba(184,137,58,0.9)]"
+        >
           WILD COLLECTION
         </Link>
 
-        <Link href="/masculino" className="transition-all duration-500 hover:text-[#EAF3F8] hover:drop-shadow-[0_0_10px_rgba(184,137,58,0.9)]">
+        <Link
+          href="/masculino"
+          className="transition-all duration-500 hover:text-[#EAF3F8] hover:drop-shadow-[0_0_10px_rgba(184,137,58,0.9)]"
+        >
           VOLVER
         </Link>
       </header>
@@ -78,7 +84,7 @@ export default function InvictusVictoryPage() {
 
         <div className="relative flex justify-center items-center group w-[320px] md:w-[360px] mx-auto mb-10 md:mb-0 md:mt-14">
           <img
-            src="/invictop.jpg"
+            src="/invicto.webp"
             alt="INVICTUS VICTORY"
             className="max-h-[60vh] md:max-h-[73vh] w-auto object-contain transition-all duration-1000 ease-[cubic-bezier(0.25,0.1,0.25,1)] group-hover:opacity-0 group-hover:scale-95 group-hover:blur-sm"
           />

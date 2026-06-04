@@ -37,7 +37,7 @@ export default function InvierteConWildPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 text-left">
             <div className="group relative min-h-[520px] rounded-[32px] overflow-hidden border border-[#B8893B]/20">
               <img
-                src="/invierte.jpg"
+                src="/invierte.webp"
                 alt="Crea tu negocio con Wild"
                 className="absolute inset-0 w-full h-full object-cover object-center opacity-80 scale-110 translate-x-20 group-hover:opacity-100 group-hover:scale-[1.15] group-hover:translate-x-16 transition-all duration-1000"
               />
@@ -66,7 +66,7 @@ export default function InvierteConWildPage() {
 
             <div className="group relative min-h-[520px] rounded-[32px] overflow-hidden border border-[#B8893B]/20">
               <img
-                src="/crece.jpg"
+                src="/crece.webp"
                 alt="Crece con Wild"
                 className="absolute inset-0 w-full h-full object-cover object-[center_60%] opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000"
               />

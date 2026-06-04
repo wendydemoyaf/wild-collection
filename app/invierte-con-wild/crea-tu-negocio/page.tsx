@@ -101,7 +101,7 @@ export default function CreaTuNegocioPage() {
         className="min-h-screen flex items-center pt-28 px-6 md:px-20 relative transition-all duration-700 ease-out"
       >
         <img
-          src="/hombre1.jpg"
+          src="/hombre1.webp"
           alt="Crea tu negocio con Wild"
           className="absolute inset-0 w-full h-full object-cover object-[58%_20%] opacity-80 md:translate-x-24"
         />

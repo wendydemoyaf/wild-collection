@@ -147,7 +147,7 @@ export default function QuienesSomosPage() {
             }`}
           >
             <img
-              src="/puerta.jpg"
+              src="/puerta.webp"
               alt="Oportunidad Wild"
               className="w-full h-full object-cover transition-transform duration-1000 hover:scale-[1.03]"
             />
@@ -293,7 +293,7 @@ export default function QuienesSomosPage() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div className="relative h-[420px] md:h-[540px] rounded-[36px] overflow-hidden border border-[#B8893B]/20 mt-4 md:mt-14">
             <img
-              src="/vision.jpg"
+              src="/vision.webp"
               alt="Nuestra visión"
               className="w-full h-full object-cover transition-transform duration-1000 hover:scale-[1.04]"
             />

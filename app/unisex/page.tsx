@@ -4,22 +4,22 @@ export default function UnisexPage() {
   const products = [
     {
       name: "AMBER OUD",
-      img: "/amber.jpeg",
+      img: "/amber.webp",
       link: "/unisex/amber-oud",
     },
     {
       name: "HONOR & GLORY",
-      img: "/honor.jpeg",
+      img: "/honor.webp",
       link: "/unisex/honor-glory",
     },
     {
       name: "KHAMRAH",
-      img: "/khamrah.jpeg",
+      img: "/khamrah.webp",
       link: "/unisex/khamrah",
     },
     {
       name: "OUD FOR GLORY",
-      img: "/oud.jpeg",
+      img: "/oud.webp",
       link: "/unisex/oud-for-glory",
     },
   ];

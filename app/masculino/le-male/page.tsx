@@ -16,11 +16,17 @@ export default function LeMalePage() {
   return (
     <main className="min-h-screen text-white overflow-hidden bg-[radial-gradient(circle_at_78%_38%,rgba(196,122,23,0.24),transparent_28%),radial-gradient(circle_at_85%_70%,rgba(138,63,10,0.26),transparent_32%),radial-gradient(circle_at_55%_60%,rgba(240,216,168,0.10),transparent_35%),linear-gradient(135deg,#120C07,#1A0E06,#050302)]">
       <header className="fixed top-0 left-0 w-full z-50 px-5 md:px-10 py-5 md:py-6 flex justify-between text-[10px] md:text-xs tracking-[0.25em] md:tracking-[0.35em] text-[#B8893B] bg-[#120C07]/60 backdrop-blur-md border-b border-[#B8893B]/20">
-        <Link href="/" className="transition-all duration-500 hover:text-[#F0D8A8] hover:drop-shadow-[0_0_10px_rgba(196,122,23,0.9)]">
+        <Link
+          href="/"
+          className="transition-all duration-500 hover:text-[#F0D8A8] hover:drop-shadow-[0_0_10px_rgba(196,122,23,0.9)]"
+        >
           WILD COLLECTION
         </Link>
 
-        <Link href="/masculino" className="transition-all duration-500 hover:text-[#F0D8A8] hover:drop-shadow-[0_0_10px_rgba(196,122,23,0.9)]">
+        <Link
+          href="/masculino"
+          className="transition-all duration-500 hover:text-[#F0D8A8] hover:drop-shadow-[0_0_10px_rgba(196,122,23,0.9)]"
+        >
           VOLVER
         </Link>
       </header>
@@ -74,7 +80,7 @@ export default function LeMalePage() {
 
         <div className="relative flex justify-center items-center group w-[320px] md:w-[360px] mx-auto mb-14 md:mb-10 md:mt-8">
           <img
-            src="/lemalep.jpg"
+            src="/lemale.webp"
             alt="LE MALE ELIXIR"
             className="max-h-[60vh] md:max-h-[70vh] w-auto object-contain transition-all duration-1000 group-hover:opacity-0 group-hover:scale-95 group-hover:blur-sm"
           />

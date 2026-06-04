@@ -32,9 +32,9 @@ export default function AsadPage() {
 
           <div className="bg-black/25 border border-[#C18A2B]/15 rounded-2xl px-5 md:px-6 py-4 md:py-3 mb-16 md:mb-20 backdrop-blur-sm w-full">
             <p className="text-sm md:text-base leading-relaxed text-[#F5E2B8]/75">
-              Poder árabe embotellado: especias oscuras, ámbar caliente,
-              humo suave y una presencia dominante. Una fragancia intensa,
-              seria y elegante, creada para imponer respeto sin decir una palabra.
+              Poder árabe embotellado: especias oscuras, ámbar caliente, humo
+              suave y una presencia dominante. Una fragancia intensa, seria y
+              elegante, creada para imponer respeto sin decir una palabra.
             </p>
           </div>
 
@@ -69,7 +69,7 @@ export default function AsadPage() {
 
         <div className="relative flex justify-center items-center group w-[320px] md:w-[360px] mx-auto mb-14 md:mb-10 md:mt-8">
           <img
-            src="/asadp.jpg"
+            src="/asad.webp"
             alt="ASAD"
             className="max-h-[60vh] md:max-h-[70vh] w-auto object-contain transition-all duration-1000 ease-[cubic-bezier(0.25,0.1,0.25,1)] group-hover:opacity-0 group-hover:scale-95 group-hover:blur-sm"
           />

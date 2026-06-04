@@ -15,7 +15,6 @@ export default function NinePMPage() {
 
   return (
     <main className="min-h-screen text-white overflow-hidden bg-[linear-gradient(135deg,#02040A,#050B1A,#02040A)]">
-      
       {/* HEADER */}
       <header className="fixed top-0 left-0 w-full z-50 px-5 md:px-10 py-5 md:py-6 flex justify-between text-[10px] md:text-xs tracking-[0.25em] md:tracking-[0.35em] text-[#C9D3E6] bg-[#02040A]/60 backdrop-blur-md border-b border-[#6B35FF]/20">
         <Link
@@ -35,10 +34,8 @@ export default function NinePMPage() {
 
       {/* CONTENT */}
       <section className="grid grid-cols-1 md:grid-cols-[0.95fr_1.05fr] pt-24 md:pt-24 px-6 md:px-20 gap-10 md:gap-6 items-center">
-
         {/* TEXTO */}
         <div className="max-w-2xl">
-
           {/* FIX: menos margen arriba en móvil */}
           <h1 className="font-serif text-4xl md:text-7xl leading-none mb-2">
             9PM
@@ -90,10 +87,9 @@ export default function NinePMPage() {
 
         {/* IMAGEN */}
         <div className="relative flex justify-center items-center group w-[300px] md:w-[360px] mx-auto mt-6 md:mt-8">
-
           {/* FIX: imagen aparece antes en móvil */}
           <img
-            src="/9pmp.jpg"
+            src="/9pmp.webp"
             alt="9PM"
             className="max-h-[55vh] md:max-h-[70vh] w-auto object-contain transition-all duration-1000 group-hover:opacity-0 group-hover:scale-95 group-hover:blur-sm"
           />
@@ -101,7 +97,6 @@ export default function NinePMPage() {
           {/* HOVER */}
           <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-700">
             <div className="w-full h-[55vh] md:h-[70vh] bg-black/40 border border-[#6B35FF]/20 rounded-3xl backdrop-blur-xl px-6 md:px-10 py-10 md:py-14 flex flex-col justify-center gap-2">
-
               <p className="text-center text-[11px] md:text-[13px] font-bold tracking-[0.25em] text-white/80 mb-4 uppercase">
                 Acordes principales
               </p>

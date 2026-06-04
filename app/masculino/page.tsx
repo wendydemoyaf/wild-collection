@@ -2,20 +2,34 @@ import Link from "next/link";
 
 export default function MasculinoPage() {
   const products = [
-    { name: "INVICTUS VICTORY", img: "/invictop.jpg", link: "/masculino/invictus-victory" },
-    { name: "ASAD", img: "/asadp.jpg", link: "/masculino/asad" },
-    { name: "9PM", img: "/9pmp.jpg", link: "/masculino/9pm" },
-    { name: "LE MALE ELIXIR", img: "/lemalep.jpg", link: "/masculino/le-male" },
+    {
+      name: "INVICTUS VICTORY",
+      img: "/invicto.webp",
+      link: "/masculino/invictus-victory",
+    },
+    { name: "ASAD", img: "/asad.webp", link: "/masculino/asad" },
+    { name: "9PM", img: "/9pmp.webp", link: "/masculino/9pm" },
+    {
+      name: "LE MALE ELIXIR",
+      img: "/lemale.webp",
+      link: "/masculino/le-male",
+    },
   ];
 
   return (
     <main className="min-h-screen text-white overflow-hidden bg-[radial-gradient(circle_at_50%_0%,rgba(184,137,59,0.14),transparent_32%),linear-gradient(135deg,#050302,#0B0704,#020202)]">
       <header className="fixed top-0 left-0 w-full z-50 px-5 md:px-10 py-5 md:py-6 flex justify-between text-[10px] md:text-xs tracking-[0.25em] md:tracking-[0.35em] text-[#B8893B] bg-black/45 backdrop-blur-md border-b border-[#B8893B]/20">
-        <Link href="/" className="transition-all duration-500 hover:text-[#F0D8A8] hover:drop-shadow-[0_0_10px_rgba(184,137,59,0.9)]">
+        <Link
+          href="/"
+          className="transition-all duration-500 hover:text-[#F0D8A8] hover:drop-shadow-[0_0_10px_rgba(184,137,59,0.9)]"
+        >
           WILD COLLECTION
         </Link>
 
-        <Link href="/" className="transition-all duration-500 hover:text-[#F0D8A8] hover:drop-shadow-[0_0_10px_rgba(184,137,59,0.9)]">
+        <Link
+          href="/"
+          className="transition-all duration-500 hover:text-[#F0D8A8] hover:drop-shadow-[0_0_10px_rgba(184,137,59,0.9)]"
+        >
           VOLVER
         </Link>
       </header>
