@@ -1,18 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const actions = [
-  {
-    name: "WhatsApp",
-    text: "Habla con nosotros",
-    href: "https://wa.me/593963826845",
-    icon: "💬",
-  },
+const socials = [
   {
     name: "Instagram",
     text: "Síguenos en Instagram",
     href: "https://www.instagram.com/wildcollection1",
-    icon: "📸",
+    icon: "◎",
   },
   {
     name: "TikTok",
@@ -27,96 +21,156 @@ const actions = [
     icon: "f",
   },
   {
-    name: "Página web",
-    text: "Explora Wild Collection",
-    href: "/",
-    icon: "✦",
+    name: "WhatsApp",
+    text: "Habla con nosotros",
+    href: "https://wa.me/593963826845",
+    icon: "✆",
   },
 ];
 
 export default function ConectaPage() {
   return (
-    <main className="min-h-screen bg-black text-white px-5 py-8 flex justify-center">
-      <section className="w-full max-w-md mx-auto">
-        <div className="text-center mb-8">
-          <p className="tracking-[0.35em] text-xs text-[#c8a45d] uppercase mb-5">
+    <main className="min-h-screen bg-black text-white">
+      <section className="relative min-h-[92vh] overflow-hidden flex items-end justify-center px-5 pb-12">
+        <Image
+          src="/luxury-p.webp"
+          alt="Perfume Wild Collection"
+          fill
+          priority
+          className="object-cover object-center opacity-80"
+        />
+
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(200,164,93,0.18),transparent_55%)]" />
+
+        <div className="relative z-10 w-full max-w-md text-center">
+          <Image
+            src="/logo.webp"
+            alt="Wild Collection"
+            width={140}
+            height={80}
+            priority
+            className="mx-auto mb-8 h-auto w-32"
+          />
+
+          <p className="mb-3 text-xs uppercase tracking-[0.35em] text-[#c8a45d]">
             Wild Collection
           </p>
 
-          <h1 className="font-serif text-3xl leading-tight mb-3">
-            Bienvenido a Wild Collection
+          <h1 className="font-serif text-4xl leading-tight mb-4">
+            Inspirados en algunos de los aromas más admirados del mundo.
           </h1>
 
-          <p className="text-white/70 text-sm mb-6">
-            Fragancias que dejan huella.
+          <Link
+            href="/quienes-somos"
+            className="mt-4 inline-flex rounded-full bg-[#c8a45d] px-7 py-3 text-sm font-medium text-black transition hover:bg-[#e0bd74]"
+          >
+            Explorar la marca
+          </Link>
+        </div>
+      </section>
+
+      <section className="px-5 py-14">
+        <div className="mx-auto max-w-md">
+          <h2 className="font-serif text-3xl mb-3">Conecta con Wild</h2>
+          <p className="mb-7 text-sm text-white/60">
+            Síguenos, descubre contenido y mantente cerca de nuestra comunidad.
           </p>
 
-          <div className="relative mx-auto w-36 h-36 rounded-full overflow-hidden border border-[#c8a45d]/30 shadow-[0_0_40px_rgba(200,164,93,0.18)]">
+          <div className="grid grid-cols-2 gap-3">
+            {socials.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                target="_blank"
+                className="group rounded-3xl border border-white/10 bg-white/[0.03] p-5 transition hover:border-[#c8a45d]/70 hover:bg-[#c8a45d]/10"
+              >
+                <span className="mb-4 flex h-10 w-10 items-center justify-center rounded-full border border-[#c8a45d]/40 text-[#c8a45d]">
+                  {item.icon}
+                </span>
+                <span className="block text-sm font-medium group-hover:text-[#c8a45d]">
+                  {item.name}
+                </span>
+                <span className="mt-1 block text-xs text-white/50">
+                  {item.text}
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-5 py-10">
+        <div className="mx-auto max-w-md">
+          <div className="relative mb-7 h-72 overflow-hidden rounded-[2rem] border border-white/10">
             <Image
-              src="/luxury-p.webp"
-              alt="Perfume Wild Collection"
+              src="/wild-team.webp"
+              alt="Comunidad Wild Collection"
               fill
               loading="lazy"
               className="object-cover"
             />
           </div>
+
+          <h2 className="font-serif text-3xl mb-3">Más que perfumes</h2>
+          <p className="text-white/65 leading-relaxed">
+            Construimos experiencias, relaciones y nuevas posibilidades.
+          </p>
         </div>
+      </section>
 
-        <div className="space-y-3 mb-8">
-          {actions.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              target={item.href.startsWith("http") ? "_blank" : undefined}
-              className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-4 transition hover:border-[#c8a45d]/70 hover:bg-[#c8a45d]/10"
-            >
-              <span className="flex h-10 w-10 items-center justify-center rounded-full border border-[#c8a45d]/30 text-[#c8a45d]">
-                {item.icon}
-              </span>
-
-              <span>
-                <span className="block text-sm font-medium group-hover:text-[#c8a45d] transition">
-                  {item.name}
-                </span>
-                <span className="block text-xs text-white/55">{item.text}</span>
-              </span>
-            </Link>
-          ))}
-        </div>
-
-        <div className="rounded-3xl border border-[#c8a45d]/25 bg-[#c8a45d]/[0.06] p-6 mb-5">
-          <h2 className="font-serif text-xl mb-2">
+      <section className="px-5 py-10">
+        <div className="mx-auto max-w-md rounded-[2rem] border border-[#c8a45d]/25 bg-[#c8a45d]/[0.06] p-7">
+          <h2 className="font-serif text-2xl mb-3">
             ¿Quieres comprar nuevamente?
           </h2>
-          <p className="text-sm text-white/65 mb-5">
-            Escríbenos y te ayudamos a encontrar tu próxima fragancia.
+          <p className="mb-6 text-sm text-white/65">
+            Escríbenos y encuentra tu próxima fragancia.
           </p>
+
           <Link
             href="https://wa.me/593963826845"
             target="_blank"
-            className="inline-flex w-full justify-center rounded-full bg-[#c8a45d] px-5 py-3 text-sm font-medium text-black hover:bg-[#e0bd74] transition"
+            className="inline-flex w-full justify-center rounded-full bg-[#c8a45d] px-6 py-3 text-sm font-medium text-black transition hover:bg-[#e0bd74]"
           >
             Comprar por WhatsApp
           </Link>
         </div>
+      </section>
 
-        <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 mb-8">
-          <h2 className="font-serif text-xl mb-2">
-            ¿Te gustaría generar ingresos con Wild?
+      <section className="px-5 py-10">
+        <div className="mx-auto max-w-md">
+          <div className="relative mb-7 h-72 overflow-hidden rounded-[2rem] border border-white/10">
+            <Image
+              src="/wild-experience.webp"
+              alt="Experiencia Wild Collection"
+              fill
+              loading="lazy"
+              className="object-cover"
+            />
+          </div>
+
+          <h2 className="font-serif text-3xl mb-4">
+            Algunas personas llegaron por un perfume.
           </h2>
-          <p className="text-sm text-white/60 mb-5">
-            Conoce cómo empezar una actividad propia junto a Wild Collection.
+
+          <p className="mb-7 text-white/65 leading-relaxed">
+            Y terminaron encontrando algo mucho más grande.
           </p>
+
           <Link
             href="/invierte-con-wild"
-            className="inline-flex w-full justify-center rounded-full border border-[#c8a45d]/60 px-5 py-3 text-sm text-[#c8a45d] hover:bg-[#c8a45d]/10 transition"
+            className="inline-flex w-full justify-center rounded-full border border-[#c8a45d]/70 px-6 py-3 text-sm text-[#c8a45d] transition hover:bg-[#c8a45d]/10"
           >
             Conocer la oportunidad
           </Link>
         </div>
+      </section>
 
-        <p className="text-center text-xs tracking-[0.2em] uppercase text-white/40">
-          Más que perfumes. Una experiencia Wild.
+      <section className="px-5 pb-12 pt-6 text-center">
+        <p className="font-serif text-2xl">Más que perfumes.</p>
+        <p className="mt-2 text-xs uppercase tracking-[0.3em] text-white/40">
+          Una experiencia Wild.
         </p>
       </section>
     </main>
