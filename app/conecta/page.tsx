@@ -1,25 +1,24 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Instagram, Facebook, Send, Globe, Music2 } from "lucide-react";
 
 const links = [
-  { name: "WhatsApp", href: "https://wa.me/593963826845", icon: Send },
+  { name: "WhatsApp", href: "https://wa.me/593963826845", icon: "☏" },
   {
     name: "Instagram",
     href: "https://www.instagram.com/wildcollection1",
-    icon: Instagram,
+    icon: "◎",
   },
   {
     name: "Facebook",
     href: "https://www.facebook.com/wildcollectionparfums",
-    icon: Facebook,
+    icon: "f",
   },
   {
     name: "TikTok",
     href: "https://www.tiktok.com/@wildcollection.ecu",
-    icon: Music2,
+    icon: "♪",
   },
-  { name: "Página web", href: "/", icon: Globe },
+  { name: "Página web", href: "/", icon: "○" },
 ];
 
 export default function ConectaPage() {
@@ -40,25 +39,19 @@ export default function ConectaPage() {
         </p>
 
         <div className="space-y-3">
-          {links.map((item) => {
-            const Icon = item.icon;
-
-            return (
-              <Link
-                key={item.name}
-                href={item.href}
-                target={item.href.startsWith("http") ? "_blank" : undefined}
-                className="group flex items-center justify-center gap-3 rounded-full border border-[#d8c1a4] bg-white/45 px-6 py-4 text-sm tracking-wide text-[#2a211d] shadow-sm transition hover:border-[#b48a56] hover:bg-[#fffaf4]"
-              >
-                <Icon
-                  size={18}
-                  strokeWidth={1.6}
-                  className="text-[#1c1714] transition group-hover:text-[#b48a56]"
-                />
-                <span>{item.name}</span>
-              </Link>
-            );
-          })}
+          {links.map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              target={item.href.startsWith("http") ? "_blank" : undefined}
+              className="group flex items-center justify-center gap-3 rounded-full border border-[#d8c1a4] bg-white/45 px-6 py-4 text-sm tracking-wide text-[#2a211d] shadow-sm transition hover:border-[#b48a56] hover:bg-[#fffaf4]"
+            >
+              <span className="text-lg leading-none text-[#1c1714] group-hover:text-[#b48a56]">
+                {item.icon}
+              </span>
+              <span>{item.name}</span>
+            </Link>
+          ))}
         </div>
 
         <p className="mt-12 text-[10px] uppercase tracking-[0.35em] text-[#b48a56]">
