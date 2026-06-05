@@ -22,7 +22,7 @@ export default function Home() {
     return (
       <div className="fixed inset-0 bg-black z-[9999] flex items-center justify-center">
         <img
-          src="/logo.png"
+          src="/logo.webp"
           alt="WILD COLLECTION"
           className="w-44 md:w-64 opacity-25 logo-clock object-contain"
         />
