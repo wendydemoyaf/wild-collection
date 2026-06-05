@@ -1,24 +1,34 @@
 import Image from "next/image";
 import Link from "next/link";
 
+const Icon = ({ type }: { type: string }) => (
+  <span className="flex h-5 w-5 items-center justify-center text-[#1c1714] group-hover:text-[#b48a56]">
+    {type === "wa" && "◌"}
+    {type === "ig" && "◎"}
+    {type === "fb" && "f"}
+    {type === "tt" && "♪"}
+    {type === "web" && "⌁"}
+  </span>
+);
+
 const links = [
-  { name: "WhatsApp", href: "https://wa.me/593963826845", icon: "☏" },
+  { name: "WhatsApp", href: "https://wa.me/593963826845", icon: "wa" },
   {
     name: "Instagram",
     href: "https://www.instagram.com/wildcollection1",
-    icon: "◎",
+    icon: "ig",
   },
   {
     name: "Facebook",
     href: "https://www.facebook.com/wildcollectionparfums",
-    icon: "f",
+    icon: "fb",
   },
   {
     name: "TikTok",
     href: "https://www.tiktok.com/@wildcollection.ecu",
-    icon: "♪",
+    icon: "tt",
   },
-  { name: "Página web", href: "/", icon: "○" },
+  { name: "Página web", href: "/", icon: "web" },
 ];
 
 export default function ConectaPage() {
@@ -28,13 +38,13 @@ export default function ConectaPage() {
         <Image
           src="/logo.webp"
           alt="Wild Collection"
-          width={160}
+          width={170}
           height={100}
           priority
-          className="mx-auto mb-10 h-auto w-40"
+          className="mx-auto mb-12 h-auto w-40"
         />
 
-        <p className="mb-12 text-xs uppercase tracking-[0.45em] text-[#b48a56]">
+        <p className="mb-12 text-xs uppercase tracking-[0.48em] text-[#b48a56]">
           Wild Collection
         </p>
 
@@ -44,12 +54,11 @@ export default function ConectaPage() {
               key={item.name}
               href={item.href}
               target={item.href.startsWith("http") ? "_blank" : undefined}
-              className="group flex items-center justify-center gap-3 rounded-full border border-[#d8c1a4] bg-white/45 px-6 py-4 text-sm tracking-wide text-[#2a211d] shadow-sm transition hover:border-[#b48a56] hover:bg-[#fffaf4]"
+              className="group grid grid-cols-[24px_1fr_24px] items-center rounded-full border border-[#d9c5aa] bg-white/35 px-5 py-4 text-sm tracking-[0.16em] text-[#1c1714] transition hover:border-[#b48a56] hover:bg-white/60"
             >
-              <span className="text-lg leading-none text-[#1c1714] group-hover:text-[#b48a56]">
-                {item.icon}
-              </span>
+              <Icon type={item.icon} />
               <span>{item.name}</span>
+              <span />
             </Link>
           ))}
         </div>
