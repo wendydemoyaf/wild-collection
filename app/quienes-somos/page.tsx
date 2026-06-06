@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect, useRef, useState } from "react";
 
 function CountUp({ end, prefix = "" }: { end: number; prefix?: string }) {
@@ -74,8 +73,10 @@ export default function QuienesSomosPage() {
         <a href="/">VOLVER</a>
       </header>
 
-      {/* SECCIÓN 1 */}
-      <section className="min-h-[650px] md:h-screen relative flex items-center justify-center text-center px-6">
+      {/* ===================================== */}
+      {/* QUIÉNES SOMOS - HERO */}
+      {/* ===================================== */}
+      <section className="min-h-[560px] md:h-screen relative flex items-center justify-center text-center px-6 pt-20">
         <div className="absolute inset-0 bg-black">
           <div className="w-full h-full bg-[radial-gradient(circle_at_50%_35%,rgba(184,137,59,0.22),transparent_35%),linear-gradient(180deg,rgba(0,0,0,0.35),#000)]" />
         </div>
@@ -99,15 +100,17 @@ export default function QuienesSomosPage() {
           </p>
 
           <a href="/invierte-con-wild">
-            <button className="bg-[#B8893B] text-black px-10 py-4 rounded-2xl text-[10px] tracking-[0.28em] uppercase hover:bg-[#F0D8A8] transition">
+            <button className="relative overflow-hidden rounded-full border border-[#B8893B]/60 bg-[#B8893B]/15 px-10 py-4 text-[10px] tracking-[0.28em] uppercase text-[#F0D8A8] hover:bg-[#B8893B]/30 hover:border-[#F0D8A8] hover:text-white transition-all duration-500 shadow-[0_0_35px_rgba(184,137,59,0.16)]">
               Descubrir oportunidades
             </button>
           </a>
         </div>
       </section>
 
-      {/* SECCIÓN 2 */}
-      <section className="pt-16 pb-20 md:py-52 px-6 md:px-20 bg-[#050302]">
+      {/* ===================================== */}
+      {/* NUESTRA FILOSOFÍA */}
+      {/* ===================================== */}
+      <section className="pt-8 pb-20 md:pt-24 md:pb-24 px-6 md:px-20 bg-[#050302]">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-14 md:gap-20">
           <div
             ref={filosofia.ref}
@@ -149,14 +152,17 @@ export default function QuienesSomosPage() {
             <img
               src="/puerta.webp"
               alt="Oportunidad Wild"
-              className="w-full h-full object-cover transition-transform duration-1000 hover:scale-[1.03]"
+              className="w-full h-full object-cover scale-105 animate-[identityImage_9s_ease-in-out_infinite_alternate]"
             />
           </div>
         </div>
       </section>
 
       {/* SECCIÓN 3 */}
-      <section className="py-20 md:py-28 px-6 md:px-14 bg-black">
+      {/* ===================================== */}
+      {/* ESPÍRITU WILD */}
+      {/* ===================================== */}
+      <section className="pt-8 pb-20 md:pt-16 md:pb-20 px-6 md:px-14 bg-black">
         <div ref={esencia.ref} className="max-w-7xl mx-auto">
           <div
             className={`text-center mb-14 md:mb-28 transition-all duration-1000 ease-out ${
@@ -176,7 +182,7 @@ export default function QuienesSomosPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
             <div
-              className={`bg-[#0B0704] border border-[#B8893B]/20 rounded-3xl p-9 hover:border-[#B8893B]/60 hover:scale-[1.02] transition-all duration-1000 ease-out ${
+              className={`bg-[#0B0704] border border-[#B8893B]/20 rounded-3xl p-9 hover:border-[#B8893B]/60 hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(184,137,59,0.10)] transition-all duration-1000 ease-out ${
                 esencia.isVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-10"
@@ -205,7 +211,7 @@ export default function QuienesSomosPage() {
             </div>
 
             <div
-              className={`bg-[#0B0704] border border-[#B8893B]/20 rounded-3xl p-10 hover:border-[#B8893B]/60 hover:scale-[1.02] transition-all duration-1000 delay-300 ease-out ${
+              className={`bg-[#0B0704] border border-[#B8893B]/20 rounded-3xl p-10 hover:border-[#B8893B]/60 hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(184,137,59,0.10)] hover:shadow-[0_0_40px_rgba(184,137,59,0.10)] hover:shadow-[0_0_40px_rgba(184,137,59,0.10)] hover:shadow-[0_0_40px_rgba(184,137,59,0.10)] hover:shadow-[0_0_40px_rgba(184,137,59,0.10)] hover:shadow-[0_0_40px_rgba(184,137,59,0.10)] transition-all duration-1000 delay-300 ease-out ${
                 esencia.isVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-10"
@@ -222,8 +228,10 @@ export default function QuienesSomosPage() {
         </div>
       </section>
 
-      {/* SECCIÓN 4 */}
-      <section className="py-20 md:py-36 px-6 md:px-20 bg-[#050302] text-center relative overflow-hidden">
+      {/* ===================================== */}
+      {/* IMPACTO / NÚMEROS */}
+      {/* ===================================== */}
+      <section className="py-20 md:py-24 px-6 md:px-20 bg-[#050302] text-center relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 w-[520px] h-[520px] -translate-x-1/2 -translate-y-1/2 bg-[#B8893B]/10 blur-[160px] rounded-full" />
 
         <div
@@ -248,9 +256,9 @@ export default function QuienesSomosPage() {
             descubriendo que el mundo es más grande de lo que les enseñaron
           </p>
 
-          <div className="space-y-8">
-            <div className="border-b border-[#B8893B]/20 pb-6">
-              <p className="font-serif text-[#B8893B] text-5xl md:text-6xl mb-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-14">
+            <div className="bg-[#0B0704] border border-[#B8893B]/20 rounded-3xl p-8 hover:border-[#B8893B]/60 hover:shadow-[0_0_40px_rgba(184,137,59,0.12)] transition-all duration-700">
+              <p className="font-serif text-[#B8893B] text-6xl md:text-7xl mb-2">
                 <CountUp end={100000} prefix="+" />
               </p>
               <p className="text-[11px] tracking-[0.08em] text-white/50">
@@ -258,8 +266,8 @@ export default function QuienesSomosPage() {
               </p>
             </div>
 
-            <div className="border-b border-[#B8893B]/20 pb-6">
-              <p className="font-serif text-[#B8893B] text-5xl md:text-6xl mb-2">
+            <div className="bg-[#0B0704] border border-[#B8893B]/20 rounded-3xl p-8 hover:border-[#B8893B]/60 hover:shadow-[0_0_40px_rgba(184,137,59,0.12)] transition-all duration-700">
+              <p className="font-serif text-[#B8893B] text-6xl md:text-7xl mb-2">
                 <CountUp end={300} prefix="+" />
               </p>
               <p className="text-[11px] tracking-[0.08em] text-white/50">
@@ -267,8 +275,8 @@ export default function QuienesSomosPage() {
               </p>
             </div>
 
-            <div className="border-b border-[#B8893B]/20 pb-6">
-              <p className="font-serif text-[#B8893B] text-5xl md:text-6xl mb-2">
+            <div className="bg-[#0B0704] border border-[#B8893B]/20 rounded-3xl p-8 hover:border-[#B8893B]/60 hover:shadow-[0_0_40px_rgba(184,137,59,0.12)] transition-all duration-700">
+              <p className="font-serif text-[#B8893B] text-6xl md:text-7xl mb-2">
                 <CountUp end={200} prefix="+" />
               </p>
               <p className="text-[11px] tracking-[0.08em] text-white/50">
@@ -276,10 +284,11 @@ export default function QuienesSomosPage() {
               </p>
             </div>
 
-            <div>
-              <p className="font-serif text-[#B8893B] text-5xl md:text-6xl mb-2">
+            <div className="bg-[#0B0704] border border-[#B8893B]/20 rounded-3xl p-8 hover:border-[#B8893B]/60 hover:shadow-[0_0_40px_rgba(184,137,59,0.12)] transition-all duration-700">
+              <p className="font-serif text-[#B8893B] text-6xl md:text-7xl mb-2">
                 1 propósito
               </p>
+
               <p className="text-[11px] tracking-[0.08em] text-white/50">
                 Expandir posibilidades
               </p>
@@ -288,14 +297,16 @@ export default function QuienesSomosPage() {
         </div>
       </section>
 
-      {/* SECCIÓN 5 */}
+      {/* ===================================== */}
+      {/* NUESTRA VISIÓN */}
+      {/* ===================================== */}
       <section className="py-20 md:py-28 px-6 md:px-20 bg-black">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div className="relative h-[420px] md:h-[540px] rounded-[36px] overflow-hidden border border-[#B8893B]/20 mt-4 md:mt-14">
             <img
               src="/vision.webp"
               alt="Nuestra visión"
-              className="w-full h-full object-cover transition-transform duration-1000 hover:scale-[1.04]"
+              className="w-full h-full object-cover scale-105 animate-[identityImage_9s_ease-in-out_infinite_alternate]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
           </div>
@@ -337,8 +348,10 @@ export default function QuienesSomosPage() {
         </div>
       </section>
 
-      {/* SECCIÓN 6 */}
-      <section className="py-20 md:py-44 px-6 md:px-20 bg-[#050302] text-center relative overflow-hidden">
+      {/* ===================================== */}
+      {/* CIERRE / LLAMADO FINAL */}
+      {/* ===================================== */}
+      <section className="py-20 md:py-28 px-6 md:px-20 bg-[#050302] text-center relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 w-[520px] h-[520px] -translate-x-1/2 -translate-y-1/2 bg-[#B8893B]/10 blur-[160px] rounded-full" />
 
         <div
@@ -369,13 +382,13 @@ export default function QuienesSomosPage() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="/#colecciones">
-              <button className="bg-[#B8893B] text-black px-9 py-4 rounded-2xl text-[10px] tracking-[0.25em] uppercase hover:bg-[#F0D8A8] transition">
+              <button className="relative overflow-hidden rounded-full border border-[#B8893B]/60 bg-[#B8893B]/15 px-9 py-4 text-[10px] tracking-[0.25em] uppercase text-[#F0D8A8] hover:bg-[#B8893B]/30 hover:border-[#F0D8A8] hover:text-white transition-all duration-500 shadow-[0_0_35px_rgba(184,137,59,0.16)]">
                 Explorar perfumes
               </button>
             </a>
 
             <a href="/invierte-con-wild">
-              <button className="border border-[#B8893B]/40 text-[#F0D8A8] px-9 py-4 rounded-2xl text-[10px] tracking-[0.25em] uppercase hover:bg-[#B8893B]/10 transition">
+              <button className="rounded-full border border-[#B8893B]/40 text-[#F0D8A8] px-9 py-4 text-[10px] tracking-[0.25em] uppercase hover:bg-[#B8893B]/10 hover:border-[#B8893B]/70 transition-all duration-500">
                 DESCUBRIR LA OPORTUNIDAD
               </button>
             </a>

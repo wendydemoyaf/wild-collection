@@ -147,7 +147,7 @@ export default function UneteWildPage() {
         <div className="max-w-7xl mx-auto">
           <div className="h-[380px] md:h-[680px] rounded-[32px] overflow-hidden border border-[#B8893B]/20 shadow-2xl shadow-black/60">
             <img
-              src="/wild-walk.webp"
+              src="/reunion.webp"
               alt="Comunidad Wild Collection en movimiento"
               className="w-full h-full object-cover object-center opacity-90 hover:scale-[1.04] transition-all duration-[1200ms]"
             />
@@ -212,7 +212,7 @@ export default function UneteWildPage() {
         <div className="max-w-4xl mx-auto">
           <div className="h-[260px] md:h-[430px] rounded-[32px] overflow-hidden border border-[#B8893B]/20 shadow-2xl shadow-black/60">
             <img
-              src="/wild-experience.webp"
+              src="/experience.webp"
               alt="Experiencias Wild Collection"
               className="w-full h-full object-cover object-center opacity-90 hover:scale-[1.04] transition-all duration-[1200ms]"
             />

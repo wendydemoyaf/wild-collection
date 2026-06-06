@@ -19,7 +19,8 @@ export default function InvierteConWildPage() {
         </Link>
       </header>
 
-      <section className="min-h-screen pt-24 md:pt-28 pb-10 px-6 md:px-20 flex items-start md:items-center bg-black">
+      <section className="min-h-screen pt-28 md:pt-32 pb-20 px-6 md:px-20 flex items-start md:items-center bg-[radial-gradient(circle_at_50%_0%,rgba(184,137,59,0.16),transparent_35%),linear-gradient(180deg,#050302,#000)]">
+        c
         <div className="max-w-7xl mx-auto w-full text-center">
           <p className="text-[10px] md:text-xs tracking-[0.55em] text-[#B8893B] mb-6 uppercase">
             Invierte con Wild
@@ -36,8 +37,9 @@ export default function InvierteConWildPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 text-left">
             <div className="group relative min-h-[520px] rounded-[32px] overflow-hidden border border-[#B8893B]/20">
+              {/* src="/invierte.webp esa era la anterior*/}
               <img
-                src="/invierte.webp"
+                src="/creatn.webp"
                 alt="Crea tu negocio con Wild"
                 className="absolute inset-0 w-full h-full object-cover object-center opacity-80 scale-110 translate-x-20 group-hover:opacity-100 group-hover:scale-[1.15] group-hover:translate-x-16 transition-all duration-1000"
               />
@@ -65,14 +67,13 @@ export default function InvierteConWildPage() {
             </div>
 
             <div className="group relative min-h-[520px] rounded-[32px] overflow-hidden border border-[#B8893B]/20">
+              {/* src="/crece.webp esa era la anterior*/}
               <img
-                src="/crece.webp"
+                src="/sywventa.webp"
                 alt="Crece con Wild"
-                className="absolute inset-0 w-full h-full object-cover object-[center_60%] opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000"
+                className="absolute inset-0 w-full h-full object-cover object-[center_60%] opacity-95 brightness-[1.22] contrast-[1.05] saturate-[1.06] group-hover:opacity-100 group-hover:brightness-[1.25] group-hover:scale-105 transition-all duration-1000"
               />
-
               <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.80)_0%,rgba(0,0,0,0.55)_45%,rgba(0,0,0,0.15)_100%)] group-hover:bg-[linear-gradient(90deg,rgba(0,0,0,0.70)_0%,rgba(0,0,0,0.45)_45%,rgba(0,0,0,0.10)_100%)] transition-all duration-700" />
-
               <div className="relative z-10 h-full flex flex-col justify-end p-8 md:p-10">
                 <h2 className="font-serif text-3xl md:text-5xl leading-[1.1] mb-6">
                   Crece <br />

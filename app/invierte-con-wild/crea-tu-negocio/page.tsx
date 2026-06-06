@@ -101,7 +101,7 @@ export default function CreaTuNegocioPage() {
         className="min-h-screen flex items-center pt-28 px-6 md:px-20 relative transition-all duration-700 ease-out"
       >
         <img
-          src="/hombre1.webp"
+          src="/sywventa2.webp"
           alt="Crea tu negocio con Wild"
           className="absolute inset-0 w-full h-full object-cover object-[58%_20%] opacity-80 md:translate-x-24"
         />
@@ -275,10 +275,10 @@ export default function CreaTuNegocioPage() {
               }`}
             >
               <img
-                src="/hero-sebas.webp"
+                src="/sebas-walk.webp"
                 alt="Wild en movimiento"
                 loading="lazy"
-                className="w-full h-full object-cover block brightness-[0.78] transition-all duration-[1200ms] ease-out hover:scale-[1.05] hover:brightness-[0.92]"
+                className="w-full h-full object-cover object-[95%_center] block brightness-[0.78] transition-all duration-[1200ms] ease-out hover:scale-[1.05] hover:brightness-[0.92]"
               />
             </div>
 
@@ -292,10 +292,10 @@ export default function CreaTuNegocioPage() {
                 style={{ transitionDelay: "0.15s" }}
               >
                 <img
-                  src="/luxury-p.webp"
+                  src="/invicto.webp"
                   alt="Perfume Wild Collection"
                   loading="lazy"
-                  className="w-full h-full object-cover block brightness-[0.78] transition-all duration-[1200ms] ease-out hover:scale-[1.05] hover:brightness-[0.92]"
+                  className="w-full h-full object-cover object-top block brightness-[0.9] transition-all duration-[1200ms] ease-out hover:scale-[1.03] hover:brightness-[1]"
                 />
               </div>
 
@@ -308,10 +308,10 @@ export default function CreaTuNegocioPage() {
                 style={{ transitionDelay: "0.3s" }}
               >
                 <img
-                  src="/wild-team.webp"
+                  src="/wild-team3.webp"
                   alt="Equipo Wild Collection"
                   loading="lazy"
-                  className="w-full h-full object-cover block brightness-[0.78] transition-all duration-[1200ms] ease-out hover:scale-[1.05] hover:brightness-[0.92]"
+                  className="w-full h-full object-cover object-right block brightness-[0.9] transition-all duration-[1200ms] ease-out hover:scale-[1.03] hover:brightness-[1]"
                 />
               </div>
             </div>
@@ -391,7 +391,7 @@ export default function CreaTuNegocioPage() {
         className="relative min-h-[85vh] px-6 md:px-20 flex items-center overflow-hidden bg-black transition-all duration-700 ease-out"
       >
         <img
-          src="/wild-night.webp"
+          src="/team-night.webp"
           alt="Wild Collection movimiento"
           loading="lazy"
           className="absolute inset-0 w-full h-full object-cover block brightness-[0.55]"
@@ -565,14 +565,14 @@ export default function CreaTuNegocioPage() {
       >
         {/* imagen fondo */}
         <img
-          src="/wild-night.webp"
+          src="/team-nigth.webp"
           alt="Wild Collection decisión"
           loading="lazy"
-          className="absolute inset-0 w-full h-full object-cover block brightness-[0.45]"
+          className="absolute inset-0 w-full h-full object-cover block brightness-[0.75]"
         />
 
         {/* overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-black/15" />
 
         {/* contenido */}
         <div

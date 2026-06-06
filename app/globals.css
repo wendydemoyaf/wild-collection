@@ -123,3 +123,21 @@ body {
 html {
   scroll-behavior: smooth;
 }
+@keyframes identityImage {
+  from {
+    transform: scale(1.03);
+  }
+
+  to {
+    transform: scale(1.1);
+  }
+}
+@keyframes identityImageStrong {
+  from {
+    transform: scale(1.05);
+  }
+
+  to {
+    transform: scale(1.16);
+  }
+}
