@@ -2,14 +2,26 @@ import Link from "next/link";
 
 export default function FemeninoPage() {
   const products = [
-    { name: "PRADA CANDY", img: "/fem1.webp", link: "/femenino/prada-candy" },
-    { name: "SCANDAL", img: "/fem3.webp", link: "/femenino/scandal" },
+    {
+      name: "PRADA CANDY",
+      img: "/candy-lujo.webp",
+      link: "/femenino/prada-candy",
+    },
+    {
+      name: "SCANDAL",
+      img: "/scandal-primer-plano.webp",
+      link: "/femenino/scandal",
+    },
     {
       name: "SWEET LIKE CANDY",
-      img: "/fem2.webp",
+      img: "/sweet-primer-plano.webp",
       link: "/femenino/sweet-like-candy",
     },
-    { name: "BORN IN ROMA", img: "/fem4.webp", link: "/femenino/born-in-roma" },
+    {
+      name: "BORN IN ROMA",
+      img: "/valentino-femenino.webp",
+      link: "/femenino/born-in-roma",
+    },
   ];
 
   return (

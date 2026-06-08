@@ -37,14 +37,15 @@ export default function PradaCandyPage() {
             </h1>
 
             <p className="text-[#F7E9DF]/80 text-base md:text-lg mt-2 mb-8 md:mb-12">
-              Dulce & Sofisticada.
+              Irresistiblemente tú
             </p>
 
             <div className="bg-black/25 border border-[#D4145A]/20 rounded-2xl px-5 md:px-6 py-4 md:py-3 mb-12 md:mb-14 backdrop-blur-sm w-full">
               <p className="text-sm md:text-base leading-relaxed text-[#F7E9DF]/85">
-                Imagina entrar a una pastelería elegante en París mientras el
-                aire se llena de caramelo caliente y vainilla cremosa. Dulce,
-                sofisticado y tan adictivo que provoca quedarse un poco más.
+                Imagina una tarde donde todo parece más ligero, las risas llegan
+                con facilidad y la confianza nace de ser exactamente quien eres.
+                Una fragancia dulce, elegante y divertida que convierte cada
+                momento en algo especial.
               </p>
             </div>
 
@@ -81,7 +82,7 @@ export default function PradaCandyPage() {
         <div className="flex justify-center mx-auto mb-14 md:mb-10 md:mt-8">
           <div className="relative inline-block group">
             <img
-              src="/fem1.webp"
+              src="/candy-primer-plano.webp"
               alt="CANDY"
               className="block max-h-[60vh] md:max-h-[70vh] w-auto max-w-full object-contain rounded-3xl transition-all duration-1000 group-hover:opacity-0 group-hover:scale-95 group-hover:blur-sm"
             />

@@ -37,14 +37,15 @@ export default function BornInRomaPage() {
             </h1>
 
             <p className="text-[#C2185B]/80 text-base md:text-lg mt-2 mb-8 md:mb-12">
-              Chic & Audaz.
+              Estilo que deja huella
             </p>
 
             <div className="bg-white/45 border border-[#F04F93]/45 rounded-2xl px-5 md:px-6 py-4 md:py-3 mb-12 md:mb-14 backdrop-blur-sm w-full">
               <p className="text-sm md:text-base leading-relaxed text-[#111111]/80">
-                Rosa vibrante, negro charol y actitud couture. Una fragancia
-                moderna, femenina y atrevida, donde el jazmín, la vainilla y el
-                cashmeran se sienten chic, audaces y memorables.
+                Imagina entrar a un lugar y sentirte perfectamente en tu sitio.
+                Sin esfuerzo. Sin necesidad de impresionar a nadie. Una
+                fragancia moderna, elegante y sofisticada que combina frescura,
+                carácter y una confianza que se nota desde el primer instante.
               </p>
             </div>
 
@@ -81,7 +82,7 @@ export default function BornInRomaPage() {
         <div className="flex justify-center mx-auto mb-14 md:mb-10 md:mt-8">
           <div className="relative inline-block group">
             <img
-              src="/fem4.webp"
+              src="/valentino-primer-plano.webp"
               alt="ROMA"
               className="block max-h-[60vh] md:max-h-[70vh] w-auto max-w-full object-contain rounded-3xl transition-all duration-1000 group-hover:opacity-0 group-hover:scale-95 group-hover:blur-sm"
             />

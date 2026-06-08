@@ -37,14 +37,15 @@ export default function KhamrahPage() {
             </h1>
 
             <p className="text-[#C68A4A] text-base md:text-lg mt-2 mb-8 md:mb-12">
-              Especiado & Gourmand.
+              El arte de cautivar
             </p>
 
             <div className="bg-black/25 border border-[#C68A4A]/35 rounded-2xl px-5 md:px-6 py-4 md:py-3 mb-10 md:mb-12 backdrop-blur-sm w-full shadow-[0_0_80px_rgba(181,106,45,0.25)]">
               <p className="text-sm md:text-base leading-relaxed text-[#E7D3B5]/88">
-                Canela quemada, ámbar oscuro y un dulzor licoroso que se siente
-                cálido, intenso y adictivo. Una fragancia gourmand premium, como
-                coñac, especias y humo ámbar en una noche elegante.
+                Imagina una velada iluminada por luces cálidas, conversaciones
+                inolvidables y una atmósfera que parece detener el tiempo. Una
+                fragancia dulce, especiada y adictiva creada para quienes
+                disfrutan dejar una impresión que permanece en la memoria.
               </p>
             </div>
 
@@ -81,7 +82,7 @@ export default function KhamrahPage() {
         <div className="flex justify-center mx-auto mb-14 md:mb-10 md:mt-8">
           <div className="relative inline-block group">
             <img
-              src="/khamrah.webp"
+              src="/khamrah-magia.webp"
               alt="KHAMRAH"
               className="block max-h-[60vh] md:max-h-[70vh] w-auto max-w-full object-contain rounded-3xl transition-all duration-1000 group-hover:opacity-0 group-hover:scale-95 group-hover:blur-sm"
             />

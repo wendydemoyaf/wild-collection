@@ -37,14 +37,15 @@ export default function SweetLikeCandyPage() {
             </h1>
 
             <p className="text-[#B85C9E]/80 text-base md:text-lg mt-2 mb-8 md:mb-12">
-              Dulce & Encantadora.
+              Dulcemente irresistible
             </p>
 
             <div className="bg-white/45 border border-[#F7B6D2]/50 rounded-2xl px-5 md:px-6 py-4 md:py-3 mb-12 md:mb-14 backdrop-blur-sm w-full">
               <p className="text-sm md:text-base leading-relaxed text-[#4A1F32]/80">
-                Una fragancia dulce, cremosa y juguetona, como un recuerdo feliz
-                envuelto en vainilla, frutas suaves y una estela femenina que se
-                siente tierna, coqueta e irresistible.
+                Imagina miradas que regresan una segunda vez y conversaciones
+                que duran más de lo esperado. Una fragancia divertida, femenina
+                y envolvente para quienes disfrutan conquistar siendo ellas
+                mismas.
               </p>
             </div>
 
@@ -81,7 +82,7 @@ export default function SweetLikeCandyPage() {
         <div className="flex justify-center mx-auto mb-14 md:mb-10 md:mt-8">
           <div className="relative inline-block group">
             <img
-              src="/fem3.webp"
+              src="/sweet-primer-plano.webp"
               alt="SWEET LIKE CANDY"
               className="block max-h-[60vh] md:max-h-[70vh] w-auto max-w-full object-contain rounded-3xl transition-all duration-1000 group-hover:opacity-0 group-hover:scale-95 group-hover:blur-sm"
             />

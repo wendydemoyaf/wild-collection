@@ -37,14 +37,15 @@ export default function ScandalPage() {
             </h1>
 
             <p className="text-[#6F1232]/80 text-base md:text-lg mt-2 mb-8 md:mb-12">
-              Atrevida & Adictiva.
+              El placer de destacar
             </p>
 
             <div className="bg-white/35 border border-[#D89A2B]/35 rounded-2xl px-5 md:px-6 py-4 md:py-3 mb-12 md:mb-14 backdrop-blur-sm w-full">
               <p className="text-sm md:text-base leading-relaxed text-[#2A0815]/80">
-                Miel dorada, flor blanca y una profundidad sensual. Una
-                fragancia atrevida, dulce y lujosa, hecha para provocar miradas
-                y dejar una estela imposible de ignorar.
+                Imagina sentirte dueña de cada conversación, cada mirada y cada
+                momento importante de la noche. Una fragancia audaz, elegante y
+                magnética para mujeres que disfrutan ser el centro de atención
+                sin pedir permiso.
               </p>
             </div>
 
@@ -81,7 +82,7 @@ export default function ScandalPage() {
         <div className="flex justify-center mx-auto mb-14 md:mb-10 md:mt-8">
           <div className="relative inline-block group">
             <img
-              src="/fem2.webp"
+              src="/scandal-primer-plano.webp"
               alt="SCANDAL"
               className="block max-h-[60vh] md:max-h-[70vh] w-auto max-w-full object-contain rounded-3xl transition-all duration-1000 group-hover:opacity-0 group-hover:scale-95 group-hover:blur-sm"
             />

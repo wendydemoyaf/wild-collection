@@ -37,14 +37,16 @@ export default function AmberOudPage() {
             </h1>
 
             <p className="text-[#C89B3C] text-base md:text-lg mt-2 mb-8 md:mb-12">
-              Ámbar & Lujo Oriental.
+              Lujo sin límites
             </p>
 
             <div className="bg-black/25 border border-[#C89B3C]/35 rounded-2xl px-5 md:px-6 py-4 md:py-3 mb-10 md:mb-12 backdrop-blur-sm w-full shadow-[0_0_70px_rgba(200,155,60,0.22)]">
               <p className="text-sm md:text-base leading-relaxed text-[#F6EFE4]/85">
-                Una fragancia cálida, elegante y envolvente. Ámbar dorado, miel
-                resinosa y maderas suaves se mezclan como reflejos de whisky en
-                una noche sofisticada.
+                Imagina una noche donde cada detalle refleja elegancia,
+                exclusividad y una sensación de abundancia difícil de describir.
+                Un aroma sofisticado y envolvente que combina calidez,
+                refinamiento y una presencia que permanece mucho después de
+                haberte ido.
               </p>
             </div>
 
@@ -81,7 +83,7 @@ export default function AmberOudPage() {
         <div className="flex justify-center mx-auto mb-14 md:mb-10 md:mt-8">
           <div className="relative inline-block group">
             <img
-              src="/amber.webp"
+              src="/amber-reflejo.webp"
               alt="AMBER OUD"
               className="block max-h-[60vh] md:max-h-[70vh] w-auto max-w-full object-contain rounded-3xl transition-all duration-1000 group-hover:opacity-0 group-hover:scale-95 group-hover:blur-sm"
             />

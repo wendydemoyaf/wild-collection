@@ -7,11 +7,11 @@ export default function MasculinoPage() {
       img: "/invicto.webp",
       link: "/masculino/invictus-victory",
     },
-    { name: "ASAD", img: "/asad.webp", link: "/masculino/asad" },
+    { name: "ASAD", img: "/asad-armadura.webp", link: "/masculino/asad" },
     { name: "9PM", img: "/9pmp.webp", link: "/masculino/9pm" },
     {
       name: "LE MALE ELIXIR",
-      img: "/lemale.webp",
+      img: "/le-male-tela.webp",
       link: "/masculino/le-male",
     },
   ];

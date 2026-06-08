@@ -38,14 +38,15 @@ export default function LeMalePage() {
           </h1>
 
           <p className="text-[#F0D8A8]/80 text-base md:text-lg mt-2 mb-8 md:mb-12">
-            Dorado & Seductor.
+            El arte de atraer
           </p>
 
           <div className="bg-black/25 border border-[#B8893B]/20 rounded-2xl px-5 md:px-6 py-4 md:py-3 mb-10 md:mb-14 backdrop-blur-sm w-full">
             <p className="text-sm md:text-base leading-relaxed text-[#F0D8A8]/85">
-              Miel oscura bajo luz dorada: sensual, denso, cálido y envolvente.
-              Una fragancia masculina, dulce y peligrosa con elegancia, hecha
-              para dejar una estela memorable.
+              La noche avanza, las conversaciones se acercan y las miradas duran
+              un poco más de lo normal. Una mezcla envolvente de vainilla,
+              lavanda y maderas cálidas que convierte la elegancia en algo
+              irresistible.
             </p>
           </div>
 
@@ -80,7 +81,7 @@ export default function LeMalePage() {
 
         <div className="relative flex justify-center items-center group w-[320px] md:w-[360px] mx-auto mb-14 md:mb-10 md:mt-8">
           <img
-            src="/lemale.webp"
+            src="/le-male-gotas.webp"
             alt="LE MALE ELIXIR"
             className="max-h-[60vh] md:max-h-[70vh] w-auto object-contain transition-all duration-1000 group-hover:opacity-0 group-hover:scale-95 group-hover:blur-sm"
           />

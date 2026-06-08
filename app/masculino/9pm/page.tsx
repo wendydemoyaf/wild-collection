@@ -42,15 +42,15 @@ export default function NinePMPage() {
           </h1>
 
           <p className="text-[#C9D3E6] text-base md:text-lg mb-8 md:mb-12">
-            Nocturno & Magnético.
+            La noche a tu favor
           </p>
 
           {/* FIX: mejor contraste */}
           <div className="bg-white/5 border border-[#6B35FF]/20 rounded-2xl px-5 py-4 mb-12 md:mb-20 backdrop-blur-sm">
             <p className="text-sm md:text-base leading-relaxed text-white/85">
-              Una fragancia de noche, dulce, fresca y provocadora. Luces frías,
-              música intensa, ropa impecable y una presencia urbana que no
-              necesita hablar demasiado para hacerse notar.
+              Las conversaciones se alargan, las luces se vuelven más cálidas y
+              todo parece posible. Una mezcla adictiva de manzana, vainilla y
+              sensualidad creada para destacar después del anochecer.
             </p>
           </div>
 

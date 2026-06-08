@@ -37,14 +37,15 @@ export default function HonorGloryPage() {
             </h1>
 
             <p className="text-[#8B7563]/85 text-base md:text-lg mt-2 mb-8 md:mb-12">
-              Refinado & Luminoso.
+              Grandeza que se siente
             </p>
 
             <div className="bg-[#F2E7D5]/55 border border-[#C9A45D]/35 rounded-2xl px-5 md:px-6 py-4 md:py-3 mb-12 md:mb-14 backdrop-blur-sm w-full shadow-[0_0_60px_rgba(201,164,93,0.16)]">
               <p className="text-sm md:text-base leading-relaxed text-[#3E2F28]/85">
-                Una fragancia serena, elegante y luminosa. Cremosa, cálida y
-                sofisticada, con una presencia suave que no grita: simplemente
-                deja una impresión refinada.
+                Imagina el instante en que todo tu esfuerzo comienza a dar
+                frutos y entiendes que cada paso valió la pena. Una fragancia
+                intensa, elegante y memorable que transmite confianza, carácter
+                y la satisfacción de quien sabe hasta dónde puede llegar.
               </p>
             </div>
 
@@ -81,7 +82,7 @@ export default function HonorGloryPage() {
         <div className="flex justify-center mx-auto mb-14 md:mb-10 md:mt-8">
           <div className="relative inline-block group">
             <img
-              src="/honor.webp"
+              src="/honor-primer-plano.webp"
               alt="HONOR & GLORY"
               className="block max-h-[60vh] md:max-h-[70vh] w-auto max-w-full object-contain rounded-3xl transition-all duration-1000 group-hover:opacity-0 group-hover:scale-95 group-hover:blur-sm"
             />
