@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import WhatsAppButton from "./components/WhatsAppButton";
 
@@ -32,6 +33,19 @@ export default function RootLayout({
 
         {/* BOTÓN WHATSAPP */}
         <WhatsAppButton />
+        <Script
+  src="https://www.googletagmanager.com/gtag/js?id=G-9RTQVWB23S"
+  strategy="afterInteractive"
+/>
+
+<Script id="google-analytics" strategy="afterInteractive">
+  {`
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9RTQVWB23S');
+  `}
+</Script>
       </body>
     </html>
   );
