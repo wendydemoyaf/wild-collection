@@ -191,7 +191,7 @@ export default function PoliticaPrivacidadPage() {
                 href="mailto:wildcollection.latam@gmail.com"
                 className="text-[#B8893B] underline"
               >
-                TU_CORREO_AQUI
+                wildcollection.latam@gmail.com
               </a>
               <br />
               WhatsApp: +593 96 382 6845
