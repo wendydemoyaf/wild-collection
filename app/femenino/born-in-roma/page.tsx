@@ -1,4 +1,5 @@
 import Link from "next/link";
+import CartButton from "@/app/components/CartButton";
 
 export default function BornInRomaPage() {
   const notas = [
@@ -78,7 +79,13 @@ export default function BornInRomaPage() {
             </a>
           </div>
         </div>
-
+        <div className="mt-4">
+          <CartButton
+            name="BORN IN ROMA"
+            price={35}
+            img="/valentino-primer-plano.webp"
+          />
+        </div>
         <div className="flex justify-center mx-auto mb-14 md:mb-10 md:mt-8">
           <div className="relative inline-block group">
             <img
