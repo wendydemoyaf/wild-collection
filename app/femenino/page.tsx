@@ -4,14 +4,14 @@ import { womenProducts } from "../data/products";
 
 export default function FemeninoPage() {
   return (
-    <main className="min-h-screen bg-[radial-gradient(circle_at_50%_0%,rgba(190,116,138,.22),transparent_35%),linear-gradient(150deg,#180b10,#080506_55%,#020202)] text-white">
-      <StoreHeader />
-      <section className="px-6 pb-12 pt-16 text-center md:pt-24">
-        <p className="text-[10px] uppercase tracking-[0.45em] text-[#DDBB81]">Colección para mujer</p>
-        <h1 className="mt-5 font-serif text-5xl md:text-7xl">Encuentra el aroma que habla de ti</h1>
-        <p className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-white/65 md:text-base">Dulces, florales, frescos y envolventes. Pasa el puntero sobre cada imagen para descubrir su pirámide olfativa.</p>
+    <main className="min-h-screen bg-[radial-gradient(circle_at_82%_6%,rgba(235,179,192,.30),transparent_28%),linear-gradient(135deg,#FFF8F1,#F8E9E4_58%,#FBEFF2)] text-[#2A1018]">
+      <StoreHeader variant="light" />
+      <section className="px-6 pb-11 pt-14 text-center md:pb-14 md:pt-20">
+        <p className="text-[9px] uppercase tracking-[0.5em] text-[#A44A67]">Colección Wild</p>
+        <h1 className="mt-4 font-serif text-5xl leading-none md:text-7xl">Perfumes Femeninos</h1>
+        <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-[#7E4053]/75 md:text-base">Fragancias delicadas, envolventes y memorables.</p>
       </section>
-      <section className="mx-auto grid max-w-7xl grid-cols-1 gap-7 px-6 pb-24 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:px-10">
+      <section className="mx-auto flex max-w-[1520px] flex-wrap justify-center gap-x-5 gap-y-11 px-5 pb-24 md:px-8 lg:gap-x-6">
         {womenProducts.map((product) => <ProductCard key={product.slug} product={product} />)}
       </section>
     </main>
