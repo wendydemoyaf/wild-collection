@@ -1,326 +1,342 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState, type ReactNode } from "react";
-/* ===================================== */
-/* REVEAL ANIMATION */
-/* Animación de entrada al hacer scroll */
-/* ===================================== */
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type CSSProperties,
+  type PointerEvent,
+  type ReactNode,
+} from "react";
+import { getProduct, type Product } from "./data/products";
+import { useCart } from "./context/CartContext";
+import styles from "./home.module.css";
+
+const WHATSAPP_URL =
+  "https://wa.me/593963826845?text=Hola,%20quiero%20información%20sobre%20los%20perfumes%20de%20WILD%20COLLECTION";
+
+const collections = [
+  {
+    number: "01",
+    name: "Mujer",
+    title: "Perfumes femeninos",
+    copy: "Dulces, florales, luminosos y memorables.",
+    image: "/women.webp",
+    href: "/femenino",
+  },
+  {
+    number: "02",
+    name: "Hombre",
+    title: "Perfumes masculinos",
+    copy: "Frescos, intensos, magnéticos y seguros.",
+    image: "/men.webp",
+    href: "/masculino",
+  },
+];
+
+const featuredSlugs = ["la-vie-est-belle", "good-girl", "eros", "million-lucky"];
+
 function Reveal({
   children,
+  className = "",
   delay = 0,
 }: {
   children: ReactNode;
+  className?: string;
   delay?: number;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+
     const observer = new IntersectionObserver(
-      ([entry]) => setVisible(entry.isIntersecting),
-      { threshold: 0.2 }
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        setVisible(true);
+        observer.disconnect();
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -8%" },
     );
 
-    if (ref.current) observer.observe(ref.current);
+    observer.observe(node);
     return () => observer.disconnect();
   }, []);
 
   return (
     <div
       ref={ref}
-      style={{ transitionDelay: `${delay}ms` }}
-      className={`transition-all duration-700 ease-out ${
-        visible
-          ? "opacity-100 translate-y-0 scale-100"
-          : "opacity-0 translate-y-6 scale-[0.96]"
-      }`}
+      style={{ "--reveal-delay": `${delay}ms` } as CSSProperties}
+      className={`${styles.reveal} ${visible ? styles.revealVisible : ""} ${className}`}
     >
       {children}
     </div>
   );
 }
-/* ===================================== */
-/* HOME PAGE */
-/* Página principal Wild Collection */
-/* ===================================== */
+
+function Arrow() {
+  return (
+    <svg viewBox="0 0 30 16" aria-hidden="true">
+      <path d="M1 8h27M21 1l7 7-7 7" fill="none" stroke="currentColor" strokeWidth="1.2" />
+    </svg>
+  );
+}
+
 export default function Home() {
-  const [loading, setLoading] = useState(true);
+  const { itemCount } = useCart();
+  const heroRef = useRef<HTMLElement>(null);
+  const [introVisible, setIntroVisible] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const featured = useMemo(
+    () => featuredSlugs.map(getProduct).filter((product): product is Product => Boolean(product)),
+    [],
+  );
+
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 1600);
-    return () => clearTimeout(timer);
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const timer = window.setTimeout(() => setIntroVisible(false), reducedMotion ? 250 : 1750);
+    return () => window.clearTimeout(timer);
   }, []);
 
-  const categories = [
-    { name: "Perfumes Femeninos", img: "/women.webp", link: "/femenino" },
-    { name: "Perfumes Masculinos", img: "/men.webp", link: "/masculino" },
-  ];
+  useEffect(() => {
+    if (!menuOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    const closeWithEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMenuOpen(false);
+    };
 
-  if (loading) {
-    return (
-      <div className="fixed inset-0 bg-black z-[9999] flex items-center justify-center">
-        <img
-          src="/logo.webp"
-          alt="WILD COLLECTION"
-          className="w-44 md:w-64 opacity-25 logo-clock object-contain"
-        />
-      </div>
-    );
-  }
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", closeWithEscape);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", closeWithEscape);
+    };
+  }, [menuOpen]);
+
+  useEffect(() => {
+    let frame = 0;
+    const updateHero = () => {
+      const progress = Math.min(window.scrollY / Math.max(window.innerHeight, 1), 1);
+      heroRef.current?.style.setProperty("--hero-progress", progress.toFixed(3));
+      frame = 0;
+    };
+    const onScroll = () => {
+      if (!frame) frame = window.requestAnimationFrame(updateHero);
+    };
+
+    updateHero();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
+  }, []);
+
+  const moveHeroLight = (event: PointerEvent<HTMLElement>) => {
+    const bounds = event.currentTarget.getBoundingClientRect();
+    event.currentTarget.style.setProperty("--pointer-x", `${event.clientX - bounds.left}px`);
+    event.currentTarget.style.setProperty("--pointer-y", `${event.clientY - bounds.top}px`);
+  };
+
+  const closeMenu = () => setMenuOpen(false);
 
   return (
-    <main className="min-h-screen bg-black text-white overflow-hidden">
-      {/* ===================================== */}
-      {/* HERO PRINCIPAL */}
-      {/* ===================================== */}
-      <section className="relative h-screen md:min-h-screen flex items-center justify-center overflow-hidden">
+    <main className={styles.home}>
+      <div
+        className={`${styles.intro} ${introVisible ? "" : styles.introAway}`}
+        aria-hidden="true"
+      >
+        <div className={styles.introMark}>
+          <span className={styles.introMonogram}>WC</span>
+          <span className={styles.introRule} />
+          <span className={styles.introName}>Wild Collection</span>
+          <span className={styles.introLoading}>Ecuador · Perfumería</span>
+        </div>
+      </div>
+
+      <header className={styles.header}>
+        <Link href="/" className={styles.brand} aria-label="Wild Collection, inicio">
+          <span className={styles.brandMark}>WC</span>
+          <span className={styles.brandName}>Wild Collection</span>
+        </Link>
+
+        <nav className={styles.desktopNav} aria-label="Navegación principal">
+          <a href="#colecciones">Colecciones</a>
+          <a href="#promociones">Promociones</a>
+          <Link href="/quienes-somos">La marca</Link>
+          <Link href="/invierte-con-wild">Emprende</Link>
+        </nav>
+
+        <div className={styles.headerActions}>
+          <Link href="/carrito" className={styles.cartLink} aria-label={`Carrito con ${itemCount} perfumes`}>
+            <span>Selección</span>
+            <b key={itemCount}>{String(itemCount).padStart(2, "0")}</b>
+          </Link>
+          <button
+            type="button"
+            className={styles.menuButton}
+            aria-label="Abrir menú"
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen(true)}
+          >
+            <span />
+            <span />
+          </button>
+        </div>
+      </header>
+
+      <div className={`${styles.mobileMenu} ${menuOpen ? styles.mobileMenuOpen : ""}`}>
+        <div className={styles.mobileMenuTop}>
+          <span>Wild Collection</span>
+          <button type="button" onClick={closeMenu} aria-label="Cerrar menú">Cerrar</button>
+        </div>
+        <nav aria-label="Navegación móvil">
+          <a href="#colecciones" onClick={closeMenu}><span>01</span>Colecciones</a>
+          <a href="#promociones" onClick={closeMenu}><span>02</span>Promociones</a>
+          <Link href="/quienes-somos" onClick={closeMenu}><span>03</span>La marca</Link>
+          <Link href="/invierte-con-wild" onClick={closeMenu}><span>04</span>Emprende</Link>
+          <Link href="/carrito" onClick={closeMenu}><span>05</span>Mi selección ({itemCount})</Link>
+        </nav>
+        <p>Perfumes de 55 ml · Pago contra entrega · Ecuador</p>
+      </div>
+
+      <section
+        ref={heroRef}
+        className={styles.hero}
+        onPointerMove={moveHeroLight}
+        style={{ "--hero-progress": 0, "--pointer-x": "50%", "--pointer-y": "45%" } as CSSProperties}
+      >
         <video
+          className={styles.heroVideo}
           src="/video.mp4"
+          poster="/luxury-p.webp"
           autoPlay
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover scale-105 animate-[heroZoom_18s_ease-in-out_infinite_alternate]"
+          preload="metadata"
+          aria-label="Perfume Wild Collection en una escena urbana nocturna"
         />
+        <div className={styles.heroShade} />
+        <div className={styles.heroGrid} />
+        <div className={styles.heroLight} />
 
-        <div className="absolute inset-0 bg-black/55" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_42%,rgba(240,216,168,0.22),transparent_32%),linear-gradient(180deg,rgba(0,0,0,0.05),rgba(0,0,0,0.85))]" />
-        <div className="absolute top-1/3 left-1/2 h-40 w-40 -translate-x-1/2 rounded-full bg-[#B8893B]/20 blur-[90px] animate-pulse" />
-        {/* HEADER / NAVEGACIÓN */}
-        <header className="absolute top-0 left-0 w-full z-30 px-5 md:px-10 py-5 md:py-6 flex items-center justify-between text-[9px] md:text-xs tracking-[0.22em] md:tracking-[0.28em] text-[#B8893B]">
-          <Link
-            href="/"
-            className="hover:text-[#F0D8A8] transition-all duration-500"
-          >
-            WILD COLLECTION
-          </Link>
+        <div className={styles.heroCoordinates} aria-hidden="true">
+          <span>WILD / 00°10&apos;S</span>
+          <span>EC / 78°28&apos;W</span>
+        </div>
 
-          <nav className="hidden md:flex gap-7 items-center">
-            <Link
-              href="/quienes-somos"
-              className="hover:text-[#F0D8A8] transition-all duration-500"
-            >
-              QUIÉNES SOMOS
-            </Link>
-            <Link
-              href="/invierte-con-wild"
-              className="hover:text-[#F0D8A8] transition-all duration-500"
-            >
-              EMPRENDE
-            </Link>
-            <Link
-              href="/contacto"
-              className="hover:text-[#F0D8A8] transition-all duration-500"
-            >
-              CONTACTO
-            </Link>
-          </nav>
-
-          <button
-            onClick={() => setMenuOpen(true)}
-            className="md:hidden text-[#B8893B] text-xl tracking-normal z-50"
-          >
-            ☰
-          </button>
-        </header>
-        {/* MENÚ MÓVIL */}
-        {menuOpen && (
-          <div className="fixed inset-0 bg-black/95 z-40 flex flex-col items-center justify-center gap-8 text-[#B8893B] text-sm tracking-[0.3em]">
-            <button
-              onClick={() => setMenuOpen(false)}
-              className="absolute top-6 right-6 text-2xl"
-            >
-              ✕
-            </button>
-
-            <Link href="/quienes-somos" onClick={() => setMenuOpen(false)}>
-              QUIÉNES SOMOS
-            </Link>
-            <Link href="/invierte-con-wild" onClick={() => setMenuOpen(false)}>
-              EMPRENDE CON WILD
-            </Link>
-            <Link href="/contacto" onClick={() => setMenuOpen(false)}>
-              CONTACTO
-            </Link>
-          </div>
-        )}
-        {/* CONTENIDO HERO */}
-        <div className="relative z-20 text-center px-6 max-w-5xl mx-auto animate-[heroFade_1.6s_ease-out_0.3s_both]">
-          <p className="text-[10px] md:text-xs tracking-[0.7em] text-[#F0D8A8] mb-6 uppercase">
-            Perfumería de autor
-          </p>
-
-          <h1 className="font-serif text-5xl md:text-8xl leading-tight md:leading-none mb-6 drop-shadow-[0_0_35px_rgba(240,216,168,0.18)]">
-            WILD <br className="md:hidden" /> COLLECTION
+        <div className={styles.heroContent}>
+          <p className={styles.eyebrow}>Perfumería · Identidad · Ecuador</p>
+          <h1>
+            Tu aroma
+            <span>llega primero.</span>
           </h1>
+          <div className={styles.heroLead}>
+            <p>
+              Perfumes de 55 ml para cambiar de energía sin cambiar quién eres.
+              Elige libre. Paga cuando recibas.
+            </p>
+            <div className={styles.heroCtas}>
+              <a href="#colecciones" className={styles.primaryCta}>
+                Descubrir la colección <Arrow />
+              </a>
+              <a href="#promociones" className={styles.textCta}>Ver promociones</a>
+            </div>
+          </div>
+        </div>
 
-          <p className="max-w-xl mx-auto text-sm md:text-lg text-white/75 leading-relaxed mb-10">
-            Elige tus aromas favoritos y paga cuando los recibas.
-          </p>
-
-          <a href="#colecciones" className="inline-flex">
-            <span className="relative flex overflow-hidden rounded-full bg-[#B8893B]/15 text-[#F0D8A8] border border-[#B8893B]/60 px-10 md:px-12 py-4 text-[10px] md:text-xs tracking-[0.35em] uppercase hover:bg-[#B8893B]/30 hover:border-[#F0D8A8] hover:text-white transition-all duration-500 shadow-[0_0_35px_rgba(184,137,59,0.16)]">
-              <span className="relative z-10">Elegir mis perfumes</span>
-              <span className="absolute inset-y-0 left-0 w-1/2 -translate-x-full bg-gradient-to-r from-transparent via-white/35 to-transparent animate-[buttonShine_8s_ease-in-out_infinite]" />
-            </span>
+        <div className={styles.heroFooter}>
+          <p><span>01</span> Una colección. Muchas versiones de ti.</p>
+          <a href="#identidad" aria-label="Bajar a la sección identidad">
+            Scroll <i />
           </a>
         </div>
-        {/* ANIMACIONES GLOBALES */}
-        <style jsx global>{`
-          @keyframes heroZoom {
-            from {
-              transform: scale(1.04);
-            }
-            to {
-              transform: scale(1.12);
-            }
-          }
-
-          @keyframes heroFade {
-            from {
-              opacity: 0;
-              transform: translateY(18px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-
-          @keyframes buttonShine {
-            0% {
-              transform: translateX(-150%);
-              opacity: 0;
-            }
-
-            5% {
-              opacity: 1;
-            }
-
-            35% {
-              transform: translateX(350%);
-              opacity: 1;
-            }
-
-            40% {
-              opacity: 0;
-            }
-
-            100% {
-              transform: translateX(350%);
-              opacity: 0;
-            }
-          }
-
-          @keyframes identityImage {
-            from {
-              transform: scale(1.03);
-            }
-            to {
-              transform: scale(1.1);
-            }
-          }
-
-          @keyframes goldReflection {
-            0% {
-              transform: translateX(-120%);
-            }
-
-            35% {
-              transform: translateX(120%);
-            }
-
-            100% {
-              transform: translateX(120%);
-            }
-          }
-
-          @keyframes ambientGlow {
-            0% {
-              opacity: 0.6;
-            }
-
-            50% {
-              opacity: 1;
-            }
-
-            100% {
-              opacity: 0.6;
-            }
-          }
-        `}</style>
       </section>
-      {/* ===================================== */}
-      {/* SECCIÓN IDENTIDAD */}
-      {/* El perfume habla antes que tú */}
-      {/* ===================================== */}
-      <section className="relative bg-black pt-24 md:pt-36 pb-32 md:pb-44 px-6 md:px-10 overflow-hidden">
-        <div className="max-w-6xl mx-auto">
-          {/* TEXTO PRINCIPAL */}
-          <Reveal>
-            <div className="text-center mb-20 md:mb-24">
-              <p className="text-[10px] md:text-xs tracking-[0.55em] text-[#B8893B] uppercase mb-5">
-                IDENTIDAD
-              </p>
 
-              <h2 className="font-serif text-4xl md:text-6xl leading-tight mb-6">
-                El perfume habla antes que tú.
-              </h2>
-
-              <p className="max-w-2xl mx-auto text-white/70 text-sm md:text-lg leading-relaxed">
-                Una fragancia no se recuerda por cómo se ve.
-                <br />
-                Se recuerda por cómo hizo sentir a alguien.
-              </p>
-            </div>
-          </Reveal>
+      <section id="identidad" className={styles.manifesto}>
+        <div className={styles.sectionMeta}>
+          <span>01 / Identidad</span>
+          <span>Wild Collection · 2026</span>
         </div>
-      </section>
-      {/* ===================================== */}
-      {/* COLECCIONES WILD */}
-      {/* ===================================== */}
-      <section
-        id="colecciones"
-        className="relative bg-[radial-gradient(circle_at_50%_0%,rgba(184,137,59,0.14),transparent_35%),linear-gradient(135deg,#050302,#0B0704,#020202)] pt-24 md:pt-28 pb-28 md:pb-32 px-6 md:px-10"
-      >
-        {/* TÍTULO DE SECCIÓN */}
-        <Reveal delay={120}>
-          <p className="text-center text-[10px] md:text-xs tracking-[0.55em] text-[#B8893B] mb-5 uppercase">
-            Elige tu universo
-          </p>
 
-          <h2 className="text-center font-serif text-4xl md:text-6xl mb-16">
-            Colecciones Wild
+        <Reveal className={styles.manifestoHeading}>
+          <p>No es solo lo que llevas puesto.</p>
+          <h2>
+            Es lo que queda
+            <span>cuando ya te fuiste.</span>
           </h2>
         </Reveal>
-        {/* TARJETAS DE COLECCIONES */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-0 max-w-5xl mx-auto overflow-hidden rounded-3xl border border-[#B8893B]/25 bg-black/45 shadow-[0_0_90px_rgba(0,0,0,0.65)]">
-          {categories.map((category, index) => (
-            <Reveal key={category.name} delay={260 + index * 140}>
-              <Link
-                href={category.link}
-                className="group relative block transition-all duration-700 hover:z-10"
-              >
-                <div className="relative h-[460px] md:h-[560px] overflow-hidden bg-black transition-all duration-700 group-hover:shadow-[0_0_60px_rgba(184,137,59,0.18)]">
-                  <img
-                    src={category.img}
-                    alt={category.name}
-                    className="w-full h-full object-cover object-[center_50%] grayscale opacity-55 transition-all duration-1000 group-hover:grayscale-0 group-hover:opacity-90 group-hover:scale-[1.08]"
-                  />
 
-                  <div className="absolute inset-0 bg-black/35 group-hover:bg-black/25 transition-all duration-700" />
+        <div className={styles.manifestoStory}>
+          <Reveal className={styles.manifestoImage}>
+            <Image
+              src="/luxury-p.webp"
+              alt="Perfume Wild Collection iluminado en tonos champagne"
+              fill
+              sizes="(max-width: 900px) 100vw, 58vw"
+              className={styles.coverImage}
+            />
+            <div className={styles.imageScan} />
+            <span>Objeto 01 · Presencia</span>
+          </Reveal>
 
-                  <div className="absolute bottom-8 md:bottom-10 left-6 right-6 z-10 text-center">
-                    <h3 className="font-serif text-3xl md:text-5xl text-white leading-tight mb-5 transition-all duration-700 group-hover:text-[#F0D8A8] group-hover:drop-shadow-[0_0_20px_rgba(240,216,168,0.18)]">
-                      {category.name}
-                    </h3>
+          <Reveal className={styles.manifestoCopy} delay={120}>
+            <span className={styles.copyIndex}>W / C</span>
+            <h3>No diseñamos una sola versión de ti.</h3>
+            <p>
+              Hay días luminosos, noches intensas y momentos que piden algo inesperado.
+              Tu perfume también puede cambiar contigo.
+            </p>
+            <Link href="/quienes-somos" className={styles.lineLink}>
+              Conoce nuestra visión <Arrow />
+            </Link>
+          </Reveal>
+        </div>
 
-                    <p className="text-[10px] tracking-[0.35em] text-[#F0D8A8]/80 uppercase transition-all duration-700 group-hover:text-[#F0D8A8] group-hover:tracking-[0.42em]">
-                      Ver colección
-                    </p>
-                  </div>
+        <div className={styles.marquee} aria-hidden="true">
+          <div>
+            <span>ANTES DE VERTE · TE SIENTEN · </span>
+            <span>ANTES DE VERTE · TE SIENTEN · </span>
+          </div>
+        </div>
+      </section>
+
+      <section id="colecciones" className={styles.collections}>
+        <div className={styles.sectionMetaDark}>
+          <span>02 / Colecciones</span>
+          <span>Elige tu energía</span>
+        </div>
+
+        <Reveal className={styles.collectionsIntro}>
+          <p>Dos mundos. Ninguna etiqueta.</p>
+          <h2>¿Cómo quieres llegar hoy?</h2>
+        </Reveal>
+
+        <div className={styles.collectionGrid}>
+          {collections.map((collection, index) => (
+            <Reveal key={collection.name} delay={index * 120}>
+              <Link href={collection.href} className={styles.collectionCard}>
+                <Image
+                  src={collection.image}
+                  alt={collection.title}
+                  fill
+                  sizes="(max-width: 800px) 100vw, 50vw"
+                  className={styles.collectionImage}
+                />
+                <div className={styles.collectionWash} />
+                <div className={styles.collectionNumber}>{collection.number}</div>
+                <div className={styles.collectionContent}>
+                  <p>{collection.name}</p>
+                  <h3>{collection.title}</h3>
+                  <span>{collection.copy}</span>
+                  <b>Explorar <Arrow /></b>
                 </div>
               </Link>
             </Reveal>
@@ -328,39 +344,170 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[#F7EFE4] px-6 py-20 text-[#21130A] md:px-10 md:py-28">
-        <div className="mx-auto max-w-6xl text-center">
-          <p className="text-[10px] uppercase tracking-[0.5em] text-[#9A6D2D]">Precio individual y promociones del momento</p>
-          <h2 className="mt-5 font-serif text-4xl md:text-6xl">Más aromas, más formas de ser tú</h2>
-          <p className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-black/60 md:text-base">Todos nuestros perfumes son de 55 ml. Elige la cantidad y las referencias que quieras; el sistema siempre aplicará el precio más conveniente.</p>
-          <p className="mx-auto mt-3 max-w-2xl text-xs text-[#8A5E2A]">Promociones válidas por tiempo limitado o hasta agotar existencias.</p>
-          <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-            {[
-              ["Precio individual", "1 perfume", "Elige la referencia que quieras", "$19,90"],
-              ["Promoción del momento", "Compra 1", "Y recibe el segundo gratis", "$19,90 los 2"],
-              ["Para compartir", "5 perfumes", "Combínalos como quieras", "$45"],
-              ["Universo Wild", "7 perfumes", "Un aroma para cada día", "$59"],
-            ].map(([eyebrow, title, copy, price]) => (
-              <div key={title} className="rounded-[28px] border border-[#B8893B]/25 bg-white p-7 shadow-[0_18px_55px_rgba(90,53,18,.10)]">
-                <p className="text-[9px] uppercase tracking-[.3em] text-[#9A6D2D]">{eyebrow}</p>
-                <h3 className="mt-4 font-serif text-3xl">{title}</h3>
-                <p className="mt-2 text-sm text-black/55">{copy}</p>
-                <p className="mt-6 font-serif text-4xl text-[#7B5221]">{price}</p>
-              </div>
-            ))}
-          </div>
-          <a href="#colecciones" className="mt-10 inline-flex rounded-full bg-[#21130A] px-8 py-4 text-[10px] font-bold uppercase tracking-[.25em] text-[#F0D8A8]">Quiero elegir mis perfumes</a>
+      <section className={styles.edit}>
+        <div className={styles.sectionMeta}>
+          <span>03 / The Wild Edit</span>
+          <span>Selección actual</span>
+        </div>
+
+        <Reveal className={styles.editHeading}>
+          <p>Cuatro maneras de empezar</p>
+          <h2>Encuentra tu próxima firma.</h2>
+          <a href="#colecciones" className={styles.lineLink}>Explorar colecciones <Arrow /></a>
+        </Reveal>
+
+        <div className={styles.productRail}>
+          {featured.map((product, index) => (
+            <Reveal key={product.slug} delay={index * 90} className={styles.productReveal}>
+              <Link href={`/perfumes/${product.slug}`} className={styles.productCard}>
+                <div className={styles.productMedia}>
+                  <Image
+                    src={product.image}
+                    alt={`Perfume ${product.name} de Wild Collection`}
+                    fill
+                    sizes="(max-width: 680px) 78vw, (max-width: 1100px) 42vw, 24vw"
+                    className={styles.productImage}
+                  />
+                  <span className={styles.productOrder}>{String(index + 1).padStart(2, "0")}</span>
+                  <span className={styles.productDiscover}>Descubrir universo <Arrow /></span>
+                </div>
+                <div className={styles.productInfo}>
+                  <div>
+                    <p>{product.family}</p>
+                    <h3>{product.name}</h3>
+                  </div>
+                  <span>$19,90</span>
+                </div>
+              </Link>
+            </Reveal>
+          ))}
         </div>
       </section>
 
-      <section className="bg-[radial-gradient(circle_at_50%_0%,rgba(184,137,59,.18),transparent_38%),#050302] px-6 py-20 text-center md:px-10 md:py-24">
-        <div className="mx-auto max-w-3xl rounded-[34px] border border-[#B8893B]/25 bg-white/[.035] p-8 md:p-12">
-          <p className="text-[10px] uppercase tracking-[.4em] text-[#B8893B]">Emprende con Wild</p>
-          <h2 className="mt-5 font-serif text-4xl md:text-5xl">¿Quieres generar ingresos vendiendo perfumes?</h2>
-          <p className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-white/62 md:text-base">No tienes que hacerlo sola o solo. Conoce nuestros kits para emprendedores y recibe acompañamiento para comenzar.</p>
-          <Link href="/invierte-con-wild" className="mt-8 inline-flex rounded-full border border-[#B8893B]/55 px-7 py-4 text-[10px] uppercase tracking-[.24em] text-[#F0D8A8] hover:bg-[#B8893B]/15">Quiero información para emprender</Link>
+      <section id="promociones" className={styles.promotions}>
+        <div className={styles.sectionMetaDark}>
+          <span>04 / Promociones actuales</span>
+          <span>Aplicación automática</span>
+        </div>
+
+        <div className={styles.promoIntro}>
+          <Reveal>
+            <p>Elige sin hacer cuentas</p>
+            <h2>Tu colección se adapta a ti.</h2>
+          </Reveal>
+          <Reveal delay={100}>
+            <p className={styles.promoDescription}>
+              Lleva 1, 3, 10 o los perfumes que quieras. El sistema combina las promociones y aplica siempre el total más conveniente.
+            </p>
+          </Reveal>
+        </div>
+
+        <div className={styles.promoLayout}>
+          <Reveal className={styles.promoHero}>
+            <span className={styles.promoTag}>Promoción del momento</span>
+            <p>Compra 1</p>
+            <h3>Recibe el segundo <em>gratis.</em></h3>
+            <div className={styles.promoPrice}>
+              <span>$</span>19<sup>,90</sup>
+            </div>
+            <p className={styles.promoSmall}>2 perfumes de 55 ml · Combínalos como quieras</p>
+          </Reveal>
+
+          <div className={styles.promoOptions}>
+            <Reveal className={styles.promoOption} delay={100}>
+              <div><span>05</span><p>Perfumes</p></div>
+              <strong>$45</strong>
+              <p>Para compartir</p>
+            </Reveal>
+            <Reveal className={`${styles.promoOption} ${styles.promoOptionGold}`} delay={180}>
+              <div><span>07</span><p>Perfumes</p></div>
+              <strong>$59</strong>
+              <p>Un aroma para cada día</p>
+            </Reveal>
+            <Reveal className={styles.individualPrice} delay={240}>
+              <span>Precio individual</span>
+              <p><b>1 perfume</b><strong>$19,90</strong></p>
+            </Reveal>
+          </div>
+        </div>
+
+        <Reveal className={styles.promoFooter}>
+          <p>* Promociones válidas por tiempo limitado o hasta agotar existencias.</p>
+          <a href="#colecciones" className={styles.darkCta}>Elegir mis perfumes <Arrow /></a>
+        </Reveal>
+      </section>
+
+      <section className={styles.experience}>
+        <div className={styles.sectionMeta}>
+          <span>05 / Experiencia Wild</span>
+          <span>Simple por diseño</span>
+        </div>
+        <Reveal className={styles.experienceTitle}>
+          <p>Sin complicaciones</p>
+          <h2>Elige. Combina. Recibe.</h2>
+        </Reveal>
+        <div className={styles.steps}>
+          {[
+            ["01", "Explora", "Entra en cada universo y descubre sus notas, personalidad y momento ideal."],
+            ["02", "Combina", "Selecciona la cantidad y las referencias que realmente quieres llevar."],
+            ["03", "Recibe", "Confirma tus datos y paga contra entrega cuando llegue tu pedido."],
+          ].map(([number, title, copy], index) => (
+            <Reveal className={styles.step} delay={index * 100} key={number}>
+              <span>{number}</span>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </Reveal>
+          ))}
+        </div>
+        <div className={styles.trustBar}>
+          <span>55 ml cada perfume</span>
+          <span>Pago contra entrega</span>
+          <span>Envíos en Ecuador</span>
+          <span>Mejor precio automático</span>
         </div>
       </section>
+
+      <section className={styles.entrepreneur}>
+        <Image
+          src="/invierte.webp"
+          alt="Emprende con Wild Collection"
+          fill
+          sizes="100vw"
+          className={styles.entrepreneurImage}
+        />
+        <div className={styles.entrepreneurShade} />
+        <Reveal className={styles.entrepreneurContent}>
+          <p>Wild también puede ser tu negocio</p>
+          <h2>Tu próxima oportunidad puede empezar con un aroma.</h2>
+          <span>Conoce nuestros kits y el acompañamiento para comenzar.</span>
+          <Link href="/invierte-con-wild" className={styles.lightCta}>Quiero emprender <Arrow /></Link>
+        </Reveal>
+      </section>
+
+      <footer className={styles.footer}>
+        <div className={styles.footerLead}>
+          <p>¿Lista o listo para dejar huella?</p>
+          <h2>Encuentra tu Wild.</h2>
+          <a href="#colecciones" className={styles.footerCircle} aria-label="Explorar colecciones"><Arrow /></a>
+        </div>
+        <div className={styles.footerGrid}>
+          <div><span>Wild Collection</span><p>Perfumería · Ecuador</p></div>
+          <nav aria-label="Enlaces del pie de página">
+            <Link href="/femenino">Mujer</Link>
+            <Link href="/masculino">Hombre</Link>
+            <Link href="/carrito">Carrito</Link>
+            <Link href="/privacidad">Privacidad</Link>
+          </nav>
+          <div className={styles.footerContact}>
+            <a href={WHATSAPP_URL} target="_blank" rel="noreferrer">WhatsApp</a>
+            <a href="https://www.instagram.com/wildcollection1/" target="_blank" rel="noreferrer">Instagram</a>
+          </div>
+        </div>
+        <div className={styles.footerBottom}>
+          <span>© {new Date().getFullYear()} Wild Collection</span>
+          <span>Perfumes que dejan huella.</span>
+        </div>
+      </footer>
     </main>
   );
 }
