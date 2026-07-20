@@ -54,9 +54,8 @@ export default function Home() {
   }, []);
 
   const categories = [
-    { name: "Perfumes Masculinos", img: "/men.webp", link: "/masculino" },
     { name: "Perfumes Femeninos", img: "/women.webp", link: "/femenino" },
-    { name: "Árabes / Unisex", img: "/arabe.webp", link: "/unisex" },
+    { name: "Perfumes Masculinos", img: "/men.webp", link: "/masculino" },
   ];
 
   if (loading) {
@@ -158,12 +157,12 @@ export default function Home() {
           </h1>
 
           <p className="max-w-xl mx-auto text-sm md:text-lg text-white/75 leading-relaxed mb-10">
-            Fragancias que dejan huella.
+            Elige tus aromas favoritos y paga cuando los recibas.
           </p>
 
           <a href="#colecciones" className="inline-flex">
             <span className="relative flex overflow-hidden rounded-full bg-[#B8893B]/15 text-[#F0D8A8] border border-[#B8893B]/60 px-10 md:px-12 py-4 text-[10px] md:text-xs tracking-[0.35em] uppercase hover:bg-[#B8893B]/30 hover:border-[#F0D8A8] hover:text-white transition-all duration-500 shadow-[0_0_35px_rgba(184,137,59,0.16)]">
-              <span className="relative z-10">Explorar el universo Wild</span>
+              <span className="relative z-10">Elegir mis perfumes</span>
               <span className="absolute inset-y-0 left-0 w-1/2 -translate-x-full bg-gradient-to-r from-transparent via-white/35 to-transparent animate-[buttonShine_8s_ease-in-out_infinite]" />
             </span>
           </a>
@@ -297,7 +296,7 @@ export default function Home() {
           </h2>
         </Reveal>
         {/* TARJETAS DE COLECCIONES */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 max-w-7xl mx-auto overflow-hidden rounded-3xl border border-[#B8893B]/25 bg-black/45 shadow-[0_0_90px_rgba(0,0,0,0.65)]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-0 max-w-5xl mx-auto overflow-hidden rounded-3xl border border-[#B8893B]/25 bg-black/45 shadow-[0_0_90px_rgba(0,0,0,0.65)]">
           {categories.map((category, index) => (
             <Reveal key={category.name} delay={260 + index * 140}>
               <Link
@@ -326,6 +325,38 @@ export default function Home() {
               </Link>
             </Reveal>
           ))}
+        </div>
+      </section>
+
+      <section className="bg-[#F7EFE4] px-6 py-20 text-[#21130A] md:px-10 md:py-28">
+        <div className="mx-auto max-w-6xl text-center">
+          <p className="text-[10px] uppercase tracking-[0.5em] text-[#9A6D2D]">Promociones actuales</p>
+          <h2 className="mt-5 font-serif text-4xl md:text-6xl">Más aromas, más formas de ser tú</h2>
+          <p className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-black/60 md:text-base">Todos nuestros perfumes son de 55 ml. Elige tus referencias favoritas y paga contra entrega.</p>
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
+            {[
+              ["La favorita", "Compra 1", "Y recibe el segundo gratis", "$19,90"],
+              ["Para compartir", "5 perfumes", "Combínalos como quieras", "$45"],
+              ["Universo Wild", "7 perfumes", "Un aroma para cada día", "$59"],
+            ].map(([eyebrow, title, copy, price]) => (
+              <div key={title} className="rounded-[28px] border border-[#B8893B]/25 bg-white p-7 shadow-[0_18px_55px_rgba(90,53,18,.10)]">
+                <p className="text-[9px] uppercase tracking-[.3em] text-[#9A6D2D]">{eyebrow}</p>
+                <h3 className="mt-4 font-serif text-3xl">{title}</h3>
+                <p className="mt-2 text-sm text-black/55">{copy}</p>
+                <p className="mt-6 font-serif text-4xl text-[#7B5221]">{price}</p>
+              </div>
+            ))}
+          </div>
+          <a href="#colecciones" className="mt-10 inline-flex rounded-full bg-[#21130A] px-8 py-4 text-[10px] font-bold uppercase tracking-[.25em] text-[#F0D8A8]">Quiero elegir mis perfumes</a>
+        </div>
+      </section>
+
+      <section className="bg-[radial-gradient(circle_at_50%_0%,rgba(184,137,59,.18),transparent_38%),#050302] px-6 py-20 text-center md:px-10 md:py-24">
+        <div className="mx-auto max-w-3xl rounded-[34px] border border-[#B8893B]/25 bg-white/[.035] p-8 md:p-12">
+          <p className="text-[10px] uppercase tracking-[.4em] text-[#B8893B]">Emprende con Wild</p>
+          <h2 className="mt-5 font-serif text-4xl md:text-5xl">¿Quieres generar ingresos vendiendo perfumes?</h2>
+          <p className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-white/62 md:text-base">No tienes que hacerlo sola o solo. Conoce nuestros kits para emprendedores y recibe acompañamiento para comenzar.</p>
+          <Link href="/invierte-con-wild" className="mt-8 inline-flex rounded-full border border-[#B8893B]/55 px-7 py-4 text-[10px] uppercase tracking-[.24em] text-[#F0D8A8] hover:bg-[#B8893B]/15">Quiero información para emprender</Link>
         </div>
       </section>
     </main>
