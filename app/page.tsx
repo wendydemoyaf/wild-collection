@@ -330,12 +330,14 @@ export default function Home() {
 
       <section className="bg-[#F7EFE4] px-6 py-20 text-[#21130A] md:px-10 md:py-28">
         <div className="mx-auto max-w-6xl text-center">
-          <p className="text-[10px] uppercase tracking-[0.5em] text-[#9A6D2D]">Promociones actuales</p>
+          <p className="text-[10px] uppercase tracking-[0.5em] text-[#9A6D2D]">Precio individual y promociones del momento</p>
           <h2 className="mt-5 font-serif text-4xl md:text-6xl">Más aromas, más formas de ser tú</h2>
-          <p className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-black/60 md:text-base">Todos nuestros perfumes son de 55 ml. Elige tus referencias favoritas y paga contra entrega.</p>
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
+          <p className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-black/60 md:text-base">Todos nuestros perfumes son de 55 ml. Elige la cantidad y las referencias que quieras; el sistema siempre aplicará el precio más conveniente.</p>
+          <p className="mx-auto mt-3 max-w-2xl text-xs text-[#8A5E2A]">Promociones válidas por tiempo limitado o hasta agotar existencias.</p>
+          <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
             {[
-              ["La favorita", "Compra 1", "Y recibe el segundo gratis", "$19,90"],
+              ["Precio individual", "1 perfume", "Elige la referencia que quieras", "$19,90"],
+              ["Promoción del momento", "Compra 1", "Y recibe el segundo gratis", "$19,90 los 2"],
               ["Para compartir", "5 perfumes", "Combínalos como quieras", "$45"],
               ["Universo Wild", "7 perfumes", "Un aroma para cada día", "$59"],
             ].map(([eyebrow, title, copy, price]) => (

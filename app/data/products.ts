@@ -367,6 +367,94 @@ export const promotions = [
   { quantity: 7, price: 59, label: "7 perfumes por $59" },
 ] as const;
 
+export const UNIT_PRICE = 19.9;
+
+const pricingOptions = [
+  { quantity: 1, price: UNIT_PRICE, label: "Perfume individual" },
+  ...promotions,
+] as const;
+
+export type PricingBreakdownItem = {
+  quantity: number;
+  count: number;
+  price: number;
+  label: string;
+};
+
+export type CartPricing = {
+  quantity: number;
+  total: number;
+  regularTotal: number;
+  savings: number;
+  breakdown: PricingBreakdownItem[];
+};
+
+export type CartSuggestion = {
+  additionalQuantity: number;
+  targetQuantity: number;
+  extraCost: number;
+  extraSavings: number;
+  targetTotal: number;
+};
+
 export function getPromotion(quantity: number) {
   return promotions.find((promotion) => promotion.quantity === quantity);
+}
+
+export function calculateCartPricing(quantity: number): CartPricing {
+  const safeQuantity = Math.max(0, Math.floor(quantity));
+  const states: Array<{ total: number; options: number[] } | undefined> = Array(safeQuantity + 1).fill(undefined);
+  states[0] = { total: 0, options: [] };
+
+  for (let current = 1; current <= safeQuantity; current += 1) {
+    for (const option of pricingOptions) {
+      if (option.quantity > current || !states[current - option.quantity]) continue;
+      const previous = states[current - option.quantity]!;
+      const candidate = { total: previous.total + option.price, options: [...previous.options, option.quantity] };
+      const best = states[current];
+      if (!best || candidate.total < best.total - 0.001 || (Math.abs(candidate.total - best.total) < 0.001 && candidate.options.length < best.options.length)) {
+        states[current] = candidate;
+      }
+    }
+  }
+
+  const result = states[safeQuantity] ?? { total: safeQuantity * UNIT_PRICE, options: Array(safeQuantity).fill(1) };
+  const grouped = result.options.reduce<Record<number, number>>((accumulator, optionQuantity) => {
+    accumulator[optionQuantity] = (accumulator[optionQuantity] ?? 0) + 1;
+    return accumulator;
+  }, {});
+  const breakdown = pricingOptions
+    .filter((option) => grouped[option.quantity])
+    .sort((a, b) => b.quantity - a.quantity)
+    .map((option) => ({
+      quantity: option.quantity,
+      count: grouped[option.quantity],
+      price: option.price,
+      label: option.label,
+    }));
+  const regularTotal = safeQuantity * UNIT_PRICE;
+  const total = Number(result.total.toFixed(2));
+
+  return {
+    quantity: safeQuantity,
+    total,
+    regularTotal: Number(regularTotal.toFixed(2)),
+    savings: Number(Math.max(0, regularTotal - total).toFixed(2)),
+    breakdown,
+  };
+}
+
+export function getCartSuggestion(quantity: number): CartSuggestion | null {
+  if (quantity < 1) return null;
+  const current = calculateCartPricing(quantity);
+  const candidates = [1, 2, 3].map((additionalQuantity) => {
+    const target = calculateCartPricing(quantity + additionalQuantity);
+    const extraCost = Number((target.total - current.total).toFixed(2));
+    const extraSavings = Number((additionalQuantity * UNIT_PRICE - extraCost).toFixed(2));
+    return { additionalQuantity, targetQuantity: target.quantity, extraCost, extraSavings, targetTotal: target.total };
+  });
+
+  const useful = candidates.filter((candidate) => candidate.extraSavings > 0.01);
+  if (!useful.length) return null;
+  return useful.sort((a, b) => a.extraCost - b.extraCost || b.additionalQuantity - a.additionalQuantity)[0];
 }
