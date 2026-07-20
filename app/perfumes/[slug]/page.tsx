@@ -4,6 +4,7 @@ import type { CSSProperties } from "react";
 import StoreHeader from "../../components/StoreHeader";
 import PerfumeImageReveal from "../../components/PerfumeImageReveal";
 import ProductPurchase from "../../components/ProductPurchase";
+import SiteFooter from "../../components/SiteFooter";
 import { getProduct, getProductTheme, products } from "../../data/products";
 
 export function generateStaticParams() {
@@ -80,6 +81,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           <PerfumeImageReveal product={product} theme={theme} />
         </div>
       </section>
+      <SiteFooter />
     </main>
   );
 }

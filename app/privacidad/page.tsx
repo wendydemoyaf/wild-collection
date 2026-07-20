@@ -1,12 +1,12 @@
+import SiteFooter from "../components/SiteFooter";
+import StoreHeader from "../components/StoreHeader";
+
 export default function PoliticaPrivacidadPage() {
   return (
     <main className="min-h-screen text-[#F0D8A8] bg-[#050302]">
-      <header className="fixed top-0 left-0 w-full z-50 px-6 md:px-12 py-5 flex justify-between text-[11px] tracking-[0.28em] text-[#B8893B] bg-black/40 backdrop-blur-md border-b border-[#B8893B]/20">
-        <a href="/">WILD COLLECTION</a>
-        <a href="/">VOLVER</a>
-      </header>
+      <StoreHeader />
 
-      <section className="max-w-3xl mx-auto px-6 md:px-8 pt-32 pb-24">
+      <section className="max-w-3xl mx-auto px-6 md:px-8 pt-20 pb-24">
         <p className="text-[10px] tracking-[0.4em] text-[#B8893B] uppercase mb-6">
           Legal
         </p>
@@ -199,6 +199,7 @@ export default function PoliticaPrivacidadPage() {
           </div>
         </div>
       </section>
+      <SiteFooter />
     </main>
   );
 }

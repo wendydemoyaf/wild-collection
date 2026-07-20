@@ -3,6 +3,7 @@
 import { FormEvent, useState } from "react";
 import Link from "next/link";
 import StoreHeader from "../components/StoreHeader";
+import SiteFooter from "../components/SiteFooter";
 import { useCart } from "../context/CartContext";
 
 function money(value: number) {
@@ -17,53 +18,63 @@ function keepNumbers(event: FormEvent<HTMLInputElement>) {
   event.currentTarget.value = event.currentTarget.value.replace(/\D/g, "").slice(0, 10);
 }
 
-const fieldClass = "mt-2 w-full rounded-2xl border border-[#B8893B]/30 bg-[#FFFCF7] px-4 py-3.5 text-base text-[#2B1A10] outline-none transition placeholder:text-black/28 focus:border-[#8D6129] focus:ring-4 focus:ring-[#B8893B]/10";
+const fieldClass = "mt-2 w-full border border-black/20 bg-[#FFFCF7] px-4 py-3.5 text-base text-[#2B1A10] outline-none transition placeholder:text-black/28 focus:border-[#8D6129] focus:ring-4 focus:ring-[#B8893B]/10";
 const labelClass = "text-[10px] font-semibold uppercase tracking-[.18em] text-[#6E4B27]";
 
 export default function CheckoutPage() {
   const { cart, itemCount, pricing, total, clearCart } = useCart();
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [orderId, setOrderId] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (itemCount < 1) return;
     setStatus("sending");
+    setErrorMessage("");
     const form = new FormData(event.currentTarget);
     const customer = Object.fromEntries(form.entries());
-    const response = await fetch("/api/orders", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        customer,
-        items: cart.map(({ slug, name, quantity }) => ({ slug, name, quantity })),
-        pricing: pricing.breakdown,
-        total,
-      }),
-    });
-    if (!response.ok) { setStatus("error"); return; }
-    const data = await response.json();
-    setOrderId(data.orderId);
-    setStatus("success");
-    clearCart();
+    try {
+      const response = await fetch("/api/orders", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          customer,
+          items: cart.map(({ slug, quantity }) => ({ slug, quantity })),
+        }),
+      });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        setErrorMessage(data.error ?? "No pudimos registrar el pedido. Inténtalo nuevamente.");
+        setStatus("error");
+        return;
+      }
+      setOrderId(data.orderId);
+      setStatus("success");
+      clearCart();
+    } catch {
+      setErrorMessage("No pudimos conectar con el registro de pedidos. Revisa tu conexión o escríbenos por WhatsApp.");
+      setStatus("error");
+    }
   }
 
   if (itemCount < 1 && status !== "success") {
     return (
-      <main className="min-h-screen bg-[#FBF5EC] text-[#27170E]">
+      <main className="min-h-screen bg-[#F6F0E8] text-[#070707]">
         <StoreHeader variant="light" />
         <div className="mx-auto max-w-xl px-6 py-24 text-center">
           <h1 className="font-serif text-5xl">Tu carrito está vacío</h1>
           <p className="mt-4 text-black/55">Puedes comprar desde un perfume y elegir la combinación que quieras.</p>
           <Link href="/femenino" className="mt-8 inline-block rounded-full bg-[#27170E] px-7 py-3 text-[10px] font-bold uppercase tracking-[.2em] text-[#F0D8A8]">Elegir perfumes</Link>
         </div>
+        <SiteFooter />
       </main>
     );
   }
 
   if (status === "success") {
     return (
-      <main className="min-h-screen bg-[radial-gradient(circle_at_50%_0%,rgba(184,137,59,.18),transparent_34%),#080503] text-white">
+      <main className="min-h-screen bg-[#070707] text-white">
         <StoreHeader />
         <div className="mx-auto max-w-2xl px-6 py-24 text-center">
           <div className="mx-auto grid h-20 w-20 place-items-center rounded-full border border-emerald-300/30 bg-emerald-500/15 text-4xl text-emerald-300">✓</div>
@@ -71,17 +82,19 @@ export default function CheckoutPage() {
           <p className="mt-4 text-white/65">Tu pedido <strong className="text-[#F0D8A8]">{orderId}</strong> quedó registrado. Te contactaremos para confirmar los datos antes del envío.</p>
           <Link href="/" className="mt-8 inline-block rounded-full border border-[#B8893B]/50 px-7 py-3 text-xs uppercase tracking-[.2em] text-[#F0D8A8]">Volver al inicio</Link>
         </div>
+        <SiteFooter />
       </main>
     );
   }
 
   return (
-    <main className="min-h-screen bg-[radial-gradient(circle_at_85%_5%,rgba(205,161,91,.18),transparent_28%),linear-gradient(135deg,#FBF5EC,#F3E7D8,#FAF3E9)] text-[#27170E]">
+    <main className="min-h-screen bg-[#F6F0E8] text-[#070707]">
       <StoreHeader variant="light" />
       <section className="mx-auto grid max-w-7xl gap-8 px-5 py-12 lg:grid-cols-[minmax(0,1fr)_390px] md:px-10 md:py-16">
-        <form onSubmit={submit} className="rounded-[30px] border border-[#B8893B]/22 bg-white/72 p-6 shadow-[0_20px_65px_rgba(82,48,20,.09)] backdrop-blur-sm md:p-9">
+        <form onSubmit={submit} className="border border-black/12 bg-white/48 p-6 md:p-9">
+          <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
           <p className="text-[9px] font-semibold uppercase tracking-[.35em] text-[#9A6D2D]">Pago contra entrega</p>
-          <h1 className="mt-3 font-serif text-4xl md:text-5xl">Datos para tu envío</h1>
+          <h1 className="mt-3 font-serif text-5xl leading-[.92] tracking-[-.04em] md:text-7xl">Datos para tu envío</h1>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-black/55">Completa cada campo con los datos de la persona que recibirá el pedido. Los campos marcados con <strong className="text-[#9A4F2D]">*</strong> son obligatorios.</p>
 
           <div className="mt-8 grid gap-5 sm:grid-cols-2">
@@ -120,12 +133,12 @@ export default function CheckoutPage() {
             </label>
           </div>
 
-          {status === "error" && <p className="mt-5 rounded-2xl border border-red-700/15 bg-red-50 p-4 text-sm text-red-800">No pudimos registrar el pedido. Revisa tus datos e inténtalo nuevamente.</p>}
-          <button disabled={status === "sending"} className="mt-8 w-full rounded-full bg-[#B8893B] px-6 py-4 text-[10px] font-bold uppercase tracking-[.24em] text-black transition hover:bg-[#D8B36C] disabled:opacity-50">{status === "sending" ? "Registrando…" : "Confirmar pedido"}</button>
+          {status === "error" && <p role="alert" className="mt-5 border border-red-700/15 bg-red-50 p-4 text-sm leading-relaxed text-red-800">{errorMessage}</p>}
+          <button disabled={status === "sending"} className="mt-8 w-full bg-[#070707] px-6 py-4 text-[10px] font-bold uppercase tracking-[.24em] text-[#F0E8DE] transition hover:bg-[#D6BE98] hover:text-black disabled:opacity-50">{status === "sending" ? "Registrando…" : "Confirmar pedido"}</button>
           <p className="mt-3 text-center text-[10px] text-black/42">Te contactaremos antes de despachar. No pagas ahora.</p>
         </form>
 
-        <aside className="h-fit rounded-[30px] border border-[#B8893B]/30 bg-[#100B08] p-6 text-white shadow-[0_24px_70px_rgba(48,26,10,.22)] lg:sticky lg:top-24 md:p-7">
+        <aside className="h-fit border border-[#D6BE98]/22 bg-[#070707] p-6 text-white shadow-[0_24px_70px_rgba(0,0,0,.18)] lg:sticky lg:top-24 md:p-7">
           <p className="text-[9px] uppercase tracking-[.3em] text-[#C99B52]">Resumen final</p>
           <h2 className="mt-3 font-serif text-3xl">Tu pedido</h2>
           <div className="mt-5 space-y-3">{cart.map((item) => <div key={item.slug} className="flex justify-between gap-3 text-sm text-white/68"><span>{item.quantity} × {item.name}</span></div>)}</div>
@@ -138,6 +151,7 @@ export default function CheckoutPage() {
           <Link href="/carrito" className="mt-5 inline-block text-[9px] uppercase tracking-[.2em] text-white/55 underline underline-offset-4 hover:text-white">Editar mi selección</Link>
         </aside>
       </section>
+      <SiteFooter />
     </main>
   );
 }

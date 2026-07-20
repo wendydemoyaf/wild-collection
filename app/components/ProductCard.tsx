@@ -4,29 +4,30 @@ import type { Product } from "../data/products";
 
 export default function ProductCard({ product }: { product: Product }) {
   return (
-    <article className="group w-full max-w-[270px] text-center">
+    <article className="group w-full max-w-[310px] text-left">
       <Link
         href={`/perfumes/${product.slug}`}
         aria-label={`Descubrir ${product.name}`}
-        className="relative block aspect-[4/5] overflow-hidden rounded-[24px] bg-black shadow-[0_18px_45px_rgba(74,34,42,.13)] ring-1 ring-black/[.06]"
+        className="relative block aspect-[.73] overflow-hidden bg-black shadow-[0_18px_45px_rgba(74,34,42,.10)] ring-1 ring-black/[.06]"
       >
         <Image
           src={product.image}
           alt={`Perfume ${product.name} de Wild Collection`}
           fill
-          sizes="(max-width: 640px) 82vw, (max-width: 1024px) 42vw, 270px"
-          className="object-cover transition duration-700 ease-out group-hover:scale-[1.035]"
+          sizes="(max-width: 640px) 88vw, (max-width: 1024px) 44vw, 310px"
+          className="object-cover transition duration-1000 ease-out group-hover:scale-[1.045] group-hover:brightness-75"
         />
-        <div className="absolute inset-0 flex items-end justify-center bg-gradient-to-t from-black/45 via-transparent to-transparent pb-5 opacity-0 transition duration-500 group-hover:opacity-100 group-focus-visible:opacity-100">
-          <span className="rounded-full border border-white/55 bg-black/20 px-5 py-2 text-[9px] font-semibold uppercase tracking-[.28em] text-white backdrop-blur-md">
-            Ver perfume
+        <div className="absolute inset-x-4 bottom-4 flex items-center justify-between border border-white/18 bg-black/60 px-4 py-3 opacity-0 backdrop-blur-md transition duration-500 group-hover:opacity-100 group-focus-visible:opacity-100">
+          <span className="text-[8px] font-semibold uppercase tracking-[.25em] text-white">
+            Descubrir universo
           </span>
+          <span className="text-white">→</span>
         </div>
       </Link>
-      <h2 className="mt-4 font-serif text-[22px] uppercase leading-tight tracking-[-.01em] text-current md:text-2xl">
-        {product.name}
-      </h2>
-      <p className="mt-1 text-[9px] uppercase tracking-[.24em] opacity-55">{product.family}</p>
+      <div className="flex items-start justify-between gap-3 pt-4">
+        <div><p className="text-[8px] uppercase tracking-[.24em] opacity-48">{product.family}</p><h2 className="mt-1 font-serif text-[24px] uppercase leading-tight tracking-[-.025em] text-current md:text-[28px]">{product.name}</h2></div>
+        <span className="font-serif text-lg opacity-70">$19,90</span>
+      </div>
     </article>
   );
 }

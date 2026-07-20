@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import StoreHeader from "../components/StoreHeader";
+import SiteFooter from "../components/SiteFooter";
 import { useCart } from "../context/CartContext";
 
 function money(value: number) {
@@ -24,33 +25,33 @@ export default function CarritoPage() {
   const { cart, itemCount, pricing, suggestion, addToCart, decrease, removeFromCart } = useCart();
 
   return (
-    <main className="min-h-screen bg-[radial-gradient(circle_at_85%_5%,rgba(205,161,91,.18),transparent_28%),linear-gradient(135deg,#FBF5EC,#F3E7D8,#FAF3E9)] text-[#27170E]">
+    <main className="min-h-screen bg-[#F6F0E8] text-[#070707]">
       <StoreHeader variant="light" />
       <section className="mx-auto max-w-7xl px-5 py-12 md:px-10 md:py-16">
         <p className="text-[9px] font-semibold uppercase tracking-[.4em] text-[#9A6D2D]">Tu selección Wild</p>
         <div className="mt-3 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
           <div>
-            <h1 className="font-serif text-5xl md:text-6xl">Tu carrito</h1>
+            <h1 className="font-serif text-6xl leading-[.9] tracking-[-.045em] md:text-8xl">Tu selección</h1>
             <p className="mt-3 text-sm text-black/55">Elige la cantidad que quieras. El mejor precio se aplica automáticamente.</p>
           </div>
           {itemCount > 0 && <p className="text-sm text-black/55">{itemCount} perfume{itemCount === 1 ? "" : "s"} seleccionado{itemCount === 1 ? "" : "s"}</p>}
         </div>
 
         {cart.length === 0 ? (
-          <div className="mt-10 rounded-[30px] border border-[#B8893B]/20 bg-white/65 p-10 text-center shadow-[0_18px_60px_rgba(80,48,20,.08)]">
+          <div className="mt-10 border border-black/12 bg-white/45 p-10 text-center">
             <p className="font-serif text-3xl">Aún no has elegido perfumes</p>
             <p className="mt-3 text-sm text-black/50">Descubre las colecciones y arma tu combinación como prefieras.</p>
             <div className="mt-7 flex flex-wrap justify-center gap-3">
-              <Link href="/femenino" className="rounded-full bg-[#27170E] px-6 py-3 text-[10px] font-bold uppercase tracking-[.2em] text-[#F4DDAF]">Ver mujer</Link>
-              <Link href="/masculino" className="rounded-full border border-[#9A6D2D]/40 px-6 py-3 text-[10px] uppercase tracking-[.2em] text-[#6F471B]">Ver hombre</Link>
+              <Link href="/femenino" className="bg-[#070707] px-6 py-3 text-[10px] font-bold uppercase tracking-[.2em] text-[#F0E8DE]">Ver mujer</Link>
+              <Link href="/masculino" className="border border-black/35 px-6 py-3 text-[10px] uppercase tracking-[.2em]">Ver hombre</Link>
             </div>
           </div>
         ) : (
           <div className="mt-10 grid gap-8 lg:grid-cols-[minmax(0,1fr)_390px]">
             <div className="space-y-4">
               {cart.map((item) => (
-                <article key={item.slug} className="grid grid-cols-[82px_1fr] gap-4 rounded-[26px] border border-[#B8893B]/18 bg-white/72 p-4 shadow-[0_14px_45px_rgba(91,51,20,.07)] sm:grid-cols-[96px_1fr_auto] sm:items-center md:p-5">
-                  <div className="relative h-28 overflow-hidden rounded-2xl sm:h-32">
+                <article key={item.slug} className="grid grid-cols-[82px_1fr] gap-4 border border-black/12 bg-white/52 p-4 sm:grid-cols-[96px_1fr_auto] sm:items-center md:p-5">
+                  <div className="relative h-28 overflow-hidden sm:h-32">
                     <Image src={item.image} alt={item.name} fill sizes="96px" className="object-cover" />
                   </div>
                   <div className="min-w-0">
@@ -74,7 +75,7 @@ export default function CarritoPage() {
               </div>
             </div>
 
-            <aside className="h-fit rounded-[30px] border border-[#B8893B]/30 bg-[#100B08] p-6 text-white shadow-[0_24px_70px_rgba(48,26,10,.22)] lg:sticky lg:top-24 md:p-7">
+            <aside className="h-fit border border-[#D6BE98]/22 bg-[#070707] p-6 text-white shadow-[0_24px_70px_rgba(0,0,0,.18)] lg:sticky lg:top-24 md:p-7">
               <p className="text-[9px] uppercase tracking-[.32em] text-[#C99B52]">Mejor precio aplicado</p>
               <h2 className="mt-3 font-serif text-3xl">Resumen</h2>
               <div className="mt-5 flex justify-between border-b border-white/10 pb-4 text-sm text-white/65"><span>Perfumes elegidos</span><span>{itemCount}</span></div>
@@ -89,13 +90,13 @@ export default function CarritoPage() {
               </div>
 
               {pricing.savings > 0 && (
-                <div className="mt-5 flex justify-between rounded-2xl bg-emerald-400/10 px-4 py-3 text-sm text-emerald-200">
+                <div className="mt-5 flex justify-between border border-emerald-300/15 bg-emerald-400/10 px-4 py-3 text-sm text-emerald-200">
                   <span>Ahorras automáticamente</span><strong>{money(pricing.savings)}</strong>
                 </div>
               )}
 
               {suggestion && (
-                <p className="mt-5 rounded-2xl border border-[#C99B52]/35 bg-[#C99B52]/12 p-4 text-sm leading-relaxed text-[#F7DFAF]">
+                <p className="mt-5 border border-[#C99B52]/35 bg-[#C99B52]/12 p-4 text-sm leading-relaxed text-[#F7DFAF]">
                   {suggestionCopy(suggestion)}
                 </p>
               )}
@@ -105,11 +106,12 @@ export default function CarritoPage() {
                 <strong className="font-serif text-4xl text-[#F0D8A8]">{money(pricing.total)}</strong>
               </div>
               <p className="mt-2 text-xs text-white/42">Pagas cuando recibes tu pedido.</p>
-              <Link href="/checkout" className="mt-6 block rounded-full bg-[#C4933E] px-5 py-4 text-center text-[10px] font-bold uppercase tracking-[.23em] text-black transition hover:bg-[#E4BE79]">Continuar con el pedido</Link>
+              <Link href="/checkout" className="mt-6 block bg-[#D6BE98] px-5 py-4 text-center text-[10px] font-bold uppercase tracking-[.23em] text-black transition hover:bg-[#F0E8DE]">Continuar con el pedido</Link>
             </aside>
           </div>
         )}
       </section>
+      <SiteFooter />
     </main>
   );
 }

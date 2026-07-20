@@ -156,7 +156,7 @@ export default function Home() {
           <span className={styles.introMonogram}>WC</span>
           <span className={styles.introRule} />
           <span className={styles.introName}>Wild Collection</span>
-          <span className={styles.introLoading}>Ecuador · Perfumería</span>
+          <span className={styles.introLoading}>Perfumería de autor</span>
         </div>
       </div>
 
