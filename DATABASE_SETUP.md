@@ -45,3 +45,17 @@ En Supabase abre **Table Editor → orders**. Cada fila corresponde a un pedido 
 - `created_at`: fecha y hora.
 
 Puedes filtrar por teléfono para ver el historial de un cliente y por estado para organizar la operación. Una siguiente etapa puede añadir un panel privado dentro de la web para gestionar esta tabla sin entrar a Supabase.
+
+## 6. Activar el panel privado de pedidos
+
+La ruta `/admin/pedidos` permite consultar pedidos, buscar clientes, contactar por WhatsApp, cambiar estados y exportar la lista en CSV sin entrar al editor técnico de Supabase.
+
+En **Vercel → wild-collection → Settings → Environment Variables** crea:
+
+- Nombre: `ADMIN_PANEL_PASSWORD`
+- Valor: una contraseña privada de al menos 10 caracteres
+- Entorno: `Preview` mientras se valida la rama de prueba
+
+Marca la variable como sensible y realiza un nuevo despliegue de la rama `codex/ecommerce-contraentrega`. No escribas la contraseña en el código, GitHub, documentación ni chats.
+
+La sesión del panel dura 12 horas, usa una cookie privada que JavaScript no puede leer y todas las consultas a Supabase se realizan desde el servidor. La tabla continúa sin acceso público.
