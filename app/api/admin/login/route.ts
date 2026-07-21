@@ -5,6 +5,7 @@ import {
   createAdminSessionToken,
   isAdminConfigured,
   isSameOrigin,
+  passwordMismatchReason,
   verifyAdminPassword,
 } from "../../../lib/adminAuth";
 
@@ -31,7 +32,7 @@ export async function POST(request: NextRequest) {
 
   if (!verifyAdminPassword(password)) {
     await new Promise((resolve) => setTimeout(resolve, 450));
-    return NextResponse.json({ error: "La contraseña no es correcta." }, { status: 401 });
+    return NextResponse.json({ error: passwordMismatchReason(password) }, { status: 401 });
   }
 
   const response = NextResponse.json({ ok: true });

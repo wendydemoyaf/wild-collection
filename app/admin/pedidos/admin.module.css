@@ -183,6 +183,28 @@
   color: rgba(242, 236, 228, .24);
 }
 
+.passwordField {
+  position: relative;
+  display: block;
+}
+
+.passwordField input {
+  padding-right: 4.5rem;
+}
+
+.passwordField button {
+  position: absolute;
+  right: 0;
+  bottom: 1rem;
+  border: 0;
+  background: transparent;
+  color: var(--champagne);
+  font-size: .55rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
 .loginForm > button,
 .whatsappButton {
   display: flex;

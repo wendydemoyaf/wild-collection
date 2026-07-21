@@ -113,6 +113,7 @@ export default function OrdersAdminPage() {
   const [screen, setScreen] = useState<"loading" | "login" | "dashboard">("loading");
   const [orders, setOrders] = useState<OrderRecord[]>([]);
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState<"todos" | OrderStatus>("todos");
@@ -170,7 +171,7 @@ export default function OrdersAdminPage() {
       const response = await fetch("/api/admin/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ password }),
+        body: JSON.stringify({ password: password.normalize("NFKC").trim() }),
       });
       const data = await response.json().catch(() => ({}));
       if (!response.ok) {
@@ -286,15 +287,23 @@ export default function OrdersAdminPage() {
           <form onSubmit={login} className={styles.loginForm}>
             <label>
               <span>Contraseña del panel</span>
-              <input
-                required
-                minLength={10}
-                type="password"
-                autoComplete="current-password"
-                value={password}
-                onChange={(event) => setPassword(event.target.value)}
-                placeholder="Escribe tu contraseña"
-              />
+              <span className={styles.passwordField}>
+                <input
+                  required
+                  minLength={10}
+                  type={showPassword ? "text" : "password"}
+                  autoComplete="new-password"
+                  autoCapitalize="none"
+                  autoCorrect="off"
+                  spellCheck={false}
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                  placeholder="Escribe tu contraseña"
+                />
+                <button type="button" onClick={() => setShowPassword((current) => !current)}>
+                  {showPassword ? "Ocultar" : "Ver"}
+                </button>
+              </span>
             </label>
             {error && <p role="alert" className={styles.error}>{error}</p>}
             <button type="submit">Entrar al panel <span>→</span></button>

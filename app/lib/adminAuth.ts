@@ -4,8 +4,14 @@ import type { NextRequest } from "next/server";
 export const ADMIN_COOKIE_NAME = "wild_admin_session";
 export const ADMIN_SESSION_SECONDS = 60 * 60 * 12;
 
+function normalizePassword(value: string) {
+  const normalized = value.normalize("NFKC").trim();
+  const quoted = normalized.match(/^(["'])([\s\S]*)\1$/);
+  return (quoted?.[2] ?? normalized).trim();
+}
+
 function configuredPassword() {
-  return process.env.ADMIN_PANEL_PASSWORD?.trim() ?? "";
+  return normalizePassword(process.env.ADMIN_PANEL_PASSWORD ?? "");
 }
 
 function digest(value: string) {
@@ -25,7 +31,17 @@ export function isAdminConfigured() {
 export function verifyAdminPassword(candidate: unknown) {
   const password = configuredPassword();
   if (!isAdminConfigured() || typeof candidate !== "string") return false;
-  return timingSafeEqual(digest(candidate), digest(password));
+  return timingSafeEqual(digest(normalizePassword(candidate)), digest(password));
+}
+
+export function passwordMismatchReason(candidate: unknown) {
+  if (typeof candidate !== "string") return "La contraseña no es válida.";
+  const supplied = normalizePassword(candidate);
+  const expected = configuredPassword();
+  if (supplied.length !== expected.length) {
+    return "La contraseña escrita no tiene la misma cantidad de caracteres que la guardada en Vercel.";
+  }
+  return "La cantidad de caracteres coincide, pero el contenido es diferente al guardado en Vercel.";
 }
 
 export function createAdminSessionToken() {
