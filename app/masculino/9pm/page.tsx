@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function NinePMPage() {
@@ -88,9 +89,12 @@ export default function NinePMPage() {
         {/* IMAGEN */}
         <div className="relative flex justify-center items-center group w-[300px] md:w-[360px] mx-auto mt-6 md:mt-8">
           {/* FIX: imagen aparece antes en móvil */}
-          <img
+          <Image
             src="/9pmp.webp"
             alt="9PM"
+            width={1696}
+            height={2528}
+            sizes="(max-width: 768px) 300px, 360px"
             className="max-h-[55vh] md:max-h-[70vh] w-auto object-contain transition-all duration-1000 group-hover:opacity-0 group-hover:scale-95 group-hover:blur-sm"
           />
 

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function InvictusVictoryPage() {
@@ -83,9 +84,12 @@ export default function InvictusVictoryPage() {
         </div>
 
         <div className="relative flex justify-center items-center group w-[320px] md:w-[360px] mx-auto mb-10 md:mb-0 md:mt-14">
-          <img
+          <Image
             src="/invicto.webp"
             alt="INVICTUS VICTORY"
+            width={1696}
+            height={2528}
+            sizes="(max-width: 768px) 320px, 360px"
             className="max-h-[60vh] md:max-h-[73vh] w-auto object-contain transition-all duration-1000 ease-[cubic-bezier(0.25,0.1,0.25,1)] group-hover:opacity-0 group-hover:scale-95 group-hover:blur-sm"
           />
 

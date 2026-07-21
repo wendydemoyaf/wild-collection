@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function PradaCandyPage() {
@@ -81,9 +82,12 @@ export default function PradaCandyPage() {
 
         <div className="flex justify-center mx-auto mb-14 md:mb-10 md:mt-8">
           <div className="relative inline-block group">
-            <img
+            <Image
               src="/candy-primer-plano.webp"
               alt="CANDY"
+              width={864}
+              height={1184}
+              sizes="(max-width: 768px) 92vw, 430px"
               className="block max-h-[60vh] md:max-h-[70vh] w-auto max-w-full object-contain rounded-3xl transition-all duration-1000 group-hover:opacity-0 group-hover:scale-95 group-hover:blur-sm"
             />
 

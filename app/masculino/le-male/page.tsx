@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function LeMalePage() {
@@ -80,9 +81,12 @@ export default function LeMalePage() {
         </div>
 
         <div className="relative flex justify-center items-center group w-[320px] md:w-[360px] mx-auto mb-14 md:mb-10 md:mt-8">
-          <img
+          <Image
             src="/le-male-gotas.webp"
             alt="LE MALE ELIXIR"
+            width={864}
+            height={1184}
+            sizes="(max-width: 768px) 320px, 360px"
             className="max-h-[60vh] md:max-h-[70vh] w-auto object-contain transition-all duration-1000 group-hover:opacity-0 group-hover:scale-95 group-hover:blur-sm"
           />
 
