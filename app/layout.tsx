@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "WILD COLLECTION",
-  description: "Perfumes Wild Collection",
+  title: "Wild Collection Ecuador | Perfumes que dejan huella",
+  description: "Elige tus perfumes Wild Collection de 55 ml, aprovecha nuestras promociones y paga contra entrega en Ecuador.",
 };
 
 export default function RootLayout({
@@ -65,7 +65,9 @@ export default function RootLayout({
         </Script>
 
         <noscript>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
+            alt=""
             height="1"
             width="1"
             style={{ display: "none" }}

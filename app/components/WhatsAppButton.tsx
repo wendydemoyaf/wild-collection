@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 export default function WhatsAppButton() {
+  const pathname = usePathname();
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -16,11 +18,15 @@ export default function WhatsAppButton() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  if (pathname.startsWith("/admin")) return null;
+
   return (
     <a
       href="https://wa.me/593963826845?text=Hola,%20quiero%20información%20sobre%20los%20perfumes%20de%20WILD%20COLLECTION"
       target="_blank"
-      className={`fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#1ebe5d] text-white p-4 rounded-full shadow-2xl transition-all duration-500 hover:scale-110 ${
+      rel="noreferrer"
+      aria-label="Contactar a Wild Collection por WhatsApp"
+      className={`fixed bottom-5 right-5 z-50 grid h-14 w-14 place-items-center rounded-full border border-[#D6BE98]/40 bg-[#070707]/92 p-4 text-[#F0E8DE] shadow-[0_18px_45px_rgba(0,0,0,.28)] backdrop-blur-xl transition-all duration-500 hover:scale-105 hover:border-[#D6BE98] hover:bg-[#D6BE98] hover:text-[#070707] md:bottom-6 md:right-6 ${
         show
           ? "opacity-100 translate-y-0"
           : "opacity-0 translate-y-10 pointer-events-none"

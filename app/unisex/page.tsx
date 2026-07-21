@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function UnisexPage() {
@@ -50,9 +51,12 @@ export default function UnisexPage() {
             <div key={product.name} className="group text-center">
               <Link href={product.link} className="block">
                 <div className="h-[360px] md:h-[390px] overflow-hidden rounded-3xl bg-black/35 border border-[#C8963E]/25 shadow-[0_0_70px_rgba(184,137,59,0.18)]">
-                  <img
+                  <Image
                     src={product.img}
                     alt={product.name}
+                    width={880}
+                    height={1200}
+                    sizes="(max-width: 768px) 84vw, 25vw"
                     className="w-full h-full object-cover transition duration-700 group-hover:scale-110"
                   />
                 </div>

@@ -90,6 +90,13 @@ body {
     transform: rotate(360deg);
   }
 }
+
+@keyframes countPulse {
+  50% {
+    transform: scale(1.12);
+    background: rgba(214, 190, 152, 0.14);
+  }
+}
 @keyframes fadeUp {
   from {
     opacity: 0;

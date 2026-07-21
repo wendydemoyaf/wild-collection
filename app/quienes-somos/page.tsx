@@ -1,400 +1,91 @@
-"use client";
-import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import SiteFooter from "../components/SiteFooter";
+import StoreHeader from "../components/StoreHeader";
+import styles from "../internal.module.css";
 
-function CountUp({ end, prefix = "" }: { end: number; prefix?: string }) {
-  const ref = useRef<HTMLSpanElement | null>(null);
-  const [value, setValue] = useState(0);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (!entry.isIntersecting) return;
-
-      let start = 0;
-      const duration = 1000;
-      const step = end / (duration / 16);
-
-      const timer = setInterval(() => {
-        start += step;
-
-        if (start >= end) {
-          setValue(end);
-          clearInterval(timer);
-        } else {
-          setValue(Math.floor(start));
-        }
-      }, 16);
-
-      observer.disconnect();
-    });
-
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [end]);
-
-  return (
-    <span ref={ref}>
-      {prefix}
-      {value.toLocaleString("es-ES")}
-    </span>
-  );
-}
-
-function useInView() {
-  const ref = useRef<HTMLDivElement | null>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVisible(entry.isIntersecting);
-      },
-      { threshold: 0.05 }
-    );
-
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
-
-  return { ref, isVisible };
-}
+const values = [
+  ["01", "Libertad para elegir", "Creemos en las opciones, en la identidad propia y en la posibilidad de decidir cómo quieres avanzar."],
+  ["02", "Crecimiento constante", "No importa dónde empiezas. Importa todo lo que descubres cuando decides moverte."],
+  ["03", "Experiencias que dejan huella", "El perfume es nuestro punto de encuentro; la transformación es la historia que construimos alrededor."],
+];
 
 export default function QuienesSomosPage() {
-  const hero = useInView();
-  const filosofia = useInView();
-  const esencia = useInView();
-  const impacto = useInView();
-  const vision = useInView();
-  const cierre = useInView();
-
   return (
-    <main className="min-h-screen text-[#F0D8A8] bg-[#050302] overflow-hidden">
-      <header className="fixed top-0 left-0 w-full z-50 px-6 md:px-12 py-5 flex justify-between text-[11px] tracking-[0.28em] text-[#B8893B] bg-black/40 backdrop-blur-md border-b border-[#B8893B]/20">
-        <a href="/">WILD COLLECTION</a>
-        <a href="/">VOLVER</a>
-      </header>
-
-      {/* ===================================== */}
-      {/* QUIÉNES SOMOS - HERO */}
-      {/* ===================================== */}
-      <section className="min-h-[560px] md:h-screen relative flex items-center justify-center text-center px-6 pt-20">
-        <div className="absolute inset-0 bg-black">
-          <div className="w-full h-full bg-[radial-gradient(circle_at_50%_35%,rgba(184,137,59,0.22),transparent_35%),linear-gradient(180deg,rgba(0,0,0,0.35),#000)]" />
-        </div>
-
-        <div
-          ref={hero.ref}
-          className={`relative z-10 max-w-3xl mx-auto transition-all duration-1000 ease-out ${
-            hero.isVisible
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-10"
-          }`}
-        >
-          <h1 className="font-serif text-4xl md:text-6xl leading-[1.1] mb-6">
-            Creemos en las <br />
-            posibilidades
-          </h1>
-
-          <p className="max-w-3xl mx-auto text-base md:text-lg text-white/80 leading-relaxed mb-10">
-            Una marca creada para quienes creen que el mundo es más grande de lo
-            que les enseñaron.
-          </p>
-
-          <a href="/invierte-con-wild">
-            <button className="relative overflow-hidden rounded-full border border-[#B8893B]/60 bg-[#B8893B]/15 px-10 py-4 text-[10px] tracking-[0.28em] uppercase text-[#F0D8A8] hover:bg-[#B8893B]/30 hover:border-[#F0D8A8] hover:text-white transition-all duration-500 shadow-[0_0_35px_rgba(184,137,59,0.16)]">
-              Descubrir oportunidades
-            </button>
-          </a>
-        </div>
-      </section>
-
-      {/* ===================================== */}
-      {/* NUESTRA FILOSOFÍA */}
-      {/* ===================================== */}
-      <section className="pt-8 pb-20 md:pt-24 md:pb-24 px-6 md:px-20 bg-[#050302]">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-14 md:gap-20">
-          <div
-            ref={filosofia.ref}
-            className={`pt-4 max-w-xl relative transition-all duration-1000 ease-out ${
-              filosofia.isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-10"
-            }`}
-          >
-            <div className="absolute -top-10 -left-10 w-[300px] h-[300px] bg-[#B8893B]/10 blur-[120px] rounded-full" />
-
-            <p className="text-[10px] tracking-[0.4em] text-[#B8893B] uppercase mb-6">
-              Nuestra filosofía
-            </p>
-
-            <h2 className="font-serif text-3xl md:text-5xl leading-[1.12] mb-12">
-              Toda transformación comienza <br />
-              con una oportunidad
-            </h2>
-
-            <p className="text-sm md:text-lg text-white/70 leading-[1.7]">
-              A veces comienza con una decisión. <br />
-              Otras veces con una conversación. <br />Y muchas veces con la
-              oportunidad correcta en el momento correcto.
-            </p>
-
-            <p className="mt-12 font-serif italic text-[#B8893B] text-lg md:text-2xl leading-[1.4] tracking-[0.02em]">
-              El mundo es más grande de lo que nos enseñaron
-            </p>
-          </div>
-
-          <div
-            className={`h-[360px] md:h-[540px] rounded-3xl border border-[#B8893B]/20 overflow-hidden bg-black transition-all duration-1000 md:delay-200 ease-out ${
-              filosofia.isVisible
-                ? "opacity-100 md:translate-y-0"
-                : "opacity-100 md:opacity-0 md:translate-y-10"
-            }`}
-          >
-            <img
-              src="/puerta.webp"
-              alt="Oportunidad Wild"
-              className="w-full h-full object-cover scale-105 animate-[identityImage_9s_ease-in-out_infinite_alternate]"
-            />
+    <main className={styles.page}>
+      <StoreHeader />
+      <section className={styles.hero}>
+        <Image src="/wild-night.webp" alt="Comunidad Wild Collection caminando en la ciudad" fill priority sizes="100vw" className={styles.heroImage} />
+        <div className={styles.heroShade} />
+        <div className={styles.heroGrid} />
+        <div className={styles.heroContent}>
+          <p className={styles.eyebrow}>La maison Wild</p>
+          <h1 className={styles.heroTitle}>No vinimos a encajar. Vinimos a abrir <em>posibilidades.</em></h1>
+          <div className={styles.heroLead}>
+            <p>Wild Collection nació alrededor del perfume y creció como una comunidad para quienes saben que siempre existe una versión más libre de su historia.</p>
+            <Link href="/invierte-con-wild" className={styles.outlineButton}>Descubrir la oportunidad</Link>
           </div>
         </div>
       </section>
 
-      {/* SECCIÓN 3 */}
-      {/* ===================================== */}
-      {/* ESPÍRITU WILD */}
-      {/* ===================================== */}
-      <section className="pt-8 pb-20 md:pt-16 md:pb-20 px-6 md:px-14 bg-black">
-        <div ref={esencia.ref} className="max-w-7xl mx-auto">
-          <div
-            className={`text-center mb-14 md:mb-28 transition-all duration-1000 ease-out ${
-              esencia.isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-10"
-            }`}
-          >
-            <p className="text-[10px] tracking-[0.5em] text-[#B8893B]/80 uppercase mb-8">
-              Lo que nos define
-            </p>
-
-            <h2 className="font-serif text-3xl md:text-5xl leading-[1.1]">
-              El Espíritu WILD
-            </h2>
+      <section className={styles.section}>
+        <div className={styles.sectionMeta}><span>01 / Nuestra esencia</span><span>Wild Collection</span></div>
+        <div className={styles.introGrid}>
+          <div>
+            <p className={styles.eyebrow}>Más que perfumes</p>
+            <h2 className={styles.display}>Una marca hecha para <span className={styles.accent}>moverte.</span></h2>
           </div>
+          <div className={styles.bodyStack}>
+            <p>A veces todo empieza con una decisión pequeña: probar un aroma distinto, comenzar una conversación o aceptar una oportunidad que antes parecía lejana.</p>
+            <p>Para nosotros, el perfume no es un accesorio silencioso. Es identidad, memoria y presencia. Y Wild no es solamente una colección: es un espacio para descubrir qué más es posible.</p>
+            <blockquote className={styles.quote}>“El mundo es más grande de lo que nos enseñaron.”</blockquote>
+          </div>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
-            <div
-              className={`bg-[#0B0704] border border-[#B8893B]/20 rounded-3xl p-9 hover:border-[#B8893B]/60 hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(184,137,59,0.10)] transition-all duration-1000 ease-out ${
-                esencia.isVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-10"
-              }`}
-            >
-              <h3 className="font-serif text-2xl mb-4">Libertad para elegir</h3>
-              <p className="text-white/60 text-[15px] leading-relaxed">
-                Tener opciones y elegir conscientemente tu propio camino.
-              </p>
-            </div>
+      <section className={styles.compactSection}>
+        <div className={styles.values}>
+          {values.map(([number, title, copy]) => (
+            <article className={styles.value} key={number}><span>{number}</span><h3>{title}</h3><p>{copy}</p></article>
+          ))}
+        </div>
+      </section>
 
-            <div
-              className={`bg-[#0B0704] border border-[#B8893B]/20 rounded-3xl p-10 hover:border-[#B8893B]/60 hover:scale-[1.02] transition-all duration-1000 delay-150 ease-out ${
-                esencia.isVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-10"
-              }`}
-            >
-              <h3 className="font-serif text-2xl mb-5">
-                Crecimiento constante
-              </h3>
-              <p className="text-white/60 text-[15px] leading-relaxed">
-                No importa dónde comienzas, importa en quién decides
-                convertirte.
-              </p>
-            </div>
-
-            <div
-              className={`bg-[#0B0704] border border-[#B8893B]/20 rounded-3xl p-10 hover:border-[#B8893B]/60 hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(184,137,59,0.10)] hover:shadow-[0_0_40px_rgba(184,137,59,0.10)] hover:shadow-[0_0_40px_rgba(184,137,59,0.10)] hover:shadow-[0_0_40px_rgba(184,137,59,0.10)] hover:shadow-[0_0_40px_rgba(184,137,59,0.10)] hover:shadow-[0_0_40px_rgba(184,137,59,0.10)] transition-all duration-1000 delay-300 ease-out ${
-                esencia.isVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-10"
-              }`}
-            >
-              <h3 className="font-serif text-2xl mb-5">
-                Explorar nuevas posibilidades
-              </h3>
-              <p className="text-white/60 text-[15px] leading-relaxed">
-                Las mejores oportunidades aparecen más allá de lo conocido.
-              </p>
+      <section className={styles.paperSection}>
+        <div className={styles.darkSectionMeta}><span>02 / La historia en movimiento</span><span>Perfume · Comunidad · Oportunidad</span></div>
+        <div className={styles.split}>
+          <div className={styles.imagePanel}>
+            <Image src="/vision.webp" alt="Visión de Wild Collection" fill sizes="(max-width: 900px) 100vw, 48vw" className={styles.coverImage} />
+            <span className={styles.imageCaption}>Visión 01 · Futuro</span>
+          </div>
+          <div>
+            <p className={styles.darkEyebrow}>Nuestra visión</p>
+            <h2 className={styles.darkDisplay}>Esto apenas está <span className={styles.darkAccent}>comenzando.</span></h2>
+            <div className={styles.bodyStack}>
+              <p>No soñamos con ser una empresa más de perfumería. Queremos construir una marca capaz de acompañar a las personas mientras descubren nuevas posibilidades.</p>
+              <p>Hoy avanzamos en Ecuador. Mañana queremos compartir esta visión con muchas más personas, sin perder la cercanía que nos trajo hasta aquí.</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ===================================== */}
-      {/* IMPACTO / NÚMEROS */}
-      {/* ===================================== */}
-      <section className="py-20 md:py-24 px-6 md:px-20 bg-[#050302] text-center relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 w-[520px] h-[520px] -translate-x-1/2 -translate-y-1/2 bg-[#B8893B]/10 blur-[160px] rounded-full" />
-
-        <div
-          ref={impacto.ref}
-          className={`max-w-4xl mx-auto relative z-10 transition-all duration-1000 ease-out ${
-            impacto.isVisible
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-10"
-          }`}
-        >
-          <p className="text-[11px] tracking-[0.5em] text-[#B8893B]/80 uppercase mb-6">
-            Lo que hemos construido juntos
-          </p>
-
-          <h2 className="font-serif text-3xl md:text-5xl leading-[1.15] mb-8">
-            Miles de personas ya forman <br />
-            parte de esta historia
-          </h2>
-
-          <p className="text-white/55 text-sm md:text-base leading-[1.8] max-w-2xl mx-auto mb-10">
-            Lo que comenzó como una idea se convirtió en miles de personas
-            descubriendo que el mundo es más grande de lo que les enseñaron
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-14">
-            <div className="bg-[#0B0704] border border-[#B8893B]/20 rounded-3xl p-8 hover:border-[#B8893B]/60 hover:shadow-[0_0_40px_rgba(184,137,59,0.12)] transition-all duration-700">
-              <p className="font-serif text-[#B8893B] text-6xl md:text-7xl mb-2">
-                <CountUp end={100000} prefix="+" />
-              </p>
-              <p className="text-[11px] tracking-[0.08em] text-white/50">
-                Personas han elegido Wild Collection
-              </p>
-            </div>
-
-            <div className="bg-[#0B0704] border border-[#B8893B]/20 rounded-3xl p-8 hover:border-[#B8893B]/60 hover:shadow-[0_0_40px_rgba(184,137,59,0.12)] transition-all duration-700">
-              <p className="font-serif text-[#B8893B] text-6xl md:text-7xl mb-2">
-                <CountUp end={300} prefix="+" />
-              </p>
-              <p className="text-[11px] tracking-[0.08em] text-white/50">
-                Distribuidores independientes
-              </p>
-            </div>
-
-            <div className="bg-[#0B0704] border border-[#B8893B]/20 rounded-3xl p-8 hover:border-[#B8893B]/60 hover:shadow-[0_0_40px_rgba(184,137,59,0.12)] transition-all duration-700">
-              <p className="font-serif text-[#B8893B] text-6xl md:text-7xl mb-2">
-                <CountUp end={200} prefix="+" />
-              </p>
-              <p className="text-[11px] tracking-[0.08em] text-white/50">
-                Líderes desarrollados
-              </p>
-            </div>
-
-            <div className="bg-[#0B0704] border border-[#B8893B]/20 rounded-3xl p-8 hover:border-[#B8893B]/60 hover:shadow-[0_0_40px_rgba(184,137,59,0.12)] transition-all duration-700">
-              <p className="font-serif text-[#B8893B] text-6xl md:text-7xl mb-2">
-                1 propósito
-              </p>
-
-              <p className="text-[11px] tracking-[0.08em] text-white/50">
-                Expandir posibilidades
-              </p>
-            </div>
-          </div>
+      <section className={styles.paperSection}>
+        <div className={styles.numbers}>
+          <div className={styles.numberCard}><strong className={styles.number}>+100K</strong><p>Personas han elegido Wild</p></div>
+          <div className={styles.numberCard}><strong className={styles.number}>+300</strong><p>Distribuidores independientes</p></div>
+          <div className={styles.numberCard}><strong className={styles.number}>+200</strong><p>Líderes desarrollados</p></div>
+          <div className={styles.numberCard}><strong className={styles.number}>01</strong><p>Propósito compartido</p></div>
         </div>
       </section>
 
-      {/* ===================================== */}
-      {/* NUESTRA VISIÓN */}
-      {/* ===================================== */}
-      <section className="py-20 md:py-28 px-6 md:px-20 bg-black">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-          <div className="relative h-[420px] md:h-[540px] rounded-[36px] overflow-hidden border border-[#B8893B]/20 mt-4 md:mt-14">
-            <img
-              src="/vision.webp"
-              alt="Nuestra visión"
-              className="w-full h-full object-cover scale-105 animate-[identityImage_9s_ease-in-out_infinite_alternate]"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-          </div>
-
-          <div
-            ref={vision.ref}
-            className={`max-w-xl md:-mt-6 transition-all duration-1000 ease-out ${
-              vision.isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-10"
-            }`}
-          >
-            <p className="text-[12px] tracking-[0.25em] text-[#B8893B]/80 mb-6">
-              Nuestra visión
-            </p>
-
-            <h2 className="font-serif text-3xl md:text-5xl leading-[1.15] mb-10">
-              Esto es solo el comienzo
-            </h2>
-
-            <div className="space-y-8 text-white/70 text-sm md:text-base leading-[1.9]">
-              <p>No soñamos con ser una empresa más de perfumería.</p>
-
-              <p>
-                Soñamos con construir una marca que inspire a las personas a
-                descubrir nuevas posibilidades y recordar que el mundo es más
-                grande de lo que les enseñaron.
-              </p>
-
-              <p>Hoy estamos construyendo esta visión en Ecuador.</p>
-
-              <p>Mañana queremos compartirla con muchas más personas.</p>
-
-              <p className="text-[#B8893B] font-serif italic text-base md:text-lg">
-                Porque cuando alguien descubre de lo que es capaz, todo cambia.
-              </p>
-            </div>
-          </div>
+      <section className={styles.cta}>
+        <div className={styles.ctaInner}>
+          <h2 className={styles.ctaTitle}>Lo que sigue puede ser tu historia.</h2>
+          <p>Elige tus perfumes o conoce la oportunidad de crecer junto a Wild Collection.</p>
+          <Link href="/invierte-con-wild" className={styles.button}>Explorar posibilidades</Link>
         </div>
       </section>
-
-      {/* ===================================== */}
-      {/* CIERRE / LLAMADO FINAL */}
-      {/* ===================================== */}
-      <section className="py-20 md:py-28 px-6 md:px-20 bg-[#050302] text-center relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 w-[520px] h-[520px] -translate-x-1/2 -translate-y-1/2 bg-[#B8893B]/10 blur-[160px] rounded-full" />
-
-        <div
-          ref={cierre.ref}
-          className={`max-w-4xl mx-auto relative z-10 transition-all duration-1000 ease-out ${
-            cierre.isVisible
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-10"
-          }`}
-        >
-          <p className="text-[12px] tracking-[0.25em] text-[#B8893B]/80 mb-6">
-            Lo que sigue es tu historia
-          </p>
-
-          <h2 className="font-serif text-3xl md:text-5xl leading-[1.15] mb-8">
-            El mundo es más grande <br />
-            de lo que te enseñaron.
-          </h2>
-
-          <p className="text-white/70 text-xs md:text-sm leading-[1.9] max-w-2xl mx-auto mb-6">
-            Lo que comenzó como una idea hoy inspira a miles de personas a mirar
-            más allá de lo conocido.
-          </p>
-
-          <p className="text-white/80 font-serif italic text-lg md:text-2xl mb-12">
-            ¿Seguirás donde estás o explorarás una posibilidad más?
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/#colecciones">
-              <button className="relative overflow-hidden rounded-full border border-[#B8893B]/60 bg-[#B8893B]/15 px-9 py-4 text-[10px] tracking-[0.25em] uppercase text-[#F0D8A8] hover:bg-[#B8893B]/30 hover:border-[#F0D8A8] hover:text-white transition-all duration-500 shadow-[0_0_35px_rgba(184,137,59,0.16)]">
-                Explorar perfumes
-              </button>
-            </a>
-
-            <a href="/invierte-con-wild">
-              <button className="rounded-full border border-[#B8893B]/40 text-[#F0D8A8] px-9 py-4 text-[10px] tracking-[0.25em] uppercase hover:bg-[#B8893B]/10 hover:border-[#B8893B]/70 transition-all duration-500">
-                DESCUBRIR LA OPORTUNIDAD
-              </button>
-            </a>
-          </div>
-        </div>
-      </section>
+      <SiteFooter />
     </main>
   );
 }
