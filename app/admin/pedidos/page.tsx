@@ -20,6 +20,21 @@ type PricingLine = {
   quantity: number;
 };
 
+type OrderCosts = {
+  cantidad_perfumes: number;
+  costo_unitario_perfume: number;
+  costo_productos: number;
+  costo_empaque: number;
+  costo_envio: number | null;
+  comision_vendedor: number;
+  costo_devolucion: number;
+  otros_costos: number;
+  utilidad_antes_publicidad: number | null;
+  costo_publicidad_atribuido: number;
+  utilidad_final: number | null;
+  estado_calculo: "provisional" | "completo" | "no_calculado";
+};
+
 type OrderRecord = {
   order_id: string;
   created_at: string;
@@ -38,6 +53,17 @@ type OrderRecord = {
   status: OrderStatus;
   payment_method: string;
   source: string;
+  origen_registro?: string | null;
+  id_pedido_externo?: string | null;
+  lead_id_kommo?: string | null;
+  telefono_normalizado?: string | null;
+  id_registro_airtable?: string | null;
+  id_orden_dropi?: string | null;
+  numero_guia?: string | null;
+  estado_logistico?: string | null;
+  fecha_entrega?: string | null;
+  actualizado_logistica_en?: string | null;
+  costos_pedido?: OrderCosts[];
 };
 
 const statusLabels: Record<OrderStatus, string> = {
@@ -68,6 +94,18 @@ function dateTime(value: string) {
     timeStyle: "short",
     timeZone: "America/Guayaquil",
   }).format(new Date(value));
+}
+
+function hasText(value: string | null | undefined) {
+  return Boolean(value?.trim());
+}
+
+function orderCosts(order: OrderRecord) {
+  return order.costos_pedido?.[0] ?? null;
+}
+
+function costInput(value: number | null) {
+  return value === null ? "" : String(Number(value));
 }
 
 function whatsappUrl(phone: string) {
@@ -120,6 +158,7 @@ export default function OrdersAdminPage() {
   const [selectedOrder, setSelectedOrder] = useState<OrderRecord | null>(null);
   const [updatingOrder, setUpdatingOrder] = useState("");
   const [refreshing, setRefreshing] = useState(false);
+  const [costDraft, setCostDraft] = useState({ costo_envio: "", costo_devolucion: "0", otros_costos: "0" });
 
   async function loadOrders(showRefresh = false) {
     if (showRefresh) setRefreshing(true);
@@ -162,6 +201,12 @@ export default function OrdersAdminPage() {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", closeWithEscape);
     };
+  }, [selectedOrder]);
+
+  useEffect(() => {
+    const costs = selectedOrder ? orderCosts(selectedOrder) : null;
+    if (!costs) return;
+    setCostDraft({ costo_envio: costInput(costs.costo_envio), costo_devolucion: costInput(costs.costo_devolucion), otros_costos: costInput(costs.otros_costos) });
   }, [selectedOrder]);
 
   async function login(event: FormEvent<HTMLFormElement>) {
@@ -215,6 +260,37 @@ export default function OrdersAdminPage() {
       setSelectedOrder((current) => current?.order_id === orderId ? { ...current, status } : current);
     } catch {
       setError("No pudimos guardar el nuevo estado.");
+    } finally {
+      setUpdatingOrder("");
+    }
+  }
+
+  async function updateCosts(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (!selectedOrder) return;
+    const parseCost = (value: string, nullable = false) => value.trim() === "" && nullable ? null : Number(value);
+    const costos = {
+      costo_envio: parseCost(costDraft.costo_envio, true),
+      costo_devolucion: parseCost(costDraft.costo_devolucion),
+      otros_costos: parseCost(costDraft.otros_costos),
+    };
+    if (Object.values(costos).some((value) => value !== null && (!Number.isFinite(value) || value < 0))) {
+      setError("Ingresa valores de costo válidos.");
+      return;
+    }
+    setUpdatingOrder(selectedOrder.order_id);
+    setError("");
+    try {
+      const response = await fetch("/api/admin/orders", { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ orderId: selectedOrder.order_id, costos }) });
+      const data = await response.json().catch(() => ({}));
+      if (response.status === 401) { setScreen("login"); return; }
+      if (!response.ok) { setError(data.error ?? "No pudimos guardar los costos."); return; }
+      const costs = data.costos as OrderCosts;
+      const update = (order: OrderRecord) => order.order_id === selectedOrder.order_id ? { ...order, costos_pedido: [costs] } : order;
+      setOrders((current) => current.map(update));
+      setSelectedOrder((current) => current ? update(current) : current);
+    } catch {
+      setError("No pudimos guardar los costos.");
     } finally {
       setUpdatingOrder("");
     }
@@ -411,7 +487,44 @@ export default function OrdersAdminPage() {
             <div className={styles.drawerTop}><div><p className={styles.eyebrow}>Detalle del pedido</p><h2>{selectedOrder.order_id}</h2><small>{dateTime(selectedOrder.created_at)}</small></div><button type="button" onClick={() => setSelectedOrder(null)} aria-label="Cerrar detalle">×</button></div>
             <div className={styles.drawerStatus}><span>Estado actual</span><StatusSelect order={selectedOrder} updating={updatingOrder === selectedOrder.order_id} onChange={updateStatus} /></div>
             <section className={styles.detailSection}><h3>Cliente y entrega</h3><dl><div><dt>Cliente</dt><dd>{selectedOrder.customer_name}</dd></div><div><dt>WhatsApp</dt><dd><a href={whatsappUrl(selectedOrder.phone)} target="_blank" rel="noreferrer">{selectedOrder.phone} ↗</a></dd></div><div><dt>Destino</dt><dd>{selectedOrder.city}, {selectedOrder.province}</dd></div><div><dt>Dirección</dt><dd>{selectedOrder.address}</dd></div>{selectedOrder.reference && <div><dt>Referencia</dt><dd>{selectedOrder.reference}</dd></div>}</dl></section>
+            {(hasText(selectedOrder.origen_registro) || hasText(selectedOrder.id_pedido_externo) || hasText(selectedOrder.lead_id_kommo) || hasText(selectedOrder.telefono_normalizado) || hasText(selectedOrder.id_registro_airtable) || hasText(selectedOrder.id_orden_dropi) || hasText(selectedOrder.numero_guia) || hasText(selectedOrder.estado_logistico) || selectedOrder.fecha_entrega || selectedOrder.actualizado_logistica_en) && (
+              <section className={styles.detailSection}>
+                <h3>Origen y logística</h3>
+                <dl>
+                  {hasText(selectedOrder.origen_registro) && <div><dt>Origen del registro</dt><dd>{selectedOrder.origen_registro}</dd></div>}
+                  {hasText(selectedOrder.id_pedido_externo) && <div><dt>ID de pedido externo</dt><dd>{selectedOrder.id_pedido_externo}</dd></div>}
+                  {hasText(selectedOrder.lead_id_kommo) && <div><dt>Lead de Kommo</dt><dd>{selectedOrder.lead_id_kommo}</dd></div>}
+                  {hasText(selectedOrder.telefono_normalizado) && <div><dt>Teléfono normalizado</dt><dd>{selectedOrder.telefono_normalizado}</dd></div>}
+                  {hasText(selectedOrder.id_registro_airtable) && <div><dt>Registro de Airtable</dt><dd>{selectedOrder.id_registro_airtable}</dd></div>}
+                  {hasText(selectedOrder.id_orden_dropi) && <div><dt>Orden de Dropi</dt><dd>{selectedOrder.id_orden_dropi}</dd></div>}
+                  {hasText(selectedOrder.numero_guia) && <div><dt>Número de guía</dt><dd>{selectedOrder.numero_guia}</dd></div>}
+                  {hasText(selectedOrder.estado_logistico) && <div><dt>Estado logístico</dt><dd>{selectedOrder.estado_logistico}</dd></div>}
+                  {selectedOrder.fecha_entrega && <div><dt>Fecha de entrega</dt><dd>{dateTime(selectedOrder.fecha_entrega)}</dd></div>}
+                  {selectedOrder.actualizado_logistica_en && <div><dt>Actualizado logística</dt><dd>{dateTime(selectedOrder.actualizado_logistica_en)}</dd></div>}
+                </dl>
+              </section>
+            )}
             <section className={styles.detailSection}><h3>Perfumes elegidos</h3><ul className={styles.itemList}>{selectedOrder.items.map((item) => <li key={item.slug}><span>{item.quantity.toString().padStart(2, "0")}</span><div><strong>{item.name}</strong><small>{item.slug}</small></div></li>)}</ul></section>
+            {orderCosts(selectedOrder) && (
+              <section className={styles.detailSection}>
+                <h3>Costos y utilidad</h3>
+                <div className={styles.priceRows}>
+                  <p><span>Cantidad de perfumes</span><b>{orderCosts(selectedOrder)!.cantidad_perfumes}</b></p>
+                  <p><span>Costo de productos</span><b>{money(orderCosts(selectedOrder)!.costo_productos)}</b></p>
+                  <p><span>Empaque</span><b>{money(orderCosts(selectedOrder)!.costo_empaque)}</b></p>
+                  <p><span>Comisión de vendedor</span><b>{money(orderCosts(selectedOrder)!.comision_vendedor)}</b></p>
+                  <p><span>Utilidad antes de publicidad</span><b>{orderCosts(selectedOrder)!.utilidad_antes_publicidad === null ? "Pendiente" : money(orderCosts(selectedOrder)!.utilidad_antes_publicidad!)}</b></p>
+                  <p className={styles.grandTotal}><span>Utilidad final</span><b>{orderCosts(selectedOrder)!.utilidad_final === null ? "Pendiente" : money(orderCosts(selectedOrder)!.utilidad_final!)}</b></p>
+                </div>
+                <p className={styles.costState}>{orderCosts(selectedOrder)!.estado_calculo === "no_calculado" ? "No se calcula: pedido cancelado" : orderCosts(selectedOrder)!.estado_calculo === "completo" ? "Cálculo completo" : "Cálculo provisional"}</p>
+                <form className={styles.costForm} onSubmit={updateCosts}>
+                  <label><span>Costo de envío</span><input inputMode="decimal" value={costDraft.costo_envio} onChange={(event) => setCostDraft((current) => ({ ...current, costo_envio: event.target.value }))} placeholder="Pendiente" /></label>
+                  <label><span>Costo de devolución</span><input inputMode="decimal" value={costDraft.costo_devolucion} onChange={(event) => setCostDraft((current) => ({ ...current, costo_devolucion: event.target.value }))} /></label>
+                  <label><span>Otros costos</span><input inputMode="decimal" value={costDraft.otros_costos} onChange={(event) => setCostDraft((current) => ({ ...current, otros_costos: event.target.value }))} /></label>
+                  <button type="submit" disabled={updatingOrder === selectedOrder.order_id || selectedOrder.status === "cancelado"}>{updatingOrder === selectedOrder.order_id ? "Guardando…" : "Guardar costos"}</button>
+                </form>
+              </section>
+            )}
             <section className={styles.detailSection}><h3>Resumen económico</h3><div className={styles.priceRows}>{selectedOrder.pricing.map((line) => <p key={`${line.quantity}-${line.label}`}><span>{line.count} × {line.label}</span><b>{money(line.count * Number(line.price))}</b></p>)}<p><span>Precio sin promociones</span><b>{money(selectedOrder.regular_total)}</b></p>{Number(selectedOrder.savings) > 0 && <p className={styles.savings}><span>Ahorro aplicado</span><b>−{money(selectedOrder.savings)}</b></p>}<p className={styles.grandTotal}><span>Total contra entrega</span><b>{money(selectedOrder.total)}</b></p></div></section>
             <a className={styles.whatsappButton} href={whatsappUrl(selectedOrder.phone)} target="_blank" rel="noreferrer">Confirmar por WhatsApp <span>↗</span></a>
           </aside>
