@@ -63,7 +63,7 @@ type OrderRecord = {
   estado_logistico?: string | null;
   fecha_entrega?: string | null;
   actualizado_logistica_en?: string | null;
-  costos_pedido?: OrderCosts[];
+  costos_pedido?: OrderCosts | OrderCosts[] | null;
 };
 
 const statusLabels: Record<OrderStatus, string> = {
@@ -101,7 +101,8 @@ function hasText(value: string | null | undefined) {
 }
 
 function orderCosts(order: OrderRecord) {
-  return order.costos_pedido?.[0] ?? null;
+  if (Array.isArray(order.costos_pedido)) return order.costos_pedido[0] ?? null;
+  return order.costos_pedido ?? null;
 }
 
 function costInput(value: number | null) {
