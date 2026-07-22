@@ -1,4 +1,4 @@
-import { MetaAdsError, toClientError } from "./metaAds";
+import { getMetaAccountCurrency, MetaAdsError, toClientError } from "./metaAds";
 
 type MetaInsightsRow = {
   date_start?: string;
@@ -19,6 +19,7 @@ export type DailyConsumption = {
 };
 
 export type MetaCollectionData = {
+  currency: string;
   today: number;
   week: number;
   month: number;
@@ -101,7 +102,8 @@ async function dailyConsumption(from: string, to: string) {
 
 export async function getMetaCollectionData(): Promise<MetaCollectionData> {
   const { today, monthStart } = dateRange();
-  const [todaySpend, weekSpend, monthSpend, accumulatedSpend, daily] = await Promise.all([
+  const [currency, todaySpend, weekSpend, monthSpend, accumulatedSpend, daily] = await Promise.all([
+    getMetaAccountCurrency(),
     accountSpend("today"),
     accountSpend("this_week_mon_today"),
     accountSpend("this_month"),
@@ -109,6 +111,7 @@ export async function getMetaCollectionData(): Promise<MetaCollectionData> {
     dailyConsumption(monthStart, today),
   ]);
   return {
+    currency,
     today: todaySpend,
     week: weekSpend,
     month: monthSpend,
