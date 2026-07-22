@@ -12,6 +12,7 @@ const navigation = [
   { href: "/admin/publicidad", label: "Meta Ads", description: "Campañas y resultados" },
   { href: "/admin/cobros-meta", label: "Facturación Meta", description: "Consumo y cobros" },
   { href: "/admin/rentabilidad", label: "Ganancias", description: "Utilidad y ROAS" },
+  { href: "/admin/configuracion", label: "Configuración", description: "Estado técnico" },
 ];
 
 export default function AdminShell({ children }: { children: ReactNode }) {
