@@ -10,7 +10,7 @@ export async function GET(request: NextRequest) {
   if (!isAdminConfigured()) return json({ error: "El acceso privado todavía no está configurado." }, { status: 503 });
   if (!hasValidAdminSession(request)) return json({ error: "Debes iniciar sesión." }, { status: 401 });
   try {
-    const [campaigns, today, week, month] = await Promise.all([getAdvertisingData(), getAdvertisingData("today"), getAdvertisingData("this_week"), getAdvertisingData("this_month")]);
+    const [campaigns, today, week, month] = await Promise.all([getAdvertisingData(), getAdvertisingData("today"), getAdvertisingData("this_week_mon_today"), getAdvertisingData("this_month")]);
     const byId = (list: typeof campaigns) => new Map(list.map((campaign) => [campaign.id, campaign]));
     const todayById = byId(today), weekById = byId(week), monthById = byId(month);
     const withPeriods = campaigns.map((campaign) => ({ ...campaign, spend_today: todayById.get(campaign.id)?.spend ?? 0, spend_week: weekById.get(campaign.id)?.spend ?? 0, spend_month: monthById.get(campaign.id)?.spend ?? 0 }));
