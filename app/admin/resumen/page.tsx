@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import AdminShell from "../components/AdminShell";
 import styles from "./resumen.module.css";
 
 type Resumen = {
@@ -57,13 +58,7 @@ export default function AdminResumenPage() {
   if (screen === "error") return <main className={styles.centered}><section className={styles.notice}><p className={styles.eyebrow}>Resumen no disponible</p><h1>No pudimos cargar los datos.</h1><p>{error}</p><button type="button" onClick={() => void loadResumen()}>Intentar de nuevo</button></section></main>;
 
   return (
-    <main className={styles.dashboard}>
-      <header className={styles.header}>
-        <Link href="/" className={styles.brand}><span>WC</span><b>Wild Collection</b></Link>
-        <div className={styles.title}><small>Panel privado</small><strong>Resumen</strong></div>
-        <nav><Link href="/admin/pedidos">Pedidos</Link><Link href="/">Ver tienda</Link></nav>
-      </header>
-
+    <AdminShell><main className={styles.dashboard}>
       <div className={styles.inner}>
         <section className={styles.intro}>
           <div><p className={styles.eyebrow}>Wild Ads Control</p><h1>El negocio,<br /><em>en perspectiva.</em></h1></div>
@@ -92,6 +87,6 @@ export default function AdminResumenPage() {
           <article><small>Cancelados</small><strong>{resumen!.estados.cancelados}</strong><p>Sin rentabilidad</p></article>
         </div></section>
       </div>
-    </main>
+    </main></AdminShell>
   );
 }

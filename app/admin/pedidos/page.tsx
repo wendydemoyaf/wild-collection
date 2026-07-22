@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { FormEvent, useEffect, useMemo, useState } from "react";
+import AdminShell from "../components/AdminShell";
 import styles from "./admin.module.css";
 
 const statusOptions = ["nuevo", "confirmado", "preparando", "enviado", "entregado", "cancelado"] as const;
@@ -392,16 +393,7 @@ export default function OrdersAdminPage() {
   }
 
   return (
-    <main className={styles.dashboard}>
-      <header className={styles.adminHeader}>
-        <Link href="/" className={styles.adminBrand}><span>WC</span><b>Wild Collection</b></Link>
-        <div className={styles.headerTitle}><small>Panel privado</small><strong>Pedidos</strong></div>
-        <nav>
-          <Link href="/">Ver tienda</Link>
-          <button type="button" onClick={() => void logout()}>Cerrar sesión</button>
-        </nav>
-      </header>
-
+    <AdminShell><main className={styles.dashboard}>
       <div className={styles.dashboardInner}>
         <section className={styles.dashboardIntro}>
           <div>
@@ -531,6 +523,6 @@ export default function OrdersAdminPage() {
           </aside>
         </div>
       )}
-    </main>
+    </main></AdminShell>
   );
 }

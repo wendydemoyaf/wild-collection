@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import AdminShell from "../components/AdminShell";
 import styles from "./cobros-meta.module.css";
 
 type Data = {
@@ -41,8 +42,7 @@ export default function CobrosMetaPage() {
 
   const consumption = data!.consumption;
   const reconciliation = data!.reconciliation;
-  return <main className={styles.dashboard}>
-    <header className={styles.header}><Link href="/" className={styles.brand}><span>WC</span><b>Wild Collection</b></Link><div className={styles.title}><small>Panel privado</small><strong>Cobros de Meta</strong></div><nav><Link href="/admin/resumen">Resumen</Link><Link href="/admin/publicidad">Publicidad</Link><Link href="/admin/pedidos">Pedidos</Link><Link href="/">Ver tienda</Link></nav></header>
+  return <AdminShell><main className={styles.dashboard}>
     <div className={styles.inner}>
       <section className={styles.intro}><div><p className={styles.eyebrow}>Wild Ads Control</p><h1>Consumo y cobros,<br /><em>sin confundirlos.</em></h1></div><div><p>El consumo publicitario viene de Meta Ads. Los cobros a la tarjeta se muestran por separado y nunca se estiman.</p><button type="button" onClick={() => void load(true)} disabled={refreshing}>{refreshing ? "Actualizando…" : "Actualizar datos"}</button><small>Última actualización: {timestamp(data!.updated_at)}</small></div></section>
 
@@ -52,5 +52,5 @@ export default function CobrosMetaPage() {
 
       <section className={styles.section}><div className={styles.sectionHeading}><div><p className={styles.eyebrow}>Bloque 3</p><h2>Conciliación</h2></div><p>Consumo vs. cobros</p></div><div className={styles.reconciliation}><article><small>Consumo acumulado</small><strong>{money(reconciliation.consumption_accumulated, data!.currency)}</strong></article><article><small>Cobros acumulados</small><strong>{money(reconciliation.charges_accumulated, data!.currency)}</strong></article><article><small>Diferencia</small><strong>{money(reconciliation.difference, data!.currency)}</strong></article><div className={styles.pending}><b>⚠ Existe una diferencia pendiente por conciliar.</b><p>No es posible determinarla hasta contar con cobros reales. {consumption.charges_message}</p></div></div></section>
     </div>
-  </main>;
+  </main></AdminShell>;
 }
