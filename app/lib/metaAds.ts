@@ -58,29 +58,38 @@ async function graph<T>(path: string, params: Record<string, string> = {}) {
   return body;
 }
 
-type GraphNode = { id: string; name: string; status: string; objective?: string; daily_budget?: string; insights?: { data?: MetaInsights[] } };
+type GraphNode = { id: string; name: string; status: string; objective?: string; daily_budget?: string; adset_id?: string };
 
-function nodeMetric(node: GraphNode) { return metric(node.insights?.data?.[0]); }
-function fields(preset: string, kind: "campaign" | "adset" | "ad") { return `id,name,status,${kind === "campaign" ? "objective," : ""}${kind === "adset" ? "daily_budget," : ""}${kind === "ad" ? "adset_id," : ""}insights.date_preset(${preset}){spend,reach,impressions,ctr,cpm,actions,cost_per_action_type}`; }
+const insightFields = "spend,reach,impressions,ctr,cpm,actions,cost_per_action_type";
+
+async function getNodeMetric(id: string, preset: string) {
+  const insights = await graph<{ data?: MetaInsights[] }>(`/${id}/insights`, {
+    fields: insightFields,
+    date_preset: preset,
+    limit: "1",
+  });
+  return metric(insights.data?.[0]);
+}
 
 export async function getAdvertisingData(preset = "maximum") {
   const { accountId } = config();
-  const campaigns = await graph<{ data?: GraphNode[] }>(`/${accountId}/campaigns`, { fields: fields(preset, "campaign"), limit: "100", effective_status: '["ACTIVE","PAUSED","ARCHIVED","DELETED"]' });
+  const campaigns = await graph<{ data?: GraphNode[] }>(`/${accountId}/campaigns`, { fields: "id,name,status,objective", limit: "100" });
   const result: MetaCampaign[] = [];
   for (const campaign of campaigns.data ?? []) {
-    const [adsets, ads] = await Promise.all([
-      graph<{ data?: GraphNode[] }>(`/${campaign.id}/adsets`, { fields: fields(preset, "adset"), limit: "100" }),
-      graph<{ data?: GraphNode[] }>(`/${campaign.id}/ads`, { fields: fields(preset, "ad"), limit: "100" }),
+    const [adsets, ads, campaignMetric] = await Promise.all([
+      graph<{ data?: GraphNode[] }>(`/${campaign.id}/adsets`, { fields: "id,name,status,daily_budget", limit: "100" }),
+      graph<{ data?: GraphNode[] }>(`/${campaign.id}/ads`, { fields: "id,name,status,adset_id", limit: "100" }),
+      getNodeMetric(campaign.id, preset),
     ]);
     const adsByAdset = new Map<string, MetaAd[]>();
     for (const ad of ads.data ?? []) {
-      const typed = { id: ad.id, name: ad.name, status: ad.status, ...nodeMetric(ad) };
-      const current = adsByAdset.get((ad as GraphNode & { adset_id?: string }).adset_id ?? "") ?? [];
+      const typed = { id: ad.id, name: ad.name, status: ad.status, ...metric() };
+      const current = adsByAdset.get(ad.adset_id ?? "") ?? [];
       current.push(typed);
-      adsByAdset.set((ad as GraphNode & { adset_id?: string }).adset_id ?? "", current);
+      adsByAdset.set(ad.adset_id ?? "", current);
     }
-    const mappedAdsets = (adsets.data ?? []).map((adset) => ({ id: adset.id, name: adset.name, status: adset.status, daily_budget: adset.daily_budget === undefined ? null : number(adset.daily_budget) / 100, ...nodeMetric(adset), ads: adsByAdset.get(adset.id) ?? [] }));
-    result.push({ id: campaign.id, name: campaign.name, status: campaign.status, objective: campaign.objective ?? null, daily_budget: mappedAdsets.every((item) => item.daily_budget === null) ? null : mappedAdsets.reduce((sum, item) => sum + (item.daily_budget ?? 0), 0), ...nodeMetric(campaign), adsets: mappedAdsets, spend_today: 0, spend_week: 0, spend_month: 0 });
+    const mappedAdsets = (adsets.data ?? []).map((adset) => ({ id: adset.id, name: adset.name, status: adset.status, daily_budget: adset.daily_budget === undefined ? null : number(adset.daily_budget) / 100, ...metric(), ads: adsByAdset.get(adset.id) ?? [] }));
+    result.push({ id: campaign.id, name: campaign.name, status: campaign.status, objective: campaign.objective ?? null, daily_budget: mappedAdsets.every((item) => item.daily_budget === null) ? null : mappedAdsets.reduce((sum, item) => sum + (item.daily_budget ?? 0), 0), ...campaignMetric, adsets: mappedAdsets, spend_today: 0, spend_week: 0, spend_month: 0 });
   }
   return result;
 }
