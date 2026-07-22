@@ -16,6 +16,7 @@ export async function GET(request: NextRequest) {
   try {
     const consumption = await getMetaCollectionData();
     return json({
+      currency: consumption.currency,
       consumption,
       charges: [],
       reconciliation: {

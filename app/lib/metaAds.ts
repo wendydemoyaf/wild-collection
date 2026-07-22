@@ -16,6 +16,8 @@ export type MetaAd = MetaMetric & { id: string; name: string; status: string };
 export type MetaAdSet = MetaMetric & { id: string; name: string; status: string; daily_budget: number | null; ads: MetaAd[] };
 export type MetaCampaign = MetaMetric & { id: string; name: string; status: string; objective: string | null; daily_budget: number | null; adsets: MetaAdSet[]; spend_today: number; spend_week: number; spend_month: number };
 
+type MetaAccount = { currency?: string };
+
 type MetaInsights = { spend?: string; reach?: string; impressions?: string; ctr?: string; cpm?: string; actions?: Array<{ action_type?: string; value?: string }>; cost_per_action_type?: Array<{ action_type?: string; value?: string }> };
 
 export class MetaAdsError extends Error {
@@ -56,6 +58,13 @@ async function graph<T>(path: string, params: Record<string, string> = {}) {
     throw new MetaAdsError(exact, response.status, detail);
   }
   return body;
+}
+
+export async function getMetaAccountCurrency() {
+  const { accountId } = config();
+  const account = await graph<MetaAccount>(`/${accountId}`, { fields: "currency" });
+  if (!account.currency) throw new MetaAdsError("Meta no devolvió la moneda de la cuenta publicitaria.", 502);
+  return account.currency;
 }
 
 type GraphNode = { id: string; name: string; status: string; objective?: string; daily_budget?: string; adset_id?: string };
