@@ -1,0 +1,14 @@
+.home { min-height: 100svh; background: #0f0f0f; color: #f2ece4; padding: clamp(2rem, 5vw, 5.5rem); }
+.intro { max-width: 50rem; padding: 1rem 0 3.5rem; }
+.eyebrow { margin: 0 0 1rem; color: #b99158; font-size: .6rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; }
+.intro h1 { margin: 0; font-family: Georgia, serif; font-size: clamp(3rem, 6vw, 6.4rem); font-weight: 400; letter-spacing: -.065em; line-height: .9; }
+.intro h1 em { color: #d6be98; font-weight: 400; }
+.intro > p:last-child { max-width: 38rem; margin: 1.8rem 0 0; color: rgba(242,236,228,.64); font-size: 1rem; line-height: 1.7; }
+.cards { display: grid; max-width: 1100px; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1rem; }
+.card { position: relative; min-height: 178px; border: 1px solid rgba(214,190,152,.2); border-radius: 1rem; background: linear-gradient(135deg, rgba(214,190,152,.1), rgba(255,255,255,.025)); padding: 1.45rem; color: #f2ece4; text-decoration: none; transition: transform .2s ease, border-color .2s ease; }
+.card:hover { border-color: #d6be98; transform: translateY(-3px); }
+.card span { color: #b99158; font-size: .63rem; font-weight: 700; letter-spacing: .18em; }
+.card h2 { margin: .65rem 0 .65rem; font-family: Georgia, serif; font-size: 1.85rem; font-weight: 400; letter-spacing: -.035em; }
+.card p { max-width: 25rem; margin: 0; color: rgba(242,236,228,.62); font-size: .87rem; line-height: 1.6; }
+.card b { position: absolute; right: 1.3rem; bottom: 1rem; color: #d6be98; font-size: 1.15rem; }
+@media (max-width: 800px) { .home { padding: 5.4rem 1.3rem 2.4rem; } .cards { grid-template-columns: 1fr; } .intro { padding-bottom: 2.2rem; } }

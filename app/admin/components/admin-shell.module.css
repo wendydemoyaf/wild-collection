@@ -1,0 +1,18 @@
+.shell { --ink: #070707; --paper: #f2ece4; --champagne: #d6be98; --gold: #b99158; min-height: 100svh; background: var(--ink); }
+.sidebar { position: fixed; z-index: 20; inset: 0 auto 0 0; display: flex; width: 264px; flex-direction: column; border-right: 1px solid rgba(214,190,152,.17); background: linear-gradient(145deg, #101010, #070707 65%); padding: 2rem 1.1rem 1.35rem; color: var(--paper); }
+.brand { display: flex; align-items: center; gap: .7rem; color: var(--paper); font-size: .63rem; font-weight: 700; letter-spacing: .16em; text-decoration: none; text-transform: uppercase; }
+.brand span { font-family: Georgia, serif; font-size: 1.7rem; font-weight: 400; letter-spacing: -.11em; }
+.private { margin: 1.75rem .7rem 1.2rem; color: rgba(242,236,228,.42); font-size: .56rem; letter-spacing: .11em; line-height: 1.5; text-transform: uppercase; }
+.navigation { display: grid; gap: .28rem; }
+.navigation a { display: grid; gap: .25rem; border: 1px solid transparent; border-radius: .75rem; padding: .8rem .72rem; color: rgba(242,236,228,.66); text-decoration: none; transition: .2s ease; }
+.navigation a:hover { border-color: rgba(214,190,152,.25); color: var(--paper); }
+.navigation b { font-size: .74rem; font-weight: 700; letter-spacing: .03em; }
+.navigation small { color: rgba(242,236,228,.36); font-size: .58rem; }
+.navigation .active { border-color: rgba(214,190,152,.4); background: rgba(214,190,152,.12); color: var(--champagne); }
+.navigation .active small { color: rgba(242,236,228,.62); }
+.logout { display: flex; align-items: center; justify-content: space-between; width: 100%; margin-top: auto; border: 1px solid rgba(214,190,152,.28); border-radius: .65rem; background: transparent; padding: .82rem .75rem; color: var(--paper); font-size: .65rem; font-weight: 700; letter-spacing: .05em; }
+.logout:hover { border-color: var(--champagne); color: var(--champagne); }
+.logout span { font-size: 1rem; }
+.content { min-width: 0; margin-left: 264px; }
+.menuButton, .backdrop { display: none; }
+@media (max-width: 800px) { .content { margin-left: 0; } .sidebar { width: min(82vw, 300px); transform: translateX(-105%); transition: transform .24s ease; box-shadow: 24px 0 50px rgba(0,0,0,.38); } .sidebarOpen { transform: translateX(0); } .menuButton { position: fixed; z-index: 30; top: 1rem; right: 1rem; display: grid; width: 43px; height: 43px; place-content: center; gap: 4px; border: 1px solid rgba(214,190,152,.4); border-radius: 50%; background: #0e0e0e; } .menuButton span { display: block; width: 17px; height: 1px; background: var(--champagne); } .backdrop { position: fixed; z-index: 15; inset: 0; display: block; border: 0; background: rgba(0,0,0,.55); } }
