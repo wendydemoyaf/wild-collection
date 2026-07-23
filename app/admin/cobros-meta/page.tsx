@@ -21,7 +21,7 @@ export default function CobrosMetaPage() {
   const [data, setData] = useState<Data | null>(null);
   const [screen, setScreen] = useState<"loading" | "ready" | "login" | "error">("loading");
   const [error, setError] = useState("");
-  const [refreshing, setRefreshing] = useState(false);
+  const [, setRefreshing] = useState(false);
 
   async function load(manual = false) {
     if (manual) setRefreshing(true);
@@ -36,6 +36,11 @@ export default function CobrosMetaPage() {
   }
 
   useEffect(() => { void load(); }, []);
+  useEffect(() => {
+    const refresh = () => void load(true);
+    window.addEventListener("wild-admin-refresh", refresh);
+    return () => window.removeEventListener("wild-admin-refresh", refresh);
+  }, []);
   if (screen === "loading") return <main className={styles.centered}><div className={styles.mark}>WC</div><p>Consultando consumo de Meta</p></main>;
   if (screen === "login") return <main className={styles.centered}><section className={styles.notice}><p className={styles.eyebrow}>Acceso privado</p><h1>Inicia sesión para ver los cobros.</h1><Link href="/admin/pedidos">Ir a pedidos →</Link></section></main>;
   if (screen === "error") return <main className={styles.centered}><section className={styles.notice}><p className={styles.eyebrow}>Cobros de Meta no disponibles</p><h1>No pudimos cargar los datos.</h1><p className={styles.error}>{error}</p><button type="button" onClick={() => void load()}>Intentar de nuevo</button></section></main>;
@@ -44,7 +49,7 @@ export default function CobrosMetaPage() {
   const reconciliation = data!.reconciliation;
   return <AdminShell><main className={styles.dashboard}>
     <div className={styles.inner}>
-      <section className={styles.intro}><div><p className={styles.eyebrow}>Wild Ads Control</p><h1>Consumo y cobros,<br /><em>sin confundirlos.</em></h1></div><div><p>El consumo publicitario viene de Meta Ads. Los cobros a la tarjeta se muestran por separado y nunca se estiman.</p><button type="button" onClick={() => void load(true)} disabled={refreshing}>{refreshing ? "Actualizando…" : "Actualizar datos"}</button><small>Última actualización: {timestamp(data!.updated_at)}</small></div></section>
+      <section className={styles.intro}><div><p className={styles.eyebrow}>Wild Ads Control</p><h1>Consumo y cobros,<br /><em>sin confundirlos.</em></h1></div><div><p>El consumo publicitario viene de Meta Ads. Los cobros a la tarjeta se muestran por separado y nunca se estiman.</p><small>Última actualización: {timestamp(data!.updated_at)}</small></div></section>
 
       <section className={styles.section}><div className={styles.sectionHeading}><div><p className={styles.eyebrow}>Bloque 1</p><h2>Consumo publicitario</h2></div><p>Dinero gastado en anuncios · Moneda: {data!.currency}</p></div><div className={styles.metrics}><article><small>Consumo hoy</small><strong>{money(consumption.today, data!.currency)}</strong></article><article><small>Consumo semana</small><strong>{money(consumption.week, data!.currency)}</strong></article><article><small>Consumo mes</small><strong>{money(consumption.month, data!.currency)}</strong></article></div><div className={styles.tableWrap}><table><thead><tr><th>Fecha</th><th>Consumo</th><th>Número de campañas activas</th></tr></thead><tbody>{consumption.daily.map((row) => <tr key={row.date}><td>{date(row.date)}</td><td>{money(row.spend, data!.currency)}</td><td>{row.active_campaigns}</td></tr>)}</tbody></table></div><p className={styles.note}>Las campañas se cuentan cuando Meta registra actividad publicitaria para esa fecha.</p></section>
 
