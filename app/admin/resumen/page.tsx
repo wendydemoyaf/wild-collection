@@ -29,7 +29,7 @@ export default function AdminResumenPage() {
   const [resumen, setResumen] = useState<Resumen | null>(null);
   const [screen, setScreen] = useState<"loading" | "dashboard" | "login" | "error">("loading");
   const [error, setError] = useState("");
-  const [refreshing, setRefreshing] = useState(false);
+  const [, setRefreshing] = useState(false);
 
   async function loadResumen(manual = false) {
     if (manual) setRefreshing(true);
@@ -50,6 +50,11 @@ export default function AdminResumenPage() {
   }
 
   useEffect(() => { void loadResumen(); }, []);
+  useEffect(() => {
+    const refresh = () => void loadResumen(true);
+    window.addEventListener("wild-admin-refresh", refresh);
+    return () => window.removeEventListener("wild-admin-refresh", refresh);
+  }, []);
 
   if (screen === "loading") return <main className={styles.centered}><div className={styles.mark}>WC</div><p>Cargando resumen financiero</p></main>;
 
@@ -62,7 +67,7 @@ export default function AdminResumenPage() {
       <div className={styles.inner}>
         <section className={styles.intro}>
           <div><p className={styles.eyebrow}>Wild Ads Control</p><h1>El negocio,<br /><em>en perspectiva.</em></h1></div>
-          <div><p>Resumen construido con tus pedidos y costos registrados. No incluye pauta ni atribución publicitaria.</p><button type="button" onClick={() => void loadResumen(true)} disabled={refreshing}>{refreshing ? "Actualizando…" : "Actualizar datos"}</button></div>
+          <div><p>Resumen construido con tus pedidos y costos registrados. No incluye pauta ni atribución publicitaria.</p></div>
         </section>
 
         <section className={styles.section} aria-labelledby="ventas"><div className={styles.sectionHeading}><div><p className={styles.eyebrow}>Movimiento comercial</p><h2 id="ventas">Ventas</h2></div><p>Pedidos no cancelados</p></div><div className={styles.metrics}>

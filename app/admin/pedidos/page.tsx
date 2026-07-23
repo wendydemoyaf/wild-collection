@@ -157,9 +157,10 @@ export default function OrdersAdminPage() {
   const [error, setError] = useState("");
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState<"todos" | OrderStatus>("todos");
+  const [actionFilter, setActionFilter] = useState<"todos" | "costos-pendientes">("todos");
   const [selectedOrder, setSelectedOrder] = useState<OrderRecord | null>(null);
   const [updatingOrder, setUpdatingOrder] = useState("");
-  const [refreshing, setRefreshing] = useState(false);
+  const [, setRefreshing] = useState(false);
   const [costDraft, setCostDraft] = useState({ costo_envio: "", costo_devolucion: "0", otros_costos: "0" });
 
   async function loadOrders(showRefresh = false) {
@@ -189,6 +190,18 @@ export default function OrdersAdminPage() {
 
   useEffect(() => {
     void loadOrders();
+  }, []);
+
+  useEffect(() => {
+    const filter = new URLSearchParams(window.location.search).get("filtro");
+    if (filter === "pendientes") setStatusFilter("nuevo");
+    if (filter === "costos-pendientes") setActionFilter("costos-pendientes");
+  }, []);
+
+  useEffect(() => {
+    const refresh = () => void loadOrders(true);
+    window.addEventListener("wild-admin-refresh", refresh);
+    return () => window.removeEventListener("wild-admin-refresh", refresh);
   }, []);
 
   useEffect(() => {
@@ -305,9 +318,11 @@ export default function OrdersAdminPage() {
       const haystack = [order.order_id, order.customer_name, order.phone, order.city, order.province]
         .join(" ")
         .toLocaleLowerCase("es");
-      return matchesStatus && (!query || haystack.includes(query));
+      const costs = orderCosts(order);
+      const matchesAction = actionFilter !== "costos-pendientes" || costs === null || costs.costo_envio === null;
+      return matchesStatus && matchesAction && (!query || haystack.includes(query));
     });
-  }, [orders, search, statusFilter]);
+  }, [orders, search, statusFilter, actionFilter]);
 
   const metrics = useMemo(() => ({
     total: orders.length,
@@ -431,9 +446,10 @@ export default function OrdersAdminPage() {
                 {statusOptions.map((status) => <option value={status} key={status}>{statusLabels[status]}</option>)}
               </select>
             </label>
-            <button type="button" className={styles.toolButton} onClick={() => void loadOrders(true)} disabled={refreshing}>{refreshing ? "Actualizando…" : "Actualizar"}</button>
             <button type="button" className={styles.exportButton} onClick={exportCsv} disabled={!filteredOrders.length}>Exportar CSV</button>
           </div>
+
+          {actionFilter === "costos-pendientes" && <div className={styles.dashboardError}><b>Pedidos con costos de envío pendientes</b><button type="button" onClick={() => setActionFilter("todos")}>Mostrar todos</button></div>}
 
           {filteredOrders.length ? (
             <>
