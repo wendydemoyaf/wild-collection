@@ -5,6 +5,7 @@ import StoreHeader from "../../components/StoreHeader";
 import PerfumeImageReveal from "../../components/PerfumeImageReveal";
 import ProductPurchase from "../../components/ProductPurchase";
 import SiteFooter from "../../components/SiteFooter";
+import MetaViewContent from "../../components/MetaViewContent";
 import { getProduct, getProductTheme, products } from "../../data/products";
 
 export function generateStaticParams() {
@@ -28,6 +29,11 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
   return (
     <main style={pageStyle} className="min-h-screen overflow-hidden">
+      <MetaViewContent
+        contentId={product.slug}
+        contentName={product.name}
+        contentCategory={product.gender}
+      />
       <StoreHeader
         colors={{
           background: theme.header,
