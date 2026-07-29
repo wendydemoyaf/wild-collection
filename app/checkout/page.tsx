@@ -4,6 +4,7 @@ import { FormEvent, useState } from "react";
 import Link from "next/link";
 import StoreHeader from "../components/StoreHeader";
 import SiteFooter from "../components/SiteFooter";
+import MetaInitiateCheckout from "../components/MetaInitiateCheckout";
 import { useCart } from "../context/CartContext";
 
 function money(value: number) {
@@ -89,6 +90,7 @@ export default function CheckoutPage() {
 
   return (
     <main className="min-h-screen bg-[#F6F0E8] text-[#070707]">
+      <MetaInitiateCheckout cart={cart} itemCount={itemCount} total={total} />
       <StoreHeader variant="light" />
       <section className="mx-auto grid max-w-7xl gap-8 px-5 py-12 lg:grid-cols-[minmax(0,1fr)_390px] md:px-10 md:py-16">
         <form onSubmit={submit} className="border border-black/12 bg-white/48 p-6 md:p-9">
