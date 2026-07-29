@@ -14,12 +14,26 @@ type ProductPurchaseProps = {
   };
 };
 
+declare global {
+  interface Window {
+    fbq?: (...args: unknown[]) => void;
+  }
+}
+
 export default function ProductPurchase({ product, colors }: ProductPurchaseProps) {
   const { addToCart, itemCount } = useCart();
   const [added, setAdded] = useState(false);
 
   function chooseProduct() {
     addToCart(product);
+    if (typeof window.fbq === "function") {
+      window.fbq("track", "AddToCart", {
+        content_ids: [product.slug],
+        content_name: product.name,
+        content_type: "product",
+        content_category: product.gender,
+      });
+    }
     setAdded(true);
     window.setTimeout(() => setAdded(false), 1800);
   }
