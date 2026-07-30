@@ -1,10 +1,11 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import Link from "next/link";
 import StoreHeader from "../components/StoreHeader";
 import SiteFooter from "../components/SiteFooter";
 import MetaInitiateCheckout from "../components/MetaInitiateCheckout";
+import MetaPurchase, { type MetaPurchasePayload } from "../components/MetaPurchase";
 import { useCart } from "../context/CartContext";
 
 function money(value: number) {
@@ -19,6 +20,33 @@ function keepNumbers(event: FormEvent<HTMLInputElement>) {
   event.currentTarget.value = event.currentTarget.value.replace(/\D/g, "").slice(0, 10);
 }
 
+type SubmittedOrderItem = {
+  slug: string;
+  quantity: number;
+};
+
+type PurchaseData = {
+  orderId: string;
+  payload: MetaPurchasePayload;
+};
+
+function buildPurchasePayload(items: SubmittedOrderItem[], itemCount: number, total: number): MetaPurchasePayload {
+  const itemPrice = itemCount > 0 ? Number((total / itemCount).toFixed(2)) : 0;
+
+  return {
+    content_ids: items.map((item) => item.slug),
+    contents: items.map((item) => ({
+      id: item.slug,
+      quantity: item.quantity,
+      item_price: itemPrice,
+    })),
+    content_type: "product",
+    num_items: itemCount,
+    value: total,
+    currency: "USD",
+  };
+}
+
 const fieldClass = "mt-2 w-full border border-black/20 bg-[#FFFCF7] px-4 py-3.5 text-base text-[#2B1A10] outline-none transition placeholder:text-black/28 focus:border-[#8D6129] focus:ring-4 focus:ring-[#B8893B]/10";
 const labelClass = "text-[10px] font-semibold uppercase tracking-[.18em] text-[#6E4B27]";
 
@@ -26,34 +54,62 @@ export default function CheckoutPage() {
   const { cart, itemCount, pricing, total, clearCart } = useCart();
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [orderId, setOrderId] = useState("");
+  const [purchaseData, setPurchaseData] = useState<PurchaseData | null>(null);
   const [errorMessage, setErrorMessage] = useState("");
+  const submittingRef = useRef(false);
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (itemCount < 1) return;
+    if (itemCount < 1 || submittingRef.current) return;
+
+    submittingRef.current = true;
     setStatus("sending");
     setErrorMessage("");
+    setPurchaseData(null);
+
     const form = new FormData(event.currentTarget);
     const customer = Object.fromEntries(form.entries());
+    const submittedItems = cart.map(({ slug, quantity }) => ({ slug, quantity }));
+    const submittedItemCount = itemCount;
+    const submittedTotal = total;
+    const isBotSubmission = typeof customer.website === "string" && customer.website.trim().length > 0;
+
     try {
       const response = await fetch("/api/orders", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           customer,
-          items: cart.map(({ slug, quantity }) => ({ slug, quantity })),
+          items: submittedItems,
         }),
       });
       const data = await response.json().catch(() => ({}));
       if (!response.ok) {
+        submittingRef.current = false;
         setErrorMessage(data.error ?? "No pudimos registrar el pedido. Inténtalo nuevamente.");
         setStatus("error");
         return;
       }
-      setOrderId(data.orderId);
+
+      const createdOrderId = typeof data.orderId === "string" ? data.orderId : "";
+      if (!createdOrderId) {
+        submittingRef.current = false;
+        setErrorMessage("No pudimos confirmar el número de pedido. Inténtalo nuevamente.");
+        setStatus("error");
+        return;
+      }
+
+      setOrderId(createdOrderId);
+      if (!isBotSubmission) {
+        setPurchaseData({
+          orderId: createdOrderId,
+          payload: buildPurchasePayload(submittedItems, submittedItemCount, submittedTotal),
+        });
+      }
       setStatus("success");
       clearCart();
     } catch {
+      submittingRef.current = false;
       setErrorMessage("No pudimos conectar con el registro de pedidos. Revisa tu conexión o escríbenos por WhatsApp.");
       setStatus("error");
     }
@@ -76,6 +132,7 @@ export default function CheckoutPage() {
   if (status === "success") {
     return (
       <main className="min-h-screen bg-[#070707] text-white">
+        {purchaseData && <MetaPurchase orderId={purchaseData.orderId} payload={purchaseData.payload} />}
         <StoreHeader />
         <div className="mx-auto max-w-2xl px-6 py-24 text-center">
           <div className="mx-auto grid h-20 w-20 place-items-center rounded-full border border-emerald-300/30 bg-emerald-500/15 text-4xl text-emerald-300">✓</div>
