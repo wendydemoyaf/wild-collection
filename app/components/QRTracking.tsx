@@ -144,17 +144,17 @@ export default function QRTracking() {
   }
 
   return (
-    <div className="mt-10 flex w-full flex-col gap-3">
+    <div className="mt-8 flex w-full flex-col gap-3">
       {QR_LINKS.map((link) => (
         <button
           key={link.channel}
           type="button"
           onClick={() => void handleClick(link)}
           disabled={Boolean(pendingChannel)}
-          className={`flex min-h-[56px] w-full items-center justify-center rounded-[18px] border px-5 text-sm font-semibold tracking-[0.08em] text-[#1A1A1A] transition disabled:cursor-wait disabled:opacity-70 ${
+          className={`flex min-h-[56px] w-full items-center justify-center rounded-[19px] border border-transparent px-5 text-sm font-semibold tracking-[0.08em] shadow-[0_2px_8px_rgba(26,26,26,0.06)] transition disabled:cursor-wait disabled:opacity-70 ${
             link.primary
-              ? "border-[#1A1A1A] bg-[#F8F4EE]"
-              : "border-[#8B7666]/55 bg-transparent hover:border-[#1A1A1A]"
+              ? "bg-[#1A1A1A] text-[#F6F2EC]"
+              : "bg-[#E9E0D5] text-[#1A1A1A]"
           }`}
         >
           {pendingChannel === link.channel ? "Abriendo…" : link.label}
