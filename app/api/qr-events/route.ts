@@ -36,8 +36,8 @@ function cleanOptionalText(value: unknown, maxLength: number) {
   return cleaned || null;
 }
 
-function isValidEventName(value: unknown): value is QREventName {
-  return typeof value === "string" && value in EVENT_CHANNELS;
+function isValidEventName(value: string | null): value is QREventName {
+  return value !== null && value in EVENT_CHANNELS;
 }
 
 export async function POST(request: Request) {
@@ -49,11 +49,12 @@ export async function POST(request: Request) {
     return eventError("No pudimos leer el evento QR.", 400, "INVALID_JSON");
   }
 
-  if (!isValidEventName(payload.event_name)) {
+  const eventName = cleanOptionalText(payload.event_name, 40);
+  if (!isValidEventName(eventName)) {
     return eventError("El evento QR no es válido.", 400, "INVALID_EVENT_NAME");
   }
 
-  const expectedChannel = EVENT_CHANNELS[payload.event_name];
+  const expectedChannel = EVENT_CHANNELS[eventName];
   const channel = cleanOptionalText(payload.channel, 40);
 
   if (expectedChannel === null && channel !== null) {
@@ -77,7 +78,7 @@ export async function POST(request: Request) {
   }
 
   const eventRecord = {
-    event_name: payload.event_name,
+    event_name: eventName,
     channel: expectedChannel,
     utm_source: cleanOptionalText(payload.utm_source, 80),
     utm_medium: cleanOptionalText(payload.utm_medium, 80),
