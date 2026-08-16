@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
+import { Poppins } from "next/font/google";
 import QRTracking from "../components/QRTracking";
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+});
 
 export const metadata: Metadata = {
   title: "Canales oficiales | Wild Collection",
@@ -8,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function QRPage() {
   return (
-    <main className="min-h-screen bg-[#F6F2EC] px-6 text-[#1A1A1A]">
+    <main className={`${poppins.className} min-h-screen bg-[#F3EFE8] px-6 text-[#1A1A1A]`}>
       <section className="mx-auto flex min-h-screen w-full max-w-[420px] flex-col items-center justify-center py-10">
         <div className="w-full rounded-[32px] px-1 py-6 text-center">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -17,13 +23,13 @@ export default function QRPage() {
             alt="Wild Collection"
             width="520"
             height="211"
-            className="mx-auto h-auto w-[238px] max-w-[76vw]"
+            className="mx-auto h-auto w-[148px] max-w-[48vw]"
           />
 
-          <h1 className="mt-9 text-center text-[22px] font-medium leading-[1.22] tracking-[-0.03em] text-[#1A1A1A]">
-            Todo Wild Collection,
+          <h1 className="mt-4 text-center text-[22px] leading-[1.22] tracking-[-0.03em] text-[#1A1A1A]">
+            <span className="font-semibold">Todo Wild Collection</span>
             <br />
-            en un solo lugar.
+            <span className="font-normal">en un solo lugar.</span>
           </h1>
 
           <QRTracking />
