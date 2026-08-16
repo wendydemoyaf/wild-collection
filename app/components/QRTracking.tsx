@@ -166,18 +166,21 @@ export default function QRTracking() {
   }, []);
 
   function handleClick(link: QRLink) {
-    const context = getTrackingContext();
-    trackMeta(link.metaEventName, context, link);
-    void saveOwnEvent(link.ownEventName, context, link.channel);
-    window.location.assign(link.href);
+    try {
+      const context = getTrackingContext();
+      trackMeta(link.metaEventName, context, link);
+      void saveOwnEvent(link.ownEventName, context, link.channel);
+    } catch {
+      // Native link navigation must always continue, even if tracking fails.
+    }
   }
 
   return (
     <div className="mt-7 flex w-full flex-col gap-3">
       {QR_LINKS.map((link) => (
-        <button
+        <a
           key={link.channel}
-          type="button"
+          href={link.href}
           onClick={() => handleClick(link)}
           className={`grid min-h-[58px] w-full grid-cols-[22px_1fr_22px] items-center rounded-[19px] border border-transparent px-5 text-sm font-semibold tracking-[0.055em] shadow-[0_2px_9px_rgba(26,26,26,0.055)] transition active:scale-[0.99] ${
             link.primary
@@ -188,7 +191,7 @@ export default function QRTracking() {
           <ChannelIcon channel={link.channel} />
           <span>{link.label}</span>
           <ChevronIcon />
-        </button>
+        </a>
       ))}
     </div>
   );
