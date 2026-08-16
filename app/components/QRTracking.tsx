@@ -182,11 +182,7 @@ export default function QRTracking() {
           key={link.channel}
           href={link.href}
           onClick={() => handleClick(link)}
-          className={`grid min-h-[58px] w-full grid-cols-[22px_1fr_22px] items-center rounded-[19px] border border-transparent px-5 text-sm font-semibold tracking-[0.055em] shadow-[0_2px_9px_rgba(26,26,26,0.055)] transition active:scale-[0.99] ${
-            link.primary
-              ? "bg-[#1A1A1A] text-[#F6F2EC]"
-              : "bg-[#FBF8F3] text-[#1A1A1A]"
-          }`}
+          className="grid min-h-[58px] w-full grid-cols-[22px_1fr_22px] items-center rounded-[19px] border border-transparent bg-[#FBF8F3] px-5 text-sm font-semibold tracking-[0.055em] text-[#1A1A1A] shadow-[0_2px_9px_rgba(26,26,26,0.055)] transition active:scale-[0.99]"
         >
           <ChannelIcon channel={link.channel} />
           <span>{link.label}</span>
