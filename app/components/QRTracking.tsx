@@ -157,12 +157,27 @@ export default function QRTracking() {
   const trackedPageViewRef = useRef(false);
 
   useEffect(() => {
-    if (trackedPageViewRef.current) return;
-    trackedPageViewRef.current = true;
-
     const context = getTrackingContext();
-    trackMeta("WC_QR_PageView", context);
     void saveOwnEvent("qr_page_view", context, null);
+
+    function tryTrackPageView() {
+      if (trackedPageViewRef.current) return true;
+      if (typeof window.fbq !== "function") return false;
+
+      trackMeta("WC_QR_PageView", context);
+      trackedPageViewRef.current = true;
+      return true;
+    }
+
+    if (tryTrackPageView()) return;
+
+    const retryId = window.setInterval(() => {
+      if (tryTrackPageView()) {
+        window.clearInterval(retryId);
+      }
+    }, 100);
+
+    return () => window.clearInterval(retryId);
   }, []);
 
   function handleClick(link: QRLink) {
