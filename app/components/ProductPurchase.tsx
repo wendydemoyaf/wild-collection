@@ -21,10 +21,12 @@ declare global {
 }
 
 export default function ProductPurchase({ product, colors }: ProductPurchaseProps) {
-  const { addToCart, itemCount } = useCart();
+  const { addToCart, itemCount, availabilityStatus, isProductAvailable } = useCart();
+  const canAdd = isProductAvailable(product.slug);
   const [added, setAdded] = useState(false);
 
   function chooseProduct() {
+    if (!canAdd) return;
     addToCart(product);
     if (typeof window.fbq === "function") {
       window.fbq("track", "AddToCart", {
@@ -43,10 +45,11 @@ export default function ProductPurchase({ product, colors }: ProductPurchaseProp
       <button
         type="button"
         onClick={chooseProduct}
+        disabled={!canAdd}
         style={colors ? { backgroundColor: colors.button, color: colors.buttonText, borderColor: colors.border } : undefined}
         className="w-full rounded-2xl border border-transparent bg-[#B8893B] px-8 py-4 text-[11px] font-bold uppercase tracking-[0.28em] text-black shadow-[0_14px_36px_rgba(24,8,13,.12)] transition hover:-translate-y-0.5 hover:brightness-110 md:w-auto"
       >
-        {added ? "✓ Añadido al carrito" : "Agregar al carrito"}
+        {availabilityStatus !== "ready" ? "Validando disponibilidad…" : !canAdd ? "No disponible" : added ? "✓ Añadido al carrito" : "Agregar al carrito"}
       </button>
       <p style={colors ? { color: colors.muted } : undefined} className="mt-3 text-xs opacity-70">Llevas {itemCount} perfume{itemCount === 1 ? "" : "s"} seleccionado{itemCount === 1 ? "" : "s"}.</p>
     </div>

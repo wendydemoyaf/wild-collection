@@ -22,7 +22,7 @@ function suggestionCopy(suggestion: NonNullable<ReturnType<typeof useCart>["sugg
 }
 
 export default function CarritoPage() {
-  const { cart, itemCount, pricing, suggestion, addToCart, decrease, removeFromCart } = useCart();
+  const { cart, itemCount, pricing, suggestion, addToCart, decrease, removeFromCart, availabilityStatus } = useCart();
 
   return (
     <main className="min-h-screen bg-[#F6F0E8] text-[#070707]">
@@ -37,6 +37,7 @@ export default function CarritoPage() {
           {itemCount > 0 && <p className="text-sm text-black/55">{itemCount} perfume{itemCount === 1 ? "" : "s"} seleccionado{itemCount === 1 ? "" : "s"}</p>}
         </div>
 
+        {availabilityStatus !== "ready" && <p role="status" className="mt-5 rounded-lg bg-white p-4 text-sm text-[#6F471B]">{availabilityStatus === "loading" ? "Estamos verificando la disponibilidad…" : "No pudimos verificar el inventario. Actualiza la página para intentarlo otra vez."}</p>}
         {cart.length === 0 ? (
           <div className="mt-10 border border-black/12 bg-white/45 p-10 text-center">
             <p className="font-serif text-3xl">Aún no has elegido perfumes</p>
@@ -64,7 +65,7 @@ export default function CarritoPage() {
                     <div className="flex items-center overflow-hidden rounded-full border border-[#9A6D2D]/35 bg-[#FBF5EC] text-[#392113]">
                       <button type="button" onClick={() => decrease(item.slug)} className="grid h-11 w-11 place-items-center text-xl transition hover:bg-[#9A6D2D]/12" aria-label={`Quitar una unidad de ${item.name}`}>−</button>
                       <span className="min-w-9 text-center text-sm font-semibold" aria-label={`${item.quantity} unidades`}>{item.quantity}</span>
-                      <button type="button" onClick={() => addToCart(item)} className="grid h-11 w-11 place-items-center text-xl transition hover:bg-[#9A6D2D]/12" aria-label={`Agregar una unidad de ${item.name}`}>+</button>
+                      <button type="button" onClick={() => addToCart(item)} disabled={availabilityStatus !== "ready"} className="grid h-11 w-11 place-items-center text-xl transition hover:bg-[#9A6D2D]/12" aria-label={`Agregar una unidad de ${item.name}`}>+</button>
                     </div>
                   </div>
                 </article>
@@ -106,7 +107,9 @@ export default function CarritoPage() {
                 <strong className="font-serif text-4xl text-[#F0D8A8]">{money(pricing.total)}</strong>
               </div>
               <p className="mt-2 text-xs text-white/42">Pagas cuando recibes tu pedido.</p>
-              <Link href="/checkout" className="mt-6 block bg-[#D6BE98] px-5 py-4 text-center text-[10px] font-bold uppercase tracking-[.23em] text-black transition hover:bg-[#F0E8DE]">Continuar con el pedido</Link>
+              {availabilityStatus === "ready"
+                ? <Link href="/checkout" className="mt-6 block bg-[#D6BE98] px-5 py-4 text-center text-[10px] font-bold uppercase tracking-[.23em] text-black transition hover:bg-[#F0E8DE]">Continuar con el pedido</Link>
+                : <span aria-disabled="true" className="mt-6 block bg-[#D6BE98]/60 px-5 py-4 text-center text-[10px] font-bold uppercase tracking-[.23em] text-black/55">Verificando disponibilidad…</span>}
             </aside>
           </div>
         )}

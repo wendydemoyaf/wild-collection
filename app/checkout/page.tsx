@@ -51,7 +51,7 @@ const fieldClass = "mt-2 w-full border border-black/20 bg-[#FFFCF7] px-4 py-3.5 
 const labelClass = "text-[10px] font-semibold uppercase tracking-[.18em] text-[#6E4B27]";
 
 export default function CheckoutPage() {
-  const { cart, itemCount, pricing, total, clearCart } = useCart();
+  const { cart, itemCount, pricing, total, clearCart, availabilityStatus } = useCart();
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [orderId, setOrderId] = useState("");
   const [purchaseData, setPurchaseData] = useState<PurchaseData | null>(null);
@@ -60,7 +60,7 @@ export default function CheckoutPage() {
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (itemCount < 1 || submittingRef.current) return;
+    if (itemCount < 1 || submittingRef.current || availabilityStatus !== "ready") return;
 
     submittingRef.current = true;
     setStatus("sending");
@@ -193,7 +193,8 @@ export default function CheckoutPage() {
           </div>
 
           {status === "error" && <p role="alert" className="mt-5 border border-red-700/15 bg-red-50 p-4 text-sm leading-relaxed text-red-800">{errorMessage}</p>}
-          <button disabled={status === "sending"} className="mt-8 w-full bg-[#070707] px-6 py-4 text-[10px] font-bold uppercase tracking-[.24em] text-[#F0E8DE] transition hover:bg-[#D6BE98] hover:text-black disabled:opacity-50">{status === "sending" ? "Registrando…" : "Confirmar pedido"}</button>
+          {availabilityStatus !== "ready" && <p role="status" className="mt-5 border border-black/10 bg-white p-3 text-sm">{availabilityStatus === "loading" ? "Validando disponibilidad de tus perfumes…" : "No pudimos verificar el inventario. Actualiza la página antes de confirmar."}</p>}
+          <button disabled={status === "sending" || availabilityStatus !== "ready"} className="mt-8 w-full bg-[#070707] px-6 py-4 text-[10px] font-bold uppercase tracking-[.24em] text-[#F0E8DE] transition hover:bg-[#D6BE98] hover:text-black disabled:opacity-50">{status === "sending" ? "Registrando…" : "Confirmar pedido"}</button>
           <p className="mt-3 text-center text-[10px] text-black/42">Te contactaremos antes de despachar. No pagas ahora.</p>
         </form>
 

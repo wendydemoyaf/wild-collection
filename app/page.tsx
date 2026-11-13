@@ -11,7 +11,7 @@ import {
   type PointerEvent,
   type ReactNode,
 } from "react";
-import { getProduct, type Product } from "./data/products";
+import { getProduct, products, type Product } from "./data/products";
 import { useCart } from "./context/CartContext";
 import styles from "./home.module.css";
 
@@ -92,11 +92,36 @@ export default function Home() {
   const heroRef = useRef<HTMLElement>(null);
   const [introVisible, setIntroVisible] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [availableSlugs, setAvailableSlugs] = useState<Set<string> | null>(null);
 
-  const featured = useMemo(
-    () => featuredSlugs.map(getProduct).filter((product): product is Product => Boolean(product)),
-    [],
-  );
+  const featured = useMemo(() => {
+    if (!availableSlugs) return [];
+    const preferred = featuredSlugs.map(getProduct).filter((product): product is Product =>
+      Boolean(product && availableSlugs.has(product.slug))
+    );
+    const remaining = products.filter((product) => availableSlugs.has(product.slug) &&
+      !preferred.some((selected) => selected.slug === product.slug));
+    return [...preferred, ...remaining].slice(0, 4);
+  }, [availableSlugs]);
+
+  useEffect(() => {
+    let mounted = true;
+    const loadAvailability = async () => {
+      try {
+        const response = await fetch("/api/product-availability", { cache: "no-store" });
+        if (!response.ok) throw new Error("Availability unavailable");
+        const data = await response.json();
+        if (mounted && Array.isArray(data.availableSlugs)) {
+          setAvailableSlugs(new Set<string>(data.availableSlugs));
+        }
+      } catch {
+        if (mounted) setAvailableSlugs(new Set());
+      }
+    };
+    void loadAvailability();
+    window.addEventListener("focus", loadAvailability);
+    return () => { mounted = false; window.removeEventListener("focus", loadAvailability); };
+  }, []);
 
   useEffect(() => {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;

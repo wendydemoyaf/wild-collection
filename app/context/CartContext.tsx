@@ -8,6 +8,8 @@ export type CartItem = Product & { quantity: number };
 
 type CartContextValue = {
   cart: CartItem[];
+  availabilityStatus: "loading" | "ready" | "error";
+  isProductAvailable: (slug: string) => boolean;
   itemCount: number;
   total: number;
   pricing: ReturnType<typeof calculateCartPricing>;
@@ -25,6 +27,8 @@ const CartContext = createContext<CartContextValue | null>(null);
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [ready, setReady] = useState(false);
+  const [availableSlugs, setAvailableSlugs] = useState<Set<string>>(new Set());
+  const [availabilityStatus, setAvailabilityStatus] = useState<"loading" | "ready" | "error">("loading");
   const [lastAdded, setLastAdded] = useState<{ product: Product; key: number } | null>(null);
 
   useEffect(() => {
@@ -43,12 +47,37 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   }, [cart, ready]);
 
   useEffect(() => {
+    let mounted = true;
+    const refresh = async () => {
+      try {
+        const response = await fetch("/api/product-availability", { cache: "no-store" });
+        if (!response.ok) throw new Error("Availability unavailable");
+        const data: unknown = await response.json();
+        if (!data || typeof data !== "object" || !("availableSlugs" in data) ||
+            !Array.isArray(data.availableSlugs) ||
+            !data.availableSlugs.every((slug: unknown) => typeof slug === "string")) throw new Error("Invalid availability");
+        if (!mounted) return;
+        const valid = new Set<string>(data.availableSlugs);
+        setAvailableSlugs(valid);
+        setAvailabilityStatus("ready");
+        setCart((current) => current.filter((item) => valid.has(item.slug)));
+      } catch {
+        if (mounted) setAvailabilityStatus("error");
+      }
+    };
+    void refresh();
+    window.addEventListener("focus", refresh);
+    return () => { mounted = false; window.removeEventListener("focus", refresh); };
+  }, []);
+
+  useEffect(() => {
     if (!lastAdded) return;
     const timer = window.setTimeout(() => setLastAdded(null), 3200);
     return () => window.clearTimeout(timer);
   }, [lastAdded]);
 
   const addToCart = (product: Product) => {
+    if (availabilityStatus !== "ready" || !availableSlugs.has(product.slug)) return;
     setLastAdded({ product, key: Date.now() });
     setCart((current) => {
       const found = current.find((item) => item.slug === product.slug);
@@ -67,6 +96,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const removeFromCart = (slug: string) => setCart((current) => current.filter((item) => item.slug !== slug));
   const clearCart = () => setCart([]);
   const dismissAdded = () => setLastAdded(null);
+  const isProductAvailable = (slug: string) => availabilityStatus === "ready" && availableSlugs.has(slug);
 
   const itemCount = useMemo(() => cart.reduce((sum, item) => sum + item.quantity, 0), [cart]);
   const pricing = useMemo(() => calculateCartPricing(itemCount), [itemCount]);
@@ -74,7 +104,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const total = pricing.total;
 
   return (
-    <CartContext.Provider value={{ cart, itemCount, total, pricing, suggestion, lastAdded, addToCart, decrease, removeFromCart, clearCart, dismissAdded }}>
+    <CartContext.Provider value={{ cart, availabilityStatus, isProductAvailable, itemCount, total, pricing, suggestion, lastAdded, addToCart, decrease, removeFromCart, clearCart, dismissAdded }}>
       {children}
     </CartContext.Provider>
   );
