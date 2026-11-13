@@ -8,10 +8,10 @@ export default function MasculinoPage() {
     <main className="min-h-screen bg-[#070707] text-[#F0E8DE]">
       <StoreHeader />
       <section className="mx-auto grid max-w-7xl gap-7 px-5 pb-12 pt-16 md:grid-cols-[.55fr_1.45fr] md:items-end md:px-10 md:pb-20 md:pt-24">
-        <p className="text-[9px] font-semibold uppercase tracking-[.38em] text-[#D6BE98]">Colección 02 · Hombre</p>
+        <p className="text-[9px] font-[family-name:var(--font-wild-copy)] font-semibold uppercase tracking-[.38em] text-[#D6BE98]">Colección 02 · Hombre</p>
         <div>
           <h1 className="font-serif text-[clamp(3.8rem,8vw,8rem)] leading-[.82] tracking-[-.055em]">Perfumes masculinos</h1>
-          <p className="mt-6 max-w-xl text-sm leading-relaxed text-white/52">Frescos, intensos, magnéticos y seguros. Cada perfume abre una experiencia visual y olfativa propia.</p>
+          <p className="mt-6 max-w-xl text-sm font-[family-name:var(--font-wild-copy)] font-normal leading-relaxed text-white/52">Frescos, intensos, magnéticos y seguros. Cada perfume abre una experiencia visual y olfativa propia.</p>
         </div>
       </section>
       <div className="mx-5 border-t border-white/15 md:mx-10" />

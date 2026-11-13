@@ -8,10 +8,10 @@ export default function FemeninoPage() {
     <main className="min-h-screen bg-[#F6F0E8] text-[#070707]">
       <StoreHeader />
       <section className="mx-auto grid max-w-7xl gap-7 px-5 pb-12 pt-16 md:grid-cols-[.55fr_1.45fr] md:items-end md:px-10 md:pb-20 md:pt-24">
-        <p className="text-[9px] font-semibold uppercase tracking-[.38em] text-[#8B6B45]">Colección 01 · Mujer</p>
+        <p className="text-[9px] font-[family-name:var(--font-wild-copy)] font-semibold uppercase tracking-[.38em] text-[#8B6B45]">Colección 01 · Mujer</p>
         <div>
           <h1 className="font-serif text-[clamp(3.8rem,8vw,8rem)] leading-[.82] tracking-[-.055em]">Perfumes femeninos</h1>
-          <p className="mt-6 max-w-xl text-sm leading-relaxed text-black/55">Dulces, florales, luminosos y memorables. Entra en cada imagen para descubrir un universo distinto.</p>
+          <p className="mt-6 max-w-xl text-sm font-[family-name:var(--font-wild-copy)] font-normal leading-relaxed text-black/55">Dulces, florales, luminosos y memorables. Entra en cada imagen para descubrir un universo distinto.</p>
         </div>
       </section>
       <div className="mx-5 border-t border-black/15 md:mx-10" />
