@@ -21,6 +21,7 @@ export default function AdminCatalogPage() {
   const [saving, setSaving] = useState<string | null>(null);
   const [error, setError] = useState("");
   const [search, setSearch] = useState("");
+  const [previewReadOnly, setPreviewReadOnly] = useState(false);
 
   async function load() {
     setError("");
@@ -30,6 +31,7 @@ export default function AdminCatalogPage() {
       const data = await response.json();
       if (!response.ok) throw new Error(data.error ?? "No pudimos cargar el catálogo.");
       setProducts(data.products);
+      setPreviewReadOnly(Boolean(data.preview_read_only));
     } catch (err) {
       setError(err instanceof Error ? err.message : "Error consultando el catálogo.");
     } finally { setLoading(false); }
@@ -44,7 +46,7 @@ export default function AdminCatalogPage() {
   }, []);
 
   async function toggle(product: CatalogProduct) {
-    if (saving) return;
+    if (saving || previewReadOnly) return;
     setSaving(product.slug);
     setError("");
     try {
@@ -85,6 +87,7 @@ export default function AdminCatalogPage() {
           className="mt-7 w-full rounded-xl border border-black/15 bg-white px-4 py-3 text-sm outline-none focus:border-[#8B7666]"
           value={search} onChange={(event) => setSearch(event.target.value)}
         />
+        {previewReadOnly && <p className="mt-5 rounded-xl bg-[#FFF2D9] p-4 text-sm text-[#684F21]">Vista previa de solo lectura: los interruptores se habilitarán en producción después de la aprobación.</p>}
         {error && <p role="alert" className="mt-5 rounded-xl bg-red-50 p-4 text-sm text-red-800">{error}</p>}
         {loading ? <p className="mt-8 text-sm">Cargando catálogo…</p> :
           <div className="mt-6 overflow-hidden rounded-2xl border border-black/10 bg-white">
@@ -100,7 +103,7 @@ export default function AdminCatalogPage() {
                 <span className="hidden sm:inline">{product.is_active ? "Disponible" : "Inactivo"}</span>
                 <input
                   type="checkbox" checked={product.is_active}
-                  disabled={saving !== null}
+                  disabled={saving !== null || previewReadOnly}
                   onChange={() => void toggle(product)}
                   aria-label={`Disponible en la tienda: ${product.name}`}
                   className="h-6 w-6 accent-[#1A1A1A]"

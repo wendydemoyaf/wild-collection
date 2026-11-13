@@ -24,6 +24,7 @@ export async function GET(request: NextRequest) {
     const rows = await getAvailabilityRows();
     const state = new Map(rows.map((row) => [row.slug, row]));
     return privateJson({
+      preview_read_only: process.env.VERCEL_ENV !== "production",
       products: products.map((product) => ({
         slug: product.slug,
         name: product.name,
@@ -42,6 +43,10 @@ export async function PATCH(request: NextRequest) {
   const guard = checkSession(request);
   if (guard) return guard;
   if (!isSameOrigin(request)) return privateJson({ error: "Solicitud no permitida." }, 403);
+  // Las previews pueden compartir Supabase con producción. Nunca modificar datos reales desde Preview.
+  if (process.env.VERCEL_ENV !== "production") {
+    return privateJson({ error: "En Preview solo puedes revisar el catálogo. Los cambios están deshabilitados." }, 403);
+  }
   let body: unknown;
   try { body = await request.json(); } catch { return privateJson({ error: "Solicitud inválida." }, 400); }
   if (!body || typeof body !== "object" || Array.isArray(body)) return privateJson({ error: "Solicitud inválida." }, 400);
