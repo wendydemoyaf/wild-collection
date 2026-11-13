@@ -7,6 +7,9 @@ import ProductPurchase from "../../components/ProductPurchase";
 import SiteFooter from "../../components/SiteFooter";
 import MetaViewContent from "../../components/MetaViewContent";
 import { getProduct, getProductTheme, products } from "../../data/products";
+import { getActiveSlugs } from "../../lib/productAvailability";
+
+export const dynamic = "force-dynamic";
 
 export function generateStaticParams() {
   return products.map((product) => ({ slug: product.slug }));
@@ -16,6 +19,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const { slug } = await params;
   const product = getProduct(slug);
   if (!product) notFound();
+  const active = await getActiveSlugs();
+  if (!active.has(slug)) notFound();
   const theme = getProductTheme(product);
   const pageStyle = {
     "--perfume-text": theme.text,

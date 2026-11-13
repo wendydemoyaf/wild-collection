@@ -1,9 +1,13 @@
 import ProductCard from "../components/ProductCard";
+import { getActiveSlugs } from "../lib/productAvailability";
 import SiteFooter from "../components/SiteFooter";
 import StoreHeader from "../components/StoreHeader";
 import { womenProducts } from "../data/products";
 
-export default function FemeninoPage() {
+export const dynamic = "force-dynamic";
+
+export default async function FemeninoPage() {
+  const active = await getActiveSlugs();
   return (
     <main className="min-h-screen bg-[#F6F0E8] text-[#070707]">
       <StoreHeader />
@@ -16,7 +20,7 @@ export default function FemeninoPage() {
       </section>
       <div className="mx-5 border-t border-black/15 md:mx-10" />
       <section className="mx-auto grid max-w-[1540px] grid-cols-1 justify-items-center gap-x-5 gap-y-14 px-5 py-14 sm:grid-cols-2 md:px-8 lg:grid-cols-3 xl:grid-cols-4">
-        {womenProducts.map((product) => <ProductCard key={product.slug} product={product} />)}
+        {womenProducts.filter((product) => active.has(product.slug)).map((product) => <ProductCard key={product.slug} product={product} />)}
       </section>
       <SiteFooter />
     </main>

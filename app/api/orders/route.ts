@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { calculateCartPricing, products } from "../../data/products";
+import { getActiveSlugs } from "../../lib/productAvailability";
 
 type CustomerInput = {
   name?: unknown;
@@ -67,6 +68,16 @@ export async function POST(request: Request) {
       return orderError("Uno de los perfumes seleccionados no es válido.", 400, "INVALID_ITEM");
     }
     normalizedItems.push({ slug: product.slug, name: product.name, quantity });
+  }
+
+  // Revalidar al guardar: un enlace antiguo o carrito guardado no puede vender referencias inactivas.
+  try {
+    const active = await getActiveSlugs();
+    if (normalizedItems.some((item) => !active.has(item.slug))) {
+      return orderError("Uno de los perfumes ya no está disponible. Actualiza tu selección.", 409, "PRODUCT_UNAVAILABLE");
+    }
+  } catch {
+    return orderError("No pudimos verificar la disponibilidad. Inténtalo de nuevo.", 503, "AVAILABILITY_UNAVAILABLE");
   }
 
   const itemCount = normalizedItems.reduce((sum, item) => sum + item.quantity, 0);

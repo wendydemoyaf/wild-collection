@@ -12,6 +12,7 @@ const navigationGroups = [
   ] },
   { title: "💰 OPERACIÓN", items: [
     { href: "/admin/pedidos", label: "Ventas", description: "Pedidos y clientes" },
+    { href: "/admin/catalogo", label: "Catálogo de perfumes", description: "Activar y desactivar referencias" },
     { href: "/admin/rentabilidad", label: "Ganancias", description: "Utilidad y ROAS" },
   ] },
   { title: "📢 PUBLICIDAD", items: [
