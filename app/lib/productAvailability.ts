@@ -30,13 +30,15 @@ export async function getAvailabilityRows(): Promise<ProductAvailabilityRow[]> {
 }
 
 export async function getActiveSlugs(): Promise<Set<string>> {
-  const validSlugs = new Set(products.map((product) => product.slug));
+  const validSlugs = new Set(products.filter((product) => product.imageReady !== false).map((product) => product.slug));
   const rows = await getAvailabilityRows();
   return new Set(rows.filter((row) => validSlugs.has(row.slug) && row.is_active).map((row) => row.slug));
 }
 
 export async function setProductAvailability(slug: string, isActive: boolean) {
-  if (!products.some((product) => product.slug === slug)) throw new Error("Unknown product");
+  const product = products.find((candidate) => candidate.slug === slug);
+  if (!product) throw new Error("Unknown product");
+  if (isActive && product.imageReady === false) throw new Error("Product photo is not uploaded yet");
   const { url, secret } = credentials();
   const response = await fetch(`${url}/rest/v1/product_availability?on_conflict=slug`, {
     method: "POST",

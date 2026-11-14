@@ -27,6 +27,8 @@ export async function GET(request: NextRequest) {
       preview_read_only: process.env.VERCEL_ENV !== "production",
       products: products.map((product) => ({
         slug: product.slug,
+        code: product.code ?? null,
+        image_ready: product.imageReady !== false,
         name: product.name,
         gender: product.gender,
         image: product.image,
@@ -53,6 +55,9 @@ export async function PATCH(request: NextRequest) {
   const { slug, is_active } = body as Record<string, unknown>;
   if (typeof slug !== "string" || !products.some((product) => product.slug === slug) || typeof is_active !== "boolean") {
     return privateJson({ error: "Producto o disponibilidad inválida." }, 400);
+  }
+  if (is_active && products.find((item) => item.slug === slug)?.imageReady === false) {
+    return privateJson({ error: "Primero debemos cargar y validar la fotografía oficial de este perfume." }, 409);
   }
   try {
     await setProductAvailability(slug, is_active);

@@ -28,3 +28,29 @@ VALUES
   ('vip-men', true),
   ('pure-xs', true)
 ON CONFLICT (slug) DO NOTHING;
+
+-- Nuevas referencias preparadas como inactivas hasta verificar fotografías y fichas.
+INSERT INTO public.product_availability (slug, is_active)
+VALUES
+  ('09-9-pm', false),
+  ('22-odyssey-bahamas', false),
+  ('33-zanzibar-asad', false),
+  ('34-odyssey-marshmallow', false),
+  ('36a-l-imperatrice', false),
+  ('36b-la-bomba', false),
+  ('50-scandal-woman', false),
+  ('52-valentino-donna-born-in-roma', false),
+  ('55-asad-lion', false),
+  ('56-sweet-like-candy', false),
+  ('59-le-male-elixir', false),
+  ('61-invictus-victory', false),
+  ('66-haramain-amber-oud', false),
+  ('71-valentino-uomo', false),
+  ('72a-berry-on-top', false),
+  ('72b-taraf', false),
+  ('74a-mallow-madness', false),
+  ('74b-paradoxe-intense', false),
+  ('80-eclaire', false),
+  ('88-khamrah', false),
+  ('99-honor-glory', false)
+ON CONFLICT (slug) DO NOTHING;

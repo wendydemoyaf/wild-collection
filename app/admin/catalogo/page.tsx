@@ -7,6 +7,8 @@ import AdminShell from "../components/AdminShell";
 
 type CatalogProduct = {
   slug: string;
+  code: string | null;
+  image_ready: boolean;
   name: string;
   gender: string;
   image: string;
@@ -93,17 +95,20 @@ export default function AdminCatalogPage() {
           <div className="mt-6 overflow-hidden rounded-2xl border border-black/10 bg-white">
             {filtered.map((product) => <div key={product.slug} className="flex items-center gap-4 border-b border-black/10 p-4 last:border-0">
               <div className="relative h-16 w-12 shrink-0 overflow-hidden bg-[#EEE6DD]">
-                <Image src={product.image} alt="" fill sizes="48px" className="object-cover" />
+                {product.image_ready
+                  ? <Image src={product.image} alt="" fill sizes="48px" className="object-cover" />
+                  : <span className="flex h-full w-full items-center justify-center text-[10px] text-black/40">Sin foto</span>}
               </div>
               <div className="min-w-0 flex-1">
                 <p className="text-sm font-semibold">{product.name}</p>
-                <p className="mt-1 text-xs text-black/50">{product.slug} · {product.gender}</p>
+                <p className="mt-1 text-xs text-black/50">{product.code ? `Ref. ${product.code} · ` : ""}{product.gender}</p>
+                {!product.image_ready && <p className="mt-1 text-[11px] text-[#A56E32]">Fotografía pendiente de subir · activación bloqueada</p>}
               </div>
               <label className="flex cursor-pointer items-center gap-2 text-xs">
                 <span className="hidden sm:inline">{product.is_active ? "Disponible" : "Inactivo"}</span>
                 <input
                   type="checkbox" checked={product.is_active}
-                  disabled={saving !== null || previewReadOnly}
+                  disabled={saving !== null || previewReadOnly || (!product.image_ready && !product.is_active)}
                   onChange={() => void toggle(product)}
                   aria-label={`Disponible en la tienda: ${product.name}`}
                   className="h-6 w-6 accent-[#1A1A1A]"
