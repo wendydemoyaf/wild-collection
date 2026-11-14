@@ -25,6 +25,7 @@ export async function GET(request: NextRequest) {
     const state = new Map(rows.map((row) => [row.slug, row]));
     return privateJson({
       preview_read_only: process.env.VERCEL_ENV !== "production",
+      preview_simulation: false,
       products: products.map((product) => ({
         slug: product.slug,
         code: product.code ?? null,
@@ -37,6 +38,21 @@ export async function GET(request: NextRequest) {
       })),
     });
   } catch {
+    // Solo en Preview: permitir revisar el panel sin escribir ni simular una conexión real.
+    if (process.env.VERCEL_ENV !== "production") return privateJson({
+      preview_read_only: true,
+      preview_simulation: true,
+      products: products.map((product) => ({
+        slug: product.slug,
+        code: product.code ?? null,
+        image_ready: product.imageReady !== false,
+        name: product.name,
+        gender: product.gender,
+        image: product.image,
+        is_active: product.imageReady !== false,
+        updated_at: null,
+      })),
+    });
     return privateJson({ error: "No pudimos consultar la disponibilidad en Supabase." }, 503);
   }
 }

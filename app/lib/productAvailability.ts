@@ -31,8 +31,15 @@ export async function getAvailabilityRows(): Promise<ProductAvailabilityRow[]> {
 
 export async function getActiveSlugs(): Promise<Set<string>> {
   const validSlugs = new Set(products.filter((product) => product.imageReady !== false).map((product) => product.slug));
-  const rows = await getAvailabilityRows();
-  return new Set(rows.filter((row) => validSlugs.has(row.slug) && row.is_active).map((row) => row.slug));
+  try {
+    const rows = await getAvailabilityRows();
+    return new Set(rows.filter((row) => validSlugs.has(row.slug) && row.is_active).map((row) => row.slug));
+  } catch (error) {
+    // En Preview, mostrar solo la colección anterior mientras Supabase está pendiente.
+    // En producción, nunca asumir disponibilidad cuando falla el inventario.
+    if (process.env.VERCEL_ENV !== "production") return validSlugs;
+    throw error;
+  }
 }
 
 export async function setProductAvailability(slug: string, isActive: boolean) {
