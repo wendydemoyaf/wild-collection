@@ -42,7 +42,7 @@ export const products: Product[] = [
   {
     slug: "09-9-pm",
     code: "09",
-    imageReady: false,
+    imageReady: true,
     name: "9 PM",
     inspiration: "Referencia 09 · 9 PM",
     gender: "hombre",
@@ -56,7 +56,7 @@ export const products: Product[] = [
   {
     slug: "22-odyssey-bahamas",
     code: "22",
-    imageReady: false,
+    imageReady: true,
     name: "Odyssey Bahamas",
     inspiration: "Referencia 22 · Odyssey Bahamas",
     gender: "unisex",
@@ -70,7 +70,7 @@ export const products: Product[] = [
   {
     slug: "33-zanzibar-asad",
     code: "33",
-    imageReady: false,
+    imageReady: true,
     name: "Zanzibar Asad",
     inspiration: "Referencia 33 · Zanzibar Asad",
     gender: "hombre",
@@ -84,7 +84,7 @@ export const products: Product[] = [
   {
     slug: "34-odyssey-marshmallow",
     code: "34",
-    imageReady: false,
+    imageReady: true,
     name: "Odyssey Marshmallow",
     inspiration: "Referencia 34 · Odyssey Marshmallow",
     gender: "mujer",
@@ -98,8 +98,8 @@ export const products: Product[] = [
   {
     slug: "36a-l-imperatrice",
     code: "36a",
-    imageReady: false,
-    name: "L'Impératrice",
+    imageReady: true,
+    name: "L’Impératrice",
     inspiration: "Referencia 36a · L'Impératrice",
     gender: "mujer",
     image: "/products/2026/36a_emperatriz.webp",
@@ -112,7 +112,7 @@ export const products: Product[] = [
   {
     slug: "36b-la-bomba",
     code: "36b",
-    imageReady: false,
+    imageReady: true,
     name: "La Bomba",
     inspiration: "Referencia 36b · La Bomba",
     gender: "mujer",
@@ -126,7 +126,7 @@ export const products: Product[] = [
   {
     slug: "50-scandal-woman",
     code: "50",
-    imageReady: false,
+    imageReady: true,
     name: "Scandal Woman",
     inspiration: "Referencia 50 · Scandal Woman",
     gender: "mujer",
@@ -140,7 +140,7 @@ export const products: Product[] = [
   {
     slug: "52-valentino-donna-born-in-roma",
     code: "52",
-    imageReady: false,
+    imageReady: true,
     name: "Valentino Donna Born in Roma",
     inspiration: "Referencia 52 · Valentino Donna Born in Roma",
     gender: "mujer",
@@ -154,7 +154,7 @@ export const products: Product[] = [
   {
     slug: "55-asad-lion",
     code: "55",
-    imageReady: false,
+    imageReady: true,
     name: "Asad Lion",
     inspiration: "Referencia 55 · Asad Lion",
     gender: "hombre",
@@ -168,7 +168,7 @@ export const products: Product[] = [
   {
     slug: "56-sweet-like-candy",
     code: "56",
-    imageReady: false,
+    imageReady: true,
     name: "Sweet Like Candy",
     inspiration: "Referencia 56 · Sweet Like Candy",
     gender: "mujer",
@@ -182,7 +182,7 @@ export const products: Product[] = [
   {
     slug: "59-le-male-elixir",
     code: "59",
-    imageReady: false,
+    imageReady: true,
     name: "Le Male Elixir",
     inspiration: "Referencia 59 · Le Male Elixir",
     gender: "hombre",
@@ -196,7 +196,7 @@ export const products: Product[] = [
   {
     slug: "61-invictus-victory",
     code: "61",
-    imageReady: false,
+    imageReady: true,
     name: "Invictus Victory",
     inspiration: "Referencia 61 · Invictus Victory",
     gender: "hombre",
@@ -210,7 +210,7 @@ export const products: Product[] = [
   {
     slug: "66-haramain-amber-oud",
     code: "66",
-    imageReady: false,
+    imageReady: true,
     name: "Haramain Amber Oud",
     inspiration: "Referencia 66 · Haramain Amber Oud",
     gender: "unisex",
@@ -224,7 +224,7 @@ export const products: Product[] = [
   {
     slug: "71-valentino-uomo",
     code: "71",
-    imageReady: false,
+    imageReady: true,
     name: "Valentino Uomo",
     inspiration: "Referencia 71 · Valentino Uomo",
     gender: "hombre",
@@ -238,7 +238,7 @@ export const products: Product[] = [
   {
     slug: "72a-berry-on-top",
     code: "72a",
-    imageReady: false,
+    imageReady: true,
     name: "Berry on Top",
     inspiration: "Referencia 72a · Berry on Top",
     gender: "mujer",
@@ -252,7 +252,7 @@ export const products: Product[] = [
   {
     slug: "72b-taraf",
     code: "72b",
-    imageReady: false,
+    imageReady: true,
     name: "Taraf",
     inspiration: "Referencia 72b · Taraf",
     gender: "mujer",
@@ -266,7 +266,7 @@ export const products: Product[] = [
   {
     slug: "74a-mallow-madness",
     code: "74a",
-    imageReady: false,
+    imageReady: true,
     name: "Mallow Madness",
     inspiration: "Referencia 74a · Mallow Madness",
     gender: "mujer",
@@ -280,7 +280,7 @@ export const products: Product[] = [
   {
     slug: "74b-paradoxe-intense",
     code: "74b",
-    imageReady: false,
+    imageReady: true,
     name: "Paradoxe Intense",
     inspiration: "Referencia 74b · Paradoxe Intense",
     gender: "mujer",
@@ -294,7 +294,7 @@ export const products: Product[] = [
   {
     slug: "80-eclaire",
     code: "80",
-    imageReady: false,
+    imageReady: true,
     name: "Eclaire",
     inspiration: "Referencia 80 · Eclaire",
     gender: "mujer",
@@ -308,7 +308,7 @@ export const products: Product[] = [
   {
     slug: "88-khamrah",
     code: "88",
-    imageReady: false,
+    imageReady: true,
     name: "Khamrah",
     inspiration: "Referencia 88 · Khamrah",
     gender: "unisex",
@@ -322,7 +322,7 @@ export const products: Product[] = [
   {
     slug: "99-honor-glory",
     code: "99",
-    imageReady: false,
+    imageReady: true,
     name: "Honor & Glory",
     inspiration: "Referencia 99 · Honor & Glory",
     gender: "unisex",

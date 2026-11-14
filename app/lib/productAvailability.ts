@@ -35,9 +35,13 @@ export async function getActiveSlugs(): Promise<Set<string>> {
     const rows = await getAvailabilityRows();
     return new Set(rows.filter((row) => validSlugs.has(row.slug) && row.is_active).map((row) => row.slug));
   } catch (error) {
-    // En Preview, mostrar solo la colección anterior mientras Supabase está pendiente.
-    // En producción, nunca asumir disponibilidad cuando falla el inventario.
-    if (process.env.VERCEL_ENV !== "production") return validSlugs;
+    // Si Supabase no está disponible en Preview, mantener el catálogo histórico visible.
+    // Las referencias nuevas requieren estado explícito en Supabase; nunca se habilitan por defecto.
+    if (process.env.VERCEL_ENV !== "production") {
+      return new Set(products
+        .filter((product) => product.code === undefined && product.imageReady !== false)
+        .map((product) => product.slug));
+    }
     throw error;
   }
 }

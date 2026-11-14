@@ -49,7 +49,9 @@ export async function GET(request: NextRequest) {
         name: product.name,
         gender: product.gender,
         image: product.image,
-        is_active: product.imageReady !== false,
+        // El estado simulado mantiene los 18 productos anteriores disponibles,
+        // pero las referencias nuevas siguen inactivas hasta su aprobación.
+        is_active: product.code === undefined && product.imageReady !== false,
         updated_at: null,
       })),
     });
