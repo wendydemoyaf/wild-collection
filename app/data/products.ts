@@ -55,6 +55,25 @@ export const products: Product[] = [
     pyramid: { salida: ["Pitaya exótica"], corazon: ["Peonía cereza", "Frangipani rojo"], fondo: ["Vainilla solar"] },
   },
   {
+    slug: "50-scandal-woman",
+    code: "50",
+    isActive: true,
+    name: "Scandal",
+    inspiration: "Inspirado en Scandal de Jean Paul Gaultier",
+    gender: "mujer",
+    image: "/products/2026/50_scandal_women.webp",
+    family: "Dulce · Floral · Gourmand",
+    feeling: "Seductora y provocadora",
+    occasion: "Noche · Citas · Celebraciones",
+    description: "Una fragancia dulce, intensa y sensual, con un fondo cálido y envolvente que deja huella.",
+    // Pirámide publicada para la fragancia comercial de inspiración, no certifica fórmula idéntica.
+    pyramid: {
+      salida: ["Naranja sanguina", "Mandarina"],
+      corazon: ["Miel", "Gardenia", "Flor de azahar", "Jazmín", "Durazno"],
+      fondo: ["Cera de abeja", "Caramelo", "Pachulí", "Regaliz"],
+    },
+  },
+  {
     slug: "la-vie-est-belle",
     isActive: false,
     name: "La Vie Est Belle",
@@ -69,6 +88,7 @@ export const products: Product[] = [
   },
   {
     slug: "good-girl",
+    isActive: false,
     name: "Good Girl",
     inspiration: "Inspirado en Good Girl",
     gender: "mujer",
@@ -296,6 +316,19 @@ const defaultTheme: ProductTheme = {
 };
 
 const productThemes: Record<string, ProductTheme> = {
+  "50-scandal-woman": {
+    background: "radial-gradient(circle at 79% 29%,rgba(213,154,168,.36),transparent 32%),linear-gradient(135deg,#522C3F,#A66F80 55%,#E9C8A2)",
+    text: "#FFF7F4",
+    muted: "#F0D2DC",
+    accent: "#E9C8A2",
+    accentText: "#522C3F",
+    surface: "rgba(255,238,243,.13)",
+    border: "rgba(233,200,162,.34)",
+    panel: "rgba(82,44,63,.95)",
+    panelText: "#FFF7F4",
+    header: "rgba(82,44,63,.90)",
+    bars: ["#D59AA8", "#BD8746", "#E9C8A2", "#F2C5D0", "#B87B8F", "#DEB76F"],
+  },
   "36b-la-bomba": {
     background: "radial-gradient(circle at 78% 27%,rgba(217,54,120,.32),transparent 35%),linear-gradient(135deg,#3B0D23,#81183E 52%,#4B102D)",
     text: "#FFF0F7",
@@ -366,6 +399,7 @@ const productThemes: Record<string, ProductTheme> = {
 };
 
 const productAccords: Record<string, string[]> = {
+  "50-scandal-woman": ["Miel", "Dulce", "Floral blanco", "Cítrico", "Caramelo", "Pachulí"],
   "36b-la-bomba": ["Floral", "Tropical", "Afrutado", "Avainillado", "Dulce", "Ambarado"],
   "la-vie-est-belle": ["Dulce", "Vainilla", "Afrutado", "Floral", "Atalcado", "Pachulí", "Amaderado"],
   "good-girl": ["Floral blanco", "Dulce", "Cálido especiado", "Vainilla", "Cacao", "Almendra", "Amaderado"],

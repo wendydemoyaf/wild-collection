@@ -17,7 +17,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const product = getProduct(slug);
   if (!product || product.isActive === false) notFound();
   const theme = getProductTheme(product);
-  const copyFont = product.slug === "36b-la-bomba" ? "font-[family-name:var(--font-wild-copy)]" : "";
+  const copyFont = ["36b-la-bomba", "50-scandal-woman"].includes(product.slug) ? "font-[family-name:var(--font-wild-copy)]" : "";
   const pageStyle = {
     "--perfume-text": theme.text,
     "--perfume-muted": theme.muted,
