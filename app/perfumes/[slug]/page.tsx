@@ -20,7 +20,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const product = getProduct(slug);
   if (!product) notFound();
   const active = await getActiveSlugs();
-  if (!active.has(slug)) notFound();
+  // Solo en el deployment de Preview podemos revisar el universo aún inactivo de La Bomba.
+  const previewUniverse = process.env.VERCEL_ENV === "preview" && slug === "36b-la-bomba" && !active.has(slug);
+  if (!active.has(slug) && !previewUniverse) notFound();
   const theme = getProductTheme(product);
   const pageStyle = {
     "--perfume-text": theme.text,
@@ -34,11 +36,11 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
   return (
     <main style={pageStyle} className="min-h-screen overflow-hidden">
-      <MetaViewContent
+      {!previewUniverse && <MetaViewContent
         contentId={product.slug}
         contentName={product.name}
         contentCategory={product.gender}
-      />
+      />}
       <StoreHeader
         colors={{
           background: theme.header,

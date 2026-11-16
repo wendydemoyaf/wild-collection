@@ -2,7 +2,7 @@
 
 Las fotografías originales se incluyen en `public/products/2026/` y sus nombres se conservan. Todas las referencias permanecen inactivas para venta.
 
-Las 21 fichas tienen **descripción olfativa pendiente de aprobación** y **notas de salida, corazón y fondo pendientes**. No se añadieron notas ni afirmaciones olfativas nuevas. La ficha conserva los nombres y referencias registrados.
+Las fichas nuevas están en preparación. **La Bomba (36b) ya tiene texto comercial, pirámide de referencia y universo visual aprobados**. Las otras 20 referencias mantienen sus descripciones y notas pendientes; no se añadieron notas ni afirmaciones olfativas sin aprobación.
 
 | Ref. | Nombre registrado | Categoría | Fotografía | Descripción | Notas olfativas |
 |---|---|---|---|---|---|
@@ -11,7 +11,7 @@ Las 21 fichas tienen **descripción olfativa pendiente de aprobación** y **nota
 | 33 | Zanzibar Asad | hombre | `33_asad_zanzibar.webp` | Pendiente | Salida, corazón y fondo pendientes |
 | 34 | Odyssey Marshmallow | mujer | `34_mashmallow.webp` | Pendiente | Salida, corazón y fondo pendientes |
 | 36a | L’Impératrice | mujer | `36a_emperatriz.webp` | Pendiente | Salida, corazón y fondo pendientes |
-| 36b | La Bomba | mujer | `36b_la_bomba.webp` | Pendiente | Salida, corazón y fondo pendientes |
+| 36b | La Bomba | mujer | `36b_la_bomba.webp` | Aprobada | Pirámide comercial de inspiración verificada |
 | 50 | Scandal Woman | mujer | `50_scandal_women.webp` | Pendiente | Salida, corazón y fondo pendientes |
 | 52 | Valentino Donna Born in Roma | mujer | `52_valentino_born_in_roma.webp` | Pendiente | Salida, corazón y fondo pendientes |
 | 55 | Asad Lion | hombre | `55_asad_lion.webp` | Pendiente | Salida, corazón y fondo pendientes |
@@ -34,3 +34,20 @@ Las 21 fichas tienen **descripción olfativa pendiente de aprobación** y **nota
 - Aprobar una descripción para cada perfume.
 - Completar familia, sensación, ocasión y notas de salida, corazón y fondo con información aprobada.
 - Mantener las 21 referencias inactivas hasta aprobar sus fichas.
+
+## Universo aprobado: La Bomba (36b)
+
+**Exposición al cliente:** nombre «La Bomba»; leyenda discreta «Inspirado en La Bomba de Carolina Herrera»; código 36b solo interno.
+
+- **Subtítulo/personalidad:** Radiante y atrevida.
+- **Descripción:** Una fragancia dulce, floral y vibrante, con un fondo cálido y envolvente que no pasa desapercibido.
+- **Familia/Aroma:** Floral · Frutal · Ambarado.
+- **Momentos Wild:** Salidas · Citas · Celebraciones.
+- **Salida:** Pitaya exótica.
+- **Corazón:** Peonía cereza y frangipani rojo.
+- **Fondo:** Vainilla solar.
+- **Acordes visibles al pasar el mouse:** Floral · Tropical · Afrutado · Avainillado · Dulce · Ambarado.
+- **Universo:** borgoña #81183E, fucsia #D93678, rosa suave #F3B3C9, dorado #D9AD69. Mantener composición de la ficha y efecto original de revelado de acordes; al retirar mouse vuelve imagen.
+- **Fuente de pirámide de inspiración:** https://www.carolinaherrera.com/es/es/p-fragrance/labomba
+- **Nota de precisión:** la pirámide publicada corresponde a Carolina Herrera La Bomba, no a un análisis independiente de la formulación Wild Collection.
+- **Estado comercial:** inactivo hasta aprobación del conjunto de fichas y disponibilidad en Supabase.
