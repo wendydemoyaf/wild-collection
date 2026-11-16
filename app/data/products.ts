@@ -188,6 +188,25 @@ export const products: Product[] = [
     },
   },
   {
+    slug: "80-eclaire",
+    code: "80",
+    isActive: true,
+    name: "Eclaire",
+    inspiration: "Inspirado en Eclaire de Lattafa",
+    gender: "mujer",
+    image: "/products/2026/80_eclaire.webp",
+    family: "Dulce · Cremoso · Gourmand",
+    feeling: "Cálida y reconfortante",
+    occasion: "Tardes · Citas · Noches frescas",
+    description: "Cremosa y envolvente, con caramelo dorado, miel suave y una vainilla cálida que invita a acercarse.",
+    // Pirámide de la fragancia comercial de inspiración; no certifica la fórmula Wild Collection.
+    pyramid: {
+      salida: ["Caramelo", "Leche", "Azúcar"],
+      corazon: ["Miel", "Flores blancas"],
+      fondo: ["Vainilla", "Praliné", "Almizcle"],
+    },
+  },
+  {
     slug: "la-vie-est-belle",
     isActive: false,
     name: "La Vie Est Belle",
@@ -293,6 +312,7 @@ export const products: Product[] = [
   },
   {
     slug: "vip-rose",
+    isActive: false,
     name: "212 VIP Rosé",
     inspiration: "Inspirado en 212 VIP Rosé",
     gender: "mujer",
@@ -436,6 +456,20 @@ const defaultTheme: ProductTheme = {
 };
 
 const productThemes: Record<string, ProductTheme> = {
+  "80-eclaire": {
+    background: "radial-gradient(circle at 77% 29%,rgba(232,200,149,.36),transparent 35%),linear-gradient(135deg,#FFF3DA,#F8E5C4 52%,#E8C895)",
+    text: "#38261F",
+    muted: "#76513D",
+    accent: "#BB702B",
+    accentText: "#FFF3DA",
+    surface: "rgba(255,255,255,.55)",
+    border: "rgba(187,112,43,.25)",
+    panel: "rgba(56,38,31,.95)",
+    panelText: "#FFF3DA",
+    header: "rgba(255,243,218,.92)",
+    bars: ["#E8C895", "#BB702B", "#FFF3DA", "#D4A268", "#F0DBB7", "#C38C56"],
+  },
+
   "74b-paradoxe-intense": {
     background: "radial-gradient(circle at 76% 28%,rgba(233,166,156,.28),transparent 34%),linear-gradient(135deg,#321812,#57291F 50%,#A05B3F)",
     text: "#F4D9C4",
@@ -603,6 +637,8 @@ const productThemes: Record<string, ProductTheme> = {
 };
 
 const productAccords: Record<string, string[]> = {
+  "80-eclaire": ["Dulce", "Avainillado", "Caramelo", "Lactónico", "Miel", "Atalcado"],
+
   "74b-paradoxe-intense": ["Floral blanco", "Ambarado", "Avainillado", "Dulce", "Amaderado", "Afrutado"],
 
   "74a-mallow-madness": ["Dulce", "Avainillado", "Cremoso", "Afrutado", "Atalcado", "Almizclado"],
