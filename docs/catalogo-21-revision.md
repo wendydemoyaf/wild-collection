@@ -2,7 +2,7 @@
 
 Las fotografías originales se incluyen en `public/products/2026/` y sus nombres se conservan. Solo las fichas expresamente aprobadas se han activado; el resto permanece inactivo.
 
-Las fichas nuevas están en preparación. **La Bomba (36b), Scandal (50), Valentino Donna Born in Roma (52), Sweet Like Candy (56), Berry on Top (72a), Taraf (72b), Mallow Madness (74a) y Paradoxe Intense (74b) ya tienen texto comercial, pirámide de referencia y universo visual aprobados**. Las otras 13 referencias mantienen sus descripciones y notas pendientes; no se añadieron notas ni afirmaciones olfativas sin aprobación.
+Las fichas nuevas están en preparación. **La Bomba (36b), Scandal (50), Valentino Donna Born in Roma (52), Sweet Like Candy (56), Berry on Top (72a), Taraf (72b), Mallow Madness (74a), Paradoxe Intense (74b) y Eclaire (80) ya tienen texto comercial, pirámide de referencia y universo visual aprobados**. Las otras 12 referencias mantienen sus descripciones y notas pendientes; no se añadieron notas ni afirmaciones olfativas sin aprobación.
 
 | Ref. | Nombre registrado | Categoría | Fotografía | Descripción | Notas olfativas |
 |---|---|---|---|---|---|
@@ -24,7 +24,7 @@ Las fichas nuevas están en preparación. **La Bomba (36b), Scandal (50), Valent
 | 72b | Taraf | mujer | `72b_taraf.webp` | Aprobada | Pirámide comercial de inspiración investigada |
 | 74a | Mallow Madness | mujer | `74a_mallow.webp` | Aprobada | Pirámide comercial de inspiración investigada |
 | 74b | Paradoxe Intense | mujer | `74b_paradoxe.webp` | Aprobada | Pirámide comercial de inspiración investigada |
-| 80 | Eclaire | mujer | `80_eclaire.webp` | Pendiente | Salida, corazón y fondo pendientes |
+| 80 | Eclaire | mujer | `80_eclaire.webp` | Aprobada | Pirámide comercial de inspiración investigada |
 | 88 | Khamrah | unisex | `88_khamrah.webp` | Pendiente | Salida, corazón y fondo pendientes |
 | 99 | Honor & Glory | unisex | `99_honor_y_glory.webp` | Pendiente | Salida, corazón y fondo pendientes |
 
@@ -165,3 +165,28 @@ Las fichas nuevas están en preparación. **La Bomba (36b), Scandal (50), Valent
 - **Imagen WebP original:** `public/products/2026/74b_paradoxe.webp`.
 - **Precisión:** pirámide de la fragancia comercial de inspiración; no certifica formulación Wild Collection.
 - **Intercambio autorizado:** Paris Hilton archivado y Paradoxe Intense disponible; mantener intactos el resto del catálogo y las promociones.
+
+## Universo aprobado: Eclaire (80)
+
+- **Nombre público:** Eclaire. Leyenda discreta «Inspirado en Eclaire de Lattafa». Código 80 solo interno.
+- **Subtítulo/personalidad:** Cálida y reconfortante.
+- **Descripción aprobada:** Cremosa y envolvente, con caramelo dorado, miel suave y una vainilla cálida que invita a acercarse.
+- **Familia/Aroma:** Dulce · Cremoso · Gourmand.
+- **Momentos Wild:** Tardes · Citas · Noches frescas.
+- **Salida de referencia:** Caramelo, leche, azúcar.
+- **Corazón de referencia:** Miel, flores blancas.
+- **Fondo de referencia:** Vainilla, praliné, almizcle.
+- **Acordes al interactuar:** Dulce · Avainillado · Caramelo · Lactónico · Miel · Atalcado.
+- **Universo visual Caramel Cream:** crema vainilla #FFF3DA, dorado suave #E8C895, caramelo #BB702B y café intenso #38261F.
+- **Imagen WebP original:** `public/products/2026/80_eclaire.webp`.
+- **Precisión:** pirámide de la fragancia comercial de inspiración, no análisis de la fórmula Wild Collection.
+- **Intercambio autorizado:** 212 VIP Rosé archivado; Eclaire disponible.
+
+## Variación aprobada del diseño de las fichas 3–5
+
+Para romper la repetición visual en las fichas individuales de los nuevos perfumes femeninos, conservar texto, fotografía e interacción sin modificaciones, variando únicamente la composición en escritorio:
+
+- **Tercera:** Valentino Donna, imagen a la izquierda y texto a la derecha.
+- **Cuarta:** Sweet Like Candy, imagen a la derecha y texto a la izquierda.
+- **Quinta:** Berry on Top, imagen a la izquierda y texto a la derecha.
+- En móvil se mantiene imagen primero y texto después. Los archivos originales, proporciones de la fotografía y barras de acordes permanecen intactos.
