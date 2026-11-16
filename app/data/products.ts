@@ -150,6 +150,25 @@ export const products: Product[] = [
     },
   },
   {
+    slug: "74a-mallow-madness",
+    code: "74a",
+    isActive: true,
+    name: "Mallow Madness",
+    inspiration: "Inspirado en Mallow Madness de Lattafa",
+    gender: "mujer",
+    image: "/products/2026/74a_mallow.webp",
+    family: "Dulce · Frutal · Gourmand",
+    feeling: "Suave y encantadora",
+    occasion: "Tardes · Citas · Encuentros especiales",
+    description: "Dulce y aterciopelada, con malvavisco, frutos rojos y una vainilla cremosa que envuelve delicadamente.",
+    // Pirámide de la fragancia comercial de inspiración; no certifica la fórmula Wild Collection.
+    pyramid: {
+      salida: ["Fresa", "Frambuesa"],
+      corazon: ["Malvavisco", "Fresia"],
+      fondo: ["Vainilla", "Crema", "Almizcle"],
+    },
+  },
+  {
     slug: "la-vie-est-belle",
     isActive: false,
     name: "La Vie Est Belle",
@@ -229,6 +248,7 @@ export const products: Product[] = [
   },
   {
     slug: "olympea",
+    isActive: false,
     name: "Olympéa",
     inspiration: "Inspirado en Olympéa",
     gender: "mujer",
@@ -396,6 +416,20 @@ const defaultTheme: ProductTheme = {
 };
 
 const productThemes: Record<string, ProductTheme> = {
+  "74a-mallow-madness": {
+    background: "radial-gradient(circle at 77% 27%,rgba(135,74,155,.35),transparent 34%),linear-gradient(135deg,#2E123A,#5F2A6C 52%,#3B1649)",
+    text: "#F3E5D8",
+    muted: "#E3C9DF",
+    accent: "#DABDAE",
+    accentText: "#2E123A",
+    surface: "rgba(243,229,216,.09)",
+    border: "rgba(218,189,174,.32)",
+    panel: "rgba(46,18,58,.96)",
+    panelText: "#F3E5D8",
+    header: "rgba(46,18,58,.91)",
+    bars: ["#874A9B", "#DABDAE", "#F3E5D8", "#B18BC1", "#E5C9DD", "#CFB4C7"],
+  },
+
   "72b-taraf": {
     background: "radial-gradient(circle at 77% 28%,rgba(175,40,70,.35),transparent 34%),linear-gradient(135deg,#35111F,#571C2B 51%,#92233E)",
     text: "#F2DFCB",
@@ -535,6 +569,8 @@ const productThemes: Record<string, ProductTheme> = {
 };
 
 const productAccords: Record<string, string[]> = {
+  "74a-mallow-madness": ["Dulce", "Avainillado", "Cremoso", "Afrutado", "Atalcado", "Almizclado"],
+
   "72b-taraf": ["Afrutado", "Dulce", "Floral blanco", "Avainillado", "Ambarado", "Almizclado"],
 
   "72a-berry-on-top": ["Dulce", "Afrutado", "Avainillado", "Cremoso", "Atalcado", "Almizclado"],
