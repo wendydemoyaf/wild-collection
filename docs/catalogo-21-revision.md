@@ -2,7 +2,7 @@
 
 Las fotografías originales se incluyen en `public/products/2026/` y sus nombres se conservan. Todas las referencias permanecen inactivas para venta.
 
-Las fichas nuevas están en preparación. **La Bomba (36b), Scandal (50), Valentino Donna Born in Roma (52) y Sweet Like Candy (56) ya tienen texto comercial, pirámide de referencia y universo visual aprobados**. Las otras 17 referencias mantienen sus descripciones y notas pendientes; no se añadieron notas ni afirmaciones olfativas sin aprobación.
+Las fichas nuevas están en preparación. **La Bomba (36b), Scandal (50), Valentino Donna Born in Roma (52), Sweet Like Candy (56) y Berry on Top (72a) ya tienen texto comercial, pirámide de referencia y universo visual aprobados**. Las otras 16 referencias mantienen sus descripciones y notas pendientes; no se añadieron notas ni afirmaciones olfativas sin aprobación.
 
 | Ref. | Nombre registrado | Categoría | Fotografía | Descripción | Notas olfativas |
 |---|---|---|---|---|---|
@@ -20,7 +20,7 @@ Las fichas nuevas están en preparación. **La Bomba (36b), Scandal (50), Valent
 | 61 | Invictus Victory | hombre | `61_invictus_victory.webp` | Pendiente | Salida, corazón y fondo pendientes |
 | 66 | Haramain Amber Oud | unisex | `66_amber_oud.webp` | Pendiente | Salida, corazón y fondo pendientes |
 | 71 | Valentino Uomo | hombre | `71_uomo.webp` | Pendiente | Salida, corazón y fondo pendientes |
-| 72a | Berry on Top | mujer | `72a_berry_on_top.webp` | Pendiente | Salida, corazón y fondo pendientes |
+| 72a | Berry on Top | mujer | `72a_berry_on_top.webp` | Aprobada | Pirámide comercial de inspiración investigada |
 | 72b | Taraf | mujer | `72b_taraf.webp` | Pendiente | Salida, corazón y fondo pendientes |
 | 74a | Mallow Madness | mujer | `74a_mallow.webp` | Pendiente | Salida, corazón y fondo pendientes |
 | 74b | Paradoxe Intense | mujer | `74b_paradoxe.webp` | Pendiente | Salida, corazón y fondo pendientes |
@@ -101,3 +101,19 @@ Las fichas nuevas están en preparación. **La Bomba (36b), Scandal (50), Valent
 - **Imagen WebP original:** `public/products/2026/56_sweet_like_candy.webp`.
 - **Precisión:** pirámide de la fragancia comercial de inspiración, no análisis de la fórmula Wild Collection.
 - **Intercambio autorizado:** Fame archivado y Sweet Like Candy disponible. Los demás perfumes permanecen intactos.
+
+## Universo aprobado: Berry on Top (72a)
+
+- **Nombre público:** Berry on Top. Leyenda discreta «Inspirado en Berry on Top de Lattafa». Código 72a solo interno.
+- **Subtítulo/personalidad:** Dulce y tentadora.
+- **Descripción aprobada:** Dulce, cremosa y juguetona, con fresas jugosas y vainilla suave que dejan ganas de más.
+- **Familia/Aroma:** Dulce · Frutal · Gourmand.
+- **Momentos Wild:** Tardes · Citas · Salidas.
+- **Salida de referencia:** Fresa y crema chantilly.
+- **Corazón de referencia:** Mermelada de fresa, azúcar cocida y flores blancas.
+- **Fondo de referencia:** Vainilla y almizcle.
+- **Acordes al interactuar:** Dulce · Afrutado · Avainillado · Cremoso · Atalcado · Almizclado.
+- **Colores:** crema #FFF4ED, rosa fresa #EF98B2, guinda #A31F56, vino #6E273F.
+- **Imagen WebP original:** `public/products/2026/72a_berry_on_top.webp`.
+- **Precisión:** pirámide de la fragancia comercial de inspiración, no análisis de la fórmula Wild Collection.
+- **Intercambio autorizado:** Fantasy archivado y Berry on Top disponible. Los demás perfumes permanecen intactos.
