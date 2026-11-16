@@ -5,11 +5,17 @@ import { getProductAccords } from "../data/products";
 
 const widths = [100, 90, 80, 68, 58, 48, 38];
 
-export default function PerfumeImageReveal({ product, theme }: { product: Product; theme: ProductTheme }) {
+export default function PerfumeImageReveal({
+  product, theme, imageSide = "right",
+}: {
+  product: Product;
+  theme: ProductTheme;
+  imageSide?: "left" | "right";
+}) {
   const accords = getProductAccords(product);
 
   return (
-    <div className="mx-auto flex w-full justify-center md:justify-end">
+    <div className={`mx-auto flex w-full justify-center ${imageSide === "left" ? "md:justify-start" : "md:justify-end"}`}>
       <button
         type="button"
         aria-label={`Mostrar los acordes principales de ${product.name}`}
