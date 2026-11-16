@@ -2,7 +2,7 @@
 
 Las fotografías originales se incluyen en `public/products/2026/` y sus nombres se conservan. Todas las referencias permanecen inactivas para venta.
 
-Las fichas nuevas están en preparación. **La Bomba (36b), Scandal (50) y Valentino Donna Born in Roma (52) ya tienen texto comercial, pirámide de referencia y universo visual aprobados**. Las otras 18 referencias mantienen sus descripciones y notas pendientes; no se añadieron notas ni afirmaciones olfativas sin aprobación.
+Las fichas nuevas están en preparación. **La Bomba (36b), Scandal (50), Valentino Donna Born in Roma (52) y Sweet Like Candy (56) ya tienen texto comercial, pirámide de referencia y universo visual aprobados**. Las otras 17 referencias mantienen sus descripciones y notas pendientes; no se añadieron notas ni afirmaciones olfativas sin aprobación.
 
 | Ref. | Nombre registrado | Categoría | Fotografía | Descripción | Notas olfativas |
 |---|---|---|---|---|---|
@@ -15,7 +15,7 @@ Las fichas nuevas están en preparación. **La Bomba (36b), Scandal (50) y Valen
 | 50 | Scandal (nombre público) | mujer | `50_scandal_women.webp` | Aprobada | Pirámide comercial de inspiración verificada |
 | 52 | Valentino Donna Born in Roma (nombre público: Valentino Donna) | mujer | `52_valentino_born_in_roma.webp` | Aprobada | Pirámide comercial de inspiración investigada |
 | 55 | Asad Lion | hombre | `55_asad_lion.webp` | Pendiente | Salida, corazón y fondo pendientes |
-| 56 | Sweet Like Candy | mujer | `56_sweet_like_candy.webp` | Pendiente | Salida, corazón y fondo pendientes |
+| 56 | Sweet Like Candy | mujer | `56_sweet_like_candy.webp` | Aprobada | Pirámide comercial de inspiración investigada |
 | 59 | Le Male Elixir | hombre | `59_le_male.webp` | Pendiente | Salida, corazón y fondo pendientes |
 | 61 | Invictus Victory | hombre | `61_invictus_victory.webp` | Pendiente | Salida, corazón y fondo pendientes |
 | 66 | Haramain Amber Oud | unisex | `66_amber_oud.webp` | Pendiente | Salida, corazón y fondo pendientes |
@@ -85,3 +85,19 @@ Las fichas nuevas están en preparación. **La Bomba (36b), Scandal (50) y Valen
 - **Imagen original:** `public/products/2026/52_valentino_born_in_roma.webp`; no modificar frasco, etiqueta o imagen.
 - **Nota de precisión:** la pirámide corresponde a la fragancia comercial original, no a un análisis de formulación Wild Collection.
 - **Intercambio autorizado:** Cloud archivado y Valentino Donna disponible. Mantener inalterados los demás perfumes.
+
+## Universo aprobado: Sweet Like Candy (56)
+
+- **Nombre público:** Sweet Like Candy. Leyenda discreta «Inspirado en Sweet Like Candy de Ariana Grande». Código 56 solo interno.
+- **Subtítulo/personalidad:** Coqueta y divertida.
+- **Descripción aprobada:** Dulce, coqueta y cremosa, con frutas jugosas, vainilla suave y un toque irresistible.
+- **Familia/Aroma:** Dulce · Frutal · Gourmand.
+- **Momentos Wild:** Día · Salidas · Citas.
+- **Salida de referencia:** Mora, bergamota italiana y pera.
+- **Corazón de referencia:** Jazmín sambac, frangipani y madreselva.
+- **Fondo de referencia:** Crema de cassis, malvavisco, madera de cachemira y vainilla.
+- **Acordes al interactuar:** Dulce · Afrutado · Avainillado · Cremoso · Atalcado · Floral.
+- **Colores:** mora #40152F, rosa candy #F277B7, lavanda #D9B2E9 y plata perla #E8E3E9.
+- **Imagen WebP original:** `public/products/2026/56_sweet_like_candy.webp`.
+- **Precisión:** pirámide de la fragancia comercial de inspiración, no análisis de la fórmula Wild Collection.
+- **Intercambio autorizado:** Fame archivado y Sweet Like Candy disponible. Los demás perfumes permanecen intactos.
