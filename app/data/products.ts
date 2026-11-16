@@ -93,6 +93,25 @@ export const products: Product[] = [
     },
   },
   {
+    slug: "56-sweet-like-candy",
+    code: "56",
+    isActive: true,
+    name: "Sweet Like Candy",
+    inspiration: "Inspirado en Sweet Like Candy de Ariana Grande",
+    gender: "mujer",
+    image: "/products/2026/56_sweet_like_candy.webp",
+    family: "Dulce · Frutal · Gourmand",
+    feeling: "Coqueta y divertida",
+    occasion: "Día · Salidas · Citas",
+    description: "Dulce, coqueta y cremosa, con frutas jugosas, vainilla suave y un toque irresistible.",
+    // Pirámide de la fragancia comercial que sirve de inspiración; no garantiza la misma fórmula.
+    pyramid: {
+      salida: ["Mora", "Bergamota italiana", "Pera"],
+      corazon: ["Jazmín sambac", "Frangipani", "Madreselva"],
+      fondo: ["Crema de cassis", "Malvavisco", "Madera de cachemira", "Vainilla"],
+    },
+  },
+  {
     slug: "la-vie-est-belle",
     isActive: false,
     name: "La Vie Est Belle",
@@ -133,6 +152,7 @@ export const products: Product[] = [
   },
   {
     slug: "fame",
+    isActive: false,
     name: "Fame",
     inspiration: "Inspirado en Fame",
     gender: "mujer",
@@ -336,6 +356,20 @@ const defaultTheme: ProductTheme = {
 };
 
 const productThemes: Record<string, ProductTheme> = {
+  "56-sweet-like-candy": {
+    background: "radial-gradient(circle at 77% 28%,rgba(242,119,183,.35),transparent 34%),linear-gradient(135deg,#40152F,#81405F 49%,#CE94C2)",
+    text: "#FFF3FC",
+    muted: "#E8D8EE",
+    accent: "#D9B2E9",
+    accentText: "#40152F",
+    surface: "rgba(255,242,250,.11)",
+    border: "rgba(232,227,233,.34)",
+    panel: "rgba(64,21,47,.95)",
+    panelText: "#FFF3FC",
+    header: "rgba(64,21,47,.90)",
+    bars: ["#F277B7", "#D9B2E9", "#E8E3E9", "#C778A4", "#F4B6D4", "#BA8ACB"],
+  },
+
   "52-valentino-donna-born-in-roma": {
     background: "radial-gradient(circle at 77% 28%,rgba(216,165,188,.20),transparent 34%),linear-gradient(140deg,#161B24,#30303D 55%,#111822)",
     text: "#F3E8E4",
@@ -433,6 +467,8 @@ const productThemes: Record<string, ProductTheme> = {
 };
 
 const productAccords: Record<string, string[]> = {
+  "56-sweet-like-candy": ["Dulce", "Afrutado", "Avainillado", "Cremoso", "Atalcado", "Floral"],
+
   "52-valentino-donna-born-in-roma": ["Avainillado", "Amaderado", "Afrutado", "Floral blanco", "Dulce", "Especiado suave"],
 
   "50-scandal-woman": ["Miel", "Dulce", "Floral blanco", "Cítrico", "Caramelo", "Pachulí"],
