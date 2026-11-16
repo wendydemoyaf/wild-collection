@@ -2,7 +2,7 @@
 
 Las fotografías originales se incluyen en `public/products/2026/` y sus nombres se conservan. Todas las referencias permanecen inactivas para venta.
 
-Las fichas nuevas están en preparación. **La Bomba (36b), Scandal (50), Valentino Donna Born in Roma (52), Sweet Like Candy (56) y Berry on Top (72a) ya tienen texto comercial, pirámide de referencia y universo visual aprobados**. Las otras 16 referencias mantienen sus descripciones y notas pendientes; no se añadieron notas ni afirmaciones olfativas sin aprobación.
+Las fichas nuevas están en preparación. **La Bomba (36b), Scandal (50), Valentino Donna Born in Roma (52), Sweet Like Candy (56), Berry on Top (72a) y Taraf (72b) ya tienen texto comercial, pirámide de referencia y universo visual aprobados**. Las otras 15 referencias mantienen sus descripciones y notas pendientes; no se añadieron notas ni afirmaciones olfativas sin aprobación.
 
 | Ref. | Nombre registrado | Categoría | Fotografía | Descripción | Notas olfativas |
 |---|---|---|---|---|---|
@@ -21,7 +21,7 @@ Las fichas nuevas están en preparación. **La Bomba (36b), Scandal (50), Valent
 | 66 | Haramain Amber Oud | unisex | `66_amber_oud.webp` | Pendiente | Salida, corazón y fondo pendientes |
 | 71 | Valentino Uomo | hombre | `71_uomo.webp` | Pendiente | Salida, corazón y fondo pendientes |
 | 72a | Berry on Top | mujer | `72a_berry_on_top.webp` | Aprobada | Pirámide comercial de inspiración investigada |
-| 72b | Taraf | mujer | `72b_taraf.webp` | Pendiente | Salida, corazón y fondo pendientes |
+| 72b | Taraf | mujer | `72b_taraf.webp` | Aprobada | Pirámide comercial de inspiración investigada |
 | 74a | Mallow Madness | mujer | `74a_mallow.webp` | Pendiente | Salida, corazón y fondo pendientes |
 | 74b | Paradoxe Intense | mujer | `74b_paradoxe.webp` | Pendiente | Salida, corazón y fondo pendientes |
 | 80 | Eclaire | mujer | `80_eclaire.webp` | Pendiente | Salida, corazón y fondo pendientes |
@@ -117,3 +117,19 @@ Las fichas nuevas están en preparación. **La Bomba (36b), Scandal (50), Valent
 - **Imagen WebP original:** `public/products/2026/72a_berry_on_top.webp`.
 - **Precisión:** pirámide de la fragancia comercial de inspiración, no análisis de la fórmula Wild Collection.
 - **Intercambio autorizado:** Fantasy archivado y Berry on Top disponible. Los demás perfumes permanecen intactos.
+
+## Universo aprobado: Taraf (72b)
+
+- **Nombre público:** Taraf. Leyenda discreta «Inspirado en Niche Emarati Taraf de Lattafa». Código 72b solo interno.
+- **Subtítulo/personalidad:** Romántica y sofisticada.
+- **Descripción aprobada:** Dulce y sofisticada, con un toque de frutas rojas, flores delicadas y un fondo cálido que envuelve con elegancia.
+- **Familia/Aroma:** Floral · Frutal · Ambarado.
+- **Momentos Wild:** Citas · Celebraciones · Ocasiones especiales.
+- **Salida de referencia:** Cereza y fresa.
+- **Corazón de referencia:** Jazmín y lirio de los valles.
+- **Fondo de referencia:** Ámbar, almizcle y vainilla.
+- **Acordes al interactuar:** Afrutado · Dulce · Floral blanco · Avainillado · Ambarado · Almizclado.
+- **Colores:** granate #571C2B, rubí #AF2846, oro ámbar #D9A34C, champaña #F2DFCB.
+- **Imagen WebP original:** `public/products/2026/72b_taraf.webp`.
+- **Precisión:** pirámide de la fragancia comercial de inspiración, no análisis de la fórmula Wild Collection.
+- **Intercambio autorizado:** Meow archivado y Taraf disponible. Los demás perfumes permanecen intactos.
