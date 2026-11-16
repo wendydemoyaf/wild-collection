@@ -74,6 +74,25 @@ export const products: Product[] = [
     },
   },
   {
+    slug: "52-valentino-donna-born-in-roma",
+    code: "52",
+    isActive: true,
+    name: "Valentino Donna",
+    inspiration: "Inspirado en Valentino Donna Born in Roma",
+    gender: "mujer",
+    image: "/products/2026/52_valentino_born_in_roma.webp",
+    family: "Floral · Ambarado · Avainillado",
+    feeling: "Elegante y audaz",
+    occasion: "Día · Citas · Ocasiones especiales",
+    description: "Floral, femenina y sofisticada, con un toque floral y vainilla cálida que deja huella.",
+    // Notas publicadas para Valentino Donna Born in Roma, perfume comercial de inspiración.
+    pyramid: {
+      salida: ["Grosella negra", "Pimienta rosa", "Bergamota"],
+      corazon: ["Jazmín", "Jazmín sambac", "Té de jazmín"],
+      fondo: ["Vainilla Bourbon", "Cashmeran", "Madera de guayaco"],
+    },
+  },
+  {
     slug: "la-vie-est-belle",
     isActive: false,
     name: "La Vie Est Belle",
@@ -101,6 +120,7 @@ export const products: Product[] = [
   },
   {
     slug: "cloud",
+    isActive: false,
     name: "Cloud",
     inspiration: "Inspirado en Cloud",
     gender: "mujer",
@@ -316,6 +336,20 @@ const defaultTheme: ProductTheme = {
 };
 
 const productThemes: Record<string, ProductTheme> = {
+  "52-valentino-donna-born-in-roma": {
+    background: "radial-gradient(circle at 77% 28%,rgba(216,165,188,.20),transparent 34%),linear-gradient(140deg,#161B24,#30303D 55%,#111822)",
+    text: "#F3E8E4",
+    muted: "#D8A5BC",
+    accent: "#D8A5BC",
+    accentText: "#161B24",
+    surface: "rgba(243,232,228,.07)",
+    border: "rgba(196,198,203,.28)",
+    panel: "rgba(22,27,36,.96)",
+    panelText: "#F3E8E4",
+    header: "rgba(22,27,36,.92)",
+    bars: ["#D8A5BC", "#C4C6CB", "#F3E8E4", "#B98DA7", "#E6D4DB", "#A8A6B2"],
+  },
+
   "50-scandal-woman": {
     background: "radial-gradient(circle at 79% 29%,rgba(213,154,168,.36),transparent 32%),linear-gradient(135deg,#522C3F,#A66F80 55%,#E9C8A2)",
     text: "#FFF7F4",
@@ -399,6 +433,8 @@ const productThemes: Record<string, ProductTheme> = {
 };
 
 const productAccords: Record<string, string[]> = {
+  "52-valentino-donna-born-in-roma": ["Avainillado", "Amaderado", "Afrutado", "Floral blanco", "Dulce", "Especiado suave"],
+
   "50-scandal-woman": ["Miel", "Dulce", "Floral blanco", "Cítrico", "Caramelo", "Pachulí"],
   "36b-la-bomba": ["Floral", "Tropical", "Afrutado", "Avainillado", "Dulce", "Ambarado"],
   "la-vie-est-belle": ["Dulce", "Vainilla", "Afrutado", "Floral", "Atalcado", "Pachulí", "Amaderado"],
