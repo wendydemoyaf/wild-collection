@@ -169,6 +169,25 @@ export const products: Product[] = [
     },
   },
   {
+    slug: "74b-paradoxe-intense",
+    code: "74b",
+    isActive: true,
+    name: "Paradoxe Intense",
+    inspiration: "Inspirado en Paradoxe Intense de Prada",
+    gender: "mujer",
+    image: "/products/2026/74b_paradoxe.webp",
+    family: "Floral · Ambarado · Amaderado",
+    feeling: "Intensa y magnética",
+    occasion: "Citas · Noches · Ocasiones especiales",
+    description: "Floral, intensa y sofisticada, con jazmín luminoso, ámbar cálido y una vainilla envolvente que cautiva.",
+    // Pirámide de la fragancia comercial de inspiración; no certifica la fórmula Wild Collection.
+    pyramid: {
+      salida: ["Bergamota", "Neroli", "Pera"],
+      corazon: ["Jazmín", "Esencia de neroli", "Musgo"],
+      fondo: ["Ámbar", "Vainilla", "Almizcle blanco"],
+    },
+  },
+  {
     slug: "la-vie-est-belle",
     isActive: false,
     name: "La Vie Est Belle",
@@ -261,6 +280,7 @@ export const products: Product[] = [
   },
   {
     slug: "paris-hilton",
+    isActive: false,
     name: "Paris Hilton",
     inspiration: "Inspirado en Paris Hilton",
     gender: "mujer",
@@ -416,6 +436,20 @@ const defaultTheme: ProductTheme = {
 };
 
 const productThemes: Record<string, ProductTheme> = {
+  "74b-paradoxe-intense": {
+    background: "radial-gradient(circle at 76% 28%,rgba(233,166,156,.28),transparent 34%),linear-gradient(135deg,#321812,#57291F 50%,#A05B3F)",
+    text: "#F4D9C4",
+    muted: "#E9A69C",
+    accent: "#E9A69C",
+    accentText: "#321812",
+    surface: "rgba(244,217,196,.09)",
+    border: "rgba(233,166,156,.27)",
+    panel: "rgba(50,24,18,.96)",
+    panelText: "#F4D9C4",
+    header: "rgba(50,24,18,.91)",
+    bars: ["#B66D44", "#E9A69C", "#F4D9C4", "#C78F80", "#DFAD88", "#E3B4A1"],
+  },
+
   "74a-mallow-madness": {
     background: "radial-gradient(circle at 77% 27%,rgba(135,74,155,.35),transparent 34%),linear-gradient(135deg,#2E123A,#5F2A6C 52%,#3B1649)",
     text: "#F3E5D8",
@@ -569,6 +603,8 @@ const productThemes: Record<string, ProductTheme> = {
 };
 
 const productAccords: Record<string, string[]> = {
+  "74b-paradoxe-intense": ["Floral blanco", "Ambarado", "Avainillado", "Dulce", "Amaderado", "Afrutado"],
+
   "74a-mallow-madness": ["Dulce", "Avainillado", "Cremoso", "Afrutado", "Atalcado", "Almizclado"],
 
   "72b-taraf": ["Afrutado", "Dulce", "Floral blanco", "Avainillado", "Ambarado", "Almizclado"],
