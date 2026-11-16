@@ -1,7 +1,8 @@
 -- Primera fase: conservar activas las referencias ya publicadas salvo La Vie Est Belle, archivada por aprobación.
 -- La Bomba sustituye a La Vie Est Belle, Scandal sustituye a Good Girl,
 -- Valentino Donna sustituye a Cloud y Sweet Like Candy sustituye a Fame.
--- Berry on Top sustituye a Fantasy y Taraf sustituye a Meow. Los otros 15 borradores permanecen inactivos.
+-- Berry on Top sustituye a Fantasy, Taraf sustituye a Meow y Mallow Madness sustituye a Olympéa.
+-- Los otros 14 borradores permanecen inactivos.
 -- La tabla no tiene políticas públicas. Solo el backend con service_role puede escribir.
 CREATE TABLE IF NOT EXISTS public.product_availability (
   slug TEXT PRIMARY KEY,
@@ -18,7 +19,7 @@ VALUES
   ('fame', false),
   ('fantasy', false),
   ('meow', false),
-  ('olympea', true),
+  ('olympea', false),
   ('paris-hilton', true),
   ('vip-rose', true),
   ('legacy-cr7', true),
@@ -51,7 +52,7 @@ VALUES
   ('71-valentino-uomo', false),
   ('72a-berry-on-top', true),
   ('72b-taraf', true),
-  ('74a-mallow-madness', false),
+  ('74a-mallow-madness', true),
   ('74b-paradoxe-intense', false),
   ('80-eclaire', false),
   ('88-khamrah', false),
@@ -72,6 +73,8 @@ VALUES
   ('fantasy', false, now()),
   ('72a-berry-on-top', true, now()),
   ('meow', false, now()),
-  ('72b-taraf', true, now())
+  ('72b-taraf', true, now()),
+  ('olympea', false, now()),
+  ('74a-mallow-madness', true, now())
 ON CONFLICT (slug) DO UPDATE
   SET is_active = EXCLUDED.is_active, updated_at = EXCLUDED.updated_at;

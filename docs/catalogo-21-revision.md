@@ -1,8 +1,8 @@
 # Revisión de colección: 21 referencias
 
-Las fotografías originales se incluyen en `public/products/2026/` y sus nombres se conservan. Todas las referencias permanecen inactivas para venta.
+Las fotografías originales se incluyen en `public/products/2026/` y sus nombres se conservan. Solo las fichas expresamente aprobadas se han activado; el resto permanece inactivo.
 
-Las fichas nuevas están en preparación. **La Bomba (36b), Scandal (50), Valentino Donna Born in Roma (52), Sweet Like Candy (56), Berry on Top (72a) y Taraf (72b) ya tienen texto comercial, pirámide de referencia y universo visual aprobados**. Las otras 15 referencias mantienen sus descripciones y notas pendientes; no se añadieron notas ni afirmaciones olfativas sin aprobación.
+Las fichas nuevas están en preparación. **La Bomba (36b), Scandal (50), Valentino Donna Born in Roma (52), Sweet Like Candy (56), Berry on Top (72a), Taraf (72b) y Mallow Madness (74a) ya tienen texto comercial, pirámide de referencia y universo visual aprobados**. Las otras 14 referencias mantienen sus descripciones y notas pendientes; no se añadieron notas ni afirmaciones olfativas sin aprobación.
 
 | Ref. | Nombre registrado | Categoría | Fotografía | Descripción | Notas olfativas |
 |---|---|---|---|---|---|
@@ -22,7 +22,7 @@ Las fichas nuevas están en preparación. **La Bomba (36b), Scandal (50), Valent
 | 71 | Valentino Uomo | hombre | `71_uomo.webp` | Pendiente | Salida, corazón y fondo pendientes |
 | 72a | Berry on Top | mujer | `72a_berry_on_top.webp` | Aprobada | Pirámide comercial de inspiración investigada |
 | 72b | Taraf | mujer | `72b_taraf.webp` | Aprobada | Pirámide comercial de inspiración investigada |
-| 74a | Mallow Madness | mujer | `74a_mallow.webp` | Pendiente | Salida, corazón y fondo pendientes |
+| 74a | Mallow Madness | mujer | `74a_mallow.webp` | Aprobada | Pirámide comercial de inspiración investigada |
 | 74b | Paradoxe Intense | mujer | `74b_paradoxe.webp` | Pendiente | Salida, corazón y fondo pendientes |
 | 80 | Eclaire | mujer | `80_eclaire.webp` | Pendiente | Salida, corazón y fondo pendientes |
 | 88 | Khamrah | unisex | `88_khamrah.webp` | Pendiente | Salida, corazón y fondo pendientes |
@@ -133,3 +133,19 @@ Las fichas nuevas están en preparación. **La Bomba (36b), Scandal (50), Valent
 - **Imagen WebP original:** `public/products/2026/72b_taraf.webp`.
 - **Precisión:** pirámide de la fragancia comercial de inspiración, no análisis de la fórmula Wild Collection.
 - **Intercambio autorizado:** Meow archivado y Taraf disponible. Los demás perfumes permanecen intactos.
+
+## Universo aprobado: Mallow Madness (74a)
+
+- **Nombre público:** Mallow Madness. Leyenda discreta «Inspirado en Mallow Madness de Lattafa». Código 74a solo interno.
+- **Subtítulo/personalidad:** Suave y encantadora.
+- **Descripción aprobada:** Dulce y aterciopelada, con malvavisco, frutos rojos y una vainilla cremosa que envuelve delicadamente.
+- **Familia/Aroma:** Dulce · Frutal · Gourmand.
+- **Momentos Wild:** Tardes · Citas · Encuentros especiales.
+- **Salida de referencia:** Fresa y frambuesa.
+- **Corazón de referencia:** Malvavisco y fresia.
+- **Fondo de referencia:** Vainilla, crema y almizcle.
+- **Acordes al interactuar:** Dulce · Avainillado · Cremoso · Afrutado · Atalcado · Almizclado.
+- **Universo visual:** Violet Silk: violeta profundo #2E123A, amatista #874A9B, crema vainilla #F3E5D8, champaña rosado #DABDAE.
+- **Imagen WebP original:** `public/products/2026/74a_mallow.webp`.
+- **Precisión:** pirámide de la fragancia comercial de inspiración, no análisis independiente de la fórmula Wild Collection.
+- **Intercambio autorizado:** Olympéa archivado y Mallow Madness disponible; el resto del catálogo permanece intacto.
