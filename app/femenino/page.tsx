@@ -3,6 +3,25 @@ import SiteFooter from "../components/SiteFooter";
 import StoreHeader from "../components/StoreHeader";
 import { womenProducts } from "../data/products";
 
+// Distribución editorial de la galería: alterna rosas intensos, fondos oscuros,
+// violetas y dorados sin cambiar datos, disponibilidad ni fichas individuales.
+// Las nuevas referencias futuras se muestran al final hasta tener fotografía aprobada.
+const visualOrder = [
+  "52-valentino-donna-born-in-roma",  // Negro y rosa tenue
+  "72a-berry-on-top",                 // Rosa fresa luminoso
+  "80-eclaire",                       // Caramelo dorado
+  "50-scandal-woman",                 // Rosa satinado
+  "74a-mallow-madness",               // Violeta
+  "74b-paradoxe-intense",             // Cobre y ámbar
+  "56-sweet-like-candy",              // Rosa con destellos
+  "72b-taraf",                        // Rojo y oro
+  "36b-la-bomba",                     // Fucsia intenso
+];
+const visualIndex = new Map(visualOrder.map((slug, index) => [slug, index]));
+const balancedWomenProducts = [...womenProducts].sort(
+  (a, b) => (visualIndex.get(a.slug) ?? Infinity) - (visualIndex.get(b.slug) ?? Infinity)
+);
+
 export default function FemeninoPage() {
   return (
     <main className="min-h-screen bg-[#F6F0E8] text-[#070707]">
@@ -16,7 +35,7 @@ export default function FemeninoPage() {
       </section>
       <div className="mx-5 border-t border-black/15 md:mx-10" />
       <section className="mx-auto grid max-w-[1540px] grid-cols-1 justify-items-center gap-x-5 gap-y-14 px-5 py-14 sm:grid-cols-2 md:px-8 lg:grid-cols-3 xl:grid-cols-4">
-        {womenProducts.map((product) => <ProductCard key={product.slug} product={product} />)}
+        {balancedWomenProducts.map((product) => <ProductCard key={product.slug} product={product} />)}
       </section>
       <SiteFooter />
     </main>

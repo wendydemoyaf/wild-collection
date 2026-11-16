@@ -17,10 +17,6 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const product = getProduct(slug);
   if (!product || product.isActive === false) notFound();
   const theme = getProductTheme(product);
-  // Alternancia aprobada para las fichas femeninas 3, 4 y 5:
-  // Valentino Donna (3) izquierda, Sweet Like Candy (4) derecha,
-  // Berry on Top (5) izquierda. En móvil, la foto siempre aparece antes del texto.
-  const imageLeft = product.slug === "52-valentino-donna-born-in-roma" || product.slug === "72a-berry-on-top";
   const copyFont = ["36b-la-bomba", "50-scandal-woman", "52-valentino-donna-born-in-roma", "56-sweet-like-candy", "72a-berry-on-top", "72b-taraf", "74a-mallow-madness", "74b-paradoxe-intense", "80-eclaire"].includes(product.slug) ? "font-[family-name:var(--font-wild-copy)]" : "";
   const pageStyle = {
     "--perfume-text": theme.text,
@@ -48,8 +44,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           accentText: theme.accentText,
         }}
       />
-      <section className={`mx-auto grid min-h-[calc(100vh-69px)] max-w-[1560px] items-center gap-12 px-6 py-12 md:px-12 md:py-16 lg:px-16 ${imageLeft ? "md:grid-cols-[.88fr_1.12fr]" : "md:grid-cols-[1.12fr_.88fr]"}`}>
-        <div className={`order-2 max-w-3xl ${imageLeft ? "md:order-2" : "md:order-1"}`}>
+      <section className="mx-auto grid min-h-[calc(100vh-69px)] max-w-[1560px] items-center gap-12 px-6 py-12 md:grid-cols-[1.12fr_.88fr] md:px-12 md:py-16 lg:px-16">
+        <div className="order-2 max-w-3xl md:order-1">
           <Link
             href={product.gender === "mujer" ? "/femenino" : "/masculino"}
             className="text-[9px] font-semibold uppercase tracking-[.28em] opacity-65 transition hover:opacity-100"
@@ -88,8 +84,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           </div>
         </div>
 
-        <div className={`order-1 ${imageLeft ? "md:order-1" : "md:order-2"}`}>
-          <PerfumeImageReveal product={product} theme={theme} imageSide={imageLeft ? "left" : "right"} />
+        <div className="order-1 md:order-2">
+          <PerfumeImageReveal product={product} theme={theme} />
         </div>
       </section>
       <SiteFooter />
