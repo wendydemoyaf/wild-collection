@@ -131,6 +131,25 @@ export const products: Product[] = [
     },
   },
   {
+    slug: "72b-taraf",
+    code: "72b",
+    isActive: true,
+    name: "Taraf",
+    inspiration: "Inspirado en Niche Emarati Taraf de Lattafa",
+    gender: "mujer",
+    image: "/products/2026/72b_taraf.webp",
+    family: "Floral · Frutal · Ambarado",
+    feeling: "Romántica y sofisticada",
+    occasion: "Citas · Celebraciones · Ocasiones especiales",
+    description: "Dulce y sofisticada, con un toque de frutas rojas, flores delicadas y un fondo cálido que envuelve con elegancia.",
+    // Pirámide de la fragancia de inspiración; no certifica la fórmula de Wild Collection.
+    pyramid: {
+      salida: ["Cereza", "Fresa"],
+      corazon: ["Jazmín", "Lirio de los valles"],
+      fondo: ["Ámbar", "Almizcle", "Vainilla"],
+    },
+  },
+  {
     slug: "la-vie-est-belle",
     isActive: false,
     name: "La Vie Est Belle",
@@ -197,6 +216,7 @@ export const products: Product[] = [
   },
   {
     slug: "meow",
+    isActive: false,
     name: "Meow",
     inspiration: "Inspirado en Meow",
     gender: "mujer",
@@ -376,6 +396,20 @@ const defaultTheme: ProductTheme = {
 };
 
 const productThemes: Record<string, ProductTheme> = {
+  "72b-taraf": {
+    background: "radial-gradient(circle at 77% 28%,rgba(175,40,70,.35),transparent 34%),linear-gradient(135deg,#35111F,#571C2B 51%,#92233E)",
+    text: "#F2DFCB",
+    muted: "#E9C4B4",
+    accent: "#D9A34C",
+    accentText: "#35111F",
+    surface: "rgba(242,223,203,.10)",
+    border: "rgba(217,163,76,.28)",
+    panel: "rgba(53,17,31,.96)",
+    panelText: "#F2DFCB",
+    header: "rgba(53,17,31,.90)",
+    bars: ["#D9A34C", "#AF2846", "#F2DFCB", "#C77C86", "#E2B97B", "#D5A8A4"],
+  },
+
   "72a-berry-on-top": {
     background: "radial-gradient(circle at 78% 27%,rgba(239,152,178,.30),transparent 34%),linear-gradient(135deg,#FFF4ED,#F8E1E5 50%,#F3B9CA)",
     text: "#6E273F",
@@ -501,6 +535,8 @@ const productThemes: Record<string, ProductTheme> = {
 };
 
 const productAccords: Record<string, string[]> = {
+  "72b-taraf": ["Afrutado", "Dulce", "Floral blanco", "Avainillado", "Ambarado", "Almizclado"],
+
   "72a-berry-on-top": ["Dulce", "Afrutado", "Avainillado", "Cremoso", "Atalcado", "Almizclado"],
 
   "56-sweet-like-candy": ["Dulce", "Afrutado", "Avainillado", "Cremoso", "Atalcado", "Floral"],
