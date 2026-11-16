@@ -17,7 +17,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const product = getProduct(slug);
   if (!product || product.isActive === false) notFound();
   const theme = getProductTheme(product);
-  const copyFont = ["36b-la-bomba", "50-scandal-woman", "52-valentino-donna-born-in-roma", "56-sweet-like-candy"].includes(product.slug) ? "font-[family-name:var(--font-wild-copy)]" : "";
+  const copyFont = ["36b-la-bomba", "50-scandal-woman", "52-valentino-donna-born-in-roma", "56-sweet-like-candy", "72a-berry-on-top"].includes(product.slug) ? "font-[family-name:var(--font-wild-copy)]" : "";
   const pageStyle = {
     "--perfume-text": theme.text,
     "--perfume-muted": theme.muted,

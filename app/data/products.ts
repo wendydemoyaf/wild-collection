@@ -112,6 +112,25 @@ export const products: Product[] = [
     },
   },
   {
+    slug: "72a-berry-on-top",
+    code: "72a",
+    isActive: true,
+    name: "Berry on Top",
+    inspiration: "Inspirado en Berry on Top de Lattafa",
+    gender: "mujer",
+    image: "/products/2026/72a_berry_on_top.webp",
+    family: "Dulce · Frutal · Gourmand",
+    feeling: "Dulce y tentadora",
+    occasion: "Tardes · Citas · Salidas",
+    description: "Dulce, cremosa y juguetona, con fresas jugosas y vainilla suave que dejan ganas de más.",
+    // Pirámide de la fragancia comercial de inspiración; no certifica la fórmula Wild Collection.
+    pyramid: {
+      salida: ["Fresa", "Crema chantilly"],
+      corazon: ["Mermelada de fresa", "Azúcar cocida", "Flores blancas"],
+      fondo: ["Vainilla", "Almizcle"],
+    },
+  },
+  {
     slug: "la-vie-est-belle",
     isActive: false,
     name: "La Vie Est Belle",
@@ -165,6 +184,7 @@ export const products: Product[] = [
   },
   {
     slug: "fantasy",
+    isActive: false,
     name: "Fantasy",
     inspiration: "Inspirado en Fantasy",
     gender: "mujer",
@@ -356,6 +376,20 @@ const defaultTheme: ProductTheme = {
 };
 
 const productThemes: Record<string, ProductTheme> = {
+  "72a-berry-on-top": {
+    background: "radial-gradient(circle at 78% 27%,rgba(239,152,178,.30),transparent 34%),linear-gradient(135deg,#FFF4ED,#F8E1E5 50%,#F3B9CA)",
+    text: "#6E273F",
+    muted: "#8B4962",
+    accent: "#A31F56",
+    accentText: "#FFF4ED",
+    surface: "rgba(255,255,255,.52)",
+    border: "rgba(163,31,86,.22)",
+    panel: "rgba(110,39,63,.95)",
+    panelText: "#FFF4ED",
+    header: "rgba(255,244,237,.92)",
+    bars: ["#EF98B2", "#F2C2CD", "#FFF4ED", "#D77A9B", "#F4B8CB", "#E8CED8"],
+  },
+
   "56-sweet-like-candy": {
     background: "radial-gradient(circle at 77% 28%,rgba(242,119,183,.35),transparent 34%),linear-gradient(135deg,#40152F,#81405F 49%,#CE94C2)",
     text: "#FFF3FC",
@@ -467,6 +501,8 @@ const productThemes: Record<string, ProductTheme> = {
 };
 
 const productAccords: Record<string, string[]> = {
+  "72a-berry-on-top": ["Dulce", "Afrutado", "Avainillado", "Cremoso", "Atalcado", "Almizclado"],
+
   "56-sweet-like-candy": ["Dulce", "Afrutado", "Avainillado", "Cremoso", "Atalcado", "Floral"],
 
   "52-valentino-donna-born-in-roma": ["Avainillado", "Amaderado", "Afrutado", "Floral blanco", "Dulce", "Especiado suave"],
