@@ -1,5 +1,6 @@
 -- Primera fase: conservar activas las referencias ya publicadas salvo La Vie Est Belle, archivada por aprobación.
--- La Bomba sustituye a La Vie Est Belle como referencia disponible; no activar los otros 20 borradores.
+-- La Bomba sustituye a La Vie Est Belle y Scandal sustituye a Good Girl.
+-- Los otros 19 borradores permanecen inactivos.
 -- La tabla no tiene políticas públicas. Solo el backend con service_role puede escribir.
 CREATE TABLE IF NOT EXISTS public.product_availability (
   slug TEXT PRIMARY KEY,
@@ -11,7 +12,7 @@ ALTER TABLE public.product_availability ENABLE ROW LEVEL SECURITY;
 INSERT INTO public.product_availability (slug, is_active)
 VALUES
   ('la-vie-est-belle', false),
-  ('good-girl', true),
+  ('good-girl', false),
   ('cloud', true),
   ('fame', true),
   ('fantasy', true),
@@ -39,7 +40,7 @@ VALUES
   ('34-odyssey-marshmallow', false),
   ('36a-l-imperatrice', false),
   ('36b-la-bomba', true),
-  ('50-scandal-woman', false),
+  ('50-scandal-woman', true),
   ('52-valentino-donna-born-in-roma', false),
   ('55-asad-lion', false),
   ('56-sweet-like-candy', false),
@@ -60,6 +61,8 @@ ON CONFLICT (slug) DO NOTHING;
 INSERT INTO public.product_availability (slug, is_active, updated_at)
 VALUES
   ('la-vie-est-belle', false, now()),
-  ('36b-la-bomba', true, now())
+  ('36b-la-bomba', true, now()),
+  ('good-girl', false, now()),
+  ('50-scandal-woman', true, now())
 ON CONFLICT (slug) DO UPDATE
   SET is_active = EXCLUDED.is_active, updated_at = EXCLUDED.updated_at;
