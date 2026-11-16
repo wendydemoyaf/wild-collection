@@ -24,6 +24,10 @@ export type Product = {
   slug: string;
   name: string;
   inspiration: string;
+  /** Referencia para uso interno; no se muestra en la ficha pública. */
+  code?: string;
+  /** El perfume permanece archivado pero no puede mostrarse ni comprarse si está inactivo. */
+  isActive?: boolean;
   gender: ProductGender;
   image: string;
   secondaryImage?: string;
@@ -36,7 +40,23 @@ export type Product = {
 
 export const products: Product[] = [
   {
+    slug: "36b-la-bomba",
+    code: "36b",
+    isActive: true,
+    name: "La Bomba",
+    inspiration: "Inspirado en La Bomba de Carolina Herrera",
+    gender: "mujer",
+    image: "/products/2026/36b_la_bomba.webp",
+    family: "Floral · Frutal · Ambarado",
+    feeling: "Radiante y atrevida",
+    occasion: "Salidas · Citas · Celebraciones",
+    description: "Una fragancia dulce, floral y vibrante, con un fondo cálido y envolvente que no pasa desapercibido.",
+    // Pirámide publicada para la fragancia de inspiración; no confirma una fórmula idéntica.
+    pyramid: { salida: ["Pitaya exótica"], corazon: ["Peonía cereza", "Frangipani rojo"], fondo: ["Vainilla solar"] },
+  },
+  {
     slug: "la-vie-est-belle",
+    isActive: false,
     name: "La Vie Est Belle",
     inspiration: "Inspirado en La Vie Est Belle",
     gender: "mujer",
@@ -254,8 +274,8 @@ export const products: Product[] = [
   },
 ];
 
-export const womenProducts = products.filter((product) => product.gender === "mujer");
-export const menProducts = products.filter((product) => product.gender === "hombre");
+export const womenProducts = products.filter((product) => product.gender === "mujer" && product.isActive !== false);
+export const menProducts = products.filter((product) => product.gender === "hombre" && product.isActive !== false);
 
 export function getProduct(slug: string) {
   return products.find((product) => product.slug === slug);
@@ -276,6 +296,19 @@ const defaultTheme: ProductTheme = {
 };
 
 const productThemes: Record<string, ProductTheme> = {
+  "36b-la-bomba": {
+    background: "radial-gradient(circle at 78% 27%,rgba(217,54,120,.32),transparent 35%),linear-gradient(135deg,#3B0D23,#81183E 52%,#4B102D)",
+    text: "#FFF0F7",
+    muted: "#F3B3C9",
+    accent: "#D9AD69",
+    accentText: "#361027",
+    surface: "rgba(255,235,244,.08)",
+    border: "rgba(243,179,201,.30)",
+    panel: "rgba(75,16,45,.96)",
+    panelText: "#FFF0F7",
+    header: "rgba(59,13,35,.92)",
+    bars: ["#F3B3C9", "#D9AD69", "#FFDBE8", "#D93678", "#FFD3E2", "#E8BC8A", "#FFE8EF"],
+  },
   "la-vie-est-belle": {
     background: "radial-gradient(circle at 78% 35%,rgba(174,128,177,.28),transparent 28%),linear-gradient(135deg,#FBF2EA,#E9DCE8,#F7EDE8)", text: "#32162A", muted: "#81566F", accent: "#9A4F7C", accentText: "#FFF8F2", surface: "rgba(255,255,255,.43)", border: "rgba(154,79,124,.24)", panel: "rgba(82,38,70,.91)", panelText: "#FFF4F7", header: "rgba(251,242,234,.88)", bars: ["#D49B53", "#D6A3BB", "#F3E6DA", "#8F4773", "#C66086", "#E3B9CC", "#B6753F"],
   },
@@ -333,6 +366,7 @@ const productThemes: Record<string, ProductTheme> = {
 };
 
 const productAccords: Record<string, string[]> = {
+  "36b-la-bomba": ["Floral", "Tropical", "Afrutado", "Avainillado", "Dulce", "Ambarado"],
   "la-vie-est-belle": ["Dulce", "Vainilla", "Afrutado", "Floral", "Atalcado", "Pachulí", "Amaderado"],
   "good-girl": ["Floral blanco", "Dulce", "Cálido especiado", "Vainilla", "Cacao", "Almendra", "Amaderado"],
   cloud: ["Dulce", "Lactónico", "Vainilla", "Coco", "Lavanda", "Almizclado", "Amaderado"],

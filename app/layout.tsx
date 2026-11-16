@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Source_Sans_3 } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import WhatsAppButton from "./components/WhatsAppButton";
@@ -15,6 +15,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const sourceSans = Source_Sans_3({
+  variable: "--font-wild-copy",
+  subsets: ["latin"],
+  weight: ["400", "600"],
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "Wild Collection Ecuador | Perfumes que dejan huella",
   description: "Elige tus perfumes Wild Collection de 55 ml, aprovecha nuestras promociones y paga contra entrega en Ecuador.",
@@ -28,7 +35,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${sourceSans.variable} antialiased`}
       >
         <CartProvider>
           {children}

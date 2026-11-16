@@ -9,14 +9,15 @@ import MetaViewContent from "../../components/MetaViewContent";
 import { getProduct, getProductTheme, products } from "../../data/products";
 
 export function generateStaticParams() {
-  return products.map((product) => ({ slug: product.slug }));
+  return products.filter((product) => product.isActive !== false).map((product) => ({ slug: product.slug }));
 }
 
 export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const product = getProduct(slug);
-  if (!product) notFound();
+  if (!product || product.isActive === false) notFound();
   const theme = getProductTheme(product);
+  const copyFont = product.slug === "36b-la-bomba" ? "font-[family-name:var(--font-wild-copy)]" : "";
   const pageStyle = {
     "--perfume-text": theme.text,
     "--perfume-muted": theme.muted,
@@ -52,17 +53,17 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             ← Volver a la colección
           </Link>
 
-          <p className="mt-8 text-[9px] uppercase tracking-[.38em] opacity-55 md:mt-10">{product.inspiration}</p>
+          <p className={`mt-8 text-[9px] uppercase tracking-[.38em] opacity-55 md:mt-10 ${copyFont}`}>{product.inspiration}</p>
           <h1 className="mt-3 font-serif text-5xl uppercase leading-[.9] tracking-[-.025em] sm:text-6xl md:text-7xl lg:text-[88px]">
             {product.name}
           </h1>
-          <p className="mt-4 text-base md:text-lg" style={{ color: theme.accent }}>{product.feeling}</p>
+          <p className={`mt-4 text-base md:text-lg ${copyFont}`} style={{ color: theme.accent }}>{product.feeling}</p>
 
           <div
             className="mt-8 max-w-3xl rounded-[20px] border px-5 py-4 backdrop-blur-sm md:mt-11 md:px-7 md:py-5"
             style={{ backgroundColor: theme.surface, borderColor: theme.border }}
           >
-            <p className="text-sm leading-relaxed opacity-80 md:text-base">{product.description}</p>
+            <p className={`text-sm leading-relaxed opacity-80 md:text-base ${copyFont}`}>{product.description}</p>
           </div>
 
           <div className="mt-9 grid grid-cols-1 gap-6 sm:grid-cols-3 md:mt-12 md:gap-10">
@@ -70,7 +71,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               <div key={title}>
                 <p className="text-[9px] font-semibold uppercase tracking-[.34em]" style={{ color: theme.accent }}>{title}</p>
                 <div className="my-2 h-px w-16" style={{ backgroundColor: theme.border }} />
-                <p className="text-sm opacity-85">{value}</p>
+                <p className={`text-sm opacity-85 ${copyFont}`}>{value}</p>
               </div>
             ))}
           </div>

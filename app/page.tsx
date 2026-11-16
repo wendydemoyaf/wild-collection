@@ -37,7 +37,7 @@ const collections = [
   },
 ];
 
-const featuredSlugs = ["la-vie-est-belle", "good-girl", "eros", "million-lucky"];
+const featuredSlugs = ["36b-la-bomba", "good-girl", "eros", "million-lucky"];
 
 function Reveal({
   children,

@@ -66,6 +66,10 @@ export async function POST(request: Request) {
     if (!product || quantity < 1 || quantity > 50) {
       return orderError("Uno de los perfumes seleccionados no es válido.", 400, "INVALID_ITEM");
     }
+    // Bloquea compra por enlaces antiguos, peticiones directas y carritos guardados.
+    if (product.isActive === false) {
+      return orderError("Uno de los perfumes seleccionados ya no está disponible. Actualiza tu carrito.", 409, "PRODUCT_UNAVAILABLE");
+    }
     normalizedItems.push({ slug: product.slug, name: product.name, quantity });
   }
 

@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import type { Product } from "../data/products";
-import { calculateCartPricing, getCartSuggestion } from "../data/products";
+import { calculateCartPricing, getCartSuggestion, getProduct } from "../data/products";
 
 export type CartItem = Product & { quantity: number };
 
@@ -30,7 +30,22 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     try {
       const saved = window.localStorage.getItem("wild-cart-v2");
-      if (saved) setCart(JSON.parse(saved));
+      if (saved) {
+        const stored: unknown = JSON.parse(saved);
+        if (Array.isArray(stored)) {
+          const valid = stored.flatMap((entry: unknown): CartItem[] => {
+            if (!entry || typeof entry !== "object" || !("slug" in entry) || !("quantity" in entry)) return [];
+            const slug = entry.slug;
+            const quantity = entry.quantity;
+            if (typeof slug !== "string" || typeof quantity !== "number" ||
+                !Number.isInteger(quantity) || quantity < 1 || quantity > 50) return [];
+            const product = getProduct(slug);
+            if (!product || product.isActive === false) return [];
+            return [{ ...product, quantity }];
+          });
+          setCart(valid);
+        }
+      }
     } catch {
       window.localStorage.removeItem("wild-cart-v2");
     } finally {
@@ -49,6 +64,9 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   }, [lastAdded]);
 
   const addToCart = (product: Product) => {
+    const available = getProduct(product.slug);
+    if (!available || available.isActive === false) return;
+    product = available;
     setLastAdded({ product, key: Date.now() });
     setCart((current) => {
       const found = current.find((item) => item.slug === product.slug);
