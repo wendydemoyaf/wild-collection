@@ -1,4 +1,5 @@
--- Primera fase: conservar activas las referencias ya publicadas hasta que se cargue el catálogo nuevo.
+-- Primera fase: conservar activas las referencias ya publicadas salvo La Vie Est Belle, archivada por aprobación.
+-- La Bomba sustituye a La Vie Est Belle como referencia disponible; no activar los otros 20 borradores.
 -- La tabla no tiene políticas públicas. Solo el backend con service_role puede escribir.
 CREATE TABLE IF NOT EXISTS public.product_availability (
   slug TEXT PRIMARY KEY,
@@ -9,7 +10,7 @@ ALTER TABLE public.product_availability ENABLE ROW LEVEL SECURITY;
 
 INSERT INTO public.product_availability (slug, is_active)
 VALUES
-  ('la-vie-est-belle', true),
+  ('la-vie-est-belle', false),
   ('good-girl', true),
   ('cloud', true),
   ('fame', true),
@@ -37,7 +38,7 @@ VALUES
   ('33-zanzibar-asad', false),
   ('34-odyssey-marshmallow', false),
   ('36a-l-imperatrice', false),
-  ('36b-la-bomba', false),
+  ('36b-la-bomba', true),
   ('50-scandal-woman', false),
   ('52-valentino-donna-born-in-roma', false),
   ('55-asad-lion', false),
@@ -54,3 +55,11 @@ VALUES
   ('88-khamrah', false),
   ('99-honor-glory', false)
 ON CONFLICT (slug) DO NOTHING;
+
+-- Asegurar el intercambio aprobado aunque estas filas ya existieran al aplicar la migración.
+INSERT INTO public.product_availability (slug, is_active, updated_at)
+VALUES
+  ('la-vie-est-belle', false, now()),
+  ('36b-la-bomba', true, now())
+ON CONFLICT (slug) DO UPDATE
+  SET is_active = EXCLUDED.is_active, updated_at = EXCLUDED.updated_at;
