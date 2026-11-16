@@ -2,7 +2,7 @@
 
 Las fotografías originales se incluyen en `public/products/2026/` y sus nombres se conservan. Solo las fichas expresamente aprobadas se han activado; el resto permanece inactivo.
 
-Las fichas nuevas están en preparación. **La Bomba (36b), Scandal (50), Valentino Donna Born in Roma (52), Sweet Like Candy (56), Berry on Top (72a), Taraf (72b) y Mallow Madness (74a) ya tienen texto comercial, pirámide de referencia y universo visual aprobados**. Las otras 14 referencias mantienen sus descripciones y notas pendientes; no se añadieron notas ni afirmaciones olfativas sin aprobación.
+Las fichas nuevas están en preparación. **La Bomba (36b), Scandal (50), Valentino Donna Born in Roma (52), Sweet Like Candy (56), Berry on Top (72a), Taraf (72b), Mallow Madness (74a) y Paradoxe Intense (74b) ya tienen texto comercial, pirámide de referencia y universo visual aprobados**. Las otras 13 referencias mantienen sus descripciones y notas pendientes; no se añadieron notas ni afirmaciones olfativas sin aprobación.
 
 | Ref. | Nombre registrado | Categoría | Fotografía | Descripción | Notas olfativas |
 |---|---|---|---|---|---|
@@ -23,7 +23,7 @@ Las fichas nuevas están en preparación. **La Bomba (36b), Scandal (50), Valent
 | 72a | Berry on Top | mujer | `72a_berry_on_top.webp` | Aprobada | Pirámide comercial de inspiración investigada |
 | 72b | Taraf | mujer | `72b_taraf.webp` | Aprobada | Pirámide comercial de inspiración investigada |
 | 74a | Mallow Madness | mujer | `74a_mallow.webp` | Aprobada | Pirámide comercial de inspiración investigada |
-| 74b | Paradoxe Intense | mujer | `74b_paradoxe.webp` | Pendiente | Salida, corazón y fondo pendientes |
+| 74b | Paradoxe Intense | mujer | `74b_paradoxe.webp` | Aprobada | Pirámide comercial de inspiración investigada |
 | 80 | Eclaire | mujer | `80_eclaire.webp` | Pendiente | Salida, corazón y fondo pendientes |
 | 88 | Khamrah | unisex | `88_khamrah.webp` | Pendiente | Salida, corazón y fondo pendientes |
 | 99 | Honor & Glory | unisex | `99_honor_y_glory.webp` | Pendiente | Salida, corazón y fondo pendientes |
@@ -149,3 +149,19 @@ Las fichas nuevas están en preparación. **La Bomba (36b), Scandal (50), Valent
 - **Imagen WebP original:** `public/products/2026/74a_mallow.webp`.
 - **Precisión:** pirámide de la fragancia comercial de inspiración, no análisis independiente de la fórmula Wild Collection.
 - **Intercambio autorizado:** Olympéa archivado y Mallow Madness disponible; el resto del catálogo permanece intacto.
+
+## Universo aprobado: Paradoxe Intense (74b)
+
+- **Nombre público:** Paradoxe Intense. Leyenda discreta «Inspirado en Paradoxe Intense de Prada». Código 74b solo interno.
+- **Subtítulo/personalidad:** Intensa y magnética.
+- **Descripción aprobada:** Floral, intensa y sofisticada, con jazmín luminoso, ámbar cálido y una vainilla envolvente que cautiva.
+- **Familia/Aroma:** Floral · Ambarado · Amaderado.
+- **Momentos Wild:** Citas · Noches · Ocasiones especiales.
+- **Salida de referencia:** Bergamota, neroli y pera.
+- **Corazón de referencia:** Jazmín, esencia de neroli y musgo.
+- **Fondo de referencia:** Ámbar, vainilla y almizcle blanco.
+- **Acordes al interactuar:** Floral blanco · Ambarado · Avainillado · Dulce · Amaderado · Afrutado.
+- **Universo visual:** Ámbar luminoso: cacao oscuro #57291F, cobre #B66D44, rosa melocotón #E9A69C y champaña cálido #F4D9C4.
+- **Imagen WebP original:** `public/products/2026/74b_paradoxe.webp`.
+- **Precisión:** pirámide de la fragancia comercial de inspiración; no certifica formulación Wild Collection.
+- **Intercambio autorizado:** Paris Hilton archivado y Paradoxe Intense disponible; mantener intactos el resto del catálogo y las promociones.
