@@ -2,7 +2,7 @@
 
 Las fotografías originales se incluyen en `public/products/2026/` y sus nombres se conservan. Todas las referencias permanecen inactivas para venta.
 
-Las fichas nuevas están en preparación. **La Bomba (36b) y Scandal (50) ya tienen texto comercial, pirámide de referencia y universo visual aprobados**. Las otras 19 referencias mantienen sus descripciones y notas pendientes; no se añadieron notas ni afirmaciones olfativas sin aprobación.
+Las fichas nuevas están en preparación. **La Bomba (36b), Scandal (50) y Valentino Donna Born in Roma (52) ya tienen texto comercial, pirámide de referencia y universo visual aprobados**. Las otras 18 referencias mantienen sus descripciones y notas pendientes; no se añadieron notas ni afirmaciones olfativas sin aprobación.
 
 | Ref. | Nombre registrado | Categoría | Fotografía | Descripción | Notas olfativas |
 |---|---|---|---|---|---|
@@ -13,7 +13,7 @@ Las fichas nuevas están en preparación. **La Bomba (36b) y Scandal (50) ya tie
 | 36a | L’Impératrice | mujer | `36a_emperatriz.webp` | Pendiente | Salida, corazón y fondo pendientes |
 | 36b | La Bomba | mujer | `36b_la_bomba.webp` | Aprobada | Pirámide comercial de inspiración verificada |
 | 50 | Scandal (nombre público) | mujer | `50_scandal_women.webp` | Aprobada | Pirámide comercial de inspiración verificada |
-| 52 | Valentino Donna Born in Roma | mujer | `52_valentino_born_in_roma.webp` | Pendiente | Salida, corazón y fondo pendientes |
+| 52 | Valentino Donna Born in Roma (nombre público: Valentino Donna) | mujer | `52_valentino_born_in_roma.webp` | Aprobada | Pirámide comercial de inspiración investigada |
 | 55 | Asad Lion | hombre | `55_asad_lion.webp` | Pendiente | Salida, corazón y fondo pendientes |
 | 56 | Sweet Like Candy | mujer | `56_sweet_like_candy.webp` | Pendiente | Salida, corazón y fondo pendientes |
 | 59 | Le Male Elixir | hombre | `59_le_male.webp` | Pendiente | Salida, corazón y fondo pendientes |
@@ -69,3 +69,19 @@ Las fichas nuevas están en preparación. **La Bomba (36b) y Scandal (50) ya tie
 - **Nota de precisión:** pirámide de la fragancia comercial de inspiración, no análisis de la fórmula Wild Collection.
 - **Intercambio aprobado:** Good Girl se archiva, Scandal se publica; conservar Good Girl para futura reactivación.
 
+
+## Universo aprobado: Valentino Donna Born in Roma (52)
+
+- **Nombre público:** Valentino Donna. Leyenda discreta «Inspirado en Valentino Donna Born in Roma». Código 52 solo interno.
+- **Subtítulo/personalidad:** Elegante y audaz.
+- **Descripción aprobada por el usuario:** Floral, femenina y sofisticada, con un toque floral y vainilla cálida que deja huella.
+- **Aroma:** Floral · Ambarado · Avainillado.
+- **Momentos Wild:** Día · Citas · Ocasiones especiales.
+- **Salida de referencia:** Grosella negra, pimienta rosa, bergamota.
+- **Corazón de referencia:** Jazmín, jazmín sambac, té de jazmín.
+- **Fondo de referencia:** Vainilla Bourbon, cashmeran, madera de guayaco.
+- **Acordes al interactuar:** Avainillado · Amaderado · Afrutado · Floral blanco · Dulce · Especiado suave.
+- **Colores:** negro tinta #161B24, rosa cuarzo #D8A5BC, plata #C4C6CB, marfil #F3E8E4.
+- **Imagen original:** `public/products/2026/52_valentino_born_in_roma.webp`; no modificar frasco, etiqueta o imagen.
+- **Nota de precisión:** la pirámide corresponde a la fragancia comercial original, no a un análisis de formulación Wild Collection.
+- **Intercambio autorizado:** Cloud archivado y Valentino Donna disponible. Mantener inalterados los demás perfumes.
