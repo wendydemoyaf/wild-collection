@@ -452,7 +452,27 @@ export const products: Product[] = [
     pyramid: { salida: ["Ciruela", "Toronja", "Bergamota"], corazon: ["Avellana", "Miel", "Cedro", "Flor de azahar"], fondo: ["Madera de ámbar", "Pachulí", "Vetiver", "Musgo de roble"] },
   },
   {
+    slug: "61-invictus-victory",
+    code: "61",
+    isActive: true,
+    name: "Invictus Victory",
+    inspiration: "Inspirado en Invictus Victory de Rabanne",
+    gender: "hombre",
+    image: "/products/2026/61_invictus_victory.webp",
+    family: "Ambarado · Dulce · Aromático",
+    feeling: "Determinado y cautivador",
+    occasion: "Citas · Noches · Eventos",
+    description: "Cuando te sientes seguro, se nota. No tienes que hacer demasiado: tu forma de entrar, de mirar y de moverte habla por ti. Fresco al principio, intenso y envolvente después.",
+    // Pirámide publicada para la fragancia comercial de inspiración; no certifica fórmula Wild Collection.
+    pyramid: {
+      salida: ["Limón", "Pimienta rosa"],
+      corazon: ["Incienso", "Lavanda"],
+      fondo: ["Vainilla", "Haba tonka", "Ámbar"],
+    },
+  },
+  {
     slug: "noir",
+    isActive: false,
     name: "Noir",
     inspiration: "Inspirado en L.12.12 Noir",
     gender: "hombre",
@@ -536,6 +556,20 @@ const defaultTheme: ProductTheme = {
 };
 
 const productThemes: Record<string, ProductTheme> = {
+  "61-invictus-victory": {
+    background: "radial-gradient(circle at 78% 27%,rgba(168,149,187,.29),transparent 35%),linear-gradient(135deg,#171820 0%,#302338 52%,#463052 100%)",
+    text: "#E5E5EB",
+    muted: "#B9B0C6",
+    accent: "#A895BB",
+    accentText: "#171820",
+    surface: "rgba(168,149,187,.11)",
+    border: "rgba(168,149,187,.33)",
+    panel: "rgba(23,24,32,.96)",
+    panelText: "#E5E5EB",
+    header: "rgba(23,24,32,.94)",
+    bars: ["#A895BB", "#E5E5EB", "#806A99", "#C2BAD3", "#B2A3C4", "#827E8C"],
+  },
+
   "59-le-male-elixir": {
     background: "radial-gradient(circle at 78% 28%,rgba(214,155,69,.34),transparent 35%),linear-gradient(135deg,#F5E8CF 0%,#EBD4A6 48%,#D69B45 100%)",
     text: "#292523",
@@ -773,6 +807,8 @@ const productThemes: Record<string, ProductTheme> = {
 };
 
 const productAccords: Record<string, string[]> = {
+  "61-invictus-victory": ["Avainillado", "Ambarado", "Dulce", "Aromático", "Especiado suave", "Balsámico"],
+
   "59-le-male-elixir": ["Avainillado", "Dulce", "Miel", "Ambarado", "Aromático", "Tabaco"],
 
   "55-asad-lion": ["Cálido especiado", "Ambarado", "Avainillado", "Tabaco", "Amaderado", "Café"],
