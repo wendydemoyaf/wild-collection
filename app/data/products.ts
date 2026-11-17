@@ -388,7 +388,27 @@ export const products: Product[] = [
     pyramid: { salida: ["Menta", "Manzana verde", "Limón"], corazon: ["Haba tonka", "Geranio", "Ambroxan"], fondo: ["Vainilla", "Cedro", "Vetiver", "Musgo de roble"] },
   },
   {
+    slug: "55-asad-lion",
+    code: "55",
+    isActive: true,
+    name: "Asad Lion",
+    inspiration: "Inspirado en Asad de Lattafa",
+    gender: "hombre",
+    image: "/products/2026/55_asad_lion.webp",
+    family: "Especiado · Ambarado · Amaderado",
+    feeling: "Imponente y seguro",
+    occasion: "Noches · Eventos · Climas frescos",
+    description: "Especiado, profundo y envolvente, con pimienta negra, tabaco y café intenso sobre un fondo cálido de vainilla y ámbar.",
+    // Pirámide comercial de la fragancia de inspiración; no confirma fórmula Wild Collection.
+    pyramid: {
+      salida: ["Pimienta negra", "Piña", "Tabaco"],
+      corazon: ["Café", "Iris", "Pachulí"],
+      fondo: ["Ámbar", "Vainilla", "Maderas secas", "Benjuí", "Ládano"],
+    },
+  },
+  {
     slug: "invictus",
+    isActive: false,
     name: "Invictus",
     inspiration: "Inspirado en Invictus",
     gender: "hombre",
@@ -496,6 +516,20 @@ const defaultTheme: ProductTheme = {
 };
 
 const productThemes: Record<string, ProductTheme> = {
+  "55-asad-lion": {
+    background: "radial-gradient(circle at 78% 29%,rgba(214,165,94,.25),transparent 36%),linear-gradient(135deg,#17130F 0%,#2D211A 45%,#73401F 100%)",
+    text: "#F0DCC1",
+    muted: "#D6A55E",
+    accent: "#D6A55E",
+    accentText: "#17130F",
+    surface: "rgba(214,165,94,.09)",
+    border: "rgba(214,165,94,.33)",
+    panel: "rgba(23,19,15,.97)",
+    panelText: "#F0DCC1",
+    header: "rgba(23,19,15,.93)",
+    bars: ["#D6A55E", "#73401F", "#E7BB76", "#B67B48", "#F0DCC1", "#9C6743"],
+  },
+
   "33-zanzibar-asad": {
     background: "radial-gradient(circle at 76% 26%,rgba(231,188,120,.35),transparent 36%),linear-gradient(135deg,#102844 0%,#173958 40%,#D58B27 100%)",
     text: "#FFF3DF",
@@ -705,6 +739,8 @@ const productThemes: Record<string, ProductTheme> = {
 };
 
 const productAccords: Record<string, string[]> = {
+  "55-asad-lion": ["Cálido especiado", "Ambarado", "Avainillado", "Tabaco", "Amaderado", "Café"],
+
   "33-zanzibar-asad": ["Avainillado", "Fresco especiado", "Aromático", "Atalcado", "Salado", "Ambarado"],
 
   "09-9-pm": ["Dulce", "Avainillado", "Cálido especiado", "Afrutado", "Aromático", "Ambarado"],
