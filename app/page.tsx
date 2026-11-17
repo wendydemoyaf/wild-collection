@@ -37,7 +37,7 @@ const collections = [
   },
 ];
 
-const featuredSlugs = ["36b-la-bomba", "50-scandal-woman", "52-valentino-donna-born-in-roma", "56-sweet-like-candy", "72a-berry-on-top", "72b-taraf", "74a-mallow-madness", "74b-paradoxe-intense", "80-eclaire", "09-9-pm", "33-zanzibar-asad", "55-asad-lion", "million-lucky"];
+const featuredSlugs = ["36b-la-bomba", "50-scandal-woman", "52-valentino-donna-born-in-roma", "56-sweet-like-candy", "72a-berry-on-top", "72b-taraf", "74a-mallow-madness", "74b-paradoxe-intense", "80-eclaire", "09-9-pm", "33-zanzibar-asad", "55-asad-lion", "59-le-male-elixir"];
 
 function Reveal({
   children,

@@ -420,7 +420,27 @@ export const products: Product[] = [
     pyramid: { salida: ["Notas marinas", "Toronja", "Mandarina"], corazon: ["Hoja de laurel", "Jazmín"], fondo: ["Ámbar gris", "Madera de guayaco", "Musgo de roble", "Pachulí"] },
   },
   {
+    slug: "59-le-male-elixir",
+    code: "59",
+    isActive: true,
+    name: "Le Male Elixir",
+    inspiration: "Inspirado en Le Male Elixir de Jean Paul Gaultier",
+    gender: "hombre",
+    image: "/products/2026/59_le_male.webp",
+    family: "Ambarado · Dulce · Aromático",
+    feeling: "Provocador y sofisticado",
+    occasion: "Citas · Noches · Celebraciones",
+    description: "Hay hombres que buscan llamar la atención. Y otros que saben cómo dejar huella sin esforzarse. Intenso, cálido y seductor, para esas noches en las que quieres que te recuerden.",
+    // Pirámide de la fragancia comercial de inspiración; no certifica fórmula Wild Collection.
+    pyramid: {
+      salida: ["Lavanda", "Menta"],
+      corazon: ["Vainilla", "Benjuí"],
+      fondo: ["Miel", "Haba tonka", "Tabaco"],
+    },
+  },
+  {
     slug: "million-lucky",
+    isActive: false,
     name: "Million Lucky",
     inspiration: "Inspirado en 1 Million Lucky",
     gender: "hombre",
@@ -516,6 +536,20 @@ const defaultTheme: ProductTheme = {
 };
 
 const productThemes: Record<string, ProductTheme> = {
+  "59-le-male-elixir": {
+    background: "radial-gradient(circle at 78% 28%,rgba(214,155,69,.34),transparent 35%),linear-gradient(135deg,#F5E8CF 0%,#EBD4A6 48%,#D69B45 100%)",
+    text: "#292523",
+    muted: "#6B522F",
+    accent: "#A46B28",
+    accentText: "#FFFFFF",
+    surface: "rgba(255,255,255,.47)",
+    border: "rgba(164,107,40,.31)",
+    panel: "rgba(41,37,35,.96)",
+    panelText: "#F5E8CF",
+    header: "rgba(245,232,207,.93)",
+    bars: ["#D69B45", "#F5E8CF", "#A46B28", "#E5BB6C", "#8B6539", "#E9D2A2"],
+  },
+
   "55-asad-lion": {
     background: "radial-gradient(circle at 78% 29%,rgba(214,165,94,.25),transparent 36%),linear-gradient(135deg,#17130F 0%,#2D211A 45%,#73401F 100%)",
     text: "#F0DCC1",
@@ -739,6 +773,8 @@ const productThemes: Record<string, ProductTheme> = {
 };
 
 const productAccords: Record<string, string[]> = {
+  "59-le-male-elixir": ["Avainillado", "Dulce", "Miel", "Ambarado", "Aromático", "Tabaco"],
+
   "55-asad-lion": ["Cálido especiado", "Ambarado", "Avainillado", "Tabaco", "Amaderado", "Café"],
 
   "33-zanzibar-asad": ["Avainillado", "Fresco especiado", "Aromático", "Atalcado", "Salado", "Ambarado"],
