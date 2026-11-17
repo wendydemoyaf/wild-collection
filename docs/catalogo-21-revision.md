@@ -2,7 +2,7 @@
 
 Las fotografías originales se incluyen en `public/products/2026/` y sus nombres se conservan. Solo las fichas expresamente aprobadas se han activado; el resto permanece inactivo.
 
-Las fichas nuevas están en preparación. **La Bomba (36b), Scandal (50), Valentino Donna Born in Roma (52), Sweet Like Candy (56), Berry on Top (72a), Taraf (72b), Mallow Madness (74a), Paradoxe Intense (74b) y Eclaire (80), junto con 9 PM (09), Zanzibar Asad (33), Asad Lion (55) y Le Male Elixir (59), ya tienen texto comercial, pirámide de referencia y universo visual aprobados**. Las otras 8 referencias mantienen sus descripciones y notas pendientes; no se añadieron notas ni afirmaciones olfativas sin aprobación.
+Las fichas nuevas están en preparación. **La Bomba (36b), Scandal (50), Valentino Donna Born in Roma (52), Sweet Like Candy (56), Berry on Top (72a), Taraf (72b), Mallow Madness (74a), Paradoxe Intense (74b) y Eclaire (80), junto con 9 PM (09), Zanzibar Asad (33), Asad Lion (55) Le Male Elixir (59) e Invictus Victory (61), ya tienen texto comercial, pirámide de referencia y universo visual aprobados**. Las otras 7 referencias mantienen sus descripciones y notas pendientes; no se añadieron notas ni afirmaciones olfativas sin aprobación.
 
 | Ref. | Nombre registrado | Categoría | Fotografía | Descripción | Notas olfativas |
 |---|---|---|---|---|---|
@@ -17,7 +17,7 @@ Las fichas nuevas están en preparación. **La Bomba (36b), Scandal (50), Valent
 | 55 | Asad Lion | hombre | `55_asad_lion.webp` | Aprobada | Pirámide comercial de inspiración investigada |
 | 56 | Sweet Like Candy | mujer | `56_sweet_like_candy.webp` | Aprobada | Pirámide comercial de inspiración investigada |
 | 59 | Le Male Elixir | hombre | `59_le_male.webp` | Aprobada | Pirámide comercial de inspiración investigada |
-| 61 | Invictus Victory | hombre | `61_invictus_victory.webp` | Pendiente | Salida, corazón y fondo pendientes |
+| 61 | Invictus Victory | hombre | `61_invictus_victory.webp` | Aprobada | Pirámide comercial de inspiración investigada |
 | 66 | Haramain Amber Oud | unisex | `66_amber_oud.webp` | Pendiente | Salida, corazón y fondo pendientes |
 | 71 | Valentino Uomo | hombre | `71_uomo.webp` | Pendiente | Salida, corazón y fondo pendientes |
 | 72a | Berry on Top | mujer | `72a_berry_on_top.webp` | Aprobada | Pirámide comercial de inspiración investigada |
@@ -254,3 +254,19 @@ Para romper la repetición visual en las fichas individuales de los nuevos perfu
 - **Imagen WebP original reutilizada sin modificar:** `public/products/2026/59_le_male.webp`.
 - **Precisión:** pirámide del perfume comercial de inspiración; no certifica la fórmula Wild Collection.
 - **Intercambio autorizado:** Million Lucky archivado; Le Male Elixir disponible; los demás perfumes y promociones intactos.
+
+## Universo aprobado: Invictus Victory (61)
+
+- **Nombre público:** Invictus Victory. Leyenda discreta «Inspirado en Invictus Victory de Rabanne». Código 61 solo interno.
+- **Subtítulo/personalidad:** Determinado y cautivador.
+- **Descripción comercial aprobada:** Cuando te sientes seguro, se nota. No tienes que hacer demasiado: tu forma de entrar, de mirar y de moverte habla por ti. Fresco al principio, intenso y envolvente después.
+- **Familia/Aroma:** Ambarado · Dulce · Aromático.
+- **Momentos Wild:** Citas · Noches · Eventos.
+- **Salida de referencia:** Limón y pimienta rosa.
+- **Corazón de referencia:** Incienso y lavanda.
+- **Fondo de referencia:** Vainilla, haba tonka y ámbar.
+- **Acordes al interactuar:** Avainillado · Ambarado · Dulce · Aromático · Especiado suave · Balsámico.
+- **Universo visual Victory Pulse:** grafito #171820, violeta oscuro #463052, lila metálico #A895BB y plata hielo #E5E5EB.
+- **Imagen WebP original reutilizada sin modificar:** `public/products/2026/61_invictus_victory.webp`.
+- **Precisión:** pirámide comercial de la fragancia de inspiración; no certifica la fórmula de Wild Collection.
+- **Intercambio autorizado:** Lacoste Noir archivado; Invictus Victory disponible. El resto de perfumes y promociones permanece intacto.
