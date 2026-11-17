@@ -2,13 +2,13 @@
 
 Las fotografías originales se incluyen en `public/products/2026/` y sus nombres se conservan. Solo las fichas expresamente aprobadas se han activado; el resto permanece inactivo.
 
-Las fichas nuevas están en preparación. **La Bomba (36b), Scandal (50), Valentino Donna Born in Roma (52), Sweet Like Candy (56), Berry on Top (72a), Taraf (72b), Mallow Madness (74a), Paradoxe Intense (74b) y Eclaire (80), junto con 9 PM (09), ya tienen texto comercial, pirámide de referencia y universo visual aprobados**. Las otras 11 referencias mantienen sus descripciones y notas pendientes; no se añadieron notas ni afirmaciones olfativas sin aprobación.
+Las fichas nuevas están en preparación. **La Bomba (36b), Scandal (50), Valentino Donna Born in Roma (52), Sweet Like Candy (56), Berry on Top (72a), Taraf (72b), Mallow Madness (74a), Paradoxe Intense (74b) y Eclaire (80), junto con 9 PM (09) y Zanzibar Asad (33), ya tienen texto comercial, pirámide de referencia y universo visual aprobados**. Las otras 10 referencias mantienen sus descripciones y notas pendientes; no se añadieron notas ni afirmaciones olfativas sin aprobación.
 
 | Ref. | Nombre registrado | Categoría | Fotografía | Descripción | Notas olfativas |
 |---|---|---|---|---|---|
 | 09 | 9 PM | hombre | `09_9pm.webp` | Aprobada | Pirámide comercial de inspiración investigada |
 | 22 | Odyssey Bahamas | unisex | `22_bahamas.webp` | Pendiente | Salida, corazón y fondo pendientes |
-| 33 | Zanzibar Asad | hombre | `33_asad_zanzibar.webp` | Pendiente | Salida, corazón y fondo pendientes |
+| 33 | Zanzibar Asad | hombre | `33_asad_zanzibar.webp` | Aprobada | Pirámide comercial de inspiración investigada |
 | 34 | Odyssey Marshmallow | mujer | `34_mashmallow.webp` | Pendiente | Salida, corazón y fondo pendientes |
 | 36a | L’Impératrice | mujer | `36a_emperatriz.webp` | Pendiente | Salida, corazón y fondo pendientes |
 | 36b | La Bomba | mujer | `36b_la_bomba.webp` | Aprobada | Pirámide comercial de inspiración verificada |
@@ -206,3 +206,19 @@ Para romper la repetición visual en las fichas individuales de los nuevos perfu
 - **Imagen WebP existente reutilizada sin modificar:** `public/products/2026/09_9pm.webp`.
 - **Precisión:** pirámide de la fragancia comercial de inspiración; no certifica la fórmula Wild Collection.
 - **Intercambio autorizado:** Legacy CR7 archivado y 9 PM disponible; los demás perfumes y promociones siguen intactos.
+
+## Universo aprobado: Zanzibar Asad (33)
+
+- **Nombre público:** Zanzibar Asad. Leyenda discreta «Inspirado en Asad Zanzibar de Lattafa». Código 33 solo interno.
+- **Subtítulo/personalidad:** Aventurero y sofisticado.
+- **Descripción aprobada:** Fresco, especiado y envolvente, con un toque marino y un fondo cálido de vainilla e incienso que deja huella.
+- **Familia/Aroma:** Especiado · Aromático · Avainillado.
+- **Momentos Wild:** Día · Salidas · Encuentros especiales.
+- **Salida de referencia:** Pimienta negra y lavanda marina.
+- **Corazón de referencia:** Agua de coco salada e iris.
+- **Fondo de referencia:** Vainilla e incienso.
+- **Acordes al interactuar:** Avainillado · Fresco especiado · Aromático · Atalcado · Salado · Ambarado.
+- **Universo visual Oceanic Amber:** azul océano #102844, ámbar dorado #D58B27, miel luminosa #E7BC78 y plata fría #B8C8D3.
+- **Imagen WebP original reutilizada sin modificar:** `public/products/2026/33_asad_zanzibar.webp`.
+- **Precisión:** pirámide de la fragancia comercial de inspiración; no certifica la fórmula Wild Collection.
+- **Intercambio autorizado:** Eros archivado; Zanzibar Asad disponible; los demás perfumes y promociones intactos.
