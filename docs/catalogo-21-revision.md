@@ -2,7 +2,7 @@
 
 Las fotografías originales se incluyen en `public/products/2026/` y sus nombres se conservan. Solo las fichas expresamente aprobadas se han activado; el resto permanece inactivo.
 
-Las fichas nuevas están en preparación. **La Bomba (36b), Scandal (50), Valentino Donna Born in Roma (52), Sweet Like Candy (56), Berry on Top (72a), Taraf (72b), Mallow Madness (74a), Paradoxe Intense (74b) y Eclaire (80), junto con 9 PM (09), Zanzibar Asad (33) y Asad Lion (55), ya tienen texto comercial, pirámide de referencia y universo visual aprobados**. Las otras 9 referencias mantienen sus descripciones y notas pendientes; no se añadieron notas ni afirmaciones olfativas sin aprobación.
+Las fichas nuevas están en preparación. **La Bomba (36b), Scandal (50), Valentino Donna Born in Roma (52), Sweet Like Candy (56), Berry on Top (72a), Taraf (72b), Mallow Madness (74a), Paradoxe Intense (74b) y Eclaire (80), junto con 9 PM (09), Zanzibar Asad (33), Asad Lion (55) y Le Male Elixir (59), ya tienen texto comercial, pirámide de referencia y universo visual aprobados**. Las otras 8 referencias mantienen sus descripciones y notas pendientes; no se añadieron notas ni afirmaciones olfativas sin aprobación.
 
 | Ref. | Nombre registrado | Categoría | Fotografía | Descripción | Notas olfativas |
 |---|---|---|---|---|---|
@@ -16,7 +16,7 @@ Las fichas nuevas están en preparación. **La Bomba (36b), Scandal (50), Valent
 | 52 | Valentino Donna Born in Roma (nombre público: Valentino Donna) | mujer | `52_valentino_born_in_roma.webp` | Aprobada | Pirámide comercial de inspiración investigada |
 | 55 | Asad Lion | hombre | `55_asad_lion.webp` | Aprobada | Pirámide comercial de inspiración investigada |
 | 56 | Sweet Like Candy | mujer | `56_sweet_like_candy.webp` | Aprobada | Pirámide comercial de inspiración investigada |
-| 59 | Le Male Elixir | hombre | `59_le_male.webp` | Pendiente | Salida, corazón y fondo pendientes |
+| 59 | Le Male Elixir | hombre | `59_le_male.webp` | Aprobada | Pirámide comercial de inspiración investigada |
 | 61 | Invictus Victory | hombre | `61_invictus_victory.webp` | Pendiente | Salida, corazón y fondo pendientes |
 | 66 | Haramain Amber Oud | unisex | `66_amber_oud.webp` | Pendiente | Salida, corazón y fondo pendientes |
 | 71 | Valentino Uomo | hombre | `71_uomo.webp` | Pendiente | Salida, corazón y fondo pendientes |
@@ -238,3 +238,19 @@ Para romper la repetición visual en las fichas individuales de los nuevos perfu
 - **Imagen WebP original reutilizada sin modificar:** `public/products/2026/55_asad_lion.webp`.
 - **Precisión:** pirámide del perfume comercial de inspiración; no certifica la fórmula Wild Collection.
 - **Intercambio autorizado:** Invictus archivado; Asad Lion disponible; los demás perfumes y promociones intactos.
+
+## Universo aprobado: Le Male Elixir (59)
+
+- **Nombre público:** Le Male Elixir. Leyenda discreta «Inspirado en Le Male Elixir de Jean Paul Gaultier». Código 59 solo interno.
+- **Subtítulo/personalidad:** Provocador y sofisticado.
+- **Descripción comercial revisada y aprobada:** Hay hombres que buscan llamar la atención. Y otros que saben cómo dejar huella sin esforzarse. Intenso, cálido y seductor, para esas noches en las que quieres que te recuerden.
+- **Familia/Aroma:** Ambarado · Dulce · Aromático.
+- **Momentos Wild:** Citas · Noches · Celebraciones.
+- **Salida de referencia:** Lavanda y menta.
+- **Corazón de referencia:** Vainilla y benjuí.
+- **Fondo de referencia:** Miel, haba tonka y tabaco.
+- **Acordes al interactuar:** Avainillado · Dulce · Miel · Ambarado · Aromático · Tabaco.
+- **Universo visual Honey Halo:** champaña #F5E8CF, miel dorada #D69B45, oro antiguo #A46B28, grafito #292523.
+- **Imagen WebP original reutilizada sin modificar:** `public/products/2026/59_le_male.webp`.
+- **Precisión:** pirámide del perfume comercial de inspiración; no certifica la fórmula Wild Collection.
+- **Intercambio autorizado:** Million Lucky archivado; Le Male Elixir disponible; los demás perfumes y promociones intactos.
