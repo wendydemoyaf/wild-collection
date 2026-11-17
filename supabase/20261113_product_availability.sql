@@ -4,7 +4,7 @@
 -- Berry on Top sustituye a Fantasy, Taraf sustituye a Meow y Mallow Madness sustituye a Olympéa.
 -- Paradoxe Intense sustituye a Paris Hilton y Eclaire sustituye a 212 VIP Rosé.
 -- 9 PM sustituye a Legacy CR7 y Zanzibar Asad sustituye a Eros.
--- Los otros 10 borradores permanecen inactivos.
+-- Asad Lion sustituye a Invictus. Los otros 9 borradores permanecen inactivos.
 -- La tabla no tiene políticas públicas. Solo el backend con service_role puede escribir.
 CREATE TABLE IF NOT EXISTS public.product_availability (
   slug TEXT PRIMARY KEY,
@@ -26,7 +26,7 @@ VALUES
   ('vip-rose', false),
   ('legacy-cr7', false),
   ('eros', false),
-  ('invictus', true),
+  ('invictus', false),
   ('million-lucky', true),
   ('noir', true),
   ('phantom', true),
@@ -46,7 +46,7 @@ VALUES
   ('36b-la-bomba', true),
   ('50-scandal-woman', true),
   ('52-valentino-donna-born-in-roma', true),
-  ('55-asad-lion', false),
+  ('55-asad-lion', true),
   ('56-sweet-like-candy', true),
   ('59-le-male-elixir', false),
   ('61-invictus-victory', false),
@@ -85,6 +85,8 @@ VALUES
   ('legacy-cr7', false, now()),
   ('09-9-pm', true, now()),
   ('eros', false, now()),
-  ('33-zanzibar-asad', true, now())
+  ('33-zanzibar-asad', true, now()),
+  ('invictus', false, now()),
+  ('55-asad-lion', true, now())
 ON CONFLICT (slug) DO UPDATE
   SET is_active = EXCLUDED.is_active, updated_at = EXCLUDED.updated_at;

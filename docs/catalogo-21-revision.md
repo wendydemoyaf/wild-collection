@@ -2,7 +2,7 @@
 
 Las fotografías originales se incluyen en `public/products/2026/` y sus nombres se conservan. Solo las fichas expresamente aprobadas se han activado; el resto permanece inactivo.
 
-Las fichas nuevas están en preparación. **La Bomba (36b), Scandal (50), Valentino Donna Born in Roma (52), Sweet Like Candy (56), Berry on Top (72a), Taraf (72b), Mallow Madness (74a), Paradoxe Intense (74b) y Eclaire (80), junto con 9 PM (09) y Zanzibar Asad (33), ya tienen texto comercial, pirámide de referencia y universo visual aprobados**. Las otras 10 referencias mantienen sus descripciones y notas pendientes; no se añadieron notas ni afirmaciones olfativas sin aprobación.
+Las fichas nuevas están en preparación. **La Bomba (36b), Scandal (50), Valentino Donna Born in Roma (52), Sweet Like Candy (56), Berry on Top (72a), Taraf (72b), Mallow Madness (74a), Paradoxe Intense (74b) y Eclaire (80), junto con 9 PM (09), Zanzibar Asad (33) y Asad Lion (55), ya tienen texto comercial, pirámide de referencia y universo visual aprobados**. Las otras 9 referencias mantienen sus descripciones y notas pendientes; no se añadieron notas ni afirmaciones olfativas sin aprobación.
 
 | Ref. | Nombre registrado | Categoría | Fotografía | Descripción | Notas olfativas |
 |---|---|---|---|---|---|
@@ -14,7 +14,7 @@ Las fichas nuevas están en preparación. **La Bomba (36b), Scandal (50), Valent
 | 36b | La Bomba | mujer | `36b_la_bomba.webp` | Aprobada | Pirámide comercial de inspiración verificada |
 | 50 | Scandal (nombre público) | mujer | `50_scandal_women.webp` | Aprobada | Pirámide comercial de inspiración verificada |
 | 52 | Valentino Donna Born in Roma (nombre público: Valentino Donna) | mujer | `52_valentino_born_in_roma.webp` | Aprobada | Pirámide comercial de inspiración investigada |
-| 55 | Asad Lion | hombre | `55_asad_lion.webp` | Pendiente | Salida, corazón y fondo pendientes |
+| 55 | Asad Lion | hombre | `55_asad_lion.webp` | Aprobada | Pirámide comercial de inspiración investigada |
 | 56 | Sweet Like Candy | mujer | `56_sweet_like_candy.webp` | Aprobada | Pirámide comercial de inspiración investigada |
 | 59 | Le Male Elixir | hombre | `59_le_male.webp` | Pendiente | Salida, corazón y fondo pendientes |
 | 61 | Invictus Victory | hombre | `61_invictus_victory.webp` | Pendiente | Salida, corazón y fondo pendientes |
@@ -222,3 +222,19 @@ Para romper la repetición visual en las fichas individuales de los nuevos perfu
 - **Imagen WebP original reutilizada sin modificar:** `public/products/2026/33_asad_zanzibar.webp`.
 - **Precisión:** pirámide de la fragancia comercial de inspiración; no certifica la fórmula Wild Collection.
 - **Intercambio autorizado:** Eros archivado; Zanzibar Asad disponible; los demás perfumes y promociones intactos.
+
+## Universo aprobado: Asad Lion (55)
+
+- **Nombre público:** Asad Lion. Leyenda discreta «Inspirado en Asad de Lattafa». Código 55 solo interno.
+- **Subtítulo/personalidad:** Imponente y seguro.
+- **Descripción aprobada:** Especiado, profundo y envolvente, con pimienta negra, tabaco y café intenso sobre un fondo cálido de vainilla y ámbar.
+- **Familia/Aroma:** Especiado · Ambarado · Amaderado.
+- **Momentos Wild:** Noches · Eventos · Climas frescos.
+- **Salida de referencia:** Pimienta negra, piña y tabaco.
+- **Corazón de referencia:** Café, iris y pachulí.
+- **Fondo de referencia:** Ámbar, vainilla, maderas secas, benjuí y ládano.
+- **Acordes al interactuar:** Cálido especiado · Ambarado · Avainillado · Tabaco · Amaderado · Café.
+- **Universo visual Black Ember:** negro carbón #17130F, cobre oscuro #73401F, oro cálido #D6A55E y champaña #F0DCC1.
+- **Imagen WebP original reutilizada sin modificar:** `public/products/2026/55_asad_lion.webp`.
+- **Precisión:** pirámide del perfume comercial de inspiración; no certifica la fórmula Wild Collection.
+- **Intercambio autorizado:** Invictus archivado; Asad Lion disponible; los demás perfumes y promociones intactos.
