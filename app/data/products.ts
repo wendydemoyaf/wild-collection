@@ -324,7 +324,27 @@ export const products: Product[] = [
     pyramid: { salida: ["Champaña rosada", "Pimienta rosa"], corazon: ["Flor de durazno", "Rosa"], fondo: ["Almizcle blanco", "Notas amaderadas", "Ámbar"] },
   },
   {
+    slug: "09-9-pm",
+    code: "09",
+    isActive: true,
+    name: "9 PM",
+    inspiration: "Inspirado en 9 PM de Afnan",
+    gender: "hombre",
+    image: "/products/2026/09_9pm.webp",
+    family: "Dulce · Especiado · Ambarado",
+    feeling: "Audaz y magnético",
+    occasion: "Noches · Citas · Salidas",
+    description: "Dulce, especiado y seductor, con una frescura vibrante y un fondo cálido de vainilla que destaca al caer la noche.",
+    // Pirámide publicada para la fragancia comercial de inspiración; no certifica fórmula idéntica.
+    pyramid: {
+      salida: ["Manzana", "Canela", "Lavandín", "Bergamota"],
+      corazon: ["Flor de azahar", "Lirio de los valles"],
+      fondo: ["Vainilla", "Haba tonka", "Ámbar", "Pachulí"],
+    },
+  },
+  {
     slug: "legacy-cr7",
+    isActive: false,
     name: "Legacy CR7",
     inspiration: "Inspirado en Legacy CR7",
     gender: "hombre",
@@ -456,6 +476,20 @@ const defaultTheme: ProductTheme = {
 };
 
 const productThemes: Record<string, ProductTheme> = {
+  "09-9-pm": {
+    background: "radial-gradient(circle at 77% 29%,rgba(30,49,83,.58),transparent 37%),linear-gradient(135deg,#0D1322,#1E3153 55%,#090E1B)",
+    text: "#F3F6FC",
+    muted: "#B5C0D0",
+    accent: "#D39B63",
+    accentText: "#0D1322",
+    surface: "rgba(181,192,208,.08)",
+    border: "rgba(181,192,208,.30)",
+    panel: "rgba(13,19,34,.97)",
+    panelText: "#F3F6FC",
+    header: "rgba(13,19,34,.92)",
+    bars: ["#D39B63", "#B5C0D0", "#E8B98B", "#8DA9C7", "#CF9869", "#99A7C2"],
+  },
+
   "80-eclaire": {
     background: "radial-gradient(circle at 77% 29%,rgba(232,200,149,.36),transparent 35%),linear-gradient(135deg,#FFF3DA,#F8E5C4 52%,#E8C895)",
     text: "#38261F",
@@ -637,6 +671,8 @@ const productThemes: Record<string, ProductTheme> = {
 };
 
 const productAccords: Record<string, string[]> = {
+  "09-9-pm": ["Dulce", "Avainillado", "Cálido especiado", "Afrutado", "Aromático", "Ambarado"],
+
   "80-eclaire": ["Dulce", "Avainillado", "Caramelo", "Lactónico", "Miel", "Atalcado"],
 
   "74b-paradoxe-intense": ["Floral blanco", "Ambarado", "Avainillado", "Dulce", "Amaderado", "Afrutado"],

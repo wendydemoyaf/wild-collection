@@ -37,7 +37,7 @@ const collections = [
   },
 ];
 
-const featuredSlugs = ["36b-la-bomba", "50-scandal-woman", "52-valentino-donna-born-in-roma", "56-sweet-like-candy", "72a-berry-on-top", "72b-taraf", "74a-mallow-madness", "74b-paradoxe-intense", "80-eclaire", "eros", "million-lucky"];
+const featuredSlugs = ["36b-la-bomba", "50-scandal-woman", "52-valentino-donna-born-in-roma", "56-sweet-like-candy", "72a-berry-on-top", "72b-taraf", "74a-mallow-madness", "74b-paradoxe-intense", "80-eclaire", "09-9-pm", "eros", "million-lucky"];
 
 function Reveal({
   children,
