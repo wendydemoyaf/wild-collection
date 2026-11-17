@@ -356,7 +356,27 @@ export const products: Product[] = [
     pyramid: { salida: ["Bergamota", "Canela", "Manzana verde", "Lavanda"], corazon: ["Cedro", "Romero", "Salvia", "Violeta"], fondo: ["Ámbar", "Pachulí", "Maderas"] },
   },
   {
+    slug: "33-zanzibar-asad",
+    code: "33",
+    isActive: true,
+    name: "Zanzibar Asad",
+    inspiration: "Inspirado en Asad Zanzibar de Lattafa",
+    gender: "hombre",
+    image: "/products/2026/33_asad_zanzibar.webp",
+    family: "Especiado · Aromático · Avainillado",
+    feeling: "Aventurero y sofisticado",
+    occasion: "Día · Salidas · Encuentros especiales",
+    description: "Fresco, especiado y envolvente, con un toque marino y un fondo cálido de vainilla e incienso que deja huella.",
+    // Pirámide comercial de la fragancia de inspiración; no confirma fórmula Wild Collection.
+    pyramid: {
+      salida: ["Pimienta negra", "Lavanda marina"],
+      corazon: ["Agua de coco salada", "Iris"],
+      fondo: ["Vainilla", "Incienso"],
+    },
+  },
+  {
     slug: "eros",
+    isActive: false,
     name: "Eros",
     inspiration: "Inspirado en Eros",
     gender: "hombre",
@@ -476,6 +496,20 @@ const defaultTheme: ProductTheme = {
 };
 
 const productThemes: Record<string, ProductTheme> = {
+  "33-zanzibar-asad": {
+    background: "radial-gradient(circle at 76% 26%,rgba(231,188,120,.35),transparent 36%),linear-gradient(135deg,#102844 0%,#173958 40%,#D58B27 100%)",
+    text: "#FFF3DF",
+    muted: "#E7BC78",
+    accent: "#E7BC78",
+    accentText: "#102844",
+    surface: "rgba(231,188,120,.10)",
+    border: "rgba(231,188,120,.36)",
+    panel: "rgba(16,40,68,.96)",
+    panelText: "#FFF3DF",
+    header: "rgba(16,40,68,.94)",
+    bars: ["#D58B27", "#E7BC78", "#B8C8D3", "#F2D59D", "#7E9DB4", "#C59D6C"],
+  },
+
   "09-9-pm": {
     background: "radial-gradient(circle at 77% 29%,rgba(30,49,83,.58),transparent 37%),linear-gradient(135deg,#0D1322,#1E3153 55%,#090E1B)",
     text: "#F3F6FC",
@@ -671,6 +705,8 @@ const productThemes: Record<string, ProductTheme> = {
 };
 
 const productAccords: Record<string, string[]> = {
+  "33-zanzibar-asad": ["Avainillado", "Fresco especiado", "Aromático", "Atalcado", "Salado", "Ambarado"],
+
   "09-9-pm": ["Dulce", "Avainillado", "Cálido especiado", "Afrutado", "Aromático", "Ambarado"],
 
   "80-eclaire": ["Dulce", "Avainillado", "Caramelo", "Lactónico", "Miel", "Atalcado"],
