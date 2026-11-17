@@ -2,11 +2,11 @@
 
 Las fotografías originales se incluyen en `public/products/2026/` y sus nombres se conservan. Solo las fichas expresamente aprobadas se han activado; el resto permanece inactivo.
 
-Las fichas nuevas están en preparación. **La Bomba (36b), Scandal (50), Valentino Donna Born in Roma (52), Sweet Like Candy (56), Berry on Top (72a), Taraf (72b), Mallow Madness (74a), Paradoxe Intense (74b) y Eclaire (80) ya tienen texto comercial, pirámide de referencia y universo visual aprobados**. Las otras 12 referencias mantienen sus descripciones y notas pendientes; no se añadieron notas ni afirmaciones olfativas sin aprobación.
+Las fichas nuevas están en preparación. **La Bomba (36b), Scandal (50), Valentino Donna Born in Roma (52), Sweet Like Candy (56), Berry on Top (72a), Taraf (72b), Mallow Madness (74a), Paradoxe Intense (74b) y Eclaire (80), junto con 9 PM (09), ya tienen texto comercial, pirámide de referencia y universo visual aprobados**. Las otras 11 referencias mantienen sus descripciones y notas pendientes; no se añadieron notas ni afirmaciones olfativas sin aprobación.
 
 | Ref. | Nombre registrado | Categoría | Fotografía | Descripción | Notas olfativas |
 |---|---|---|---|---|---|
-| 09 | 9 PM | hombre | `09_9pm.webp` | Pendiente | Salida, corazón y fondo pendientes |
+| 09 | 9 PM | hombre | `09_9pm.webp` | Aprobada | Pirámide comercial de inspiración investigada |
 | 22 | Odyssey Bahamas | unisex | `22_bahamas.webp` | Pendiente | Salida, corazón y fondo pendientes |
 | 33 | Zanzibar Asad | hombre | `33_asad_zanzibar.webp` | Pendiente | Salida, corazón y fondo pendientes |
 | 34 | Odyssey Marshmallow | mujer | `34_mashmallow.webp` | Pendiente | Salida, corazón y fondo pendientes |
@@ -190,3 +190,19 @@ Para romper la repetición visual en las fichas individuales de los nuevos perfu
 - **Cuarta:** Sweet Like Candy, imagen a la derecha y texto a la izquierda.
 - **Quinta:** Berry on Top, imagen a la izquierda y texto a la derecha.
 - En móvil se mantiene imagen primero y texto después. Los archivos originales, proporciones de la fotografía y barras de acordes permanecen intactos.
+
+## Universo aprobado: 9 PM (09)
+
+- **Nombre público:** 9 PM. Leyenda discreta «Inspirado en 9 PM de Afnan». Código 09 solo interno.
+- **Subtítulo/personalidad:** Audaz y magnético.
+- **Descripción aprobada:** Dulce, especiado y seductor, con una frescura vibrante y un fondo cálido de vainilla que destaca al caer la noche.
+- **Familia/Aroma:** Dulce · Especiado · Ambarado.
+- **Momentos Wild:** Noches · Citas · Salidas.
+- **Salida de referencia:** Manzana, canela, lavandín, bergamota.
+- **Corazón de referencia:** Flor de azahar y lirio de los valles.
+- **Fondo de referencia:** Vainilla, haba tonka, ámbar y pachulí.
+- **Acordes al interactuar:** Dulce · Avainillado · Cálido especiado · Afrutado · Aromático · Ambarado.
+- **Universo visual Midnight Code:** negro noche #0D1322, azul profundo #1E3153, plata fría #B5C0D0, ámbar cálido #D39B63.
+- **Imagen WebP existente reutilizada sin modificar:** `public/products/2026/09_9pm.webp`.
+- **Precisión:** pirámide de la fragancia comercial de inspiración; no certifica la fórmula Wild Collection.
+- **Intercambio autorizado:** Legacy CR7 archivado y 9 PM disponible; los demás perfumes y promociones siguen intactos.

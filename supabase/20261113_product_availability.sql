@@ -3,7 +3,7 @@
 -- Valentino Donna sustituye a Cloud y Sweet Like Candy sustituye a Fame.
 -- Berry on Top sustituye a Fantasy, Taraf sustituye a Meow y Mallow Madness sustituye a Olympéa.
 -- Paradoxe Intense sustituye a Paris Hilton y Eclaire sustituye a 212 VIP Rosé.
--- Los otros 12 borradores permanecen inactivos.
+-- 9 PM sustituye a Legacy CR7. Los otros 11 borradores permanecen inactivos.
 -- La tabla no tiene políticas públicas. Solo el backend con service_role puede escribir.
 CREATE TABLE IF NOT EXISTS public.product_availability (
   slug TEXT PRIMARY KEY,
@@ -23,7 +23,7 @@ VALUES
   ('olympea', false),
   ('paris-hilton', false),
   ('vip-rose', false),
-  ('legacy-cr7', true),
+  ('legacy-cr7', false),
   ('eros', true),
   ('invictus', true),
   ('million-lucky', true),
@@ -37,7 +37,7 @@ ON CONFLICT (slug) DO NOTHING;
 -- Nuevas referencias preparadas como inactivas hasta verificar fotografías y fichas.
 INSERT INTO public.product_availability (slug, is_active)
 VALUES
-  ('09-9-pm', false),
+  ('09-9-pm', true),
   ('22-odyssey-bahamas', false),
   ('33-zanzibar-asad', false),
   ('34-odyssey-marshmallow', false),
@@ -80,6 +80,8 @@ VALUES
   ('paris-hilton', false, now()),
   ('74b-paradoxe-intense', true, now()),
   ('vip-rose', false, now()),
-  ('80-eclaire', true, now())
+  ('80-eclaire', true, now()),
+  ('legacy-cr7', false, now()),
+  ('09-9-pm', true, now())
 ON CONFLICT (slug) DO UPDATE
   SET is_active = EXCLUDED.is_active, updated_at = EXCLUDED.updated_at;
